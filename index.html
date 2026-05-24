@@ -227,6 +227,7 @@ footer a:hover { color:#74f2c8; }
     </div>
     <div style="flex:1"></div>
     <span id="navCount" style="font-size:.63rem;color:#ffbc73;font-weight:700;white-space:nowrap">— planets</span>
+    <button class="btn sm" onclick="forceRefresh()" title="Force re-fetch from NASA" style="font-size:.55rem;padding:3px 8px">↻ Refresh</button>
     <div class="chip chip-dim nasa-live" id="nasaBadge" style="display:flex;align-items:center;gap:5px">
       <span class="nasa-dot"></span>
       <span id="nasaLabel" style="font-size:.55rem">connecting…</span>
@@ -510,7 +511,7 @@ footer a:hover { color:#74f2c8; }
 /* ═══════════════════════════════════════════════
    DATA ENGINE — NASA TAP + IndexedDB cache
 ═══════════════════════════════════════════════ */
-const DB_NAME='rv-obs-v2', DB_VER=1, STORE='planets';
+const DB_NAME='rv-obs-v3', DB_VER=1, STORE='planets';  // bump version to bust any old cache
 const CACHE_TTL = 24*60*60*1000; // 24 h
 
 const FALLBACK = [
@@ -563,8 +564,20 @@ async function dbPut(key,data) {
 }
 
 /* ── NASA TAP fetch ── */
-const NASA_Q = `SELECT pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,pl_bmassj,sy_dist,disc_year,disc_facility,st_mass FROM ps WHERE discoverymethod='Radial Velocity' AND default_flag=1 ORDER BY pl_rvamp DESC`;
-const NASA_URL = `https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=${encodeURIComponent(NASA_Q)}&format=json&maxrec=2000`;
+// Use proven query without string-literal filters (avoids quote-encoding issues with IPAC TAP).
+// discoverymethod filter done client-side after fetch.
+// MAXREC uppercase per TAP spec; pl_rvamp>0 ensures only RV-measured planets.
+const NASA_Q = [
+  'SELECT pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,pl_bmassj,',
+  'sy_dist,disc_year,disc_facility,st_mass,discoverymethod',
+  ' FROM ps',
+  ' WHERE pl_rvamp IS NOT NULL AND pl_rvamp > 0 AND default_flag = 1',
+  ' ORDER BY pl_rvamp DESC',
+].join('');
+const NASA_URL = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
+  + '?query=' + encodeURIComponent(NASA_Q)
+  + '&format=json'
+  + '&MAXREC=2000';
 
 window.RVO = { planets:[], selected:null, nasaStatus:'connecting', _archRows:[] };
 
@@ -591,32 +604,57 @@ async function fetchPlanets() {
 }
 
 async function loadFromNASA() {
+  setStatus('connecting', 'fetching from NASA…');
   try {
-    const ctrl=new AbortController(), tid=setTimeout(()=>ctrl.abort(),20000);
-    const res=await fetch(NASA_URL,{signal:ctrl.signal});
+    const ctrl=new AbortController();
+    const tid=setTimeout(()=>ctrl.abort(),30000); // 30s timeout
+    const res=await fetch(NASA_URL, {signal:ctrl.signal});
     clearTimeout(tid);
-    if(!res.ok) throw new Error('HTTP '+res.status);
+    if(!res.ok) throw new Error('HTTP '+res.status+' — '+res.statusText);
     const data=await res.json();
-    if(!data||!data.length) throw new Error('empty');
+    if(!Array.isArray(data)||!data.length) throw new Error('API returned empty dataset');
     RVO.planets=data;
-    setStatus('live','NASA live · '+data.length+' planets');
-    document.getElementById('navCount').textContent = data.length+' RV planets';
+    const n=data.length;
+    setStatus('live','NASA live · '+n+' planets');
+    document.getElementById('navCount').textContent = n+' RV planets';
     document.getElementById('archCacheNote').textContent = 'live · '+new Date().toLocaleTimeString();
     await dbPut('planets',data);
     onPlanetsReady(data);
   } catch(e) {
+    const msg = e.name==='AbortError' ? 'timeout after 30s' : e.message;
+    console.warn('NASA TAP fetch failed:', msg, '\nURL tried:', NASA_URL);
+    setStatus('error','NASA error: '+msg.slice(0,40));
     if(RVO.planets.length===0){
       RVO.planets=FALLBACK.slice();
-      setStatus('error','offline · '+FALLBACK.length+' cached');
-      document.getElementById('navCount').textContent = FALLBACK.length+' RV planets';
+      document.getElementById('navCount').textContent = FALLBACK.length+' RV planets (offline fallback)';
       onPlanetsReady(FALLBACK);
     }
+    showFetchError(msg);
   }
+}
+
+function showFetchError(msg) {
+  const note = document.getElementById('dashNote');
+  if(!note) return;
+  note.style.borderColor='rgba(255,125,144,0.3)';
+  note.innerHTML = `<span style="color:#ff7d90">⚠ NASA TAP fetch failed: ${msg}</span>
+    &nbsp;·&nbsp; Showing ${RVO.planets.length} offline planets
+    &nbsp;·&nbsp; <button class="btn sm" onclick="forceRefresh()" style="font-size:.58rem">Retry live fetch</button>
+    <br><span style="color:#4d6882;font-size:.55rem">URL: ${NASA_URL.slice(0,80)}…</span>`;
+}
+
+async function forceRefresh() {
+  // Clear the IndexedDB cache and re-fetch
+  try { const db=await dbOpen(); db.transaction(STORE,'readwrite').objectStore(STORE).clear(); } catch{}
+  RVO.planets=[];
+  document.getElementById('dashLoad').style.display='flex';
+  document.getElementById('dashContent').style.display='none';
+  await loadFromNASA();
 }
 
 async function refreshInBackground() {
   try {
-    const ctrl=new AbortController(),tid=setTimeout(()=>ctrl.abort(),25000);
+    const ctrl=new AbortController(),tid=setTimeout(()=>ctrl.abort(),30000);
     const res=await fetch(NASA_URL,{signal:ctrl.signal});
     clearTimeout(tid);
     if(!res.ok) return;
