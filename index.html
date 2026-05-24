@@ -185,6 +185,46 @@ footer a:hover { color:#74f2c8; }
 
 /* ── noise indicator ── */
 .noise-bar { height:3px; border-radius:2px; transition:width .3s; }
+
+/* ══════════════════════════════════════════════
+   LIGHT MODE — "Science Paper" theme
+   All body.light overrides use higher specificity to beat dark defaults
+══════════════════════════════════════════════ */
+body.light { background:#f0f4fa; color:#1a2a40; }
+body.light #navbar { background:rgba(230,236,248,0.97); border-bottom-color:rgba(0,0,0,0.1); }
+body.light .tab-btn { color:#7080a0; }
+body.light .tab-btn:hover { color:#3a5080; }
+body.light .tab-btn.active { color:#0a7a5a; border-bottom-color:#0a7a5a; }
+body.light .glass,
+body.light .glass-dark { background:rgba(255,255,255,0.92); border-color:rgba(0,0,0,0.09); }
+body.light .kpi-card { background:#fff; border-color:rgba(0,0,0,0.08); box-shadow:0 2px 16px rgba(0,30,80,0.08); }
+body.light .feat-card { background:#fff; border-color:rgba(0,0,0,0.08); }
+body.light .feat-card:hover { border-color:rgba(10,122,90,0.40); }
+body.light .canvas-wrap, body.light .plotly-wrap { background:#f8faff; }
+body.light .data-tbl thead th { color:#8090b0; border-bottom-color:rgba(0,0,0,0.08); }
+body.light .data-tbl tbody tr { border-bottom-color:rgba(0,0,0,0.04); }
+body.light .data-tbl tbody tr:hover { background:rgba(10,122,90,0.05); }
+body.light .data-tbl tbody tr.selected { background:rgba(10,122,90,0.1); }
+body.light .data-tbl td { color:#4a5a7a; }
+body.light .data-tbl td.hl { color:#0a7a5a; }
+body.light .inp { background:#fff; border-color:rgba(0,0,0,0.12); color:#1a2a40; }
+body.light .inp:focus { border-color:rgba(10,122,90,0.5); }
+body.light .btn { background:rgba(0,0,0,0.04); border-color:rgba(0,0,0,0.12); color:#4a5a7a; }
+body.light .btn:hover { background:rgba(0,0,0,0.08); color:#1a2a40; }
+body.light .btn.primary { background:rgba(10,122,90,0.08); border-color:rgba(10,122,90,0.3); color:#0a7a5a; }
+body.light .btn.primary:hover { background:rgba(10,122,90,0.15); }
+body.light .btn.active { background:rgba(10,122,90,0.14); border-color:rgba(10,122,90,0.5); color:#0a7a5a; }
+body.light .mod-head { color:#0a7a5a; }
+body.light .mod-head::after { background:rgba(10,122,90,0.12); }
+body.light .chip-green { background:rgba(10,122,90,0.08); border-color:rgba(10,122,90,0.28); color:#0a7a5a; }
+body.light .chip-dim { background:rgba(0,0,0,0.05); border-color:rgba(0,0,0,0.12); color:#6070a0; }
+body.light footer { background:#e8edf8; border-top-color:rgba(0,0,0,0.08); color:#7080a0; }
+body.light #gtt { background:rgba(245,248,255,0.98); border-color:rgba(0,0,0,0.12); color:#4a5a7a; }
+/* Light mode nav badge */
+body.light #nasaBadge.chip-green { color:#0a7a5a; border-color:rgba(10,122,90,0.3); background:rgba(10,122,90,0.07); }
+/* Theme toggle button */
+#themeToggle { font-size:.85rem; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0; border:1px solid rgba(255,255,255,0.12); transition:background .2s,border-color .2s,transform .15s; }
+#themeToggle:hover { transform:rotate(20deg); }
 </style>
 </head>
 <body>
@@ -227,6 +267,7 @@ footer a:hover { color:#74f2c8; }
     </div>
     <div style="flex:1"></div>
     <span id="navCount" style="font-size:.63rem;color:#ffbc73;font-weight:700;white-space:nowrap">— planets</span>
+    <button id="themeToggle" class="btn" onclick="toggleTheme()" title="Toggle Science Paper / Mission Control theme" style="font-size:.85rem;width:30px;height:30px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">🌙</button>
     <button class="btn sm" onclick="forceRefresh()" title="Force re-fetch from NASA" style="font-size:.55rem;padding:3px 8px">↻ Refresh</button>
     <div class="chip chip-dim nasa-live" id="nasaBadge" style="display:flex;align-items:center;gap:5px">
       <span class="nasa-dot"></span>
@@ -564,16 +605,15 @@ async function dbPut(key,data) {
 }
 
 /* ── NASA TAP fetch ── */
-// Use proven query without string-literal filters (avoids quote-encoding issues with IPAC TAP).
-// discoverymethod filter done client-side after fetch.
-// MAXREC uppercase per TAP spec; pl_rvamp>0 ensures only RV-measured planets.
-const NASA_Q = [
-  'SELECT pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,pl_bmassj,',
-  'sy_dist,disc_year,disc_facility,st_mass,discoverymethod',
-  ' FROM ps',
-  ' WHERE pl_rvamp IS NOT NULL AND pl_rvamp > 0 AND default_flag = 1',
-  ' ORDER BY pl_rvamp DESC',
-].join('');
+// SELECT TOP 2000 is ADQL syntax and the most reliable row cap.
+// MAXREC=2000 is repeated as a TAP-protocol parameter for belt-and-suspenders.
+// Avoiding string-literal column filters (WHERE x='...') prevents quote-encoding
+// issues with IPAC TAP. Numeric / IS NOT NULL filters are always safe.
+const NASA_Q = 'SELECT TOP 2000 pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,'
+  + 'pl_bmassj,sy_dist,disc_year,disc_facility,st_mass,discoverymethod '
+  + 'FROM ps '
+  + 'WHERE pl_rvamp IS NOT NULL AND pl_rvamp > 0 AND default_flag = 1 '
+  + 'ORDER BY pl_rvamp DESC';
 const NASA_URL = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
   + '?query=' + encodeURIComponent(NASA_Q)
   + '&format=json'
@@ -684,43 +724,138 @@ function onPlanetsReady(p) {
    PHYSICS ENGINE
 ═══════════════════════════════════════════════ */
 
-/* ── Keplerian ── */
-function keplerE(M,e){let E=M;for(let i=0;i<60;i++){const d=(M-E+e*Math.sin(E))/(1-e*Math.cos(E));E+=d;if(Math.abs(d)<1e-13)break;}return E;}
-function trueAnomaly(E,e){return 2*Math.atan2(Math.sqrt(1+e)*Math.sin(E/2),Math.sqrt(1-e)*Math.cos(E/2));}
-function rvAtPhase(phase,K,e,omega_rad){const M=2*Math.PI*phase,E=keplerE(M,e),nu=trueAnomaly(E,e);return K*(Math.cos(omega_rad+nu)+e*Math.cos(omega_rad));}
-function mSini(K,e,P_d,Mstar){return K*Math.sqrt(1-e*e)*Math.pow(Mstar,2/3)*Math.pow(P_d/365.25,1/3)/28.4;}
-function semiMajor(P_d,Mstar){return Math.cbrt(Mstar*Math.pow(P_d/365.25,2));}
+/* ── Keplerian solver: Danby (1988) starter + Halley iterations ──────────
+   Halley is 3rd-order: |δE_{n+1}| ~ |δE_n|³
+   Danby starter guarantees |E₀ − E_true| < 0.1 for all e < 1,
+   so 4 Halley steps reach |δ| < 1e-15 (machine precision).
+   Handles full range e ∈ [0, 0.9999) without special-casing.         ── */
+function keplerE(M_raw, e) {
+  const TWO_PI = 6.283185307179586;
+  // Normalise M to [0, 2π)
+  let M = M_raw - TWO_PI * Math.floor(M_raw / TWO_PI);
+  if (M < 0) M += TWO_PI;
 
-/* ── Gaussian random (Box-Muller) ── */
-function gaussR(mu=0,sig=1){const u=Math.random()||1e-15,v=Math.random();return mu+sig*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+  // Danby starter: E₀ = M ± 0.85e  (sign chosen to be on the correct side)
+  let E = M < Math.PI ? M + 0.85 * e : M - 0.85 * e;
 
-/* ── Red noise (Ornstein-Uhlenbeck) ── */
-function redNoise(times,amp,tau=0.3){
-  if(amp===0) return new Array(times.length).fill(0);
-  const n=new Array(times.length).fill(0);
-  n[0]=gaussR(0,amp);
-  for(let i=1;i<times.length;i++){
-    const dt=times[i]-times[i-1];
-    const d=Math.exp(-dt/tau);
-    n[i]=d*n[i-1]+Math.sqrt(1-d*d)*gaussR(0,amp);
+  // Halley iteration: f = E − e·sin(E) − M
+  //   f'  = 1 − e·cos(E)
+  //   f'' = e·sin(E)
+  //   δ   = −f·f' / (f'² − ½·f·f'')   ← cubic convergence
+  for (let i = 0; i < 8; i++) {
+    const sinE = Math.sin(E);
+    const cosE = Math.cos(E);
+    const f    = E - e * sinE - M;          // residual
+    const fp   = 1 - e * cosE;              // f'
+    const fpp  = e * sinE;                  // f''
+    const h    = f * fp / (fp * fp - 0.5 * f * fpp);
+    E -= h;
+    if (Math.abs(h) < 1.5e-15) break;
   }
-  return n;
+  return E;
 }
 
-/* ── Non-uniform observing times: 3 seasons × 30 nights ── */
-function obsTimeSeries(P_d,N=90){
-  const times=[],rvClean=[],K=SIM.K,e=SIM.e,omega=SIM.omega*Math.PI/180;
-  for(let s=0;s<3;s++){
-    const t0=s*365+s*30; // 3 seasons ~120 days apart
-    for(let n=0;n<N/3;n++){
-      let t=t0+Math.random()*100;           // random within 100-day season
-      // avoid gaps near 0.45–0.55 (simulated monsoon/summer)
-      times.push(t);
+function trueAnomaly(E, e) {
+  // Half-angle formula: numerically safe at all e, avoids division by small numbers
+  return 2 * Math.atan2(Math.sqrt(1 + e) * Math.sin(E / 2),
+                        Math.sqrt(1 - e) * Math.cos(E / 2));
+}
+
+// Phase-based RV (phase ∈ [0,1))
+function rvAtPhase(phase, K, e, omega_rad) {
+  const M  = 2 * Math.PI * phase;
+  const nu = trueAnomaly(keplerE(M, e), e);
+  return K * (Math.cos(omega_rad + nu) + e * Math.cos(omega_rad));
+}
+
+// Time-based RV with T0 epoch alignment — used for multi-planet superposition
+// t [days], P [days], T0 [days] = time of periastron passage
+function rvAtTime(t, K, e, omega_rad, P, T0 = 0) {
+  const M  = (2 * Math.PI / P) * (((t - T0) % P + P) % P);
+  const nu = trueAnomaly(keplerE(M, e), e);
+  return K * (Math.cos(omega_rad + nu) + e * Math.cos(omega_rad));
+}
+
+function mSini(K, e, P_d, Mstar) {
+  return K * Math.sqrt(1 - e * e) * Math.pow(Mstar, 2/3) * Math.pow(P_d / 365.25, 1/3) / 28.4;
+}
+function semiMajor(P_d, Mstar) { return Math.cbrt(Mstar * Math.pow(P_d / 365.25, 2)); }
+
+/* ── Box-Muller Gaussian ── */
+function gaussR(mu = 0, sig = 1) {
+  const u = Math.random() || 1e-15, v = Math.random();
+  return mu + sig * Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+}
+
+/* ── AR(1) / Ornstein–Uhlenbeck process (batch time-series) ──────────────
+   Physical model: Gauss-Markov process with correlation time τ.
+   X[i] = ρ·X[i−1] + σ_ε·ε   where  ρ = exp(−Δt/τ),  σ_ε = σ√(1−ρ²)
+   Granulation: τ ~ 0.5 day,  amplitude ~ 0.3–1 m/s
+   P-modes:     τ ~ 0.004 day (~5 min), amplitude ~ 0.3 m/s             ── */
+function redNoise(times, amp, tau = 0.5) {
+  if (amp === 0) return new Array(times.length).fill(0);
+  const noise = new Array(times.length);
+  noise[0] = gaussR(0, amp);
+  for (let i = 1; i < times.length; i++) {
+    const dt    = times[i] - times[i - 1];
+    const rho   = Math.exp(-dt / tau);
+    const sigma = amp * Math.sqrt(1 - rho * rho);
+    noise[i]    = rho * noise[i - 1] + sigma * gaussR(0, 1);
+  }
+  return noise;
+}
+
+/* ── Quasi-harmonic starspot kernel (batch) ────────────────────────────────
+   N_spot(t) = A·cos(2π·t/P_rot)·exp(−(t mod τ_lifetime)²/(2·τ²))
+   Simplified here as a modulated sinusoid — spot "refreshes" every τ_lifetime.
+   τ_lifetime ~ 30–100 days for solar-type spots.                          ── */
+function spotNoise(times, amp, Prot, tau_life = 45) {
+  if (amp === 0) return new Array(times.length).fill(0);
+  return times.map(t => {
+    const phase  = t / tau_life;
+    const modAmp = Math.exp(-0.5 * Math.pow((phase - Math.floor(phase) - 0.5) / 0.3, 2));
+    return amp * Math.cos(2 * Math.PI * t / Prot) * modAmp;
+  });
+}
+
+/* ── Stateful real-time noise (animation frame-by-frame) ───────────────────
+   Maintains a continuous AR(1) process between frames.
+   State is reset only when P_rot or amplitudes change significantly.      ── */
+const NOISE_STATE = { gran: 0, spot_phi: 0, t_days: 0 };
+
+function advanceNoise(t_days_new) {
+  const dt = t_days_new - NOISE_STATE.t_days;
+  if (dt <= 0 || dt > 5) { NOISE_STATE.t_days = t_days_new; return { gran: 0, spot: 0 }; }
+  NOISE_STATE.t_days = t_days_new;
+
+  // AR(1) granulation (τ = 0.5 day)
+  const tau_gran = 0.5;
+  const rho      = Math.exp(-dt / tau_gran);
+  NOISE_STATE.gran = rho * NOISE_STATE.gran + Math.sqrt(1 - rho * rho) * gaussR(0, SIM.nGran || 0);
+
+  // Quasi-harmonic starspot: persistent sinusoid with slowly varying envelope
+  NOISE_STATE.spot_phi = (NOISE_STATE.spot_phi + dt / (SIM.Prot || 25)) % 1;
+  const tau_life  = 45; // days
+  const modCycle  = (t_days_new % tau_life) / tau_life;
+  const modAmp    = Math.exp(-0.5 * Math.pow((modCycle - 0.5) / 0.3, 2));
+  const spot      = (SIM.nSpot || 0) * Math.cos(2 * Math.PI * NOISE_STATE.spot_phi) * modAmp;
+
+  return { gran: NOISE_STATE.gran, spot };
+}
+
+/* ── Non-uniform observing times: 3 seasons with realistic gaps ── */
+function obsTimeSeries(P_d, N = 90) {
+  const times = [], rvClean = [];
+  const K = SIM.K, e = SIM.e, omega = SIM.omega * Math.PI / 180;
+  for (let s = 0; s < 3; s++) {
+    const t0 = s * 365 + s * 30;
+    for (let n = 0; n < N / 3; n++) {
+      times.push(t0 + Math.random() * 100);
     }
   }
-  times.sort((a,b)=>a-b);
-  times.forEach(t=>rvClean.push(rvAtPhase((t%P_d)/P_d,K,e,omega)));
-  return {times,rvClean};
+  times.sort((a, b) => a - b);
+  times.forEach(t => rvClean.push(rvAtPhase((t % P_d) / P_d, K, e, omega)));
+  return { times, rvClean };
 }
 
 /* ── Lomb-Scargle (Scargle 1982) ── */
@@ -757,54 +892,91 @@ function injectJitter(times,rvClean,sigInst,sigGran,sigSpot,Prot){
   return rvClean.map((rv,i)=>rv+wn[i]+gran[i]+sigSpot*Math.sin(2*Math.PI*times[i]/Prot));
 }
 
-/* ── CCF computation ── */
-function computeCCF(vr_ms,sigSpot){
-  const V_KMS=Array.from({length:300},(_,i)=>(i-150)*100); // ±15000 m/s
-  const sig0=3500; // instrumental profile sigma [m/s]
-  const sigEff=Math.sqrt(sig0*sig0+(sigSpot*400)*(sigSpot*400));
-  const ccf=V_KMS.map(v=>{
-    const dv=v-vr_ms;
-    let p=0.65*Math.exp(-dv*dv/(2*sigEff*sigEff));
-    // spot asymmetry: extra bump on red side
-    if(sigSpot>0.5){
-      const vs=vr_ms+sigEff*0.35;
-      p+=0.15*sigSpot/5*Math.exp(-(v-vs)*(v-vs)/(2*(sigEff*0.5)*(sigEff*0.5)));
-    }
-    return 1-p;
+/* ── Fast erf (Abramowitz & Stegun 7.1.26, max error < 1.5e-7) ── */
+function erf(x) {
+  const s = x < 0 ? -1 : 1, a = Math.abs(x);
+  const t = 1 / (1 + 0.3275911 * a);
+  const p = t * (0.254829592 + t * (-0.284496736 + t * (1.421413741
+                + t * (-1.453152027 + t * 1.061405429))));
+  return s * (1 - p * Math.exp(-a * a));
+}
+
+/* ── Physics-based CCF with skewed Gaussian ─────────────────────────────
+   Pristine profile: symmetric Gaussian
+     CCF(v) = 1 − D·exp(−(v−μ)²/(2σ²))
+   Starspot perturbation: skewed Gaussian (Boisse et al. 2011)
+     CCF_spot(v) = 1 − D·Φ(v;μ,σ)·[1 + erf(α·(v−μ)/(σ√2))]·0.5
+   where α (skewness) grows with spot amplitude, and σ broadens with
+   activity (macroturbulence contribution from convective cells).
+   Physical BIS origin: spots block blue-shifted limb at certain phases,
+   creating an asymmetry detectable as BIS ≠ 0.                         ── */
+function computeCCF(vr_ms, sigSpot) {
+  const N     = 500;
+  const VMAX  = 22000; // ±22 km/s
+  const V     = Array.from({ length: N }, (_, i) => (i / (N - 1) - 0.5) * 2 * VMAX);
+
+  // σ = stellar+instrumental broadening; spots add extra macro-turbulence
+  const sigma0  = 3200;                                         // m/s (G-type)
+  const sigmaSp = sigSpot * 320;                                // jitter broadening
+  const sigma   = Math.sqrt(sigma0 * sigma0 + sigmaSp * sigmaSp);
+
+  // Skewness parameter (dimensionless): 0 = symmetric, > 0 = red-skewed
+  const alpha_sk = 2.8 * (sigSpot / Math.max(sigSpot, 0.1));   // saturates at ~2.8
+  const alpha    = sigSpot > 0.3 ? alpha_sk * Math.min(sigSpot / 3, 1) : 0;
+
+  const D = 0.62; // line depth
+  const ccf = V.map(v => {
+    const dv    = v - vr_ms;
+    const gauss = Math.exp(-0.5 * (dv / sigma) * (dv / sigma));
+    // Skewed Gaussian: multiply by [1 + erf(α·dv/(σ√2))]·0.5
+    const skewF = alpha > 0 ? 0.5 * (1 + erf(alpha * dv / (sigma * 1.41421))) : 1;
+    return 1 - D * gauss * skewF;
   });
-  return {V:V_KMS,ccf};
+  return { V, ccf };
 }
 
-/* ── FWHM from CCF ── */
-function computeFWHM(V,ccf){
-  const mn=Math.min(...ccf),mx=Math.max(...ccf),hl=(mn+mx)/2;
-  let lv=null,rv2=null;
-  for(let i=0;i<ccf.length-1;i++){
-    if(ccf[i]>hl&&ccf[i+1]<=hl) lv=V[i]+(hl-ccf[i])/(ccf[i+1]-ccf[i])*(V[i+1]-V[i]);
-    if(ccf[i]<=hl&&ccf[i+1]>hl) rv2=V[i]+(hl-ccf[i])/(ccf[i+1]-ccf[i])*(V[i+1]-V[i]);
+/* ── FWHM: width at half maximum depth ── */
+function computeFWHM(V, ccf) {
+  const mn = Math.min(...ccf), mx = Math.max(...ccf), hl = (mn + mx) / 2;
+  let lv = null, rv2 = null;
+  for (let i = 0; i < ccf.length - 1; i++) {
+    const [c0, c1, v0, v1] = [ccf[i], ccf[i+1], V[i], V[i+1]];
+    if (c0 > hl && c1 <= hl) lv  = v0 + (hl - c0) / (c1 - c0) * (v1 - v0);
+    if (c0 <= hl && c1 > hl) rv2 = v0 + (hl - c0) / (c1 - c0) * (v1 - v0);
   }
-  return (lv!==null&&rv2!==null)?Math.abs(rv2-lv):null;
+  return (lv !== null && rv2 !== null) ? Math.abs(rv2 - lv) : null;
 }
 
-/* ── BIS (Bisector Inverse Slope) ── */
-function computeBIS(V,ccf){
-  const mn=Math.min(...ccf),mx=Math.max(...ccf),depth=mx-mn;
-  if(depth<1e-6) return 0;
-  const bis=[];
-  for(let frac=0.05;frac<0.96;frac+=0.05){
-    const lv=mx-frac*depth;
-    let left=null,right=null;
-    for(let i=0;i<ccf.length-1;i++){
-      if(ccf[i]>lv&&ccf[i+1]<=lv) left=V[i]+(lv-ccf[i])/(ccf[i+1]-ccf[i])*(V[i+1]-V[i]);
-      if(ccf[i]<=lv&&ccf[i+1]>lv) right=V[i]+(lv-ccf[i])/(ccf[i+1]-ccf[i])*(V[i+1]-V[i]);
+/* ── Bisector & BIS ────────────────────────────────────────────────────────
+   Sample the profile bisector at 40 depth levels from 5% to 95%.
+   BIS = <v_bisector>_{top 10–40%} − <v_bisector>_{bottom 60–90%}
+   A perfect Gaussian has BIS = 0. Skewness produces BIS ≠ 0.            ── */
+function computeBisector(V, ccf) {
+  const mn = Math.min(...ccf), mx = Math.max(...ccf), depth = mx - mn;
+  if (depth < 1e-6) return { bis: 0, bisector: [] };
+
+  const bisector = [];
+  for (let frac = 0.04; frac < 0.97; frac += 0.04) {
+    const level = mx - frac * depth;
+    let left = null, right = null;
+    for (let i = 0; i < ccf.length - 1; i++) {
+      const [c0, c1, v0, v1] = [ccf[i], ccf[i+1], V[i], V[i+1]];
+      if (c0 > level && c1 <= level) left  = v0 + (level - c0) / (c1 - c0) * (v1 - v0);
+      if (c0 <= level && c1 > level) right = v0 + (level - c0) / (c1 - c0) * (v1 - v0);
     }
-    if(left!==null&&right!==null) bis.push({frac,mid:(left+right)/2});
+    if (left !== null && right !== null)
+      bisector.push({ frac, mid: (left + right) / 2, level });
   }
-  const top=bis.filter(b=>b.frac<0.25).map(b=>b.mid);
-  const bot=bis.filter(b=>b.frac>0.70).map(b=>b.mid);
-  if(!top.length||!bot.length) return 0;
-  return (top.reduce((a,b)=>a+b,0)/top.length)-(bot.reduce((a,b)=>a+b,0)/bot.length);
+
+  const top = bisector.filter(b => b.frac > 0.10 && b.frac < 0.40).map(b => b.mid);
+  const bot = bisector.filter(b => b.frac > 0.60 && b.frac < 0.90).map(b => b.mid);
+  const mean = (arr) => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+  const bis  = mean(top) - mean(bot);
+  return { bis, bisector };
 }
+
+// Legacy wrapper — BIS scalar only
+function computeBIS(V, ccf) { return computeBisector(V, ccf).bis; }
 
 /* ── Number formatters ── */
 function fmt(v,d=2,fb='—'){if(v===null||v===undefined||isNaN(+v))return fb;return (+v).toFixed(d);}
@@ -956,12 +1128,12 @@ function renderLSPanel(p){
   const rvs=injectJitter(times,rvClean,sn1,sn2,0,25);
 
   /* time series plot */
-  const tLayout={...DARK_LAYOUT,height:200,margin:{l:46,r:14,t:18,b:36},
-    xaxis:{...DARK_LAYOUT.xaxis,title:{text:'Time (days)',standoff:6},tickfont:{size:8}},
-    yaxis:{...DARK_LAYOUT.yaxis,title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}}};
+  const tLayout=getPlotLayout({height:200,margin:{l:46,r:14,t:18,b:36},
+    xaxis:{title:{text:'Time (days)',standoff:6},tickfont:{size:8}},
+    yaxis:{title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}}});
   Plotly.react('tsPlot',[
-    {x:times,y:rvs,mode:'markers',marker:{color:'#74f2c8',size:4,opacity:.8},name:'Obs'},
-    {x:times,y:rvClean,mode:'lines',line:{color:'rgba(131,221,255,0.4)',width:1},name:'True'},
+    {x:times,y:rvs,mode:'markers',marker:{color:'#74f2c8',size:5,opacity:.85,line:{width:0.8,color:'rgba(0,0,0,0.35)'}},name:'Obs'},
+    {x:times,y:rvClean,mode:'lines',line:{color:'rgba(131,221,255,0.55)',width:1.8},name:'True'},
   ],tLayout,{responsive:true,displayModeBar:false});
 
   /* LS periodogram */
@@ -973,12 +1145,12 @@ function renderLSPanel(p){
   const N=times.length,Nf=nFreq;
   const fap01=fapLevel(0.001,N,Nf),fap1=fapLevel(0.01,N,Nf),fap10=fapLevel(0.10,N,Nf);
   const pMax2=Math.max(...powers,fap01*1.1);
-  const lsLayout={...DARK_LAYOUT,height:240,margin:{l:46,r:14,t:22,b:40},
-    xaxis:{...DARK_LAYOUT.xaxis,type:'log',title:{text:'Period (days)',standoff:6},tickfont:{size:8}},
-    yaxis:{...DARK_LAYOUT.yaxis,title:{text:_lsShowWindow?'Window power':'LS Power',standoff:4},range:[0,pMax2],tickfont:{size:8}},
-    showlegend:false};
+  const lsLayout=getPlotLayout({height:240,margin:{l:46,r:14,t:22,b:40},
+    xaxis:{type:'log',title:{text:'Period (days)',standoff:6},tickfont:{size:8}},
+    yaxis:{title:{text:_lsShowWindow?'Window power':'LS Power',standoff:4},range:[0,pMax2],tickfont:{size:8}},
+    showlegend:false});
   Plotly.react('lsPlot',[
-    {x:periods,y:powers,mode:'lines',line:{color:_lsShowWindow?'#c0a0ff':'#74f2c8',width:1.2},name:'Power'},
+    {x:periods,y:powers,mode:'lines',line:{color:_lsShowWindow?'#c0a0ff':'#74f2c8',width:1.8},name:'Power'},
     {x:[periods[0],periods[periods.length-1]],y:[fap01,fap01],mode:'lines',line:{color:'#ff7d90',width:1,dash:'dash'},name:'0.1%'},
     {x:[periods[0],periods[periods.length-1]],y:[fap1,fap1],mode:'lines',line:{color:'#ffbc73',width:1,dash:'dash'},name:'1%'},
     {x:[periods[0],periods[periods.length-1]],y:[fap10,fap10],mode:'lines',line:{color:'#4d6882',width:1,dash:'dot'},name:'10%'},
@@ -1006,14 +1178,80 @@ function initArchive(){
    SIMULATOR — WebGL2 + Canvas + Plotly RV
 ═══════════════════════════════════════════════ */
 
-/* ── Shared Plotly dark layout ── */
-const DARK_LAYOUT={
-  paper_bgcolor:'transparent',plot_bgcolor:'transparent',
-  font:{family:'"JetBrains Mono",monospace',color:'#4d6882',size:9},
-  xaxis:{gridcolor:'rgba(255,255,255,0.05)',linecolor:'rgba(255,255,255,0.08)',tickcolor:'rgba(255,255,255,0.15)',zerolinecolor:'rgba(255,255,255,0.08)'},
-  yaxis:{gridcolor:'rgba(255,255,255,0.05)',linecolor:'rgba(255,255,255,0.08)',tickcolor:'rgba(255,255,255,0.15)',zerolinecolor:'rgba(255,255,255,0.08)'},
-  margin:{l:50,r:18,t:22,b:46},showlegend:false,
-};
+/* ── Theme toggle ── */
+let _lightMode = false;
+function toggleTheme(){
+  _lightMode = !_lightMode;
+  document.body.classList.toggle('light', _lightMode);
+  const btn = document.getElementById('themeToggle');
+  if(btn) btn.textContent = _lightMode ? '☀' : '🌙';
+  /* Re-render all visible Plotly charts so axis colours update */
+  ['tsPlot','lsPlot','simRVPlot','detMap','precTimeline'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el && el._fullLayout) Plotly.relayout(id, getAxisLayout());
+  });
+}
+
+/* Returns the axis/background colour objects for the current theme */
+function getAxisLayout(){
+  if(_lightMode) return {
+    paper_bgcolor:'rgba(248,250,255,0)',
+    plot_bgcolor:'rgba(248,250,255,0)',
+    'font.color':'#4a5a7a',
+    'xaxis.gridcolor':'rgba(0,0,0,0.06)',
+    'xaxis.linecolor':'rgba(0,0,0,0.15)',
+    'xaxis.tickcolor':'rgba(0,0,0,0.25)',
+    'xaxis.zerolinecolor':'rgba(0,0,0,0.12)',
+    'yaxis.gridcolor':'rgba(0,0,0,0.06)',
+    'yaxis.linecolor':'rgba(0,0,0,0.15)',
+    'yaxis.tickcolor':'rgba(0,0,0,0.25)',
+    'yaxis.zerolinecolor':'rgba(0,0,0,0.12)',
+  };
+  return {
+    paper_bgcolor:'transparent',
+    plot_bgcolor:'transparent',
+    'font.color':'#4d6882',
+    'xaxis.gridcolor':'rgba(255,255,255,0.05)',
+    'xaxis.linecolor':'rgba(255,255,255,0.08)',
+    'xaxis.tickcolor':'rgba(255,255,255,0.18)',
+    'xaxis.zerolinecolor':'rgba(255,255,255,0.08)',
+    'yaxis.gridcolor':'rgba(255,255,255,0.05)',
+    'yaxis.linecolor':'rgba(255,255,255,0.08)',
+    'yaxis.tickcolor':'rgba(255,255,255,0.18)',
+    'yaxis.zerolinecolor':'rgba(255,255,255,0.08)',
+  };
+}
+
+/* ── Shared Plotly layout factory (publication-grade) ── */
+function getPlotLayout(overrides={}){
+  const light=_lightMode;
+  const fontCol  = light?'#4a5a7a':'#4d6882';
+  const gridCol  = light?'rgba(0,0,0,0.06)':'rgba(255,255,255,0.05)';
+  const lineCol  = light?'rgba(0,0,0,0.15)':'rgba(255,255,255,0.08)';
+  const tickCol  = light?'rgba(0,0,0,0.25)':'rgba(255,255,255,0.18)';
+  const zeroCol  = light?'rgba(0,0,0,0.12)':'rgba(255,255,255,0.08)';
+  const axisBase = {
+    gridcolor:gridCol, linecolor:lineCol, tickcolor:tickCol,
+    zerolinecolor:zeroCol, showline:true, mirror:false,
+    ticks:'inside', tickwidth:1.5, ticklen:5,
+    linewidth:1.2,
+  };
+  const base = {
+    paper_bgcolor:'transparent', plot_bgcolor:'transparent',
+    font:{family:'"JetBrains Mono",monospace', color:fontCol, size:9},
+    xaxis:{...axisBase},
+    yaxis:{...axisBase},
+    margin:{l:52,r:18,t:24,b:48}, showlegend:false,
+  };
+  /* Deep-merge overrides so callers can extend xaxis/yaxis */
+  const merged = {...base, ...overrides};
+  if(overrides.xaxis) merged.xaxis = {...base.xaxis, ...overrides.xaxis};
+  if(overrides.yaxis) merged.yaxis = {...base.yaxis, ...overrides.yaxis};
+  return merged;
+}
+
+/* Backward-compat alias so any stray {…DARK_LAYOUT} still works */
+const DARK_LAYOUT = getPlotLayout();
 
 /* ── SIM state ── */
 const SIM={
@@ -1141,10 +1379,10 @@ function buildRVCurveData(){
   const residuals=SIM.showResiduals&&_mpBActive?phases.map((ph,i)=>rvAB[i]-rvA[i]):null;
 
   const traces=[
-    {x:phases,y:rvAB,mode:'lines',line:{color:'rgba(131,221,255,0.7)',width:1.5},name:'RV (A+B)'},
+    {x:phases,y:rvAB,mode:'lines',line:{color:'rgba(131,221,255,0.82)',width:2.0},name:'RV (A+B)'},
   ];
-  if(_mpBActive) traces.push({x:phases,y:rvA,mode:'lines',line:{color:'rgba(116,242,200,0.35)',width:1,dash:'dot'},name:'Planet A'});
-  if(residuals)  traces.push({x:phases,y:residuals,mode:'lines',line:{color:'#c0a0ff',width:1},name:'Residuals'});
+  if(_mpBActive) traces.push({x:phases,y:rvA,mode:'lines',line:{color:'rgba(116,242,200,0.45)',width:1.4,dash:'dot'},name:'Planet A'});
+  if(residuals)  traces.push({x:phases,y:residuals,mode:'lines',line:{color:'#c0a0ff',width:1.4},name:'Residuals'});
 
   /* scattered noisy obs */
   const nObs=20;
@@ -1165,10 +1403,10 @@ function buildRVCurveData(){
 
 function renderRVPlot(){
   const traces=buildRVCurveData();
-  const layout={...DARK_LAYOUT,height:220,margin:{l:50,r:14,t:18,b:42},
-    xaxis:{...DARK_LAYOUT.xaxis,title:{text:'Orbital Phase',standoff:5},range:[0,1],tickfont:{size:8}},
-    yaxis:{...DARK_LAYOUT.yaxis,title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}},
-    showlegend:true,legend:{x:1,xanchor:'right',y:1,font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0}};
+  const layout=getPlotLayout({height:220,margin:{l:50,r:14,t:18,b:42},
+    xaxis:{title:{text:'Orbital Phase',standoff:5},range:[0,1],tickfont:{size:8}},
+    yaxis:{title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}},
+    showlegend:true,legend:{x:1,xanchor:'right',y:1,font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0}});
   Plotly.react('simRVPlot',traces,layout,{responsive:true,displayModeBar:false});
   window._rvPlotDirty=false;
 }
@@ -1362,8 +1600,9 @@ function drawCCFProfile(vr){
   V.forEach((v,i)=>{if(v<vMin||v>vMax)return;i===0||V[i-1]<vMin?cx.moveTo(tx(v),ty(ccf[i])):cx.lineTo(tx(v),ty(ccf[i]));});
   cx.strokeStyle='#74f2c8';cx.lineWidth=1.5;cx.stroke();
 
-  /* FWHM & BIS */
-  const fwhm=computeFWHM(V,ccf),bis=computeBIS(V,ccf);
+  /* FWHM & BIS — compute bisector spine */
+  const {bis,bisector}=computeBisector(V,ccf);
+  const fwhm=computeFWHM(V,ccf);
   const mn=Math.min(...ccf),mx=Math.max(...ccf),hl=(mn+mx)/2;
   if(fwhm){
     const xl=tx(vr-fwhm/2),xr=tx(vr+fwhm/2),yhl=ty(hl);
@@ -1372,7 +1611,20 @@ function drawCCFProfile(vr){
     cx.fillStyle='#ffbc73';cx.font='7px monospace';cx.textAlign='center';
     cx.fillText('FWHM='+(fwhm/1000).toFixed(1)+' km/s',tx(vr),yhl-4);
   }
-  /* BIS */
+  /* Draw bisector spine — coloured line through the CCF dip */
+  if(bisector.length>2){
+    cx.beginPath();
+    bisector.forEach((b,i)=>{
+      const bx=tx(b.mid),by=ty(b.level);
+      i===0?cx.moveTo(bx,by):cx.lineTo(bx,by);
+    });
+    /* Colour: violet when active (|BIS|>50 m/s), dim grey otherwise */
+    const bisActive=Math.abs(bis)>50;
+    cx.strokeStyle=bisActive?'rgba(192,160,255,0.85)':'rgba(131,221,255,0.30)';
+    cx.lineWidth=bisActive?1.8:1.0;
+    cx.stroke();
+  }
+  /* BIS label */
   if(Math.abs(bis)>50){
     cx.fillStyle='#c0a0ff';cx.font='7px monospace';cx.textAlign='right';
     cx.fillText('BIS='+(bis/1000).toFixed(2)+' km/s',x1-2,y0+10);
@@ -1512,11 +1764,11 @@ function renderDetMap(){
     textposition:['top right','top right'],textfont:{size:8,color:'#83ddff'},
     hoverinfo:'text',name:'References'});
 
-  const layout={...DARK_LAYOUT,height:420,margin:{l:52,r:14,t:26,b:52},
-    xaxis:{...DARK_LAYOUT.xaxis,type:'log',title:{text:'Period (days)',standoff:6},tickfont:{size:8},range:[logPMin,logPMax]},
-    yaxis:{...DARK_LAYOUT.yaxis,type:'log',title:{text:'M sin i (M_J)',standoff:4},tickfont:{size:8},range:[logMMin,logMMax]},
-    title:{text:`3σ Detectability · ${sigma} m/s · M★=${Mstar.toFixed(1)} M☉`,font:{size:9,color:'#4d6882'},x:.5},
-    showlegend:false};
+  const layout=getPlotLayout({height:420,margin:{l:52,r:14,t:26,b:52},
+    xaxis:{type:'log',title:{text:'Period (days)',standoff:6},tickfont:{size:8},range:[logPMin,logPMax]},
+    yaxis:{type:'log',title:{text:'M sin i (M_J)',standoff:4},tickfont:{size:8},range:[logMMin,logMMax]},
+    title:{text:`3σ Detectability · ${sigma} m/s · M★=${Mstar.toFixed(1)} M☉`,font:{size:9,color:_lightMode?'#4a5a7a':'#4d6882'},x:.5},
+    showlegend:false});
   Plotly.react('detMapPlot',traces,layout,{responsive:true,displayModeBar:false});
 
   /* detection limit table */
@@ -1540,17 +1792,17 @@ function renderPrecTimeline(){
     {year:2017,rv:0.3,name:'ESPRESSO\nVLT'},{year:2021,rv:0.27,name:'NEID\nKPF'},
     {year:2033,rv:0.02,name:'ANDES\nELT'},
   ];
-  const layout={...DARK_LAYOUT,height:220,margin:{l:52,r:14,t:22,b:42},
-    xaxis:{...DARK_LAYOUT.xaxis,title:{text:'Year',standoff:6},tickfont:{size:8}},
-    yaxis:{...DARK_LAYOUT.yaxis,type:'log',title:{text:'σ_RV (m/s)',standoff:4},tickfont:{size:8}},
+  const layout=getPlotLayout({height:220,margin:{l:52,r:14,t:22,b:42},
+    xaxis:{title:{text:'Year',standoff:6},tickfont:{size:8}},
+    yaxis:{type:'log',title:{text:'σ_RV (m/s)',standoff:4},tickfont:{size:8}},
     shapes:[{type:'line',x0:1993,x1:2035,y0:0.10,y1:0.10,line:{color:'rgba(116,242,200,0.15)',width:1,dash:'dot'}},
             {type:'line',x0:1993,x1:2035,y0:0.09,y1:0.09,line:{color:'rgba(192,160,255,0.15)',width:1,dash:'dot'}}],
     annotations:[{x:2035,y:0.10,text:'Earth-Sun K',showarrow:false,font:{size:7,color:'rgba(116,242,200,0.5)'},xanchor:'right'},
                  {x:2035,y:0.09,text:'0.09 m/s',showarrow:false,font:{size:7,color:'rgba(192,160,255,0.5)'},xanchor:'right'}]};
   Plotly.react('precTimeline',[
     {x:data.map(d=>d.year),y:data.map(d=>d.rv),mode:'lines+markers',
-     line:{color:'rgba(116,242,200,0.5)',width:1.5},
-     marker:{color:data.map(d=>d.year>2025?'#ffbc73':'#74f2c8'),size:7},
+     line:{color:'rgba(116,242,200,0.65)',width:2.0},
+     marker:{color:data.map(d=>d.year>2025?'#ffbc73':'#74f2c8'),size:8,line:{width:1.2,color:'rgba(0,0,0,0.3)'}},
      text:data.map(d=>d.name),hovertemplate:'<b>%{text}</b><br>%{x}: %{y} m/s<extra></extra>'},
   ],layout,{responsive:true,displayModeBar:false});
 }
