@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>RV Exoplanet Observatory — Live Archive · Simulation · Atlas</title>
+<meta name="description" content="The most complete browser-based radial velocity exoplanet platform. Live NASA archive, Keplerian simulation, statistical atlas, and instrument comparison — all in one place."/>
+<meta property="og:title" content="RV Exoplanet Observatory"/>
+<meta property="og:description" content="Live NASA data · Keplerian simulation · Statistical atlas · Instrument comparison"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════ */
+:root {
+  --bg:       #020508;
+  --bg2:      #04090f;
+  --surface:  rgba(6,12,24,0.90);
+  --panel:    rgba(8,16,30,0.88);
+  --rim:      rgba(255,255,255,0.08);
+  --rim2:     rgba(255,255,255,0.04);
+
+  --text:     #dff0ff;
+  --muted:    #8aaccc;
+  --dim:      #4d6882;
+
+  --accent:   #74f2c8;
+  --accent2:  #83ddff;
+  --gold:     #ffbc73;
+  --danger:   #ff7d90;
+  --purple:   #c0a0ff;
+
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --display: "Playfair Display", Georgia, serif;
+
+  --nav-h: 54px;
+  --tab-h: 44px;
+  --radius: 16px;
+  --radius-sm: 8px;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: rgba(116,242,200,0.25); border-radius: 3px; }
+
+/* ═══════════════════════════════════════════════
+   LOADING SCREEN
+═══════════════════════════════════════════════ */
+#loading {
+  position: fixed; inset: 0; z-index: 999;
+  display: grid; place-items: center; padding: 24px;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(116,242,200,0.07), transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(131,221,255,0.05), transparent 50%),
+    var(--bg);
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#loading.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.splash-card {
+  width: min(660px, 95vw);
+  border: 1px solid var(--rim);
+  border-radius: 24px;
+  background: rgba(6,12,24,0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 32px 100px rgba(0,0,0,0.6);
+  padding: 40px 36px;
+  text-align: center;
+}
+.splash-kicker {
+  font-size: 0.65rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.splash-title {
+  font-family: var(--display);
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #fff 25%, var(--accent) 65%, var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.splash-desc {
+  font-family: sans-serif;
+  font-size: 0.90rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 28px;
+}
+.splash-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.splash-tag {
+  font-size: 0.62rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border: 1px solid var(--rim);
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: var(--muted);
+  background: var(--rim2);
+}
+.splash-tag.hi { border-color: rgba(116,242,200,0.30); color: var(--accent); background: rgba(116,242,200,0.07); }
+
+.splash-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(116,242,200,0.40);
+  background: rgba(116,242,200,0.10);
+  color: var(--accent);
+  padding: 13px 32px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 0 40px rgba(116,242,200,0.12);
+}
+.splash-btn:hover { background: rgba(116,242,200,0.20); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════════
+   TOP NAV BAR
+═══════════════════════════════════════════════ */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  background: rgba(2,5,10,0.92);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--rim);
+}
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+.nav-brand-main {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.nav-brand-sub {
+  font-size: 0.58rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+.nav-sep { flex: 1; }
+
+/* NASA live badge */
+.nasa-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.60rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border: 1px solid var(--rim);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--dim);
+  background: var(--rim2);
+  transition: color 0.3s, border-color 0.3s;
+}
+.nasa-badge.live { color: var(--accent); border-color: rgba(116,242,200,0.30); }
+.nasa-badge.error { color: var(--danger); border-color: rgba(255,125,144,0.30); }
+.nasa-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.nasa-badge.live .nasa-dot { animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+/* Planet counter in nav */
+.planet-counter {
+  font-size: 0.68rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════
+   TAB BAR
+═══════════════════════════════════════════════ */
+#tabbar {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 40;
+  height: var(--tab-h);
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 0 20px;
+  background: rgba(3,7,14,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rim);
+  overflow-x: auto;
+}
+#tabbar::-webkit-scrollbar { height: 0; }
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 16px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.tab-btn:hover { color: var(--muted); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-icon { font-size: 0.80rem; }
+
+/* ═══════════════════════════════════════════════
+   TAB PANELS
+═══════════════════════════════════════════════ */
+.tab-panel {
+  display: none;
+  min-height: calc(100vh - var(--nav-h) - var(--tab-h));
+  animation: fadeIn 0.25s ease;
+}
+.tab-panel.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════════ */
+.container {
+  width: min(1440px, 96vw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.section-gap { padding: 32px 0; }
+.section-title {
+  font-size: 0.60rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rim);
+}
+
+/* Card */
+.card {
+  border: 1px solid var(--rim);
+  border-radius: var(--radius);
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+}
+.card-pad { padding: 20px; }
+
+/* Grid helpers */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+@media (max-width: 900px)  { .grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px)  { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+/* Stat block */
+.stat-block {
+  border: 1px solid var(--rim);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.stat-value.accent  { color: var(--accent); }
+.stat-value.gold    { color: var(--gold); }
+.stat-value.accent2 { color: var(--accent2); }
+.stat-sub {
+  font-size: 0.62rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Badge chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.60rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--rim);
+  border-radius: 999px;
+  padding: 3px 9px;
+  color: var(--muted);
+  background: var(--rim2);
+}
+.chip.green  { border-color: rgba(116,242,200,0.30); color: var(--accent);  background: rgba(116,242,200,0.07); }
+.chip.blue   { border-color: rgba(131,221,255,0.30); color: var(--accent2); background: rgba(131,221,255,0.07); }
+.chip.gold   { border-color: rgba(255,188,115,0.30); color: var(--gold);    background: rgba(255,188,115,0.07); }
+.chip.purple { border-color: rgba(192,160,255,0.30); color: var(--purple);  background: rgba(192,160,255,0.07); }
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--rim);
+  background: var(--rim2);
+  color: var(--muted);
+  padding: 7px 14px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.btn:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+.btn.primary {
+  border-color: rgba(116,242,200,0.38);
+  color: var(--accent);
+  background: rgba(116,242,200,0.08);
+}
+.btn.primary:hover { background: rgba(116,242,200,0.18); }
+
+/* Input / Select */
+.input-base {
+  background: rgba(4,9,18,0.80);
+  border: 1px solid var(--rim);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 7px 12px;
+  font-size: 0.68rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-base:focus { border-color: rgba(116,242,200,0.40); }
+.input-base::placeholder { color: var(--dim); }
+
+/* Table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.66rem; }
+.data-table th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  border-bottom: 1px solid var(--rim);
+  background: rgba(4,9,18,0.60);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+.data-table th:hover { color: var(--muted); }
+.data-table th.sorted { color: var(--accent); }
+.data-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--rim2);
+  color: var(--muted);
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.data-table tr:hover td { background: rgba(116,242,200,0.04); color: var(--text); }
+.data-table tr.selected td { background: rgba(116,242,200,0.08); color: var(--text); }
+.data-table td.planet-name { color: var(--text); font-weight: 600; }
+.data-table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+.data-table td.highlight { color: var(--accent); }
+
+/* Range slider */
+input[type="range"] { width: 100%; accent-color: var(--accent); height: 3px; }
+label.ctrl-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.62rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+label.ctrl-label strong { color: var(--gold); }
+.ctrl-group { margin-bottom: 12px; }
+
+/* Canvas panels */
+.canvas-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  border: 1px solid var(--rim);
+  background: var(--panel);
+  overflow: hidden;
+}
+.canvas-wrap canvas {
+  display: block;
+  width: 100%;
+}
+.canvas-label {
+  position: absolute;
+  top: 10px; left: 12px;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(2,5,10,0.60);
+  padding: 2px 7px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Tooltip */
+.tooltip {
+  position: fixed;
+  z-index: 200;
+  background: rgba(6,14,26,0.96);
+  border: 1px solid var(--rim);
+  border-radius: var(--radius-sm);
+  padding: 9px 13px;
+  font-size: 0.64rem;
+  color: var(--text);
+  line-height: 1.6;
+  pointer-events: none;
+  display: none;
+  max-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.tooltip.show { display: block; }
+.tooltip-name { color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+.tooltip-row { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+.tooltip-row strong { color: var(--text); }
+
+/* Placeholder for empty panels */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 300px;
+  color: var(--dim);
+  font-size: 0.72rem;
+  border: 1px dashed var(--rim);
+  border-radius: var(--radius);
+}
+.placeholder-icon { font-size: 2.5rem; opacity: 0.4; }
+
+/* Loading spinner */
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--rim);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error box */
+.error-box {
+  border: 1px solid rgba(255,125,144,0.25);
+  border-radius: var(--radius-sm);
+  background: rgba(255,125,144,0.06);
+  color: var(--danger);
+  padding: 10px 14px;
+  font-size: 0.66rem;
+  line-height: 1.55;
+}
+
+/* Info box */
+.info-box {
+  border: 1px solid rgba(131,221,255,0.20);
+  border-radius: var(--radius-sm);
+  background: rgba(131,221,255,0.05);
+  color: var(--accent2);
+  padding: 10px 14px;
+  font-size: 0.66rem;
+  line-height: 1.55;
+}
+
+/* Footer */
+#footer {
+  border-top: 1px solid var(--rim);
+  padding: 24px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.62rem;
+  color: var(--dim);
+}
+#footer a { color: var(--muted); transition: color 0.2s; }
+#footer a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .tab-btn { padding: 0 10px; font-size: 0.60rem; }
+  .stat-value { font-size: 1.4rem; }
+  #navbar { padding: 0 12px; }
+  .container { padding: 0 12px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LOADING SCREEN
+═══════════════════════════════════════════ -->
+<div id="loading">
+  <div class="splash-card">
+    <div class="splash-kicker">Radial Velocity · Keplerian Dynamics · NASA Archive</div>
+    <h1 class="splash-title">RV Exoplanet<br/>Observatory</h1>
+    <p class="splash-desc">
+      Live NASA Exoplanet Archive data, real-planet Keplerian simulation,
+      statistical atlas, and instrument comparison — the most complete
+      browser-based RV platform on the web.
+    </p>
+    <div class="splash-features">
+      <span class="splash-tag hi">Live NASA TAP data</span>
+      <span class="splash-tag hi">WebGL spectrum</span>
+      <span class="splash-tag hi">Keplerian orbits</span>
+      <span class="splash-tag">Mass–period atlas</span>
+      <span class="splash-tag">Instrument comparison</span>
+      <span class="splash-tag">Discovery timeline</span>
+      <span class="splash-tag">No install · runs in browser</span>
+    </div>
+    <button class="splash-btn" id="launchBtn">
+      <span>Launch Observatory</span>
+      <span>→</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TOOLTIP (global)
+═══════════════════════════════════════════ -->
+<div class="tooltip" id="globalTooltip"></div>
+
+<!-- ═══════════════════════════════════════════
+     APP SHELL
+═══════════════════════════════════════════ -->
+<div id="app" style="display:none;">
+
+  <!-- NAV BAR -->
+  <nav id="navbar">
+    <div class="nav-brand">
+      <span class="nav-brand-main">RV Exoplanet Observatory</span>
+      <span class="nav-brand-sub">Biswajit Jana · Astrophysics</span>
+    </div>
+    <div class="nav-sep"></div>
+    <span class="planet-counter" id="navCounter">— planets</span>
+    <div class="nasa-badge" id="nasaBadge">
+      <span class="nasa-dot"></span>
+      <span id="nasaLabel">connecting…</span>
+    </div>
+  </nav>
+
+  <!-- TAB BAR -->
+  <div id="tabbar">
+    <button class="tab-btn active" data-tab="home">
+      <span class="tab-icon">⬡</span> Home
+    </button>
+    <button class="tab-btn" data-tab="archive">
+      <span class="tab-icon">◈</span> Archive
+    </button>
+    <button class="tab-btn" data-tab="simulate">
+      <span class="tab-icon">◉</span> Simulate
+    </button>
+    <button class="tab-btn" data-tab="atlas">
+      <span class="tab-icon">◫</span> Atlas
+    </button>
+    <button class="tab-btn" data-tab="instruments">
+      <span class="tab-icon">◎</span> Instruments
+    </button>
+  </div>
+
+  <!-- ── HOME ────────────────────────────── -->
+  <div class="tab-panel active" id="tab-home">
+    <div class="container section-gap">
+      <div class="placeholder">
+        <span class="placeholder-icon">⬡</span>
+        <span>Home dashboard — Step 2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ARCHIVE ──────────────────────────── -->
+  <div class="tab-panel" id="tab-archive">
+    <div class="container section-gap">
+      <div class="placeholder">
+        <span class="placeholder-icon">◈</span>
+        <span>NASA archive table — Step 3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIMULATE ─────────────────────────── -->
+  <div class="tab-panel" id="tab-simulate">
+    <div class="container section-gap">
+      <div class="placeholder">
+        <span class="placeholder-icon">◉</span>
+        <span>Keplerian simulator + WebGL spectrum — Step 5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ATLAS ────────────────────────────── -->
+  <div class="tab-panel" id="tab-atlas">
+    <div class="container section-gap">
+      <div class="placeholder">
+        <span class="placeholder-icon">◫</span>
+        <span>Statistical atlas — Step 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INSTRUMENTS ──────────────────────── -->
+  <div class="tab-panel" id="tab-instruments">
+    <div class="container section-gap">
+      <div class="placeholder">
+        <span class="placeholder-icon">◎</span>
+        <span>Instrument comparison + detection calculator — Step 6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <span>RV Exoplanet Observatory · <a href="https://biswajit1999.github.io/Biswajit_Jana.github.io/" target="_blank">Biswajit Jana</a></span>
+    <span>Data: <a href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank">NASA Exoplanet Archive</a> · TAP service</span>
+    <span>No install · runs entirely in browser · open source</span>
+  </footer>
+
+</div><!-- #app -->
+
+<!-- ═══════════════════════════════════════════
+     CORE JS — scaffold only
+═══════════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ── Launch ─────────────────────────────── */
+document.getElementById('launchBtn').addEventListener('click', () => {
+  document.getElementById('loading').classList.add('gone');
+  document.getElementById('app').style.display = 'block';
+  initApp();
+});
+
+/* ── Tab navigation ─────────────────────── */
+function showTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + name);
+  });
+  window._activeTab = name;
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => showTab(btn.dataset.tab));
+});
+
+/* ── Global tooltip helper ───────────────── */
+const TIP = document.getElementById('globalTooltip');
+function showTip(html, x, y) {
+  TIP.innerHTML = html;
+  TIP.classList.add('show');
+  moveTip(x, y);
+}
+function moveTip(x, y) {
+  const pad = 14;
+  const tw = TIP.offsetWidth, th = TIP.offsetHeight;
+  let lx = x + pad, ly = y + pad;
+  if (lx + tw > window.innerWidth  - 8) lx = x - tw - pad;
+  if (ly + th > window.innerHeight - 8) ly = y - th - pad;
+  TIP.style.left = lx + 'px';
+  TIP.style.top  = ly + 'px';
+}
+function hideTip() { TIP.classList.remove('show'); }
+document.addEventListener('mousemove', e => { if (TIP.classList.contains('show')) moveTip(e.clientX, e.clientY); });
+
+/* ── App state (shared across steps) ────── */
+window.RVO = {
+  planets:         [],    // filled in Step 2
+  selectedPlanet:  null,  // filled in Step 3
+  nasaStatus:      'connecting', // 'live' | 'fallback' | 'error'
+  charts:          {},    // canvas instances, Step 4
+  sim:             {},    // simulation state, Step 5
+};
+
+/* ── NASA badge state ────────────────────── */
+function setNasaStatus(status, label) {
+  const badge = document.getElementById('nasaBadge');
+  const lbl   = document.getElementById('nasaLabel');
+  badge.className = 'nasa-badge ' + status;
+  lbl.textContent = label;
+  window.RVO.nasaStatus = status;
+}
+
+/* ── Init (called on launch) ─────────────── */
+function initApp() {
+  setNasaStatus('connecting', 'connecting to NASA…');
+  // Data fetch will be wired in Step 2
+  // Simulation init will be wired in Step 5
+}
+
+/* ── Utility: format numbers ─────────────── */
+function fmt(v, dec=2, fallback='—') {
+  if (v === null || v === undefined || isNaN(v)) return fallback;
+  return Number(v).toFixed(dec);
+}
+function fmtK(v) {
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  return Number(v).toFixed(1) + ' m/s';
+}
+function fmtPeriod(v) {
+  if (!v) return '—';
+  if (v < 1)    return (v * 24).toFixed(1) + ' h';
+  if (v < 1000) return Number(v).toFixed(2) + ' d';
+  return (v / 365.25).toFixed(2) + ' yr';
+}
+
+/* ── Utility: canvas DPR resize ──────────── */
+function resizeCanvas(canvas) {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const W = canvas.parentElement.clientWidth;
+  const H = canvas.parentElement.clientHeight || parseInt(canvas.dataset.h || 400);
+  if (canvas.width !== Math.round(W * dpr) || canvas.height !== Math.round(H * dpr)) {
+    canvas.width  = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    canvas.style.height = H + 'px';
+  }
+  return { W: canvas.width, H: canvas.height, dpr };
+}
+
+window.addEventListener('resize', () => {
+  Object.values(window.RVO.charts).forEach(fn => typeof fn === 'function' && fn());
+});
+</script>
+
+</body>
+</html>

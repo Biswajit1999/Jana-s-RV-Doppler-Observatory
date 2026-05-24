@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this tool in your work, please cite it as below."
+authors:
+  - family-names: Jana
+    given-names: Biswajit
+    orcid: ""
+title: "RV Exoplanet Observatory"
+version: "1.0.0"
+date-released: 2026-05-24
+url: "https://biswajit1999.github.io/rv-exoplanet-observatory/"
+repository-code: "https://github.com/Biswajit1999/rv-exoplanet-observatory"
+license: MIT
+keywords:
+  - exoplanets
+  - radial-velocity
+  - astrophysics
+  - simulation
+  - nasa
+  - webgl
+  - javascript
+  - interactive
+  - spectroscopy
+  - keplerian-orbits
