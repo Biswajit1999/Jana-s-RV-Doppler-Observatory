@@ -225,6 +225,17 @@ body.light #nasaBadge.chip-green { color:#0a7a5a; border-color:rgba(10,122,90,0.
 /* Theme toggle button */
 #themeToggle { font-size:.85rem; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0; border:1px solid rgba(255,255,255,0.12); transition:background .2s,border-color .2s,transform .15s; }
 #themeToggle:hover { transform:rotate(20deg); }
+
+/* ── Analysis Workspace ── */
+#wsUploadZone:hover { background:rgba(116,242,200,0.04); border-color:rgba(116,242,200,0.5) !important; }
+body.light #wsUploadZone:hover { background:rgba(10,122,90,0.04); border-color:rgba(10,122,90,0.5) !important; }
+body.light #wsUploadZone { border-color:rgba(10,122,90,0.3) !important; }
+#wsPanels { display:none; }
+code { background:rgba(116,242,200,0.08); padding:1px 6px; border-radius:4px; font-size:.85em; }
+body.light code { background:rgba(10,122,90,0.08); }
+.ws-param-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.ws-param-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:.62rem; }
+body.light .ws-param-row { border-bottom-color:rgba(0,0,0,0.05); }
 </style>
 </head>
 <body>
@@ -280,6 +291,7 @@ body.light #nasaBadge.chip-green { color:#0a7a5a; border-color:rgba(10,122,90,0.
     <button class="tab-btn" data-tab="archive">◈ Archive &amp; Analysis</button>
     <button class="tab-btn" data-tab="simulator">◉ EPRV Simulator</button>
     <button class="tab-btn" data-tab="instruments">◎ Instruments</button>
+    <button class="tab-btn" data-tab="workspace">⚗ Analysis Workspace</button>
   </div>
 </nav>
 
@@ -536,6 +548,129 @@ body.light #nasaBadge.chip-green { color:#0a7a5a; border-color:rgba(10,122,90,0.
   </div>
 </div>
 
+<!-- ─── TAB: ANALYSIS WORKSPACE ──────────── -->
+<div class="tab-panel" id="tab-workspace">
+  <div class="pg">
+
+    <!-- Page header -->
+    <div style="margin-bottom:20px">
+      <div style="font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#74f2c8;margin-bottom:6px">Research-Grade Analysis</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;letter-spacing:-.03em;margin-bottom:8px">Analysis Workspace</h2>
+      <p style="font-size:.72rem;color:#8aaccc;max-width:720px;line-height:1.75;font-family:Inter,sans-serif">Upload your own RV timeseries or load a demo dataset. Four professional diagnostic panels replicate the exact pipeline used in HARPS &amp; ESPRESSO discovery papers — GLS periodogram, phase-folded Keplerian curve, multi-instrument O−C residuals, and CCF activity diagnostics.</p>
+    </div>
+
+    <!-- Data ingestion row -->
+    <div class="g2" style="margin-bottom:14px;align-items:start">
+
+      <!-- Upload zone -->
+      <div class="glass" style="border-radius:16px;padding:20px">
+        <div class="mod-head">Data Source</div>
+        <div id="wsUploadZone" style="border:1.5px dashed rgba(116,242,200,0.25);border-radius:12px;padding:24px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s" onclick="document.getElementById('wsCsvInput').click()" ondragover="event.preventDefault()" ondragleave="this.style.borderColor='rgba(116,242,200,0.25)'" ondrop="wsHandleDrop(event)">
+          <input type="file" id="wsCsvInput" accept=".csv,.txt" style="display:none" onchange="wsLoadFile(this.files[0])">
+          <div style="font-size:1.6rem;margin-bottom:8px;opacity:.5">📂</div>
+          <div style="font-size:.68rem;color:#74f2c8;font-weight:700;margin-bottom:5px">Drop CSV / TXT here, or click to browse</div>
+          <div style="font-size:.58rem;color:#4d6882;line-height:1.7">Required columns: <code>BJD</code> · <code>RV</code> · <code>RV_ERR</code> · <code>INSTRUMENT</code><br>Optional: <code>BIS</code> · <code>FWHM</code> &nbsp;(enables activity panel)</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center">
+          <span style="font-size:.55rem;color:#4d6882;text-transform:uppercase;letter-spacing:.1em">Demos:</span>
+          <button class="btn primary sm" onclick="wsLoadExample('51peg')">51 Peg b</button>
+          <button class="btn sm" onclick="wsLoadExample('hd209')">HD 209458 b</button>
+          <button class="btn sm" onclick="wsLoadExample('gj876')">GJ 876 b+c</button>
+          <button class="btn sm" style="margin-left:auto" onclick="wsDownloadTemplate()">↓ Template</button>
+        </div>
+      </div>
+
+      <!-- Summary panel -->
+      <div class="glass" style="border-radius:16px;padding:20px">
+        <div class="mod-head">Dataset Summary</div>
+        <div id="wsSummaryEmpty" style="font-size:.68rem;color:#4d6882;padding:24px 0;text-align:center;line-height:1.8">No data loaded yet.<br>Upload a file or click a demo above.</div>
+        <div id="wsSummaryContent" style="display:none">
+          <div class="g4" style="gap:10px;margin-bottom:12px">
+            <div class="kpi-card" style="padding:12px"><div style="font-size:.52rem;color:#4d6882;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Epochs</div><div id="wsNpts" class="kpi-val" style="font-size:1.3rem;color:#74f2c8">—</div></div>
+            <div class="kpi-card" style="padding:12px"><div style="font-size:.52rem;color:#4d6882;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Baseline</div><div id="wsBaseline" class="kpi-val" style="font-size:1.3rem;color:#83ddff">—</div></div>
+            <div class="kpi-card" style="padding:12px"><div style="font-size:.52rem;color:#4d6882;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">RV span</div><div id="wsRVSpan" class="kpi-val" style="font-size:1.3rem;color:#ffbc73">—</div></div>
+            <div class="kpi-card" style="padding:12px"><div style="font-size:.52rem;color:#4d6882;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Instruments</div><div id="wsNInst" class="kpi-val" style="font-size:1.3rem;color:#c0a0ff">—</div></div>
+          </div>
+          <div id="wsInstLegend" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px"></div>
+          <div style="font-size:.58rem;color:#4d6882" id="wsDataRange"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Fit controls bar -->
+    <div class="glass" id="wsFitBar" style="border-radius:14px;padding:13px 18px;margin-bottom:14px;display:none">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#74f2c8;white-space:nowrap">Keplerian Fit</div>
+        <div style="display:flex;align-items:center;gap:6px"><label style="font-size:.60rem;color:#8aaccc;white-space:nowrap">P (days)</label><input id="wsFitP" type="number" class="inp" value="" min="0.1" step="0.01" style="width:88px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><label style="font-size:.60rem;color:#8aaccc">K (m/s)</label><input id="wsFitK" type="number" class="inp" value="" min="0" step="0.1" style="width:78px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><label style="font-size:.60rem;color:#8aaccc">e</label><input id="wsFitE" type="number" class="inp" value="0" min="0" max="0.99" step="0.01" style="width:66px"></div>
+        <div style="display:flex;align-items:center;gap:6px"><label style="font-size:.60rem;color:#8aaccc">ω (°)</label><input id="wsFitW" type="number" class="inp" value="0" step="1" style="width:66px"></div>
+        <button class="btn primary sm" onclick="wsRunFit()">▶ Grid Fit</button>
+        <button class="btn sm" onclick="wsAutoFit()">⚡ Auto</button>
+        <div id="wsFitStatus" style="font-size:.58rem;color:#4d6882;flex:1;min-width:120px;text-align:right"></div>
+      </div>
+    </div>
+
+    <!-- 4-panel dashboard -->
+    <div id="wsPanels" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+
+      <!-- Panel A: Timeseries + Residuals -->
+      <div class="glass" style="border-radius:14px;padding:16px">
+        <div class="mod-head">RV Time Series &amp; O−C Residuals</div>
+        <div id="wsTimeseries" class="plotly-wrap" style="height:340px"></div>
+        <div style="font-size:.54rem;color:#4d6882;margin-top:5px">Colour-coded by instrument · Keplerian overlay · O−C residuals sub-panel</div>
+      </div>
+
+      <!-- Panel B: Phase-folded -->
+      <div class="glass" style="border-radius:14px;padding:16px">
+        <div class="mod-head">Phase-Folded Radial Velocity</div>
+        <div id="wsPhase" class="plotly-wrap" style="height:340px"></div>
+        <div style="font-size:.54rem;color:#4d6882;margin-top:5px">Folded at best-fit period · grey points = adjacent cycles</div>
+      </div>
+
+      <!-- Panel C: GLS Periodogram -->
+      <div class="glass" style="border-radius:14px;padding:16px">
+        <div class="mod-head" style="justify-content:flex-start;gap:10px">
+          <span>Generalized Lomb-Scargle Periodogram</span>
+          <button id="wsWinBtn" class="btn sm" onclick="wsToggleWindow()" style="font-size:.55rem;margin-left:auto">Window fn</button>
+        </div>
+        <div id="wsGLS" class="plotly-wrap" style="height:340px"></div>
+        <div style="font-size:.54rem;color:#4d6882;margin-top:5px">GLS (Zechmeister &amp; Kürster 2009) · FAP dashed lines: 10% · 1% · 0.1%</div>
+      </div>
+
+      <!-- Panel D: Activity indicators -->
+      <div class="glass" style="border-radius:14px;padding:16px">
+        <div class="mod-head" style="justify-content:flex-start;gap:10px">
+          <span>Stellar Activity Diagnostics</span>
+          <button id="wsActBisBtn" class="btn sm active" onclick="wsSetActivity('bis')" style="font-size:.55rem;margin-left:auto">BIS</button>
+          <button id="wsActFwhmBtn" class="btn sm" onclick="wsSetActivity('fwhm')" style="font-size:.55rem">FWHM</button>
+        </div>
+        <div id="wsActivity" class="plotly-wrap" style="height:340px"></div>
+        <div style="font-size:.54rem;color:#4d6882;margin-top:5px" id="wsActivityNote">RV vs BIS · Pearson r — · upload BIS/FWHM column to activate</div>
+      </div>
+
+    </div>
+
+    <!-- Fit results -->
+    <div id="wsFitResults" class="glass" style="display:none;border-radius:14px;padding:18px;margin-bottom:14px">
+      <div class="mod-head">Best-Fit Keplerian Parameters</div>
+      <div id="wsFitResultsContent"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div id="wsEmptyState" class="glass" style="border-radius:14px;padding:52px;text-align:center;margin-bottom:14px">
+      <div style="font-size:2.8rem;margin-bottom:16px;opacity:.35">🔭</div>
+      <div style="font-size:.78rem;color:#4d6882;margin-bottom:22px;font-family:Inter,sans-serif;line-height:1.85">
+        Upload a CSV with columns <code>BJD</code>, <code>RV</code>, <code>RV_ERR</code>, <code>INSTRUMENT</code><br>
+        or load one of the demo datasets above to see the full 4-panel professional analysis.
+      </div>
+      <button class="btn primary" onclick="wsLoadExample('51peg')" style="padding:11px 30px;font-size:.72rem;border-radius:999px">Load 51 Peg b Demo →</button>
+    </div>
+
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <span>RV Exoplanet Observatory · <a href="https://biswajit1999.github.io/Biswajit_Jana.github.io/" target="_blank">Biswajit Jana</a></span>
@@ -552,7 +687,7 @@ body.light #nasaBadge.chip-green { color:#0a7a5a; border-color:rgba(10,122,90,0.
 /* ═══════════════════════════════════════════════
    DATA ENGINE — NASA TAP + IndexedDB cache
 ═══════════════════════════════════════════════ */
-const DB_NAME='rv-obs-v3', DB_VER=1, STORE='planets';  // bump version to bust any old cache
+const DB_NAME='rv-obs-v4', DB_VER=1, STORE='planets';  // bumped to bust stale cache
 const CACHE_TTL = 24*60*60*1000; // 24 h
 
 const FALLBACK = [
@@ -614,10 +749,22 @@ const NASA_Q = 'SELECT TOP 2000 pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,
   + 'FROM ps '
   + 'WHERE pl_rvamp IS NOT NULL AND pl_rvamp > 0 AND default_flag = 1 '
   + 'ORDER BY pl_rvamp DESC';
-const NASA_URL = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
-  + '?query=' + encodeURIComponent(NASA_Q)
-  + '&format=json'
-  + '&MAXREC=2000';
+
+/* TAP endpoint — proper uppercase params per IVOA standard */
+const NASA_TAP = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
+  + '?REQUEST=doQuery&LANG=ADQL&FORMAT=json&MAXREC=2000'
+  + '&QUERY=' + encodeURIComponent(NASA_Q);
+
+/* IPAC's TAP server doesn't send Access-Control-Allow-Origin for browser
+   cross-origin requests, so direct fetch always fails from GitHub Pages.
+   Try direct first (works in Node/Electron/same-origin), then two CORS
+   proxy services as fallbacks. */
+const NASA_URLS = [
+  NASA_TAP,
+  'https://corsproxy.io/?' + encodeURIComponent(NASA_TAP),
+  'https://api.allorigins.win/raw?url=' + encodeURIComponent(NASA_TAP),
+];
+const NASA_URL = NASA_TAP; // keep for error-display references
 
 window.RVO = { planets:[], selected:null, nasaStatus:'connecting', _archRows:[] };
 
@@ -643,30 +790,48 @@ async function fetchPlanets() {
   await loadFromNASA();
 }
 
+/* Try each URL in NASA_URLS sequentially; return parsed JSON on first success */
+async function nasaTapFetch() {
+  let lastErr;
+  for (let i = 0; i < NASA_URLS.length; i++) {
+    const url = NASA_URLS[i];
+    const label = i === 0 ? 'NASA direct' : `proxy ${i}`;
+    setStatus('connecting', i === 0 ? 'fetching from NASA…' : `CORS proxy ${i}…`);
+    try {
+      const ctrl = new AbortController();
+      const tid  = setTimeout(() => ctrl.abort(), 18000);
+      const res  = await fetch(url, {signal: ctrl.signal});
+      clearTimeout(tid);
+      if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText);
+      const data = await res.json();
+      if (!Array.isArray(data) || !data.length) throw new Error('empty dataset');
+      if (i > 0) console.info('[RVO] data via proxy', i, '—', data.length, 'planets');
+      return data;
+    } catch(e) {
+      lastErr = e.name === 'AbortError' ? new Error('timeout') : e;
+      console.warn('[RVO]', label, 'failed:', lastErr.message);
+    }
+  }
+  throw lastErr;
+}
+
 async function loadFromNASA() {
-  setStatus('connecting', 'fetching from NASA…');
   try {
-    const ctrl=new AbortController();
-    const tid=setTimeout(()=>ctrl.abort(),30000); // 30s timeout
-    const res=await fetch(NASA_URL, {signal:ctrl.signal});
-    clearTimeout(tid);
-    if(!res.ok) throw new Error('HTTP '+res.status+' — '+res.statusText);
-    const data=await res.json();
-    if(!Array.isArray(data)||!data.length) throw new Error('API returned empty dataset');
-    RVO.planets=data;
-    const n=data.length;
-    setStatus('live','NASA live · '+n+' planets');
-    document.getElementById('navCount').textContent = n+' RV planets';
-    document.getElementById('archCacheNote').textContent = 'live · '+new Date().toLocaleTimeString();
-    await dbPut('planets',data);
+    const data = await nasaTapFetch();
+    RVO.planets = data;
+    const n = data.length;
+    setStatus('live', 'NASA live · ' + n + ' planets');
+    document.getElementById('navCount').textContent = n + ' RV planets';
+    document.getElementById('archCacheNote').textContent = 'live · ' + new Date().toLocaleTimeString();
+    await dbPut('planets', data);
     onPlanetsReady(data);
   } catch(e) {
-    const msg = e.name==='AbortError' ? 'timeout after 30s' : e.message;
-    console.warn('NASA TAP fetch failed:', msg, '\nURL tried:', NASA_URL);
-    setStatus('error','NASA error: '+msg.slice(0,40));
-    if(RVO.planets.length===0){
-      RVO.planets=FALLBACK.slice();
-      document.getElementById('navCount').textContent = FALLBACK.length+' RV planets (offline fallback)';
+    const msg = e.message || 'network error';
+    console.warn('[RVO] All fetch attempts failed:', msg);
+    setStatus('error', 'NASA error: ' + msg.slice(0, 40));
+    if (RVO.planets.length === 0) {
+      RVO.planets = FALLBACK.slice();
+      document.getElementById('navCount').textContent = FALLBACK.length + ' RV planets (offline fallback)';
       onPlanetsReady(FALLBACK);
     }
     showFetchError(msg);
@@ -677,10 +842,10 @@ function showFetchError(msg) {
   const note = document.getElementById('dashNote');
   if(!note) return;
   note.style.borderColor='rgba(255,125,144,0.3)';
-  note.innerHTML = `<span style="color:#ff7d90">⚠ NASA TAP fetch failed: ${msg}</span>
+  note.innerHTML = `<span style="color:#ff7d90">⚠ All NASA fetch attempts failed: ${msg}</span>
     &nbsp;·&nbsp; Showing ${RVO.planets.length} offline planets
-    &nbsp;·&nbsp; <button class="btn sm" onclick="forceRefresh()" style="font-size:.58rem">Retry live fetch</button>
-    <br><span style="color:#4d6882;font-size:.55rem">URL: ${NASA_URL.slice(0,80)}…</span>`;
+    &nbsp;·&nbsp; <button class="btn sm" onclick="forceRefresh()" style="font-size:.58rem">Retry</button>
+    <br><span style="color:#4d6882;font-size:.55rem">Tried: direct TAP → corsproxy.io → allorigins.win · ${NASA_URL.slice(0,60)}…</span>`;
 }
 
 async function forceRefresh() {
@@ -694,15 +859,10 @@ async function forceRefresh() {
 
 async function refreshInBackground() {
   try {
-    const ctrl=new AbortController(),tid=setTimeout(()=>ctrl.abort(),30000);
-    const res=await fetch(NASA_URL,{signal:ctrl.signal});
-    clearTimeout(tid);
-    if(!res.ok) return;
-    const data=await res.json();
-    if(!data||!data.length) return;
-    RVO.planets=data;
-    await dbPut('planets',data);
-    setStatus('live','NASA live · '+data.length+' planets');
+    const data = await nasaTapFetch();
+    RVO.planets = data;
+    await dbPut('planets', data);
+    setStatus('live', 'NASA live · ' + data.length + ' planets');
     document.getElementById('navCount').textContent = data.length+' RV planets';
     document.getElementById('archCacheNote').textContent = 'refreshed · '+new Date().toLocaleTimeString();
     /* re-render if archive tab active */
@@ -1822,6 +1982,7 @@ function showTab(name){
   if(name==='archive')    {if(RVO.planets.length)renderArchive();}
   if(name==='simulator')  {initSim();}
   if(name==='instruments'){renderInstruments();}
+  if(name==='workspace')  {wsOnTabShow();}
   if(name==='archive'&&RVO.selected) renderArchPanel(RVO.selected);
 }
 
@@ -1847,6 +2008,585 @@ window.addEventListener('resize',()=>{
   if(window._activeTab==='simulator'){renderRVPlot();}
   if(window._activeTab==='instruments'){renderDetMap();}
 });
+</script>
+
+<script>
+'use strict';
+/* ═══════════════════════════════════════════════════════════════════
+   ANALYSIS WORKSPACE
+   Implements the professional RV analysis pipeline used in HARPS/
+   ESPRESSO discovery papers (e.g. Mayor et al. 1995, Bouchy et al.):
+   • CSV ingestion  (BJD, RV, RV_ERR, INSTRUMENT, BIS, FWHM)
+   • GLS periodogram  (Zechmeister & Kürster 2009, A&A 496, 577)
+   • Multi-instrument Keplerian grid fit  (χ² minimisation)
+   • Phase-folded curve with Keplerian overlay
+   • Activity diagnostics  (RV vs BIS / FWHM, Pearson r)
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── State ── */
+const WS = {
+  raw:[], instruments:[], gammas:{},
+  bestP:null, glsResult:null, fitParams:null,
+  showWindow:false, actMode:'bis', hasBIS:false, hasFWHM:false,
+};
+const INST_COLORS=['#74f2c8','#83ddff','#ffbc73','#c0a0ff','#ff7d90','#7ecf9c','#f7c97e','#a8d1f5'];
+
+/* ── CSV parser (flexible column detection) ── */
+function parseRVcsv(text){
+  const lines=text.trim().split(/\r?\n/).filter(l=>!l.match(/^\s*#/) && l.trim());
+  if(lines.length<2) throw new Error('Need at least 2 rows (header + data)');
+  const delim=lines[0].includes('\t')?'\t':lines[0].includes(',')?',':' ';
+  const split=l=>typeof delim==='string'?l.split(delim):l.trim().split(/\s+/);
+  const hdr=split(lines[0]).map(h=>h.trim().toLowerCase().replace(/['"]/g,''));
+  const find=(aliases)=>{for(const a of aliases){const i=hdr.indexOf(a);if(i>=0)return i;}return -1;};
+  const iT   =find(['bjd','time','jd','hjd','bjd_tdb','t','col1']);
+  const iRV  =find(['rv','vrad','radvel','vr','mnvel','col2']);
+  const iErr =find(['rv_err','rverr','err','error','errvel','stdev','e_rv','erv','e_vrad','col3']);
+  const iInst=find(['instrument','inst','telescope','fk','source','col4']);
+  const iBIS =find(['bis','bis_span','bisspan']);
+  const iFWHM=find(['fwhm','fwhm_ccf']);
+  if(iT<0)  throw new Error('No time column (BJD/JD/Time)');
+  if(iRV<0) throw new Error('No RV column (RV/vrad/mnvel)');
+  const rows=[];
+  for(let i=1;i<lines.length;i++){
+    const c=split(lines[i]);
+    const t=parseFloat(c[iT]), rv=parseFloat(c[iRV]);
+    if(isNaN(t)||isNaN(rv)) continue;
+    rows.push({
+      t, rv,
+      err : iErr >=0 ? Math.max(parseFloat(c[iErr]) ||1,0.01):1.0,
+      inst: iInst>=0 ? (c[iInst]||'').replace(/['"]/g,'').trim()||'UNKNOWN':'UNKNOWN',
+      bis : iBIS >=0 ? (parseFloat(c[iBIS]) ||null):null,
+      fwhm: iFWHM>=0 ? (parseFloat(c[iFWHM])||null):null,
+    });
+  }
+  if(rows.length<3) throw new Error('Need ≥ 3 valid data rows');
+  rows.sort((a,b)=>a.t-b.t);
+  return rows;
+}
+
+/* ── Generalized Lomb-Scargle (Zechmeister & Kürster 2009) ── */
+function computeGLS(times,rvs,errs,nfreqs=1500){
+  const N=times.length;
+  const tspan=times[N-1]-times[0];
+  const w=errs.map(e=>1/(e*e)), W=w.reduce((a,b)=>a+b,0);
+  let ybar=0; for(let i=0;i<N;i++) ybar+=w[i]*rvs[i]; ybar/=W;
+  let YY=0; for(let i=0;i<N;i++) YY+=w[i]*(rvs[i]-ybar)**2; YY/=W;
+  if(YY<1e-20) return {freqs:[],periods:[],powers:[],bestP:null,bestZ:0};
+  const fmin=2/tspan, fmax=Math.min(N/(2*tspan)*10, 2.0);
+  const freqs=[],periods=[],powers=[];
+  let bestZ=-1,bestF=null;
+  for(let k=0;k<nfreqs;k++){
+    const f=fmin*Math.pow(fmax/fmin,k/(nfreqs-1));
+    const om=2*Math.PI*f;
+    let C=0,S=0,YC=0,YS=0,CC=0,SS=0,CS=0;
+    for(let i=0;i<N;i++){
+      const wi=w[i]/W, dy=rvs[i]-ybar;
+      const co=Math.cos(om*times[i]), si=Math.sin(om*times[i]);
+      C+=wi*co; S+=wi*si; YC+=wi*dy*co; YS+=wi*dy*si;
+      CC+=wi*co*co; SS+=wi*si*si; CS+=wi*co*si;
+    }
+    CC-=C*C; SS-=S*S; CS-=C*S;
+    const D=CC*SS-CS*CS;
+    if(Math.abs(D)<1e-22){freqs.push(f);periods.push(1/f);powers.push(0);continue;}
+    const p=Math.max(0,Math.min(1,(SS*YC*YC+CC*YS*YS-2*CS*YC*YS)/(YY*D)));
+    freqs.push(f); periods.push(1/f); powers.push(p);
+    if(p>bestZ){bestZ=p;bestF=f;}
+  }
+  return{freqs,periods,powers,bestP:bestF?1/bestF:null,bestZ};
+}
+
+/* ── Window function ── */
+function computeWindowFn(times,freqs){
+  const N=times.length;
+  return freqs.map(f=>{
+    const om=2*Math.PI*f; let cr=0,ci=0;
+    for(let i=0;i<N;i++){cr+=Math.cos(om*times[i]);ci+=Math.sin(om*times[i]);}
+    return(cr*cr+ci*ci)/(N*N);
+  });
+}
+
+/* ── GLS FAP threshold (Scargle 1982 adapted for GLS, Zechmeister 2009 §3) ── */
+function glsFAP(fap,N,M){
+  if(N<=5) return 0.99;
+  return Math.max(0,Math.min(0.999, 1-Math.pow(fap/M,2/(N-3))));
+}
+
+/* ── Keplerian model at time t ── */
+function wsKepRV(t,P,K,e,om,T0){
+  const M=((2*Math.PI/P)*((t-T0)%P+P))%(2*Math.PI);
+  return K*(Math.cos(om+trueAnomaly(keplerE(M,e),e))+e*Math.cos(om));
+}
+
+/* ── χ² ── */
+function wsChi2(data,P,K,e,om,T0,gam){
+  let c=0;
+  for(const d of data){const r=d.rv-wsKepRV(d.t,P,K,e,om,T0)-(gam[d.inst]||0);c+=r*r/(d.err*d.err);}
+  return c;
+}
+
+/* ── Instrument offset estimation ── */
+function wsGammas(data,params){
+  const insts=[...new Set(data.map(d=>d.inst))];
+  const g={};
+  for(const inst of insts){
+    const rows=data.filter(d=>d.inst===inst);
+    let sw=0,sv=0;
+    for(const d of rows){
+      const wi=1/(d.err*d.err);
+      const res=params? d.rv-wsKepRV(d.t,params.P,params.K,params.e,params.omega,params.T0):d.rv;
+      sw+=wi; sv+=wi*res;
+    }
+    g[inst]=sw>0?sv/sw:0;
+  }
+  // Make relative to first instrument
+  const ref=g[insts[0]]||0;
+  for(const i of insts) g[i]-=ref;
+  return g;
+}
+
+/* ── Keplerian grid fit ── */
+function wsFitKep(data,P){
+  const rvs=data.map(d=>d.rv);
+  const Kest=(Math.max(...rvs)-Math.min(...rvs))/2;
+  const eG=[0,0.05,0.1,0.15,0.2,0.3,0.4,0.55,0.7];
+  const wG=Array.from({length:12},(_,i)=>i*30*Math.PI/180);
+  const T0G=Array.from({length:18},(_,i)=>data[0].t+i*P/18);
+  const KG=[Kest*0.6,Kest*0.8,Kest,Kest*1.2,Kest*1.45];
+  let best=Infinity,bp={P,K:Kest,e:0,omega:0,T0:data[0].t};
+  const g0=wsGammas(data,null);
+  for(const e of eG) for(const omega of wG) for(const T0 of T0G) for(const K of KG){
+    const c=wsChi2(data,P,K,e,omega,T0,g0);
+    if(c<best){best=c;bp={P,K,e,omega,T0};}
+  }
+  // Fine T0 pass
+  for(let i=0;i<50;i++){
+    const T0=bp.T0-P/18+i*P/25;
+    const c=wsChi2(data,P,bp.K,bp.e,bp.omega,T0,g0);
+    if(c<best){best=c;bp.T0=T0;}
+  }
+  const gammas=wsGammas(data,bp);
+  return{...bp,gammas,chi2:wsChi2(data,bp.P,bp.K,bp.e,bp.omega,bp.T0,gammas),dof:data.length-5};
+}
+
+/* ── Pearson r + linear regression ── */
+function pearsonR(xs,ys){
+  const N=xs.length; if(N<3) return{r:NaN,a:0,b:0};
+  const mx=xs.reduce((a,b)=>a+b,0)/N, my=ys.reduce((a,b)=>a+b,0)/N;
+  let cov=0,sx=0,sy=0;
+  for(let i=0;i<N;i++){const dx=xs[i]-mx,dy=ys[i]-my;cov+=dx*dy;sx+=dx*dx;sy+=dy*dy;}
+  const r=(sx>0&&sy>0)?cov/Math.sqrt(sx*sy):0;
+  const b=sx>0?cov/sx:0, a=my-b*mx;
+  return{r,a,b};
+}
+
+/* ── Demo data generators ── */
+function wsGenerateDemo(preset){
+  /* deterministic PRNG */
+  let s=42;
+  const rng=()=>{s=(s*1664525+1013904223)&0xffffffff;return(s>>>0)/4294967295;};
+  const gauss=()=>Math.sqrt(-2*Math.log(rng()+1e-10))*Math.cos(2*Math.PI*rng());
+  const rows=[];
+
+  if(preset==='51peg'){
+    const P=4.231,K=55.9,e=0.013,om=78*Math.PI/180,T0=2451500;
+    const seasons=[{t0:2451500,n:28,inst:'HARPS'},{t0:2451900,n:22,inst:'HARPS'},{t0:2452600,n:30,inst:'HIRES'}];
+    const gHIRES=12.4;
+    for(const s of seasons) for(let i=0;i<s.n;i++){
+      const t=s.t0+rng()*180;
+      const M=((2*Math.PI/P)*((t-T0)%P+P))%(2*Math.PI);
+      const rv=K*(Math.cos(om+trueAnomaly(keplerE(M,e),e))+e*Math.cos(om))+(s.inst==='HIRES'?gHIRES:0)+gauss()*1.8;
+      rows.push({t,rv,err:0.8+rng()*1.2,inst:s.inst,bis:gauss()*80+5,fwhm:7200+gauss()*120});
+    }
+  } else if(preset==='hd209'){
+    const P=3.525,K=84.7,T0=2451658;
+    const seasons=[{t0:2451650,n:22,inst:'Keck/HIRES'},{t0:2452100,n:15,inst:'Lick/HAM'},{t0:2452500,n:18,inst:'Keck/HIRES'}];
+    const gLick=34.8;
+    for(const s of seasons) for(let i=0;i<s.n;i++){
+      const t=s.t0+rng()*180;
+      const rv=K*Math.cos(2*Math.PI*(t-T0)/P)+(s.inst==='Lick/HAM'?gLick:0)+gauss()*2.2;
+      rows.push({t,rv,err:1.2+rng()*1.8,inst:s.inst,bis:gauss()*60,fwhm:8500+gauss()*100});
+    }
+  } else if(preset==='gj876'){
+    /* GJ 876 b+c: two resonant planets */
+    const Pb=60.94,Kb=212,eb=0.025,wb=183*Math.PI/180;
+    const Pc=30.09,Kc=88.4,ec=0.256,wc=48*Math.PI/180;
+    const T0=2450570;
+    for(let i=0;i<90;i++){
+      const t=2450500+rng()*900;
+      const Mb=((2*Math.PI/Pb)*((t-T0)%Pb+Pb))%(2*Math.PI);
+      const Mc=((2*Math.PI/Pc)*((t-T0)%Pc+Pc))%(2*Math.PI);
+      const rv=Kb*(Math.cos(wb+trueAnomaly(keplerE(Mb,eb),eb))+eb*Math.cos(wb))
+              +Kc*(Math.cos(wc+trueAnomaly(keplerE(Mc,ec),ec))+ec*Math.cos(wc))
+              +gauss()*4;
+      rows.push({t,rv,err:3+rng()*3,inst:'Keck/HIRES',bis:gauss()*150,fwhm:3800+gauss()*200});
+    }
+  }
+  rows.sort((a,b)=>a.t-b.t);
+  return rows;
+}
+
+/* ── Template download ── */
+function wsDownloadTemplate(){
+  const csv='BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM\n2451500.123,55.9,1.2,HARPS,-32.4,7210.5\n2451504.234,-52.1,1.1,HARPS,28.7,7208.3\n2451508.345,55.2,1.3,HIRES,-31.1,7212.1\n';
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download='rv_template.csv'; a.click();
+}
+
+/* ── File loading ── */
+function wsLoadFile(file){
+  if(!file) return;
+  const r=new FileReader();
+  r.onload=e=>{try{wsSetData(parseRVcsv(e.target.result),file.name);}catch(err){alert('Parse error: '+err.message);}};
+  r.readAsText(file);
+}
+function wsHandleDrop(event){
+  event.preventDefault();
+  const file=event.dataTransfer.files[0];
+  if(file) wsLoadFile(file);
+}
+function wsLoadExample(preset){
+  const names={'51peg':'51 Peg b (HARPS + HIRES synthetic)','hd209':'HD 209458 b (HIRES + Lick synthetic)','gj876':'GJ 876 b+c (Keck/HIRES synthetic)'};
+  wsSetData(wsGenerateDemo(preset),names[preset]||preset);
+}
+
+/* ── Load data → update summary → run analysis ── */
+function wsSetData(rows,label){
+  WS.raw=rows;
+  WS.instruments=[...new Set(rows.map(r=>r.inst))];
+  WS.gammas=Object.fromEntries(WS.instruments.map(i=>[i,0]));
+  WS.hasBIS =rows.some(r=>r.bis !==null&&!isNaN(r.bis));
+  WS.hasFWHM=rows.some(r=>r.fwhm!==null&&!isNaN(r.fwhm));
+  WS.fitParams=null; WS.glsResult=null;
+
+  /* show panels, hide empty state */
+  document.getElementById('wsEmptyState').style.display='none';
+  document.getElementById('wsPanels').style.display='grid';
+  document.getElementById('wsFitBar').style.display='block';
+  document.getElementById('wsSummaryEmpty').style.display='none';
+  document.getElementById('wsSummaryContent').style.display='block';
+  document.getElementById('wsFitResults').style.display='none';
+
+  /* summary KPIs */
+  const tmin=rows[0].t,tmax=rows[rows.length-1].t;
+  const rvs=rows.map(r=>r.rv);
+  document.getElementById('wsNpts').textContent=rows.length;
+  document.getElementById('wsBaseline').textContent=((tmax-tmin)/365.25).toFixed(1)+' yr';
+  document.getElementById('wsRVSpan').textContent=(Math.max(...rvs)-Math.min(...rvs)).toFixed(0)+' m/s';
+  document.getElementById('wsNInst').textContent=WS.instruments.length;
+  document.getElementById('wsDataRange').textContent='BJD '+tmin.toFixed(1)+' → '+tmax.toFixed(1)+' · '+label;
+
+  /* instrument legend dots */
+  document.getElementById('wsInstLegend').innerHTML=WS.instruments.map((inst,i)=>
+    `<span style="display:flex;align-items:center;gap:5px;font-size:.58rem;color:#8aaccc">
+       <span style="width:8px;height:8px;border-radius:50%;background:${INST_COLORS[i%INST_COLORS.length]};flex-shrink:0"></span>${inst}
+     </span>`).join('');
+
+  wsRunAnalysis();
+}
+
+/* ── Full analysis pipeline ── */
+function wsRunAnalysis(){
+  const data=WS.raw; if(!data.length) return;
+  const times=data.map(d=>d.t),rvs=data.map(d=>d.rv),errs=data.map(d=>d.err);
+  const gls=computeGLS(times,rvs,errs);
+  WS.glsResult=gls; WS.bestP=gls.bestP;
+
+  if(WS.bestP){
+    document.getElementById('wsFitP').value=WS.bestP.toFixed(5);
+    document.getElementById('wsFitK').value=((Math.max(...rvs)-Math.min(...rvs))/2).toFixed(1);
+    document.getElementById('wsFitE').value='0';
+    document.getElementById('wsFitW').value='0';
+    document.getElementById('wsFitStatus').textContent=
+      'GLS best period: '+WS.bestP.toFixed(4)+' d (power='+gls.bestZ.toFixed(3)+') — click Grid Fit to refine';
+  }
+
+  wsRenderGLS(gls);
+  wsRenderTimeseries(data,null);
+  wsRenderActivity(data);
+  if(WS.bestP) wsRenderPhase(data,null);
+}
+
+/* ── Auto-fit at GLS peak ── */
+function wsAutoFit(){
+  if(!WS.bestP){alert('Run analysis first — no GLS peak found yet');return;}
+  document.getElementById('wsFitP').value=WS.bestP.toFixed(5);
+  wsRunFit();
+}
+
+/* ── Manual / grid fit ── */
+function wsRunFit(){
+  const P=parseFloat(document.getElementById('wsFitP').value);
+  if(!P||P<=0){alert('Enter a valid period');return;}
+  document.getElementById('wsFitStatus').textContent='Fitting… (grid 9 × 12 × 18 × 5)';
+  requestAnimationFrame(()=>{
+    try{
+      const result=wsFitKep(WS.raw,P);
+      WS.fitParams=result; WS.gammas=result.gammas;
+      document.getElementById('wsFitK').value=result.K.toFixed(2);
+      document.getElementById('wsFitE').value=result.e.toFixed(4);
+      document.getElementById('wsFitW').value=(result.omega*180/Math.PI).toFixed(1);
+      const rms=Math.sqrt(result.chi2/Math.max(result.dof,1));
+      document.getElementById('wsFitStatus').textContent=
+        'P='+result.P.toFixed(5)+' d · K='+result.K.toFixed(1)+' m/s · e='+result.e.toFixed(3)+' · RMS='+rms.toFixed(2)+' m/s';
+      wsRenderTimeseries(WS.raw,result);
+      wsRenderPhase(WS.raw,result);
+      wsRenderActivity(WS.raw);
+      wsShowFitResults(result);
+    }catch(e){document.getElementById('wsFitStatus').textContent='Fit error: '+e.message;}
+  });
+}
+
+/* ── GLS window-function toggle ── */
+function wsToggleWindow(){
+  WS.showWindow=!WS.showWindow;
+  document.getElementById('wsWinBtn').classList.toggle('active',WS.showWindow);
+  if(WS.glsResult) wsRenderGLS(WS.glsResult);
+}
+
+/* ── Activity mode switch ── */
+function wsSetActivity(mode){
+  WS.actMode=mode;
+  document.getElementById('wsActBisBtn').classList.toggle('active',mode==='bis');
+  document.getElementById('wsActFwhmBtn').classList.toggle('active',mode==='fwhm');
+  if(WS.raw.length) wsRenderActivity(WS.raw);
+}
+
+/* ════════════════════ PANEL RENDERERS ════════════════════ */
+
+/* Panel A: RV timeseries + O-C residuals */
+function wsRenderTimeseries(data,params){
+  const ic={};
+  WS.instruments.forEach((inst,i)=>ic[inst]=INST_COLORS[i%INST_COLORS.length]);
+  const traces=[];
+
+  /* scatter per instrument */
+  for(const inst of WS.instruments){
+    const rows=data.filter(d=>d.inst===inst);
+    const gamma=params?(params.gammas[inst]||0):0;
+    traces.push({
+      x:rows.map(d=>d.t), y:rows.map(d=>d.rv-gamma),
+      error_y:{type:'data',array:rows.map(d=>d.err),visible:true,
+               color:ic[inst]+'60',thickness:1.3,width:3},
+      mode:'markers',
+      marker:{color:ic[inst],size:5.5,symbol:'circle',line:{width:0.9,color:'rgba(0,0,0,0.45)'}},
+      name:inst,legendgroup:inst,showlegend:true,
+      hovertemplate:'<b>'+inst+'</b><br>BJD: %{x:.2f}<br>RV: %{y:.2f} m/s<extra></extra>',
+    });
+  }
+
+  /* Keplerian model curve + residuals */
+  if(params){
+    const tmin=data[0].t,tmax=data[data.length-1].t;
+    const mt=Array.from({length:600},(_,i)=>tmin+i*(tmax-tmin)/599);
+    const mrv=mt.map(t=>wsKepRV(t,params.P,params.K,params.e,params.omega,params.T0));
+    traces.push({x:mt,y:mrv,mode:'lines',line:{color:'rgba(255,255,255,0.6)',width:1.8},
+      name:'Keplerian',legendgroup:'model',showlegend:true,hoverinfo:'skip'});
+
+    /* residuals on y2 */
+    traces.push({x:[data[0].t,data[data.length-1].t],y:[0,0],
+      mode:'lines',line:{color:'rgba(255,255,255,0.12)',width:1,dash:'dot'},
+      showlegend:false,xaxis:'x',yaxis:'y2',hoverinfo:'skip'});
+    for(const inst of WS.instruments){
+      const rows=data.filter(d=>d.inst===inst);
+      const gamma=params.gammas[inst]||0;
+      traces.push({
+        x:rows.map(d=>d.t),
+        y:rows.map(d=>d.rv-gamma-wsKepRV(d.t,params.P,params.K,params.e,params.omega,params.T0)),
+        error_y:{type:'data',array:rows.map(d=>d.err),visible:true,color:ic[inst]+'55',thickness:1.1,width:2.5},
+        mode:'markers',marker:{color:ic[inst],size:4.5,symbol:'circle',line:{width:0.8,color:'rgba(0,0,0,0.4)'}},
+        name:inst,legendgroup:inst,showlegend:false,
+        hovertemplate:'O−C: %{y:.2f} m/s<extra>'+inst+'</extra>',
+        xaxis:'x',yaxis:'y2',
+      });
+    }
+  }
+
+  const axBase=getPlotLayout().xaxis;
+  const layout=getPlotLayout({
+    height:360, margin:{l:56,r:18,t:22,b:44},
+    showlegend:true,
+    legend:{x:0,y:1.02,xanchor:'left',yanchor:'bottom',orientation:'h',font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0},
+    ...(params?{
+      xaxis:{...axBase,title:{text:'BJD',standoff:5},tickfont:{size:8},anchor:'y2',domain:[0,1]},
+      yaxis:{...axBase,title:{text:'RV − γ  (m/s)',standoff:4},tickfont:{size:8},domain:[0.30,1.0]},
+      yaxis2:{...axBase,title:{text:'O−C (m/s)',standoff:4,font:{size:8}},tickfont:{size:7},domain:[0,0.25],zeroline:true},
+    }:{
+      xaxis:{title:{text:'BJD',standoff:5},tickfont:{size:8}},
+      yaxis:{title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}},
+    }),
+  });
+  Plotly.react('wsTimeseries',traces,layout,{responsive:true,displayModeBar:false});
+}
+
+/* Panel B: Phase-folded */
+function wsRenderPhase(data,params){
+  const P  =params?params.P:(WS.bestP||10);
+  const T0 =params?params.T0:data[0].t;
+  const ic={};
+  WS.instruments.forEach((inst,i)=>ic[inst]=INST_COLORS[i%INST_COLORS.length]);
+  const traces=[];
+
+  for(const inst of WS.instruments){
+    const rows=data.filter(d=>d.inst===inst);
+    const gamma=params?(params.gammas[inst]||0):0;
+    const ph=rows.map(d=>((d.t-T0)%P+P)%P/P);
+    const rv=rows.map(d=>d.rv-gamma);
+    /* ghost points for adjacent cycles */
+    traces.push({x:[...ph.map(p=>p-1),...ph.map(p=>p+1)],y:[...rv,...rv],
+      mode:'markers',marker:{color:'rgba(100,120,150,0.28)',size:3.5},
+      showlegend:false,hoverinfo:'skip'});
+    traces.push({
+      x:ph,y:rv,
+      error_y:{type:'data',array:rows.map(d=>d.err),visible:true,color:ic[inst]+'55',thickness:1.2,width:3},
+      mode:'markers',marker:{color:ic[inst],size:5.5,symbol:'circle',line:{width:0.9,color:'rgba(0,0,0,0.45)'}},
+      name:inst,showlegend:true,
+      hovertemplate:'<b>'+inst+'</b><br>Phase: %{x:.4f}<br>RV: %{y:.1f} m/s<extra></extra>',
+    });
+  }
+  /* Keplerian curve */
+  if(params){
+    const phArr=Array.from({length:400},(_,i)=>i/399);
+    const mrv=phArr.map(ph=>wsKepRV(T0+ph*P,params.P,params.K,params.e,params.omega,params.T0));
+    traces.push({x:phArr,y:mrv,mode:'lines',line:{color:'rgba(255,255,255,0.72)',width:2.2},
+      name:'Keplerian',showlegend:true,hoverinfo:'skip'});
+  }
+  const layout=getPlotLayout({
+    height:340,margin:{l:56,r:18,t:22,b:50},
+    showlegend:true,
+    legend:{x:0,y:1.02,xanchor:'left',yanchor:'bottom',orientation:'h',font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0},
+    xaxis:{title:{text:'Phase  (P = '+P.toFixed(4)+' d)',standoff:5},range:[-0.06,1.06],tickfont:{size:8}},
+    yaxis:{title:{text:'RV − γ  (m/s)',standoff:4},tickfont:{size:8}},
+  });
+  Plotly.react('wsPhase',traces,layout,{responsive:true,displayModeBar:false});
+}
+
+/* Panel C: GLS periodogram */
+function wsRenderGLS(gls){
+  if(!gls||!gls.freqs.length) return;
+  const data=WS.raw; if(!data.length) return;
+  const N=data.length,M=gls.freqs.length;
+  const yData=WS.showWindow?computeWindowFn(data.map(d=>d.t),gls.freqs):gls.powers;
+  const f10=glsFAP(0.10,N,M),f1=glsFAP(0.01,N,M),f01=glsFAP(0.001,N,M);
+  const ymax=Math.max(...yData,f01*1.08,0.05);
+  const traces=[
+    {x:gls.periods,y:yData,mode:'lines',
+     line:{color:WS.showWindow?'#c0a0ff':'#74f2c8',width:1.8},
+     name:WS.showWindow?'Window function':'GLS power',
+     hovertemplate:'P=%{x:.4f} d<br>Power=%{y:.4f}<extra></extra>'},
+  ];
+  if(!WS.showWindow){
+    const ext=[gls.periods[0],gls.periods[gls.periods.length-1]];
+    traces.push({x:ext,y:[f10,f10],mode:'lines',line:{color:'#8aaccc',width:1,dash:'dot' },name:'FAP 10%',hoverinfo:'skip'});
+    traces.push({x:ext,y:[f1,f1],  mode:'lines',line:{color:'#ffbc73',width:1,dash:'dash'},name:'FAP 1%' ,hoverinfo:'skip'});
+    traces.push({x:ext,y:[f01,f01],mode:'lines',line:{color:'#ff7d90',width:1,dash:'dash'},name:'FAP 0.1%',hoverinfo:'skip'});
+    if(gls.bestP) traces.push({
+      x:[gls.bestP,gls.bestP],y:[0,ymax],
+      mode:'lines',line:{color:'rgba(255,188,115,0.45)',width:1.5,dash:'dot'},
+      name:'P='+gls.bestP.toFixed(3)+'d',hoverinfo:'skip',
+    });
+  }
+  const layout=getPlotLayout({
+    height:340,margin:{l:56,r:18,t:22,b:50},
+    showlegend:true,
+    legend:{x:1,xanchor:'right',y:1,font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0},
+    xaxis:{type:'log',title:{text:'Period (days)',standoff:5},tickfont:{size:8}},
+    yaxis:{title:{text:WS.showWindow?'Window power':'GLS power',standoff:4},range:[0,ymax*1.06],tickfont:{size:8}},
+  });
+  Plotly.react('wsGLS',traces,layout,{responsive:true,displayModeBar:false});
+}
+
+/* Panel D: Activity diagnostics */
+function wsRenderActivity(data){
+  const mode=WS.actMode;
+  const has=mode==='bis'?WS.hasBIS:WS.hasFWHM;
+  const ic={};
+  WS.instruments.forEach((inst,i)=>ic[inst]=INST_COLORS[i%INST_COLORS.length]);
+  const label=mode==='bis'?'BIS  (m/s)':'FWHM  (m/s)';
+
+  if(!has){
+    document.getElementById('wsActivityNote').textContent=
+      'RV vs '+(mode==='bis'?'BIS':'FWHM')+' — upload data with that column to activate';
+    Plotly.react('wsActivity',[],getPlotLayout({height:340,
+      xaxis:{title:{text:label,standoff:5}},yaxis:{title:{text:'RV (m/s)',standoff:4}}}),
+      {responsive:true,displayModeBar:false});
+    return;
+  }
+
+  const traces=[]; const allX=[],allY=[];
+  for(const inst of WS.instruments){
+    const rows=data.filter(d=>d.inst===inst&&d[mode]!==null&&!isNaN(d[mode]));
+    if(!rows.length) continue;
+    const xs=rows.map(d=>d[mode]),ys=rows.map(d=>d.rv);
+    allX.push(...xs); allY.push(...ys);
+    traces.push({
+      x:xs,y:ys,
+      error_y:{type:'data',array:rows.map(d=>d.err),visible:true,color:ic[inst]+'55',thickness:1,width:2.5},
+      mode:'markers',marker:{color:ic[inst],size:5.5,symbol:'circle',line:{width:0.8,color:'rgba(0,0,0,0.4)'}},
+      name:inst,showlegend:true,
+      hovertemplate:'<b>'+inst+'</b><br>'+(mode==='bis'?'BIS':'FWHM')+': %{x:.1f}<br>RV: %{y:.1f} m/s<extra></extra>',
+    });
+  }
+
+  if(allX.length>2){
+    const{r,a,b}=pearsonR(allX,allY);
+    const xmin=Math.min(...allX),xmax=Math.max(...allX);
+    traces.push({x:[xmin,xmax],y:[a+b*xmin,a+b*xmax],
+      mode:'lines',line:{color:'rgba(255,188,115,0.65)',width:1.6,dash:'dash'},
+      name:'r = '+r.toFixed(3),showlegend:true,hoverinfo:'skip'});
+    const interp=Math.abs(r)>0.7?'⚠ Strong correlation → stellar activity signal'
+                :Math.abs(r)>0.4?'~ Moderate correlation → investigate further'
+                                 :'✓ No correlation → Keplerian signal likely genuine';
+    document.getElementById('wsActivityNote').textContent=
+      'RV vs '+(mode==='bis'?'BIS':'FWHM')+' · Pearson r = '+r.toFixed(3)+' · '+interp;
+  }
+
+  const layout=getPlotLayout({
+    height:340,margin:{l:56,r:18,t:22,b:50},
+    showlegend:true,
+    legend:{x:0,y:1.02,xanchor:'left',yanchor:'bottom',orientation:'h',font:{size:7},bgcolor:'rgba(0,0,0,0)',borderwidth:0},
+    xaxis:{title:{text:label,standoff:5},tickfont:{size:8}},
+    yaxis:{title:{text:'RV (m/s)',standoff:4},tickfont:{size:8}},
+  });
+  Plotly.react('wsActivity',traces,layout,{responsive:true,displayModeBar:false});
+}
+
+/* ── Fit results panel ── */
+function wsShowFitResults(p){
+  document.getElementById('wsFitResults').style.display='block';
+  const rms=Math.sqrt(p.chi2/Math.max(p.dof,1));
+  const gRows=WS.instruments.map(inst=>
+    `<div class="ws-param-row"><span style="color:#8aaccc">γ (${inst})</span><span style="color:#ffbc73">${(p.gammas[inst]||0).toFixed(2)} m/s</span></div>`
+  ).join('');
+  document.getElementById('wsFitResultsContent').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div>
+        <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.12em;color:#4d6882;margin-bottom:8px">Orbital Parameters</div>
+        ${[['Period P',p.P.toFixed(6)+' d'],['Semi-amplitude K',p.K.toFixed(2)+' m/s'],
+           ['Eccentricity e',p.e.toFixed(4)],['Arg. periastron ω',(p.omega*180/Math.PI).toFixed(1)+'°'],
+           ['Ref. epoch T₀',p.T0.toFixed(2)+' (BJD)'],
+        ].map(([l,v])=>`<div class="ws-param-row"><span style="color:#8aaccc;font-size:.62rem">${l}</span><span style="color:#74f2c8;font-size:.62rem;font-weight:700">${v}</span></div>`).join('')}
+      </div>
+      <div>
+        <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.12em;color:#4d6882;margin-bottom:8px">Fit Quality &amp; Instrument Offsets</div>
+        ${[['χ²/dof',(p.chi2/Math.max(p.dof,1)).toFixed(2)],['RMS residuals',rms.toFixed(2)+' m/s'],['N points',WS.raw.length]
+        ].map(([l,v])=>`<div class="ws-param-row"><span style="color:#8aaccc;font-size:.62rem">${l}</span><span style="color:#ffbc73;font-size:.62rem;font-weight:700">${v}</span></div>`).join('')}
+        ${gRows}
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:.56rem;color:#4d6882">Grid search over 9×12×18×5 = 9,720 evaluations at fixed period. For publication-quality results with full MCMC and GP noise modelling use <a href="https://radvel.readthedocs.io" target="_blank" style="color:#74f2c8">RadVel</a>.</div>`;
+}
+
+/* ── Called when tab becomes active ── */
+function wsOnTabShow(){
+  if(WS.raw.length){
+    if(WS.glsResult) wsRenderGLS(WS.glsResult);
+    wsRenderTimeseries(WS.raw,WS.fitParams);
+    if(WS.bestP||WS.fitParams) wsRenderPhase(WS.raw,WS.fitParams);
+    wsRenderActivity(WS.raw);
+  }
+}
 </script>
 </body>
 </html>
