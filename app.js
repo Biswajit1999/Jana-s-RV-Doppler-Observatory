@@ -1,45 +1,109 @@
 const state = {
+  activeTarget: null,
   rows: [],
   gls: null,
   fit: null,
-  mode: "empty",
-  source: "none"
+  mode: "Synthetic Demo",
+  source: "Synthetic demonstration dataset"
 };
 
-const COLORS = ["#78f2d2", "#85dfff", "#ffc06f", "#bea7ff", "#ff8095", "#96ffbf"];
+const COLORS = ["#26f0ff", "#39ff7f", "#ffd15c", "#b59cff", "#ff667c", "#80ffd0"];
+
+const TARGETS = [
+  {
+    key: "51 peg",
+    planet: "51 Pegasi b",
+    host: "51 Peg",
+    aliases: ["51 peg", "51 pegasi", "51 pegasi b", "hd 217014"],
+    type: "Star + hot Jupiter",
+    ra: "22:57:27.98",
+    dec: "+20:46:07.8",
+    spt: "G2IV",
+    vmag: "5.49",
+    distance: "15.6 pc",
+    parallax: "64.1 mas",
+    period: 4.2308,
+    k: 55.9,
+    ecc: 0.013,
+    mass: "0.46 MJ",
+    semiMajor: "0.052 AU",
+    omega: 78,
+    note: "Canonical RV hot-Jupiter system used here as a demonstration target."
+  },
+  {
+    key: "hd 189733",
+    planet: "HD 189733 b",
+    host: "HD 189733",
+    aliases: ["hd 189733", "hd189733", "hd 189733 b"],
+    type: "Star + transiting hot Jupiter",
+    ra: "20:00:43.71",
+    dec: "+22:42:39.1",
+    spt: "K1V",
+    vmag: "7.67",
+    distance: "19.8 pc",
+    parallax: "50.6 mas",
+    period: 2.2186,
+    k: 205.0,
+    ecc: 0.004,
+    mass: "1.13 MJ",
+    semiMajor: "0.031 AU",
+    omega: 90,
+    note: "Bright transiting hot-Jupiter system useful for RV plus photometry workflows."
+  },
+  {
+    key: "proxima cen",
+    planet: "Proxima Centauri b",
+    host: "Proxima Cen",
+    aliases: ["proxima", "proxima cen", "proxima centauri", "proxima b", "proxima centauri b"],
+    type: "M dwarf + terrestrial candidate",
+    ra: "14:29:42.95",
+    dec: "-62:40:46.1",
+    spt: "M5.5V",
+    vmag: "11.13",
+    distance: "1.30 pc",
+    parallax: "768.5 mas",
+    period: 11.186,
+    k: 1.4,
+    ecc: 0.08,
+    mass: "≥1.1 M⊕",
+    semiMajor: "0.049 AU",
+    omega: 110,
+    note: "Low-amplitude nearby M-dwarf RV system; useful for demonstrating activity caution."
+  }
+];
 
 const plotBase = {
   paper_bgcolor: "transparent",
   plot_bgcolor: "transparent",
   font: {
     family: "Inter, system-ui, sans-serif",
-    color: "#a0b3d1",
-    size: 11
+    color: "#7f9aa7",
+    size: 10
   },
-  margin: { l: 62, r: 20, t: 42, b: 54 },
+  margin: { l: 55, r: 18, t: 26, b: 44 },
   xaxis: {
-    gridcolor: "rgba(255,255,255,0.055)",
-    linecolor: "rgba(255,255,255,0.16)",
-    tickcolor: "rgba(255,255,255,0.25)",
+    gridcolor: "rgba(117,238,255,0.055)",
+    linecolor: "rgba(117,238,255,0.18)",
+    tickcolor: "rgba(117,238,255,0.22)",
+    zerolinecolor: "rgba(117,238,255,0.12)",
     ticks: "inside",
-    showline: true,
-    zerolinecolor: "rgba(255,255,255,0.12)"
+    showline: true
   },
   yaxis: {
-    gridcolor: "rgba(255,255,255,0.055)",
-    linecolor: "rgba(255,255,255,0.16)",
-    tickcolor: "rgba(255,255,255,0.25)",
+    gridcolor: "rgba(117,238,255,0.055)",
+    linecolor: "rgba(117,238,255,0.18)",
+    tickcolor: "rgba(117,238,255,0.22)",
+    zerolinecolor: "rgba(117,238,255,0.12)",
     ticks: "inside",
-    showline: true,
-    zerolinecolor: "rgba(255,255,255,0.12)"
+    showline: true
   }
 };
 
 function layout(extra = {}) {
-  const out = { ...plotBase, ...extra };
-  if (extra.xaxis) out.xaxis = { ...plotBase.xaxis, ...extra.xaxis };
-  if (extra.yaxis) out.yaxis = { ...plotBase.yaxis, ...extra.yaxis };
-  return out;
+  const output = { ...plotBase, ...extra };
+  if (extra.xaxis) output.xaxis = { ...plotBase.xaxis, ...extra.xaxis };
+  if (extra.yaxis) output.yaxis = { ...plotBase.yaxis, ...extra.yaxis };
+  return output;
 }
 
 function fmt(value, digits = 3) {
@@ -57,6 +121,16 @@ function std(arr) {
 
 function rms(arr) {
   return Math.sqrt(mean(arr.map(x => x * x)));
+}
+
+function safeSet(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+function setUTCClock() {
+  const now = new Date();
+  safeSet("utcClock", now.toISOString().slice(11, 19));
 }
 
 function splitCSVLine(line) {
@@ -163,7 +237,6 @@ function keplerianRV(t, p) {
   const M = ((2 * Math.PI / p.P) * (((t - p.T0) % p.P) + p.P)) % (2 * Math.PI);
   const E = solveKepler(M, p.e);
   const nu = trueAnomaly(E, p.e);
-
   return p.K * (Math.cos(p.w + nu) + p.e * Math.cos(p.w));
 }
 
@@ -196,10 +269,7 @@ function instrumentOffsets(rows, params) {
 
 function residuals(rows, params) {
   const gammas = params.gammas || instrumentOffsets(rows, params);
-
-  return rows.map(r =>
-    r.rv - (gammas[r.inst] || 0) - keplerianRV(r.t, params)
-  );
+  return rows.map(r => r.rv - (gammas[r.inst] || 0) - keplerianRV(r.t, params));
 }
 
 function computeGLS(rows, nfreq = 1200) {
@@ -210,7 +280,7 @@ function computeGLS(rows, nfreq = 1200) {
   const N = t.length;
   const span = t[N - 1] - t[0];
 
-  const fmin = 2 / span;
+  const fmin = Math.max(1e-6, 2 / span);
   const fmax = Math.min(2, (N / (2 * span)) * 10);
 
   const w = e.map(x => 1 / (x * x));
@@ -284,14 +354,7 @@ function computeGLS(rows, nfreq = 1200) {
     }
   }
 
-  return {
-    periods,
-    powers,
-    bestP,
-    bestZ,
-    N,
-    M: nfreq
-  };
+  return { periods, powers, bestP, bestZ, N, M: nfreq };
 }
 
 function fapLevel(fap, N, M) {
@@ -302,10 +365,17 @@ function fitAtPeriod(rows, P) {
   const rvs = rows.map(r => r.rv);
   const K0 = (Math.max(...rvs) - Math.min(...rvs)) / 2;
 
-  const eGrid = [0, 0.05, 0.1, 0.2, 0.35, 0.5, 0.7];
+  const eInput = parseFloat(document.getElementById("eccInput").value);
+  const omegaInput = parseFloat(document.getElementById("omegaInput").value);
+
+  const eGrid = [...new Set([0, 0.02, 0.05, 0.1, 0.2, 0.35, 0.5, Number.isFinite(eInput) ? eInput : 0])]
+    .filter(e => e >= 0 && e < 0.9);
+
   const wGrid = Array.from({ length: 18 }, (_, i) => i * 20 * Math.PI / 180);
+  if (Number.isFinite(omegaInput)) wGrid.push(omegaInput * Math.PI / 180);
+
   const kGrid = [0.55, 0.75, 1, 1.25, 1.55].map(x => x * K0);
-  const t0Grid = Array.from({ length: 30 }, (_, i) => rows[0].t + i * P / 30);
+  const t0Grid = Array.from({ length: 32 }, (_, i) => rows[0].t + i * P / 32);
 
   let best = {
     chi2: Infinity,
@@ -341,7 +411,6 @@ function fitAtPeriod(rows, P) {
 
   best.residuals = residuals(rows, best);
   best.rms = rms(best.residuals);
-
   return best;
 }
 
@@ -360,7 +429,7 @@ function byInstrumentTrace(rows, yFn, xFn) {
         color: COLORS[i % COLORS.length],
         size: 6,
         line: {
-          color: "#06101e",
+          color: "#02070d",
           width: 1
         }
       },
@@ -376,6 +445,233 @@ function byInstrumentTrace(rows, yFn, xFn) {
   });
 }
 
+function pearson(xs, ys) {
+  const valid = [];
+
+  for (let i = 0; i < xs.length; i++) {
+    if (Number.isFinite(xs[i]) && Number.isFinite(ys[i])) {
+      valid.push([xs[i], ys[i]]);
+    }
+  }
+
+  if (valid.length < 3) return NaN;
+
+  const x = valid.map(v => v[0]);
+  const y = valid.map(v => v[1]);
+
+  const mx = mean(x);
+  const my = mean(y);
+
+  let cov = 0;
+  let sx = 0;
+  let sy = 0;
+
+  for (let i = 0; i < x.length; i++) {
+    const dx = x[i] - mx;
+    const dy = y[i] - my;
+
+    cov += dx * dy;
+    sx += dx * dx;
+    sy += dy * dy;
+  }
+
+  return cov / Math.sqrt(sx * sy);
+}
+
+function findTarget(query) {
+  const q = query.toLowerCase().trim();
+  return TARGETS.find(t => t.aliases.some(alias => alias.includes(q) || q.includes(alias))) || TARGETS[0];
+}
+
+function setTarget(target) {
+  state.activeTarget = target;
+
+  safeSet("targetName", target.planet);
+  safeSet("hostName", target.host);
+  safeSet("targetRA", target.ra);
+  safeSet("targetDec", target.dec);
+  safeSet("targetSpT", target.spt);
+  safeSet("targetDist", target.distance);
+  safeSet("targetK", `${target.k} m/s`);
+
+  safeSet("dashPlanet", target.planet);
+  safeSet("dashPeriod", `${target.period} d`);
+  safeSet("dashMass", target.mass);
+  safeSet("dashEcc", String(target.ecc));
+
+  safeSet("idMain", target.host);
+  safeSet("idType", target.type);
+  safeSet("idRA", target.ra);
+  safeSet("idDec", target.dec);
+  safeSet("idVmag", target.vmag);
+  safeSet("idDistance", target.distance);
+  safeSet("idParallax", target.parallax);
+  safeSet("idSpT", target.spt);
+
+  document.getElementById("periodInput").value = target.period;
+  document.getElementById("kInput").value = target.k;
+  document.getElementById("eccInput").value = target.ecc;
+  document.getElementById("omegaInput").value = target.omega;
+
+  renderPlanetTable(target);
+  drawSkyCanvas(target);
+  loadSyntheticDemo(target, false);
+  renderReport();
+}
+
+function renderTargetList() {
+  const container = document.getElementById("targetList");
+
+  container.innerHTML = TARGETS.map(t => `
+    <button data-target="${t.key}">
+      <strong>${t.planet}</strong>
+      <small>${t.host} · ${t.spt} · ${t.distance}</small>
+    </button>
+  `).join("");
+
+  container.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => {
+      const target = TARGETS.find(t => t.key === button.dataset.target);
+      setTarget(target);
+    });
+  });
+}
+
+function renderPlanetTable(target) {
+  const rows = [
+    ["Planet", target.planet],
+    ["Host", target.host],
+    ["Period", `${target.period} d`],
+    ["K semi-amplitude", `${target.k} m/s`],
+    ["Eccentricity", target.ecc],
+    ["m sin i", target.mass],
+    ["Semi-major axis", target.semiMajor],
+    ["Note", target.note]
+  ];
+
+  document.getElementById("planetTable").innerHTML = rows.map(row => `
+    <div><span>${row[0]}</span><strong>${row[1]}</strong></div>
+  `).join("");
+}
+
+function drawSkyCanvas(target) {
+  const canvas = document.getElementById("skyCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = "#02070d";
+  ctx.fillRect(0, 0, w, h);
+
+  const seedText = target.host + target.ra + target.dec;
+  let seed = 0;
+  for (let i = 0; i < seedText.length; i++) seed += seedText.charCodeAt(i) * (i + 1);
+
+  const rand = () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+
+  for (let i = 0; i < 140; i++) {
+    const x = rand() * w;
+    const y = rand() * h;
+    const r = 0.5 + rand() * 1.7;
+    const alpha = 0.3 + rand() * 0.7;
+
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(210,245,255,${alpha})`;
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  const cx = w * 0.52;
+  const cy = h * 0.48;
+
+  ctx.strokeStyle = "rgba(38,240,255,0.35)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx, 0);
+  ctx.lineTo(cx, h);
+  ctx.moveTo(0, cy);
+  ctx.lineTo(w, cy);
+  ctx.stroke();
+
+  ctx.strokeStyle = "rgba(38,240,255,0.8)";
+  ctx.lineWidth = 1.4;
+
+  for (const radius of [22, 45, 70]) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  ctx.beginPath();
+  ctx.fillStyle = "#ffffff";
+  ctx.shadowColor = "#26f0ff";
+  ctx.shadowBlur = 18;
+  ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
+
+  ctx.fillStyle = "#26f0ff";
+  ctx.font = "12px JetBrains Mono";
+  ctx.fillText(target.host, 16, 24);
+  ctx.fillStyle = "#7f9aa7";
+  ctx.fillText(`RA ${target.ra}`, 16, h - 34);
+  ctx.fillText(`DEC ${target.dec}`, 16, h - 16);
+}
+
+function generateSyntheticRows(target) {
+  let seed = 42;
+
+  const rand = () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 4294967296;
+  };
+
+  const gauss = () =>
+    Math.sqrt(-2 * Math.log(rand() + 1e-10)) * Math.cos(2 * Math.PI * rand());
+
+  const params = {
+    P: target.period,
+    K: target.k,
+    e: target.ecc,
+    w: target.omega * Math.PI / 180,
+    T0: 2451500
+  };
+
+  const rows = [];
+
+  const blocks = [
+    { t: 2451500, n: 38, inst: "HARPS", gamma: 0 },
+    { t: 2451880, n: 24, inst: "HIRES", gamma: target.k * 0.08 },
+    { t: 2452520, n: 28, inst: "ESPRESSO", gamma: -target.k * 0.04 }
+  ];
+
+  const noiseScale = Math.max(0.75, Math.min(3.2, target.k * 0.035));
+
+  for (const block of blocks) {
+    for (let i = 0; i < block.n; i++) {
+      const t = block.t + rand() * 170;
+
+      rows.push({
+        t,
+        rv: keplerianRV(t, params) + block.gamma + gauss() * noiseScale,
+        err: 0.6 + rand() * 1.2,
+        inst: block.inst,
+        bis: gauss() * (target.k * 0.18),
+        fwhm: 7200 + gauss() * 65
+      });
+    }
+  }
+
+  rows.sort((a, b) => a.t - b.t);
+  return rows;
+}
+
 function setData(rows, source, mode) {
   state.rows = rows;
   state.source = source;
@@ -383,59 +679,71 @@ function setData(rows, source, mode) {
   state.gls = null;
   state.fit = null;
 
-  document.getElementById("startPanel").classList.add("hidden");
-  document.getElementById("dashboard").classList.add("active");
+  safeSet("systemMode", mode);
+  safeSet("rvSourceLabel", mode === "Uploaded RV Data" ? "uploaded file" : "synthetic demo");
 
-  document.getElementById("sourceText").textContent = "Source: " + source;
-  document.getElementById("metaText").textContent =
-    `${mode === "synthetic" ? "Synthetic demo dataset" : "User-loaded RV table"} · ` +
-    `${rows.length} points · ${new Set(rows.map(r => r.inst)).size} instrument(s)`;
-
-  updateKPIs();
+  updateFitSummary();
   renderAllPlots();
-  updateSummary();
-  setStatus(`Loaded ${rows.length} rows. Run GLS or fit a known period.`);
+  renderActivitySummary();
+  renderReport();
 }
 
-function updateKPIs() {
-  const rows = state.rows;
-  const rv = rows.map(r => r.rv);
-  const inst = new Set(rows.map(r => r.inst));
+function loadSyntheticDemo(target = state.activeTarget || TARGETS[0], updateMode = true) {
+  const rows = generateSyntheticRows(target);
 
-  const baseline = (rows.at(-1).t - rows[0].t) / 365.25;
-  const span = Math.max(...rv) - Math.min(...rv);
+  if (updateMode) state.mode = "Synthetic Demo";
 
-  const data = [
-    ["Rows", rows.length],
-    ["Baseline", fmt(baseline, 2) + " yr"],
-    ["RV span", fmt(span, 1) + " m/s"],
-    ["σ RV", fmt(std(rv), 1) + " m/s"],
-    ["Instruments", inst.size]
-  ];
+  setData(
+    rows,
+    `Synthetic ${target.planet} demonstration — not telescope measurements`,
+    "Synthetic Demo"
+  );
 
-  document.getElementById("kpiGrid").innerHTML = data.map(
-    item => `
-      <div class="kpi-card">
-        <span>${item[0]}</span>
-        <strong>${item[1]}</strong>
-      </div>
-    `
-  ).join("");
+  state.gls = computeGLS(rows);
+  state.fit = fitAtPeriod(rows, target.period);
+
+  renderAllPlots();
+  updateFitSummary();
+  renderActivitySummary();
+  renderReport();
+}
+
+function updateFitSummary() {
+  const rows = state.rows || [];
+  const bestP = state.gls ? `${fmt(state.gls.bestP, 6)} d` : "—";
+  const residual = state.fit ? `${fmt(state.fit.rms, 2)} m/s` : "—";
+
+  document.getElementById("fitSummary").innerHTML = `
+    <div><span>Rows</span><strong>${rows.length || "—"}</strong></div>
+    <div><span>Best period</span><strong>${bestP}</strong></div>
+    <div><span>RMS residual</span><strong>${residual}</strong></div>
+  `;
 }
 
 function renderAllPlots() {
-  renderRVPlot();
-  renderPhasePlot();
-  renderResidualPlot();
-  renderActivityPlot();
+  renderRVPlot("rvPlot");
+  renderRVPlot("labRVPlot");
+
+  renderPhasePlot("phasePlot");
+  renderPhasePlot("labPhasePlot");
+
+  renderResidualPlot("residualPlot");
+  renderResidualPlot("labResidualPlot");
+
+  renderActivityPlot("activityPlot");
 
   if (state.gls) {
-    renderPeriodogram();
+    renderPeriodogram("periodogramPlot");
+    renderPeriodogram("labGLSPlot");
+  } else {
+    renderEmptyPeriodogram("periodogramPlot");
+    renderEmptyPeriodogram("labGLSPlot");
   }
 }
 
-function renderRVPlot() {
+function renderRVPlot(divId) {
   const rows = state.rows;
+  if (!rows.length) return;
 
   const traces = byInstrumentTrace(
     rows,
@@ -446,7 +754,7 @@ function renderRVPlot() {
   if (state.fit) {
     const t0 = rows[0].t;
     const t1 = rows.at(-1).t;
-    const tt = Array.from({ length: 700 }, (_, i) => t0 + i * (t1 - t0) / 699);
+    const tt = Array.from({ length: 800 }, (_, i) => t0 + i * (t1 - t0) / 799);
 
     traces.push({
       x: tt,
@@ -458,20 +766,36 @@ function renderRVPlot() {
   }
 
   Plotly.react(
-    "rvPlot",
+    divId,
     traces,
     layout({
-      title: "RV time series",
+      title: "Radial velocity time series",
       xaxis: { title: "BJD" },
       yaxis: { title: state.fit ? "RV − γ (m/s)" : "RV (m/s)" },
-      showlegend: true
+      showlegend: true,
+      legend: { orientation: "h", x: 0, y: 1.15 }
     }),
     { responsive: true, displayModeBar: false }
   );
 }
 
-function renderPeriodogram() {
+function renderEmptyPeriodogram(divId) {
+  Plotly.react(
+    divId,
+    [],
+    layout({
+      title: "Run GLS to generate periodogram",
+      xaxis: { title: "Period (days)" },
+      yaxis: { title: "Power" }
+    }),
+    { responsive: true, displayModeBar: false }
+  );
+}
+
+function renderPeriodogram(divId) {
   const g = state.gls;
+  if (!g) return renderEmptyPeriodogram(divId);
+
   const ymax = Math.max(...g.powers, fapLevel(0.001, g.N, g.M) * 1.08);
 
   const traces = [
@@ -480,14 +804,14 @@ function renderPeriodogram() {
       y: g.powers,
       mode: "lines",
       name: "GLS power",
-      line: { color: "#78f2d2", width: 2 }
+      line: { color: "#26f0ff", width: 2 }
     }
   ];
 
   [
-    [0.1, "FAP 10%", "#91a6c7"],
-    [0.01, "FAP 1%", "#ffc06f"],
-    [0.001, "FAP 0.1%", "#ff8095"]
+    [0.1, "FAP 10%", "#7f9aa7"],
+    [0.01, "FAP 1%", "#ffd15c"],
+    [0.001, "FAP 0.1%", "#ff667c"]
   ].forEach(row => {
     traces.push({
       x: [g.periods[0], g.periods.at(-1)],
@@ -502,12 +826,12 @@ function renderPeriodogram() {
     x: [g.bestP, g.bestP],
     y: [0, ymax],
     mode: "lines",
-    name: "Best P = " + fmt(g.bestP, 5) + " d",
-    line: { color: "#bea7ff", dash: "dot", width: 1.5 }
+    name: `Best P = ${fmt(g.bestP, 5)} d`,
+    line: { color: "#b59cff", dash: "dot", width: 1.5 }
   });
 
   Plotly.react(
-    "periodogramPlot",
+    divId,
     traces,
     layout({
       title: "Generalized Lomb–Scargle periodogram",
@@ -519,8 +843,10 @@ function renderPeriodogram() {
   );
 }
 
-function renderPhasePlot() {
+function renderPhasePlot(divId) {
   const rows = state.rows;
+  if (!rows.length) return;
+
   const P = state.fit
     ? state.fit.P
     : state.gls
@@ -536,7 +862,7 @@ function renderPhasePlot() {
   );
 
   if (state.fit) {
-    const ph = Array.from({ length: 400 }, (_, i) => i / 399);
+    const ph = Array.from({ length: 500 }, (_, i) => i / 499);
 
     traces.push({
       x: ph,
@@ -548,7 +874,7 @@ function renderPhasePlot() {
   }
 
   Plotly.react(
-    "phasePlot",
+    divId,
     traces,
     layout({
       title: "Phase-folded RV curve",
@@ -560,10 +886,10 @@ function renderPhasePlot() {
   );
 }
 
-function renderResidualPlot() {
+function renderResidualPlot(divId) {
   if (!state.fit) {
     Plotly.react(
-      "residualPlot",
+      divId,
       [],
       layout({
         title: "Residuals appear after Keplerian fit",
@@ -604,7 +930,7 @@ function renderResidualPlot() {
   });
 
   Plotly.react(
-    "residualPlot",
+    divId,
     traces,
     layout({
       title: "Observed − computed residuals",
@@ -616,40 +942,7 @@ function renderResidualPlot() {
   );
 }
 
-function pearson(xs, ys) {
-  const valid = [];
-
-  for (let i = 0; i < xs.length; i++) {
-    if (Number.isFinite(xs[i]) && Number.isFinite(ys[i])) {
-      valid.push([xs[i], ys[i]]);
-    }
-  }
-
-  if (valid.length < 3) return NaN;
-
-  const x = valid.map(v => v[0]);
-  const y = valid.map(v => v[1]);
-
-  const mx = mean(x);
-  const my = mean(y);
-
-  let cov = 0;
-  let sx = 0;
-  let sy = 0;
-
-  for (let i = 0; i < x.length; i++) {
-    const dx = x[i] - mx;
-    const dy = y[i] - my;
-
-    cov += dx * dy;
-    sx += dx * dx;
-    sy += dy * dy;
-  }
-
-  return cov / Math.sqrt(sx * sy);
-}
-
-function renderActivityPlot() {
+function renderActivityPlot(divId) {
   const rows = state.rows;
 
   const key = rows.some(r => Number.isFinite(r.bis))
@@ -660,7 +953,7 @@ function renderActivityPlot() {
 
   if (!key) {
     Plotly.react(
-      "activityPlot",
+      divId,
       [],
       layout({
         title: "Activity diagnostics unavailable: upload BIS or FWHM",
@@ -684,16 +977,16 @@ function renderActivityPlot() {
       x: [NaN],
       y: [NaN],
       mode: "markers",
-      name: "Pearson r = " + fmt(rValue, 3),
-      marker: { color: "#ffc06f" }
+      name: `Pearson r = ${fmt(rValue, 3)}`,
+      marker: { color: "#ffd15c" }
     });
   }
 
   Plotly.react(
-    "activityPlot",
+    divId,
     traces,
     layout({
-      title: "Activity diagnostic: RV vs " + key.toUpperCase(),
+      title: `RV versus ${key.toUpperCase()}`,
       xaxis: { title: key.toUpperCase() },
       yaxis: { title: "RV (m/s)" },
       showlegend: true
@@ -702,90 +995,102 @@ function renderActivityPlot() {
   );
 }
 
-function updateSummary() {
-  const rows = [
-    ["Data mode", state.mode === "synthetic" ? "Synthetic demo" : "User-uploaded / loaded file"],
-    ["Rows", state.rows.length],
-    ["Best GLS P", state.gls ? fmt(state.gls.bestP, 6) + " d" : "—"]
-  ];
+function renderActivitySummary() {
+  const rows = state.rows;
 
-  if (state.fit) {
-    rows.push(
-      ["Fit P", fmt(state.fit.P, 6) + " d"],
-      ["K", fmt(state.fit.K, 2) + " m/s"],
-      ["e", fmt(state.fit.e, 3)],
-      ["ω", fmt(state.fit.w * 180 / Math.PI, 1) + "°"],
-      ["RMS residual", fmt(state.fit.rms, 2) + " m/s"]
-    );
+  const key = rows.some(r => Number.isFinite(r.bis))
+    ? "bis"
+    : rows.some(r => Number.isFinite(r.fwhm))
+      ? "fwhm"
+      : null;
+
+  if (!key) {
+    safeSet("jitterScore", "UNKNOWN");
+    safeSet("jitterText", "Upload BIS or FWHM columns to estimate activity correlation.");
+    return;
   }
 
-  document.getElementById("summaryTable").innerHTML = rows.map(
-    r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`
-  ).join("");
-}
+  const rValue = Math.abs(pearson(rows.map(r => r[key]), rows.map(r => r.rv)));
 
-function setStatus(message, isError = false) {
-  const el = document.getElementById("statusText");
-  el.innerHTML = isError ? `<span class="err">${message}</span>` : message;
-}
-
-function loadSyntheticDemo() {
-  let seed = 42;
-
-  const rand = () => {
-    seed = (seed * 1664525 + 1013904223) >>> 0;
-    return seed / 4294967296;
-  };
-
-  const gauss = () =>
-    Math.sqrt(-2 * Math.log(rand() + 1e-10)) * Math.cos(2 * Math.PI * rand());
-
-  const P = 4.2308;
-  const params = {
-    P,
-    K: 55.9,
-    e: 0.013,
-    w: 78 * Math.PI / 180,
-    T0: 2451500
-  };
-
-  const rows = [];
-
-  const blocks = [
-    { t: 2451500, n: 38, inst: "HARPS", gamma: 0 },
-    { t: 2451880, n: 24, inst: "HIRES", gamma: 12.4 },
-    { t: 2452520, n: 28, inst: "HARPS", gamma: 0 }
-  ];
-
-  for (const block of blocks) {
-    for (let i = 0; i < block.n; i++) {
-      const t = block.t + rand() * 170;
-
-      rows.push({
-        t,
-        rv: keplerianRV(t, params) + block.gamma + gauss() * 1.8,
-        err: 0.8 + rand() * 1.1,
-        inst: block.inst,
-        bis: gauss() * 28,
-        fwhm: 7200 + gauss() * 65
-      });
-    }
+  if (!Number.isFinite(rValue)) {
+    safeSet("jitterScore", "UNKNOWN");
+    safeSet("jitterText", "Not enough valid activity points.");
+    return;
   }
 
-  rows.sort((a, b) => a.t - b.t);
+  if (rValue < 0.25) {
+    safeSet("jitterScore", "LOW");
+    safeSet("jitterText", `Weak RV–${key.toUpperCase()} correlation in the current dataset.`);
+  } else if (rValue < 0.55) {
+    safeSet("jitterScore", "MEDIUM");
+    safeSet("jitterText", `Moderate RV–${key.toUpperCase()} correlation. Interpret the periodogram with caution.`);
+  } else {
+    safeSet("jitterScore", "HIGH");
+    safeSet("jitterText", `Strong RV–${key.toUpperCase()} correlation. Signal may be activity-contaminated.`);
+  }
+}
 
-  document.getElementById("periodInput").value = P;
+function renderSJDEMatrix() {
+  const matrix = document.getElementById("sjdeMatrix");
+  if (!matrix) return;
 
-  setData(rows, "Synthetic 51 Peg-like demo — not telescope measurements", "synthetic");
+  let html = "";
+  for (let i = 0; i < 240; i++) {
+    const hot = i % 17 === 0 || i % 29 === 0;
+    const cold = i % 11 === 0 || i % 7 === 0;
+    html += `<span class="matrix-cell ${hot ? "hot" : cold ? "cold" : ""}"></span>`;
+  }
 
-  state.gls = computeGLS(rows);
-  document.getElementById("periodInput").value = state.gls.bestP.toFixed(6);
+  matrix.innerHTML = html;
+}
 
-  state.fit = fitAtPeriod(rows, P);
+function renderReport() {
+  const target = state.activeTarget || TARGETS[0];
+  const rows = state.rows || [];
 
-  renderAllPlots();
-  updateSummary();
-  setStatus("Demo loaded and analysed. It is synthetic, not real telescope data.");
+  const lines = [];
+  lines.push("ODYSSEY EPRV OBSERVATORY — TARGET REPORT");
+  lines.push("==================================================");
+  lines.push("");
+  lines.push(`Target planet:      ${target.planet}`);
+  lines.push(`Host star:          ${target.host}`);
+  lines.push(`Object type:        ${target.type}`);
+  lines.push(`Coordinates:        RA ${target.ra}, Dec ${target.dec}`);
+  lines.push(`Spectral type:      ${target.spt}`);
+  lines.push(`Distance:           ${target.distance}`);
+  lines.push(`Parallax:           ${target.parallax}`);
+  lines.push("");
+  lines.push("CATALOGUE-STYLE PLANET PARAMETERS");
+  lines.push("--------------------------------------------------");
+  lines.push(`Period:             ${target.period} d`);
+  lines.push(`RV semi-amplitude:  ${target.k} m/s`);
+  lines.push(`Eccentricity:       ${target.ecc}`);
+  lines.push(`m sin i:            ${target.mass}`);
+  lines.push(`Semi-major axis:    ${target.semiMajor}`);
+  lines.push("");
+  lines.push("CURRENT DATASET");
+  lines.push("--------------------------------------------------");
+  lines.push(`Mode:               ${state.mode}`);
+  lines.push(`Source:             ${state.source}`);
+  lines.push(`Rows:               ${rows.length}`);
+  lines.push(`Instruments:        ${rows.length ? [...new Set(rows.map(r => r.inst))].join(", ") : "—"}`);
+  lines.push(`Best GLS period:    ${state.gls ? fmt(state.gls.bestP, 6) + " d" : "not computed"}`);
+  lines.push(`Fit RMS residual:   ${state.fit ? fmt(state.fit.rms, 3) + " m/s" : "not fitted"}`);
+  lines.push("");
+  lines.push("SCIENTIFIC HONESTY NOTE");
+  lines.push("--------------------------------------------------");
+  lines.push("Catalogue values and archive links provide context.");
+  lines.push("Synthetic demo curves are not telescope measurements.");
+  lines.push("Uploaded RV files are treated as user-provided data.");
+  lines.push("");
+  lines.push("ROADMAP");
+  lines.push("--------------------------------------------------");
+  lines.push("Future versions can add SIMBAD/Sesame resolution, NASA TAP");
+  lines.push("queries, DACE-style time-series links, MAST photometry, Gaia");
+  lines.push("astrometry, and line-by-line stellar-jitter modelling.");
+
+  const box = document.getElementById("reportText");
+  if (box) box.textContent = lines.join("\n");
 }
 
 function loadFile(file) {
@@ -796,9 +1101,15 @@ function loadFile(file) {
   reader.onload = () => {
     try {
       const rows = parseRV(reader.result);
-      setData(rows, "User-uploaded RV data: " + file.name, "upload");
+      setData(rows, `User-uploaded RV data: ${file.name}`, "Uploaded RV Data");
+
+      state.gls = computeGLS(rows);
+      document.getElementById("periodInput").value = state.gls.bestP.toFixed(6);
+
+      renderAllPlots();
+      updateFitSummary();
+      renderReport();
     } catch (err) {
-      setStatus("Parse error: " + err.message, true);
       alert("Parse error: " + err.message);
     }
   };
@@ -806,89 +1117,114 @@ function loadFile(file) {
   reader.readAsText(file);
 }
 
-document.getElementById("fileInput").addEventListener("change", event => {
-  loadFile(event.target.files[0]);
-});
+function switchTab(tabId) {
+  document.querySelectorAll(".nav-item").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === tabId);
+  });
 
-document.getElementById("heroUploadBtn").addEventListener("click", () => {
-  document.getElementById("fileInput").click();
-});
-
-document.getElementById("heroDemoBtn").addEventListener("click", loadSyntheticDemo);
-
-const dropZone = document.getElementById("dropZone");
-
-dropZone.addEventListener("click", () => {
-  document.getElementById("fileInput").click();
-});
-
-dropZone.addEventListener("dragover", event => {
-  event.preventDefault();
-  dropZone.classList.add("drag");
-});
-
-dropZone.addEventListener("dragleave", () => {
-  dropZone.classList.remove("drag");
-});
-
-dropZone.addEventListener("drop", event => {
-  event.preventDefault();
-  dropZone.classList.remove("drag");
-  loadFile(event.dataTransfer.files[0]);
-});
-
-document.getElementById("runPeriodogramBtn").addEventListener("click", () => {
-  if (!state.rows.length) return;
-
-  setStatus("Running GLS period search…");
+  document.querySelectorAll(".tab-panel").forEach(panel => {
+    panel.classList.toggle("active", panel.id === tabId);
+  });
 
   setTimeout(() => {
+    renderAllPlots();
+    drawSkyCanvas(state.activeTarget || TARGETS[0]);
+  }, 80);
+}
+
+function bindEvents() {
+  document.querySelectorAll(".nav-item").forEach(btn => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  });
+
+  document.getElementById("targetSearchBtn").addEventListener("click", () => {
+    const target = findTarget(document.getElementById("targetSearch").value);
+    setTarget(target);
+  });
+
+  document.getElementById("targetSearch").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      const target = findTarget(event.target.value);
+      setTarget(target);
+    }
+  });
+
+  document.getElementById("fileInput").addEventListener("change", event => {
+    loadFile(event.target.files[0]);
+  });
+
+  const dropZone = document.getElementById("dropZone");
+
+  dropZone.addEventListener("click", () => {
+    document.getElementById("fileInput").click();
+  });
+
+  dropZone.addEventListener("dragover", event => {
+    event.preventDefault();
+    dropZone.classList.add("drag");
+  });
+
+  dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("drag");
+  });
+
+  dropZone.addEventListener("drop", event => {
+    event.preventDefault();
+    dropZone.classList.remove("drag");
+    loadFile(event.dataTransfer.files[0]);
+  });
+
+  document.getElementById("demoBtn").addEventListener("click", () => {
+    loadSyntheticDemo(state.activeTarget || TARGETS[0]);
+  });
+
+  document.getElementById("runPeriodogramBtn").addEventListener("click", () => {
+    if (!state.rows.length) return;
+
     state.gls = computeGLS(state.rows);
     document.getElementById("periodInput").value = state.gls.bestP.toFixed(6);
 
-    renderPeriodogram();
-    renderPhasePlot();
-    updateSummary();
+    renderAllPlots();
+    updateFitSummary();
+    renderReport();
+  });
 
-    setStatus(
-      "GLS complete. Best period = " +
-      fmt(state.gls.bestP, 6) +
-      " d, power = " +
-      fmt(state.gls.bestZ, 3) +
-      "."
-    );
-  }, 20);
-});
+  document.getElementById("fitBtn").addEventListener("click", () => {
+    if (!state.rows.length) return;
 
-document.getElementById("fitBtn").addEventListener("click", () => {
-  if (!state.rows.length) return;
+    const P = parseFloat(document.getElementById("periodInput").value);
 
-  const P = parseFloat(document.getElementById("periodInput").value);
+    if (!Number.isFinite(P) || P <= 0) {
+      alert("Enter a valid period before fitting.");
+      return;
+    }
 
-  if (!P || P <= 0) {
-    setStatus("Enter a valid period before fitting.", true);
-    return;
-  }
-
-  setStatus("Grid fitting at P = " + fmt(P, 6) + " d…");
-
-  setTimeout(() => {
     state.fit = fitAtPeriod(state.rows, P);
 
     renderAllPlots();
-    updateSummary();
+    updateFitSummary();
+    renderActivitySummary();
+    renderReport();
+  });
 
-    setStatus("Fit complete. RMS residual = " + fmt(state.fit.rms, 2) + " m/s.");
-  }, 20);
-});
+  document.getElementById("refreshReportBtn").addEventListener("click", renderReport);
 
-document.getElementById("resetBtn").addEventListener("click", () => {
-  state.rows = [];
-  state.gls = null;
-  state.fit = null;
+  document.getElementById("copyReportBtn").addEventListener("click", async () => {
+    const text = document.getElementById("reportText").textContent;
+    await navigator.clipboard.writeText(text);
+    alert("Report copied to clipboard.");
+  });
+}
 
-  document.getElementById("dashboard").classList.remove("active");
-  document.getElementById("startPanel").classList.remove("hidden");
+function init() {
+  setUTCClock();
+  setInterval(setUTCClock, 1000);
 
-  window.scrollTo({ top: document.getElementById("workspace").offsetTop - 20, behavior: "smooth" });
-});
+  renderTargetList();
+  renderSJDEMatrix();
+  bindEvents();
+  setTarget(TARGETS[0]);
+  switchTab("dashboard");
+}
+
+init();
