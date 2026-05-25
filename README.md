@@ -1,6 +1,6 @@
 # Jana's RV Doppler Observatory
 
-A catalogue-first, real-data radial-velocity exoplanet console for target context, RV upload analysis, period scans, Keplerian first-pass fitting, activity diagnostics, archive routing and reproducible session reports.
+A full-stack-ready radial-velocity exoplanet observatory console for target context, live archive metadata, real RV upload analysis, period scans, Keplerian first-pass fitting, activity diagnostics, archive routing and reproducible session reports.
 
 Live site:
 
@@ -10,26 +10,30 @@ https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
 
 ---
 
-## v2.2 direction
+## v3 upgrade
 
-This version is designed specifically for stable GitHub Pages deployment.
+This release upgrades the project from a purely static catalogue-first prototype into a **frontend + optional Python backend** architecture.
 
-The previous direct browser call to NASA TAP was removed as the primary workflow because static browser deployments can be blocked by CORS or network policy. This build uses a stable bundled reference catalogue for target context and opens public archives through target-aware links.
+The GitHub Pages frontend still runs fully as a static website, but it now has a proper API-base configuration field. When a FastAPI backend is running, the website can fetch live target metadata from a server-side archive proxy instead of calling astronomy services directly from the browser.
 
-RV plots and fitting still require real uploaded RV data.
+This avoids browser CORS failures while keeping the web interface fast and deployable.
 
 ---
 
-## Key features
+## Main features
 
-- Stable catalogue-first target resolver.
-- No browser fetch error popups.
-- Target-aware links to NASA Exoplanet Archive, SIMBAD, MAST, Gaia, VizieR, DACE and Open Exoplanet Catalogue.
+- Jaw-dropping mission-control UI refresh.
+- Animated canvas starfield background.
+- Persistent day/night theme toggle.
+- Live backend API configuration field.
+- Python FastAPI archive proxy in `backend/`.
+- NASA Exoplanet Archive TAP query proxy.
+- Live target fetch endpoint: `/api/target?name=...`.
 - Real RV data upload only.
-- CSV/TXT/DAT parser.
+- CSV/TXT/DAT parser for RV time series.
 - RV validation summary.
 - Data preview table.
-- RV time-series plot.
+- RV time-series plotting.
 - Period scan.
 - Phase-folded RV plot.
 - First-pass Keplerian grid fit.
@@ -38,7 +42,59 @@ RV plots and fitting still require real uploaded RV data.
 - BIS/FWHM/S-index/H-alpha activity checks.
 - Markdown report export.
 - JSON session export.
-- Roadmap cards for backend and production science upgrades.
+- Target-aware links to NASA Archive, SIMBAD, Gaia, MAST, VizieR, DACE and Open Exoplanet Catalogue.
+
+---
+
+## Frontend
+
+The frontend is static and can be hosted on GitHub Pages.
+
+```text
+index.html
+styles.css
+app.js
+sample_data/rv_template.csv
+```
+
+No frontend build step is required.
+
+---
+
+## Backend
+
+The backend is optional but recommended for live archive metadata.
+
+```text
+backend/main.py
+backend/requirements.txt
+```
+
+Run locally:
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Then set the API Base URL in the website:
+
+```text
+http://127.0.0.1:8000
+```
+
+Health check:
+
+```text
+http://127.0.0.1:8000/api/health
+```
+
+Target fetch example:
+
+```text
+http://127.0.0.1:8000/api/target?name=51%20Pegasi%20b
+```
 
 ---
 
@@ -51,14 +107,14 @@ BJD or Time
 RV
 ```
 
-Recommended:
+Recommended columns:
 
 ```text
 RV_ERR
 INSTRUMENT
 ```
 
-Optional:
+Optional activity columns:
 
 ```text
 BIS
@@ -71,47 +127,25 @@ Example:
 
 ```text
 BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM,SINDEX,HALPHA
-2450000.123,0.0,1.0,HARPS,,,, 
+2450000.123,0.0,1.0,HARPS,,,,
 ```
 
 ---
 
-## Repository structure
+## Why a backend is needed
 
-```text
-Jana-s-RV-Doppler-Observatory/
-├── index.html
-├── styles.css
-├── app.js
-├── README.md
-├── UPGRADE_ROADMAP.md
-└── sample_data/
-    └── rv_template.csv
-```
+Many astronomical services are designed for TAP clients, PyVO, astroquery, TOPCAT or server-side requests. A browser-only GitHub Pages site can be blocked by CORS or remote service policy. The FastAPI backend solves this by making archive requests server-side and returning clean JSON to the frontend.
 
 ---
 
-## Deployment
+## Production direction
 
-Use GitHub Pages:
+Recommended deployment path:
 
-```text
-Settings → Pages → Deploy from branch → main → /root
-```
-
----
-
-## Production roadmap
-
-The next major step is a backend proxy and science service:
-
-- serverless archive proxy for NASA/SIMBAD/Gaia/MAST,
-- Python FastAPI backend,
-- PyVO / Astroquery integration,
-- Astropy-validated Lomb-Scargle,
-- RadVel or equivalent fitting,
-- optional MCMC/GP modelling,
-- database/cache for metadata and sessions.
+- GitHub Pages for the static frontend.
+- Cloud Run / Render / Railway / Fly.io for the FastAPI backend.
+- Optional cache/database layer for repeated archive calls.
+- Future Python science endpoints for Astropy, RadVel, MCMC and Gaussian-process modelling.
 
 ---
 
