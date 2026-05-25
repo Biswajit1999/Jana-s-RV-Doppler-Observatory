@@ -4,6 +4,14 @@ function injectBackendConsole(){
   const rvTab=document.getElementById('rvdata');
   if(!targetTab || !rvTab) return;
 
+  // Remove the old client-only uploader from the visible workflow. It was useful for strict CSVs,
+  // but it causes the confusing "Missing BJD/time or RV column" alert for archive tables.
+  const legacyUploadGrid = rvTab.querySelector('#fileInput')?.closest('.two-column-grid');
+  if(legacyUploadGrid){
+    legacyUploadGrid.classList.add('legacy-upload-hidden');
+    legacyUploadGrid.setAttribute('aria-hidden','true');
+  }
+
   const cachePanel=document.createElement('section');
   cachePanel.className='panel mt-panel backend-console';
   cachePanel.id='backendConsolePanel';
@@ -19,28 +27,30 @@ function injectBackendConsole(){
   if(refTable) targetTab.insertBefore(cachePanel, refTable); else targetTab.appendChild(cachePanel);
 
   const uploadPanel=document.createElement('section');
-  uploadPanel.className='panel mt-panel backend-upload-console';
+  uploadPanel.className='panel mt-panel backend-upload-console primary-rv-upload';
   uploadPanel.id='backendUploadPanel';
   uploadPanel.innerHTML=`
-    <div class="panel-head"><h3>Backend file parser</h3><span id="uploadParserBadge" class="warn">CSV / TXT / DAT / VOT</span></div>
+    <div class="panel-head"><h3>Single RV data ingestion</h3><span id="uploadParserBadge" class="warn">BACKEND PARSER</span></div>
     <div class="backend-console-body">
-      <div class="backend-copy"><strong>Upload more than CSV.</strong><p>Send CSV, TSV, TXT, DAT, XML or VOTable-like files to the Python backend. It previews columns, suggests mappings, then normalises into BJD, RV, RV_ERR and INSTRUMENT.</p></div>
-      <input id="backendFileInput" type="file" accept=".csv,.tsv,.txt,.dat,.vot,.xml,.votable" />
-      <div class="backend-actions"><button id="previewBackendFileBtn">Preview backend file</button><button id="importBackendFileBtn">Import mapped backend file</button></div>
+      <div class="backend-copy"><strong>Use this as the only upload box.</strong><p>The old browser-only CSV uploader is now hidden. This backend parser accepts CSV, TSV, TXT, DAT, XML and VOTable-style files, previews the columns first, then lets you map Time, RV, RV error and Instrument before plotting.</p></div>
+      <label class="backend-drop-zone"><input id="backendFileInput" type="file" accept=".csv,.tsv,.txt,.dat,.vot,.xml,.votable" /><span>Choose RV table / VOTable file</span><small>Preview first → choose columns → import mapped table</small></label>
+      <div class="backend-actions"><button id="previewBackendFileBtn">1. Preview file columns</button><button id="importBackendFileBtn">2. Import mapped file + plot</button></div>
       <div class="mapper-grid backend-map-grid">
         <label>Time column<select id="uploadMapTime"></select></label>
         <label>RV column<select id="uploadMapRv"></select></label>
         <label>RV error column<select id="uploadMapErr"></select></label>
         <label>Instrument column<select id="uploadMapInst"></select></label>
       </div>
-      <p id="backendUploadStatus" class="backend-upload-status">Choose a file, then preview it through the backend.</p>
+      <p id="backendUploadStatus" class="backend-upload-status">Choose a file, then preview it through the backend. If your file is not an RV table, preview may work but import will ask for a proper time and RV column.</p>
       <div class="table-wrap"><table id="backendUploadPreview"><tr><td>No backend upload preview loaded.</td></tr></table></div>
     </div>`;
-  const dataPreview=rvTab.querySelector('#dataPreviewTable')?.closest('.panel');
-  if(dataPreview) rvTab.insertBefore(uploadPanel, dataPreview); else rvTab.appendChild(uploadPanel);
+
+  // Put the single backend uploader at the top of the RV Data tab.
+  const firstVisible = [...rvTab.children].find(el => !el.classList?.contains('legacy-upload-hidden'));
+  if(firstVisible) rvTab.insertBefore(uploadPanel, firstVisible); else rvTab.prepend(uploadPanel);
 
   const style=document.createElement('style');
-  style.textContent=`.backend-console-body{padding:16px}.backend-copy strong{display:block;color:var(--cyan);font-size:1.08rem}.backend-copy p,.backend-upload-status{color:var(--muted);line-height:1.6}.backend-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.backend-status-box{border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);border-radius:14px;color:var(--text);padding:14px;min-height:135px;white-space:pre-wrap;font-family:'JetBrains Mono',monospace;font-size:.75rem;line-height:1.55}.cache-progress{margin:10px 0 14px}.backend-upload-console input[type=file]{display:block;width:100%;border:1px dashed var(--line2);background:var(--glass);color:var(--text);border-radius:14px;padding:16px;margin:14px 0}.backend-map-grid{margin-top:10px}`;
+  style.textContent=`.legacy-upload-hidden{display:none!important}.backend-console-body{padding:16px}.backend-copy strong{display:block;color:var(--cyan);font-size:1.08rem}.backend-copy p,.backend-upload-status{color:var(--muted);line-height:1.6}.backend-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.backend-status-box{border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);border-radius:14px;color:var(--text);padding:14px;min-height:135px;white-space:pre-wrap;font-family:'JetBrains Mono',monospace;font-size:.75rem;line-height:1.55}.cache-progress{margin:10px 0 14px}.backend-drop-zone{display:grid;place-items:center;text-align:center;width:100%;border:1px dashed var(--line2);background:linear-gradient(135deg,var(--glass),color-mix(in srgb,var(--panel) 85%,transparent));color:var(--text);border-radius:18px;padding:24px;margin:14px 0;cursor:pointer;transition:.18s ease}.backend-drop-zone:hover{border-color:var(--cyan);box-shadow:var(--glow);transform:translateY(-1px)}.backend-drop-zone input{display:none}.backend-drop-zone span{font-weight:900;color:var(--cyan);font-size:1rem}.backend-drop-zone small{display:block;color:var(--muted);margin-top:6px}.backend-map-grid{margin-top:10px}.primary-rv-upload{border-color:color-mix(in srgb,var(--cyan) 40%,var(--line))}`;
   document.head.appendChild(style);
 
   document.getElementById('cacheStatusBtn').addEventListener('click',checkCacheStatus);
@@ -49,6 +59,10 @@ function injectBackendConsole(){
   document.getElementById('toggleOfflineBtn').addEventListener('click',toggleOfflineMode);
   document.getElementById('previewBackendFileBtn').addEventListener('click',previewBackendFile);
   document.getElementById('importBackendFileBtn').addEventListener('click',importBackendFile);
+  document.getElementById('backendFileInput').addEventListener('change',()=>{
+    const file=document.getElementById('backendFileInput').files[0];
+    if(file){document.getElementById('backendUploadStatus').textContent=`Selected ${file.name}. Click “Preview file columns” before importing.`;}
+  });
   refreshOfflineButton();
 }
 
