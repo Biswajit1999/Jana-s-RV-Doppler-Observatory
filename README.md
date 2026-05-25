@@ -1,63 +1,36 @@
 # Jana's RV Doppler Observatory
 
-A browser-based radial-velocity exoplanet console built around target context, Doppler time-series analysis, archive navigation, activity checks and session-level reporting.
+A real-data-first radial-velocity exoplanet console for target context, archive queries, RV upload analysis, activity diagnostics and reproducible session reports.
 
-The project is designed as a compact research interface for exploring the workflow behind radial-velocity exoplanet science: target identification, RV data upload, period search, first-pass Keplerian fitting, residual inspection and activity-aware interpretation.
+Live site after GitHub Pages deployment:
 
----
+```text
+https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
+```
 
-## Why this name?
+## What changed in v2
 
-**Jana Doppler Observatory** uses the author's surname and the physical principle behind the radial-velocity method. It avoids institutional or community-wide naming such as EPRV while keeping the scientific purpose clear.
+This version removes generated/synthetic RV curves from the workflow. The platform now starts in real-data mode:
 
----
+- target metadata is fetched from NASA Exoplanet Archive TAP where browser access is available,
+- RV curves appear only after the user uploads an RV file,
+- the archive hub generates target-aware links,
+- reports record the target, data source, period scan and fit summary,
+- the build plan tab shows the route from static site to production backend.
 
-## Current Interface
+## Current capabilities
 
-The application is organised as a mission-control style dashboard with seven modules:
+### NASA Exoplanet Archive TAP query
 
-- Dashboard
-- Target Console
-- RV Laboratory
-- Activity
-- Archive Hub
-- Jitter Lab
-- Report
+The Target/API tab builds and runs ADQL queries against the NASA Exoplanet Archive TAP service. It retrieves target/system fields such as planet name, host name, discovery method, RA/Dec, distance, spectral type, V magnitude, orbital period, RV semi-amplitude, eccentricity, mass and semi-major axis where available.
 
-The aim is to reduce the need to jump across many unrelated pages during early-stage RV exploration. Metadata, RV diagnostics and archive routing sit together in one target-centred workspace.
+### Advanced ADQL console
 
----
+The user can edit and run a custom ADQL query directly inside the page. Results appear in a table and can be downloaded as CSV.
 
-## Main Capabilities
+### Real RV upload
 
-### Target Console
-
-The target console provides a compact identity block for demonstration systems, including:
-
-- target and host name,
-- RA and Dec,
-- spectral type,
-- visual magnitude,
-- parallax,
-- distance,
-- planet period,
-- RV semi-amplitude,
-- minimum mass context.
-
-Current demonstration targets include:
-
-- 51 Pegasi b,
-- HD 189733 b,
-- Proxima Centauri b,
-- Barnard's Star RV candidate context.
-
-### Sky Crosshair View
-
-The dashboard includes a canvas-based target view inspired by observatory acquisition displays. It is a visual target locator and not a replacement for a calibrated sky survey image.
-
-### RV Laboratory
-
-The RV laboratory accepts local CSV, TXT or DAT files.
+The RV Data tab accepts CSV/TXT/DAT files.
 
 Required columns:
 
@@ -73,142 +46,53 @@ RV_ERR
 INSTRUMENT
 ```
 
-Optional columns:
+Optional activity columns:
 
 ```text
 BIS
 FWHM
+SINDEX
+HALPHA
 ```
 
-Example format:
+### Dataset validation
+
+The app validates the uploaded file and reports row count, time baseline, instruments, uncertainty availability and activity-column availability.
+
+### RV analysis
+
+The Analysis tab includes RV time-series plotting, instrument-coloured traces, uncertainty bars, period scan, phase fold, first-pass Keplerian grid fit, residual plot and sampling window function.
+
+### Activity diagnostics
+
+The Activity tab checks RV correlation with available activity indicators: BIS, FWHM, S-index and H-alpha.
+
+### Archive hub
+
+The Archive Hub creates target-aware links for NASA Exoplanet Archive, NASA TAP query, SIMBAD, MAST, Gaia Archive and VizieR.
+
+### Report export
+
+The Report tab generates a Markdown-style session report and allows copying or downloading.
+
+## Repository structure
 
 ```text
-BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM
-2451500.123,55.9,1.2,HARPS,-32.4,7210.5
-2451504.234,-52.1,1.1,HARPS,28.7,7208.3
-```
-
-### Period Search
-
-The dashboard includes a browser-side Lomb-Scargle-style period scan for irregular RV time series. It displays the strongest candidate period and updates the phase-folded view.
-
-### Keplerian First-Pass Fit
-
-The fit tool performs a simple grid search around:
-
-- orbital period,
-- semi-amplitude,
-- eccentricity,
-- argument of periastron,
-- phase reference,
-- instrument offsets.
-
-The output is intended for quick exploration, not publication-level orbital inference.
-
-### Residuals
-
-The dashboard plots observed-minus-computed residuals after fitting so that the user can inspect whether additional structure remains in the data.
-
-### Activity Diagnostics
-
-If BIS or FWHM columns are provided, the dashboard compares RV values against those line-shape indicators and reports a simple activity-risk flag.
-
-### Archive Hub
-
-The archive panel provides target-aware routing to major astronomical services, including:
-
-- NASA Exoplanet Archive,
-- DACE,
-- SIMBAD,
-- MAST,
-- ESA Gaia Archive,
-- VizieR.
-
-The current version uses direct archive links. Future versions can add API/TAP queries.
-
-### Jitter Lab
-
-The Jitter Lab is a prototype interface for future stellar-activity modelling concepts:
-
-- time-domain fusion,
-- line-response mapping,
-- activity-sensitive channel separation,
-- clean residual estimation.
-
-### Report Module
-
-The report panel generates a compact text summary of:
-
-- target identity,
-- planet context,
-- current dataset,
-- fitted period,
-- residual RMS,
-- recommended next analysis steps.
-
----
-
-## Core Equations
-
-### Doppler Shift
-
-```text
-Δλ / λ = v_r / c
-```
-
-### Radial Velocity Semi-Amplitude
-
-```text
-K = (2πG/P)^(1/3) · (m_p sin i)/(m_s + m_p)^(2/3) · 1/sqrt(1 - e²)
-```
-
-### Mass Function
-
-```text
-f(m) = (m_p sin i)^3/(m_s + m_p)^2
-     = P K^3(1 - e²)^(3/2)/(2πG)
-```
-
-### Keplerian Radial Velocity Model
-
-```text
-RV(t) = K[cos(ω + ν(t)) + e cosω] + γ_inst
-```
-
----
-
-## Repository Structure
-
-```text
-jana-doppler-observatory/
+Jana-s-RV-Doppler-Observatory/
 ├── index.html
 ├── styles.css
 ├── app.js
-└── README.md
+├── README.md
+└── UPGRADE_ROADMAP.md
 ```
 
-No build step is required. The project runs as a static HTML, CSS and JavaScript application.
+No build step is required for the current static version.
 
----
-
-## Running Locally
-
-Clone the repository:
+## Running locally
 
 ```bash
-git clone https://github.com/Biswajit1999/jana-doppler-observatory.git
-cd jana-doppler-observatory
-```
-
-Open:
-
-```text
-index.html
-```
-
-or run:
-
-```bash
+git clone https://github.com/Biswajit1999/Jana-s-RV-Doppler-Observatory.git
+cd Jana-s-RV-Doppler-Observatory
 python -m http.server 8000
 ```
 
@@ -218,36 +102,19 @@ Then open:
 http://localhost:8000
 ```
 
----
+## Important production note
 
-## GitHub Pages Deployment
+Some public archive endpoints may block direct browser requests through CORS or may need controlled access to avoid rate-limit issues. The current site is designed to work as a static front end, but the production version should add a small backend proxy layer for stable API calls, caching and long-running analysis.
 
-Use:
+Recommended production stack:
 
-```text
-Settings → Pages → Deploy from branch → main → /root
-```
-
----
-
-## Technical Stack
-
-- HTML5
-- CSS3
-- JavaScript
-- Plotly.js
-- Canvas API
-- GitHub Pages
-
----
+- static frontend on GitHub Pages / Netlify / Cloudflare Pages,
+- serverless API proxy for NASA/SIMBAD/MAST/Gaia requests,
+- Python science backend for Astropy/RadVel/MCMC/GP tools,
+- PostgreSQL or object storage for cached metadata and uploaded datasets,
+- GitHub Actions for CI/CD.
 
 ## Author
 
 **Biswajit Jana**  
 Astrophysics · Radial Velocity · Spectrograph Instrumentation · Scientific Computing
-
----
-
-## Project Status
-
-Active interface prototype. Current focus: target-centred GUI design, browser-based RV workflow, archive routing and activity-diagnostic visualisation.
