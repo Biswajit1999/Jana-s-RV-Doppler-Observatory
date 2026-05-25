@@ -1,4 +1,4 @@
-# Jana Doppler Observatory
+# Jana's RV Doppler Observatory
 
 A browser-based radial-velocity exoplanet console built around target context, Doppler time-series analysis, archive navigation, activity checks and session-level reporting.
 
