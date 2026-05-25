@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-05-25T16:07:46.146354+00:00",
+  "description": "Website-ready RV bundle for Jana's RV Doppler Observatory",
+  "sources": [
+    "NASA_RADIAL",
+    "DACE_PUBLIC"
+  ],
+  "total_merged_rows": 232376,
+  "total_merged_targets": 1922,
+  "web_bundle_targets": 250,
+  "index_csv": "jana_rv_web_target_index.csv",
+  "index_json": "jana_rv_web_target_index.json",
+  "data_folder": "data/"
+}

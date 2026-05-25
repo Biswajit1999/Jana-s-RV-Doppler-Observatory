@@ -1,0 +1,1139 @@
+BJD,RV,RV_ERR,INSTRUMENT,TARGET,ARCHIVE,SOURCE_FILE,SOURCE_NAME,SOURCE,RJD_ORIGINAL,DATE_NIGHT,REFERENCE
+2446957.8884,-21.14,32.4898,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,46957.8884,,Rosenthal et al. (2021)
+2446957.8884,-15.17,32.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,46957.8884,,Fischer et al. (2014)
+2447048.7058,-16.44,23.34,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,47048.7058,,Fischer et al. (2014)
+2448845.7537,-21.54,24.27,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,48845.7537,,Fischer et al. (2014)
+2448845.7537,-27.5,24.2687,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,48845.7537,,Rosenthal et al. (2021)
+2448906.638,6.1,20.1261,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,48906.638,,Rosenthal et al. (2021)
+2448906.638,12.06,20.13,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,48906.638,,Fischer et al. (2014)
+2449114.9993,2.47,32.15,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49114.9993,,Fischer et al. (2014)
+2449114.9993,-3.49,32.1542,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49114.9993,,Rosenthal et al. (2021)
+2449172.767,-11.15,22.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49172.767,,Fischer et al. (2014)
+2449172.767,-17.12,22.3675,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49172.767,,Rosenthal et al. (2021)
+2449174.8394,-11.79,24.3487,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49174.8394,,Rosenthal et al. (2021)
+2449174.8394,-5.83,24.35,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49174.8394,,Fischer et al. (2014)
+2449200.7659,-36.23,26.51,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49200.7659,,Fischer et al. (2014)
+2449200.7659,-42.19,26.5065,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49200.7659,,Rosenthal et al. (2021)
+2449469.9887,-8.51,24.0743,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49469.9887,,Rosenthal et al. (2021)
+2449469.9887,-2.55,24.07,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49469.9887,,Fischer et al. (2014)
+2449622.676,-23.13,20.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49622.676,,Fischer et al. (2014)
+2449622.676,-29.1,20.5571,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49622.676,,Rosenthal et al. (2021)
+2449623.6432,-6.59,18.03,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49623.6432,,Fischer et al. (2014)
+2449623.6432,-12.56,18.0321,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49623.6432,,Rosenthal et al. (2021)
+2449881.9729,3.65,11.28,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49881.9729,,Fischer et al. (2014)
+2449913.84473,4.51,5.24,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,49913.84473,,Fischer et al. (2014)
+2450181.99219,9.85,5.06,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50181.99219,,Fischer et al. (2014)
+2450300.75879,-12.89,4.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50300.75879,,Fischer et al. (2014)
+2450304.71875,0.04,5.83,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50304.71875,,Fischer et al. (2014)
+2450325.74121,3.24,5.04,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50325.74121,,Fischer et al. (2014)
+2450602.00756,0.71,1.34,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.00756,,Butler et al. (2017)
+2450602.00756,-0.2,1.7281,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.00756,,Rosenthal et al. (2021)
+2450602.01576,-2.32,1.8212,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.01576,,Rosenthal et al. (2021)
+2450602.01576,-2.49,1.44,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.01576,,Butler et al. (2017)
+2450602.95211,2.69,1.26,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.95211,,Butler et al. (2017)
+2450602.95211,0.17,1.6824,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.95211,,Rosenthal et al. (2021)
+2450602.96056,-2.59,1.6097,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.96056,,Rosenthal et al. (2021)
+2450602.96056,-0.8,1.23,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50602.96056,,Butler et al. (2017)
+2450604.0017,-8.65,1.7751,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50604.0017,,Rosenthal et al. (2021)
+2450604.0017,-2.12,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50604.0017,,Butler et al. (2017)
+2450604.83609,-5.4,1.639,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50604.83609,,Rosenthal et al. (2021)
+2450604.83609,-2.42,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50604.83609,,Butler et al. (2017)
+2450605.10108,-4.98,1.53,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50605.10108,,Butler et al. (2017)
+2450605.10108,-10.0,1.7913,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50605.10108,,Rosenthal et al. (2021)
+2450605.85441,-9.52,1.7517,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50605.85441,,Rosenthal et al. (2021)
+2450605.85441,-4.81,1.27,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50605.85441,,Butler et al. (2017)
+2450606.08939,-2.79,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50606.08939,,Butler et al. (2017)
+2450606.08939,-10.06,1.6964,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50606.08939,,Rosenthal et al. (2021)
+2450606.89602,-2.58,1.43,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50606.89602,,Butler et al. (2017)
+2450606.89602,-9.22,1.5971,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50606.89602,,Rosenthal et al. (2021)
+2450607.0975,-7.75,1.44,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50607.0975,,Butler et al. (2017)
+2450607.0975,-11.19,1.9194,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50607.0975,,Rosenthal et al. (2021)
+2450607.86098,-6.02,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50607.86098,,Butler et al. (2017)
+2450607.86098,-12.72,1.7791,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50607.86098,,Rosenthal et al. (2021)
+2450609.02068,-6.9,1.8572,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50609.02068,,Rosenthal et al. (2021)
+2450609.02068,-6.89,1.67,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50609.02068,,Butler et al. (2017)
+2450610.11088,-2.95,1.78,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.11088,,Butler et al. (2017)
+2450610.11088,-1.2,2.0408,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.11088,,Rosenthal et al. (2021)
+2450610.11903,0.16,1.82,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.11903,,Butler et al. (2017)
+2450610.11903,-1.3,2.0429,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.11903,,Rosenthal et al. (2021)
+2450610.89062,0.0,5.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.89062,,Fischer et al. (2014)
+2450610.90625,9.2,9.08,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.90625,,Fischer et al. (2014)
+2450610.9209,-13.19,6.7,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50610.9209,,Fischer et al. (2014)
+2450613.78711,13.65,6.84,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50613.78711,,Fischer et al. (2014)
+2450613.83106,3.72,6.91,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50613.83106,,Fischer et al. (2014)
+2450614.84082,0.29,4.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50614.84082,,Fischer et al. (2014)
+2450614.86426,3.93,4.63,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50614.86426,,Fischer et al. (2014)
+2450640.81152,2.06,4.89,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50640.81152,,Fischer et al. (2014)
+2450640.83398,-8.73,5.13,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50640.83398,,Fischer et al. (2014)
+2450645.80078,22.22,8.7644,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50645.80078,,Rosenthal et al. (2021)
+2450645.80078,22.13,4.03,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50645.80078,,Fischer et al. (2014)
+2450645.81738,21.49,12.04,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50645.81738,,Fischer et al. (2014)
+2450655.78711,-3.59,4.34,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50655.78711,,Fischer et al. (2014)
+2450655.78711,-9.78,8.6466,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50655.78711,,Rosenthal et al. (2021)
+2450655.80957,-0.87,4.02,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50655.80957,,Fischer et al. (2014)
+2450655.80957,-4.08,7.6499,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50655.80957,,Rosenthal et al. (2021)
+2450656.78613,-21.75,8.7067,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50656.78613,,Rosenthal et al. (2021)
+2450656.78613,-19.24,4.53,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50656.78613,,Fischer et al. (2014)
+2450656.80859,-7.06,8.0639,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50656.80859,,Rosenthal et al. (2021)
+2450656.80859,-5.15,4.21,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50656.80859,,Fischer et al. (2014)
+2450665.8355,-7.3,1.8323,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50665.8355,,Rosenthal et al. (2021)
+2450665.8355,-2.5,1.33,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50665.8355,,Butler et al. (2017)
+2450681.70019,10.6,4.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50681.70019,,Fischer et al. (2014)
+2450681.7002,5.7,9.8557,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50681.7002,,Rosenthal et al. (2021)
+2450681.72266,-6.51,9.2779,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50681.72266,,Rosenthal et al. (2021)
+2450681.72266,-5.19,4.7,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50681.72266,,Fischer et al. (2014)
+2450954.99624,-7.05,1.6908,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50954.99624,,Rosenthal et al. (2021)
+2450954.99624,1.08,2.05,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50954.99624,,Butler et al. (2017)
+2450981.87418,-4.68,1.7876,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50981.87418,,Rosenthal et al. (2021)
+2450981.87418,-0.54,1.51,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50981.87418,,Butler et al. (2017)
+2450982.88569,-1.35,1.39,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50982.88569,,Butler et al. (2017)
+2450982.88569,-3.46,1.6598,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50982.88569,,Rosenthal et al. (2021)
+2450984.02388,-7.94,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50984.02388,,Butler et al. (2017)
+2450984.02388,-6.64,1.7339,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,50984.02388,,Rosenthal et al. (2021)
+2451009.86528,-1.57,1.48,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51009.86528,,Butler et al. (2017)
+2451009.86528,-7.5,1.7845,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51009.86528,,Rosenthal et al. (2021)
+2451011.84227,-0.71,1.7755,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51011.84227,,Rosenthal et al. (2021)
+2451011.84227,-0.18,1.54,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51011.84227,,Butler et al. (2017)
+2451012.82292,1.02,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51012.82292,,Butler et al. (2017)
+2451012.82292,-1.25,1.9769,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51012.82292,,Rosenthal et al. (2021)
+2451013.82429,-3.33,1.8226,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51013.82429,,Rosenthal et al. (2021)
+2451013.82429,1.97,1.28,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51013.82429,,Butler et al. (2017)
+2451026.77441,-11.73,7.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51026.77441,,Fischer et al. (2014)
+2451050.80938,-1.47,1.778,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51050.80938,,Rosenthal et al. (2021)
+2451050.80938,4.64,1.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51050.80938,,Butler et al. (2017)
+2451051.82196,-1.43,1.9537,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51051.82196,,Rosenthal et al. (2021)
+2451051.82196,-0.13,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51051.82196,,Butler et al. (2017)
+2451068.79946,-6.01,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51068.79946,,Butler et al. (2017)
+2451068.79946,-7.88,1.6903,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51068.79946,,Rosenthal et al. (2021)
+2451069.81397,-2.93,1.31,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51069.81397,,Butler et al. (2017)
+2451069.81397,-8.58,1.8119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51069.81397,,Rosenthal et al. (2021)
+2451070.82419,-8.7,1.7065,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51070.82419,,Rosenthal et al. (2021)
+2451070.82419,-2.44,1.35,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51070.82419,,Butler et al. (2017)
+2451070.83233,-9.55,1.6866,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51070.83233,,Rosenthal et al. (2021)
+2451070.83233,-2.15,1.1,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51070.83233,,Butler et al. (2017)
+2451071.79589,-6.39,1.6327,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51071.79589,,Rosenthal et al. (2021)
+2451071.79589,-2.6,1.32,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51071.79589,,Butler et al. (2017)
+2451071.80392,-8.68,1.6605,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51071.80392,,Rosenthal et al. (2021)
+2451071.80392,-3.44,1.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51071.80392,,Butler et al. (2017)
+2451072.78637,-2.44,1.27,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51072.78637,,Butler et al. (2017)
+2451072.78637,-7.7,1.6905,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51072.78637,,Rosenthal et al. (2021)
+2451072.7944,-1.42,1.31,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51072.7944,,Butler et al. (2017)
+2451072.7944,-7.32,1.6978,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51072.7944,,Rosenthal et al. (2021)
+2451073.78934,-8.19,1.8119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.78934,,Rosenthal et al. (2021)
+2451073.78934,-5.83,1.43,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.78934,,Butler et al. (2017)
+2451073.79738,-5.92,1.45,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.79738,,Butler et al. (2017)
+2451073.79738,-8.71,1.7115,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.79738,,Rosenthal et al. (2021)
+2451073.87091,-1.71,1.9073,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.87091,,Rosenthal et al. (2021)
+2451073.87091,1.49,1.55,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.87091,,Butler et al. (2017)
+2451073.87837,-2.52,1.72,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.87837,,Butler et al. (2017)
+2451073.87837,-7.01,1.9821,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51073.87837,,Rosenthal et al. (2021)
+2451074.775,-2.1,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51074.775,,Butler et al. (2017)
+2451074.775,-7.96,1.712,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51074.775,,Rosenthal et al. (2021)
+2451228.15524,-3.93,1.53,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51228.15524,,Butler et al. (2017)
+2451228.15524,-4.82,1.805,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51228.15524,,Rosenthal et al. (2021)
+2451229.14388,-4.85,1.55,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51229.14388,,Butler et al. (2017)
+2451229.14388,-5.44,2.0258,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51229.14388,,Rosenthal et al. (2021)
+2451311.03688,-3.21,2.27,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51311.03688,,Butler et al. (2017)
+2451311.03688,-9.89,1.6372,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51311.03688,,Rosenthal et al. (2021)
+2451312.01389,-5.19,1.8395,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51312.01389,,Rosenthal et al. (2021)
+2451312.01389,-4.55,2.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51312.01389,,Butler et al. (2017)
+2451313.04021,-7.38,1.8112,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51313.04021,,Rosenthal et al. (2021)
+2451313.04021,-6.25,2.23,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51313.04021,,Butler et al. (2017)
+2451341.02147,0.09,1.7119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51341.02147,,Rosenthal et al. (2021)
+2451341.02147,-1.04,1.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51341.02147,,Butler et al. (2017)
+2451341.90061,0.49,1.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51341.90061,,Butler et al. (2017)
+2451341.90061,1.34,1.9109,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51341.90061,,Rosenthal et al. (2021)
+2451364.76856,-3.63,9.07,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51364.76856,,Fischer et al. (2014)
+2451367.84914,-3.66,1.9364,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51367.84914,,Rosenthal et al. (2021)
+2451367.84914,1.11,1.76,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51367.84914,,Butler et al. (2017)
+2451368.83909,1.52,1.8354,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51368.83909,,Rosenthal et al. (2021)
+2451368.83909,7.61,1.54,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51368.83909,,Butler et al. (2017)
+2451370.00729,-2.2,1.9753,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51370.00729,,Rosenthal et al. (2021)
+2451370.00729,2.05,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51370.00729,,Butler et al. (2017)
+2451370.90907,-6.82,1.7236,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51370.90907,,Rosenthal et al. (2021)
+2451370.90907,0.01,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51370.90907,,Butler et al. (2017)
+2451371.90501,-9.75,1.9305,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51371.90501,,Rosenthal et al. (2021)
+2451371.90501,-4.24,1.65,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51371.90501,,Butler et al. (2017)
+2451409.85442,0.57,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51409.85442,,Butler et al. (2017)
+2451409.85442,-5.25,1.829,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51409.85442,,Rosenthal et al. (2021)
+2451410.8342,-0.1,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51410.8342,,Butler et al. (2017)
+2451410.8342,-5.02,1.7823,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51410.8342,,Rosenthal et al. (2021)
+2451411.84208,1.71,1.6,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51411.84208,,Butler et al. (2017)
+2451411.84208,0.56,1.7756,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51411.84208,,Rosenthal et al. (2021)
+2451438.73354,-7.23,1.7654,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51438.73354,,Rosenthal et al. (2021)
+2451438.73354,-2.29,1.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51438.73354,,Butler et al. (2017)
+2451439.72656,-12.04,1.6881,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51439.72656,,Rosenthal et al. (2021)
+2451680.06566,-3.88,1.8347,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51680.06566,,Rosenthal et al. (2021)
+2451680.06566,-3.21,2.35,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51680.06566,,Butler et al. (2017)
+2451702.98234,-3.33,1.67,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51702.98234,,Butler et al. (2017)
+2451702.98234,-7.12,1.9044,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51702.98234,,Rosenthal et al. (2021)
+2451703.97018,-8.93,1.6957,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51703.97018,,Rosenthal et al. (2021)
+2451703.97018,-2.78,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51703.97018,,Butler et al. (2017)
+2451705.01536,-1.28,1.69,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51705.01536,,Butler et al. (2017)
+2451705.01536,0.97,1.9258,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51705.01536,,Rosenthal et al. (2021)
+2451705.94735,-2.97,1.7599,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51705.94735,,Rosenthal et al. (2021)
+2451705.94735,-2.21,1.59,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,51705.94735,,Butler et al. (2017)
+2452007.12157,-3.26,1.69,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52007.12157,,Butler et al. (2017)
+2452007.12157,-3.16,2.1734,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52007.12157,,Rosenthal et al. (2021)
+2452097.94112,-0.54,1.79,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52097.94112,,Butler et al. (2017)
+2452097.94112,3.24,2.0516,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52097.94112,,Rosenthal et al. (2021)
+2452133.76779,4.89,2.1108,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52133.76779,,Rosenthal et al. (2021)
+2452133.76779,7.24,1.98,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52133.76779,,Butler et al. (2017)
+2452445.92377,-5.38,1.81,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52445.92377,,Butler et al. (2017)
+2452445.92377,-4.48,2.1227,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52445.92377,,Rosenthal et al. (2021)
+2452537.79383,2.05,1.8966,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52537.79383,,Rosenthal et al. (2021)
+2452537.79383,5.07,1.87,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52537.79383,,Butler et al. (2017)
+2452777.11632,-3.85,2.3131,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52777.11632,,Rosenthal et al. (2021)
+2452777.11632,-2.51,1.86,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52777.11632,,Butler et al. (2017)
+2452831.84082,16.88,5.21,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52831.84082,,Fischer et al. (2014)
+2452831.85352,19.14,5.93,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52831.85352,,Fischer et al. (2014)
+2452834.85156,-6.66,2.7558,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52834.85156,,Rosenthal et al. (2021)
+2452834.85156,-1.74,1.86,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,52834.85156,,Butler et al. (2017)
+2453072.13873,-2.51,2.2389,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53072.13873,,Rosenthal et al. (2021)
+2453072.13873,-3.68,1.74,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53072.13873,,Butler et al. (2017)
+2453180.89628,1.25,1.69,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53180.89628,,Butler et al. (2017)
+2453180.89628,3.56,2.3318,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53180.89628,,Rosenthal et al. (2021)
+2453181.89036,-2.06,1.63,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53181.89036,,Butler et al. (2017)
+2453181.89036,2.69,2.5365,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53181.89036,,Rosenthal et al. (2021)
+2453195.82664,2.55,2.2161,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53195.82664,,Rosenthal et al. (2021)
+2453195.82664,2.66,1.65,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53195.82664,,Butler et al. (2017)
+2453237.89109,4.97,1.76,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53237.89109,,Butler et al. (2017)
+2453237.89109,3.02,1.3354,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53237.89109,,Rosenthal et al. (2021)
+2453301.74204,1.78,1.65,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53301.74204,,Butler et al. (2017)
+2453301.74204,0.15,1.2689,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53301.74204,,Rosenthal et al. (2021)
+2453550.91035,1.17,1.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53550.91035,,Butler et al. (2017)
+2453550.91035,-0.95,1.184,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53550.91035,,Rosenthal et al. (2021)
+2453550.91675,3.03,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53550.91675,,Butler et al. (2017)
+2453550.91675,0.08,1.1732,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53550.91675,,Rosenthal et al. (2021)
+2453602.84905,3.48,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53602.84905,,Butler et al. (2017)
+2453602.84905,2.64,1.0836,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53602.84905,,Rosenthal et al. (2021)
+2453602.85532,3.09,1.1827,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53602.85532,,Rosenthal et al. (2021)
+2453602.85532,3.96,1.44,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53602.85532,,Butler et al. (2017)
+2453807.11898,-6.05,2.01,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.11898,,Butler et al. (2017)
+2453807.11898,-6.27,1.5383,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.11898,,Rosenthal et al. (2021)
+2453807.12469,-5.93,1.2918,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.12469,,Rosenthal et al. (2021)
+2453807.12469,-5.97,1.71,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.12469,,Butler et al. (2017)
+2453807.13042,-3.46,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.13042,,Butler et al. (2017)
+2453807.13042,-3.33,1.2846,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53807.13042,,Rosenthal et al. (2021)
+2453926.95528,-0.3,1.69,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53926.95528,,Butler et al. (2017)
+2453926.95528,0.41,1.2561,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53926.95528,,Rosenthal et al. (2021)
+2453926.96177,1.62,1.3109,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53926.96177,,Rosenthal et al. (2021)
+2453926.96177,0.01,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53926.96177,,Butler et al. (2017)
+2453931.8948,-4.64,1.3357,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53931.8948,,Rosenthal et al. (2021)
+2453932.85184,-2.86,1.3016,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53932.85184,,Rosenthal et al. (2021)
+2453932.85816,0.78,1.1229,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53932.85816,,Rosenthal et al. (2021)
+2453933.84757,-1.36,1.6,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53933.84757,,Butler et al. (2017)
+2453933.84757,-0.93,1.21,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53933.84757,,Rosenthal et al. (2021)
+2453933.85377,0.28,1.1103,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53933.85377,,Rosenthal et al. (2021)
+2453933.85377,0.45,1.59,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53933.85377,,Butler et al. (2017)
+2453934.81589,5.99,1.54,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53934.81589,,Butler et al. (2017)
+2453934.81589,5.73,1.1654,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53934.81589,,Rosenthal et al. (2021)
+2453934.82216,5.59,1.2224,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53934.82216,,Rosenthal et al. (2021)
+2453934.82216,4.62,1.39,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53934.82216,,Butler et al. (2017)
+2453955.76754,-3.48,5.31,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53955.76754,,Fischer et al. (2014)
+2453958.67574,3.47,4.43,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53958.67574,,Fischer et al. (2014)
+2453958.67574,0.13,9.0245,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53958.67574,,Rosenthal et al. (2021)
+2453960.89545,3.9,1.76,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53960.89545,,Butler et al. (2017)
+2453960.89545,-1.5,1.1892,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53960.89545,,Rosenthal et al. (2021)
+2453960.90184,2.61,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53960.90184,,Butler et al. (2017)
+2453960.90184,-0.06,1.1612,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53960.90184,,Rosenthal et al. (2021)
+2453961.8563,-0.47,1.1318,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53961.8563,,Rosenthal et al. (2021)
+2453961.8563,0.39,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53961.8563,,Butler et al. (2017)
+2453961.86256,3.68,1.64,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53961.86256,,Butler et al. (2017)
+2453961.86256,-1.84,1.1524,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53961.86256,,Rosenthal et al. (2021)
+2453962.78493,-1.71,1.235,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53962.78493,,Rosenthal et al. (2021)
+2453962.78493,4.76,1.75,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53962.78493,,Butler et al. (2017)
+2453962.79122,1.67,1.53,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53962.79122,,Butler et al. (2017)
+2453962.79122,-1.6,1.1575,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53962.79122,,Rosenthal et al. (2021)
+2453963.83032,-0.34,1.2211,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53963.83032,,Rosenthal et al. (2021)
+2453963.83032,2.87,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53963.83032,,Butler et al. (2017)
+2453963.8355,-2.11,1.2499,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53963.8355,,Rosenthal et al. (2021)
+2453963.8355,1.51,1.68,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,53963.8355,,Butler et al. (2017)
+2454194.89453335,-110277.510821075,0.722907260872022,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54194.89453335013,2007-04-03,
+2454196.88403982,-110279.93883387,0.673358349321772,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54196.88403982017,2007-04-05,
+2454197.89545422,-110280.05102577,0.7001695734248921,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54197.89545422001,2007-04-06,
+2454198.89088934,-110274.119578278,0.90188138490504,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54198.89088934008,2007-04-07,
+2454200.92125775,-110280.317297932,0.665776363619378,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54200.92125775013,2007-04-09,
+2454202.91932643,-110275.506893899,0.6627354967329451,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54202.91932643019,2007-04-11,
+2454227.84444457,-110272.733231041,0.7571210076260599,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54227.84444457013,2007-05-06,
+2454247.0349,-1.18,1.2171,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54247.0349,,Rosenthal et al. (2021)
+2454247.0349,2.87,1.61,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54247.0349,,Butler et al. (2017)
+2454248.12638,-2.08,1.557,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54248.12638,,Rosenthal et al. (2021)
+2454248.12638,0.26,2.07,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54248.12638,,Butler et al. (2017)
+2454249.97027,-1.79,1.1757,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54249.97027,,Rosenthal et al. (2021)
+2454249.97027,-2.37,1.61,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54249.97027,,Butler et al. (2017)
+2454251.01231,2.35,1.265,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54251.01231,,Rosenthal et al. (2021)
+2454251.01231,0.48,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54251.01231,,Butler et al. (2017)
+2454251.97399,-5.28,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54251.97399,,Butler et al. (2017)
+2454251.97399,-2.46,1.1843,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54251.97399,,Rosenthal et al. (2021)
+2454256.00227,-2.17,1.096,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54256.00227,,Rosenthal et al. (2021)
+2454256.00227,-1.92,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54256.00227,,Butler et al. (2017)
+2454256.00811,-3.23,1.0449,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54256.00811,,Rosenthal et al. (2021)
+2454256.00811,-0.42,1.33,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54256.00811,,Butler et al. (2017)
+2454277.91484,4.97,1.91,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54277.91484,,Butler et al. (2017)
+2454277.91484,0.13,1.4583,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54277.91484,,Rosenthal et al. (2021)
+2454278.97111,-5.1,1.4692,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54278.97111,,Rosenthal et al. (2021)
+2454278.97111,-2.35,2.01,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54278.97111,,Butler et al. (2017)
+2454285.97193,-2.61,2.05,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54285.97193,,Butler et al. (2017)
+2454285.97193,-4.02,1.5735,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54285.97193,,Rosenthal et al. (2021)
+2454285.97872,-4.34,1.3454,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54285.97872,,Rosenthal et al. (2021)
+2454285.97872,-0.58,1.67,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54285.97872,,Butler et al. (2017)
+2454291.59757914,-110277.955797006,0.971077394353019,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54291.597579140216,2007-07-09,
+2454294.98802,-4.89,1.207,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54294.98802,,Rosenthal et al. (2021)
+2454294.98802,-1.16,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54294.98802,,Butler et al. (2017)
+2454298.71516087,-110275.714208963,0.9661682491821112,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54298.71516086999,2007-07-16,
+2454304.41033,-110430.6,1.77,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54304.41033,,SOPHIE DRS 3.1 (HR)
+2454304.96059,-3.2,1.5055,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54304.96059,,Rosenthal et al. (2021)
+2454304.96059,-2.61,1.75,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54304.96059,,Butler et al. (2017)
+2454305.96227,-0.43,1.63,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54305.96227,,Butler et al. (2017)
+2454305.96227,-3.12,1.2834,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54305.96227,,Rosenthal et al. (2021)
+2454306.93872,-2.85,1.419,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54306.93872,,Rosenthal et al. (2021)
+2454306.93872,2.09,1.66,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54306.93872,,Butler et al. (2017)
+2454307.98903,2.66,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54307.98903,,Butler et al. (2017)
+2454307.98903,-1.19,1.2545,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54307.98903,,Rosenthal et al. (2021)
+2454308.95786,-0.28,1.4741,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54308.95786,,Rosenthal et al. (2021)
+2454308.95786,2.63,1.72,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54308.95786,,Butler et al. (2017)
+2454309.41876,-110461.4,1.475,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54309.41876,,SOPHIE DRS 3.1 (HR)
+2454309.95411,0.62,1.1882,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54309.95411,,Rosenthal et al. (2021)
+2454309.95411,1.47,1.51,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54309.95411,,Butler et al. (2017)
+2454310.94662,4.77,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54310.94662,,Butler et al. (2017)
+2454310.94662,-0.59,1.0928,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54310.94662,,Rosenthal et al. (2021)
+2454311.94464,0.89,1.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54311.94464,,Butler et al. (2017)
+2454311.94464,-1.98,1.1405,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54311.94464,,Rosenthal et al. (2021)
+2454312.94022,3.01,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54312.94022,,Butler et al. (2017)
+2454312.94022,2.26,1.2085,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54312.94022,,Rosenthal et al. (2021)
+2454313.93723,2.27,1.2343,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54313.93723,,Rosenthal et al. (2021)
+2454313.93723,-0.55,1.62,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54313.93723,,Butler et al. (2017)
+2454314.97792,-1.51,1.1321,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54314.97792,,Rosenthal et al. (2021)
+2454314.97792,-3.32,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54314.97792,,Butler et al. (2017)
+2454315.66193728,-110275.165145811,1.2439550402217,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54315.66193728009,2007-08-02,
+2454316.64794976,-110274.199046524,0.937237314113853,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54316.64794975985,2007-08-03,
+2454318.84869,-1.49,1.2556,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54318.84869,,Rosenthal et al. (2021)
+2454319.63861511,-110275.066846079,0.760243569601614,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54319.63861510996,2007-08-06,
+2454320.65087625,-110275.89307607,0.706231858670989,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54320.65087625012,2007-08-07,
+2454335.85052,1.16,1.1341,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54335.85052,,Rosenthal et al. (2021)
+2454335.85052,2.57,1.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54335.85052,,Butler et al. (2017)
+2454335.85681,-1.36,1.1043,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54335.85681,,Rosenthal et al. (2021)
+2454335.85681,2.55,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54335.85681,,Butler et al. (2017)
+2454336.88714,0.65,1.0526,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54336.88714,,Rosenthal et al. (2021)
+2454336.88714,4.61,1.36,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54336.88714,,Butler et al. (2017)
+2454337.83452,3.27,1.54,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54337.83452,,Butler et al. (2017)
+2454337.83452,1.51,1.0102,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54337.83452,,Rosenthal et al. (2021)
+2454338.88034,2.69,1.36,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54338.88034,,Butler et al. (2017)
+2454338.88034,0.14,1.1442,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54338.88034,,Rosenthal et al. (2021)
+2454343.55782783,-110274.86200775,0.593276768988305,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54343.55782782985,2007-08-30,
+2454343.81304,-0.75,1.0816,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54343.81304,,Rosenthal et al. (2021)
+2454343.81304,-2.06,1.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54343.81304,,Butler et al. (2017)
+2454344.93705,-2.65,1.2658,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54344.93705,,Rosenthal et al. (2021)
+2454344.93705,-5.5,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54344.93705,,Butler et al. (2017)
+2454347.55878181,-110275.204612078,0.689923985069919,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54347.558781810105,2007-09-03,
+2454385.52452128,-110272.436896833,1.36269910698226,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54385.52452128008,2007-10-11,
+2454389.50223158,-110270.864631935,1.60918011726689,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54389.502231580205,2007-10-15,
+2454396.70932,3.48,1.1967,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54396.70932,,Rosenthal et al. (2021)
+2454396.70932,7.07,1.45,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54396.70932,,Butler et al. (2017)
+2454397.71094,2.67,1.1987,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54397.71094,,Rosenthal et al. (2021)
+2454397.71094,4.2,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54397.71094,,Butler et al. (2017)
+2454399.73488,-2.01,1.85,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54399.73488,,Butler et al. (2017)
+2454399.73488,-4.04,1.3214,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54399.73488,,Rosenthal et al. (2021)
+2454523.88194005,-110272.496013742,0.939245558273712,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54523.88194005005,2008-02-26,
+2454551.90975652,-110274.457269856,0.7465327401736369,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54551.90975651983,2008-03-25,
+2454588.92163458,-110274.954594094,0.919727532262532,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54588.92163458001,2008-05-01,
+2454602.96046,5.99,1.1165,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54602.96046,,Rosenthal et al. (2021)
+2454604.00163,1.88,1.1734,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54604.00163,,Rosenthal et al. (2021)
+2454633.89999,5.08,1.59,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54633.89999,,Butler et al. (2017)
+2454633.89999,1.33,1.3559,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54633.89999,,Rosenthal et al. (2021)
+2454717.75225,-0.12,1.2515,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54717.75225,,Rosenthal et al. (2021)
+2454717.75225,-0.75,1.61,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54717.75225,,Butler et al. (2017)
+2454718.75463,2.58,1.1064,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54718.75463,,Rosenthal et al. (2021)
+2454718.75463,1.6,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54718.75463,,Butler et al. (2017)
+2454719.77178,0.55,1.1337,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54719.77178,,Rosenthal et al. (2021)
+2454719.77178,1.29,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54719.77178,,Butler et al. (2017)
+2454720.75078,1.36,1.08,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54720.75078,,Rosenthal et al. (2021)
+2454721.73997,-1.7,1.0016,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54721.73997,,Rosenthal et al. (2021)
+2454723.75848,2.02,1.0815,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54723.75848,,Rosenthal et al. (2021)
+2454723.75848,0.06,1.26,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54723.75848,,Butler et al. (2017)
+2454724.76413,0.74,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54724.76413,,Butler et al. (2017)
+2454724.76413,-2.31,1.2089,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54724.76413,,Rosenthal et al. (2021)
+2454725.76027,2.63,1.2172,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54725.76027,,Rosenthal et al. (2021)
+2454930.0562,3.27,1.74,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54930.0562,,Butler et al. (2017)
+2454930.05789,0.81,1.4046,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54930.05789,,Rosenthal et al. (2021)
+2454951.82676931,-110269.970487653,0.821144685639978,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54951.82676931005,2009-04-29,
+2454956.84370859,-110268.172341096,0.8599577561719239,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,54956.84370859014,2009-05-04,
+2455054.65330066,-110266.140901555,1.0049910986471602,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55054.6533006602,2009-08-10,
+2455283.88081141,-110263.700573737,0.685924210705381,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55283.880811410025,2010-03-27,
+2455305.87989048,-110262.673887374,0.9199413031592372,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55305.87989048008,2010-04-18,
+2455388.58785236,-110263.742517336,0.779516261523655,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55388.587852360215,2010-07-10,
+2455396.5988926,-110260.604853873,1.49380952316899,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55396.59889259981,2010-07-18,
+2455403.64810031,-110259.096277829,1.2706466872236102,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55403.648100310005,2010-07-25,
+2455457.54263877,-110263.182223707,0.803171373364317,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55457.54263876984,2010-09-17,
+2455463.81982,-3.79,1.036,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.81982,,Rosenthal et al. (2021)
+2455463.81996,-3.66,1.28,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.81996,,Butler et al. (2017)
+2455463.82726,-3.24,1.0289,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.82726,,Rosenthal et al. (2021)
+2455463.82741,-4.73,1.22,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.82741,,Butler et al. (2017)
+2455463.83469,-6.85,1.0491,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.83469,,Rosenthal et al. (2021)
+2455463.83484,-5.85,1.31,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55463.83484,,Butler et al. (2017)
+2455485.49130674,-110260.648792772,1.09027150999446,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55485.49130673986,2010-10-15,
+2455607.13661,0.91,1.1907,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55607.13661,,Rosenthal et al. (2021)
+2455607.13942,3.87,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55607.13942,,Butler et al. (2017)
+2455608.12276,2.09,1.2191,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55608.12276,,Rosenthal et al. (2021)
+2455608.1255,1.57,1.45,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55608.1255,,Butler et al. (2017)
+2455609.16315,1.86,1.3754,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55609.16315,,Rosenthal et al. (2021)
+2455609.16581,4.09,1.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55609.16581,,Butler et al. (2017)
+2455614.15726,-2.83,1.3353,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55614.15726,,Rosenthal et al. (2021)
+2455614.15954,-2.52,1.51,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55614.15954,,Butler et al. (2017)
+2455634.09171,-6.3,1.1179,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55634.09171,,Rosenthal et al. (2021)
+2455634.09232,-5.46,1.37,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55634.09232,,Butler et al. (2017)
+2455634.89317964,-110260.714744551,0.903435996573858,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55634.893179640174,2011-03-13,
+2455635.11407,-4.39,1.2547,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55635.11407,,Rosenthal et al. (2021)
+2455635.11458,-2.55,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55635.11458,,Butler et al. (2017)
+2455636.15,-3.73,0.9828,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55636.15,,Rosenthal et al. (2021)
+2455636.15043,-4.34,1.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55636.15043,,Butler et al. (2017)
+2455637.12026,-5.75,1.2241,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55637.12026,,Rosenthal et al. (2021)
+2455637.1206,-4.96,1.48,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55637.1206,,Butler et al. (2017)
+2455638.07485,-5.3,1.0631,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55638.07485,,Rosenthal et al. (2021)
+2455638.0751,-4.49,1.31,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55638.0751,,Butler et al. (2017)
+2455645.90412777,-110262.892521447,0.859005543169638,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55645.9041277701,2011-03-24,
+2455660.83491765,-110259.147604966,0.824753372366381,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55660.83491765009,2011-04-08,
+2455665.02443,-1.13,1.33,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55665.02443,,Butler et al. (2017)
+2455665.02649,-0.14,1.1747,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55665.02649,,Rosenthal et al. (2021)
+2455668.0309,-3.89,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55668.0309,,Butler et al. (2017)
+2455668.0332,-4.5,1.0344,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55668.0332,,Rosenthal et al. (2021)
+2455670.05167,-2.7,1.59,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55670.05167,,Butler et al. (2017)
+2455670.05412,-2.82,1.1261,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55670.05412,,Rosenthal et al. (2021)
+2455671.06971,-2.39,1.36,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55671.06971,,Butler et al. (2017)
+2455671.07224,-3.15,1.0482,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55671.07224,,Rosenthal et al. (2021)
+2455671.996,-0.99,1.33,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55671.996,,Butler et al. (2017)
+2455671.99859,-0.34,0.9787,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55671.99859,,Rosenthal et al. (2021)
+2455672.84550178,-110256.128373875,0.731758823139144,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55672.84550178005,2011-04-20,
+2455672.97787,1.32,1.44,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55672.97787,,Butler et al. (2017)
+2455672.98054,0.82,1.1561,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55672.98054,,Rosenthal et al. (2021)
+2455673.96678,-0.14,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55673.96678,,Butler et al. (2017)
+2455673.96953,-1.69,1.1632,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55673.96953,,Rosenthal et al. (2021)
+2455674.84651815,-110257.779956954,0.81794575077986,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55674.84651815007,2011-04-22,
+2455675.83594661,-110256.552250492,0.8585330666123709,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55675.8359466102,2011-04-23,
+2455676.83598643,-110260.607433823,0.908226378973567,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55676.83598642983,2011-04-24,
+2455677.80180685,-110258.62747269,0.775189233251946,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55677.80180684989,2011-04-25,
+2455678.84993289,-110259.131955147,0.66832289638213,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55678.84993288992,2011-04-26,
+2455679.78006726,-110257.754519034,0.675623405951106,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55679.78006725991,2011-04-27,
+2455680.73208842,-110255.387041791,0.926507919529035,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55680.73208842008,2011-04-28,
+2455681.73322278,-110255.786670212,0.862831973348256,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55681.73322277982,2011-04-29,
+2455682.73244815,-110257.751710232,0.9171292516892752,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55682.73244814994,2011-04-30,
+2455683.74089613,-110258.134925613,0.790542425551972,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55683.74089612998,2011-05-01,
+2455684.74295756,-110257.699678458,0.8094398914822379,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55684.74295755988,2011-05-02,
+2455685.72802081,-110260.30125841,0.8017573369088871,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55685.72802081006,2011-05-03,
+2455686.93909274,-110257.72900593,0.951363813202004,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55686.93909273995,2011-05-04,
+2455689.75632572,-110256.648848902,1.79657997720827,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55689.75632571988,2011-05-07,
+2455690.81371267,-110258.099768505,0.99960351238293,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55690.81371267,2011-05-08,
+2455691.83907424,-110256.997064447,1.01799722642253,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55691.83907424007,2011-05-09,
+2455692.73413215,-110256.119720908,0.928726356863214,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55692.73413215019,2011-05-10,
+2455693.76785222,-110257.44852819,0.925400239158916,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55693.76785222022,2011-05-11,
+2455697.12781,-0.6,1.34,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55697.12781,,Butler et al. (2017)
+2455697.13203,-0.48,1.3039,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55697.13203,,Rosenthal et al. (2021)
+2455697.88552,2.0,1.46,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55697.88552,,Butler et al. (2017)
+2455697.88977,2.99,1.3291,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55697.88977,,Rosenthal et al. (2021)
+2455699.88262,0.87,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55699.88262,,Butler et al. (2017)
+2455699.88696,1.47,1.2076,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55699.88696,,Rosenthal et al. (2021)
+2455701.12502,0.94,1.1438,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55701.12502,,Rosenthal et al. (2021)
+2455704.86933,1.92,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55704.86933,,Butler et al. (2017)
+2455704.8739,-0.96,1.146,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55704.8739,,Rosenthal et al. (2021)
+2455705.86311,1.38,1.23,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55705.86311,,Butler et al. (2017)
+2455705.86772,0.5,1.0769,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55705.86772,,Rosenthal et al. (2021)
+2455706.85376,4.02,1.4,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55706.85376,,Butler et al. (2017)
+2455706.85841,2.52,1.0923,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55706.85841,,Rosenthal et al. (2021)
+2455707.86373,7.76,1.77,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55707.86373,,Butler et al. (2017)
+2455707.86841,4.49,1.2487,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55707.86841,,Rosenthal et al. (2021)
+2455714.79222472,-110253.871040978,6.02731893272415,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55714.79222472012,2011-06-01,
+2455720.02477,0.44,1.46,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55720.02477,,Butler et al. (2017)
+2455720.0298,-2.57,1.2537,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55720.0298,,Rosenthal et al. (2021)
+2455723.02287,-1.61,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55723.02287,,Butler et al. (2017)
+2455723.02796,0.67,1.316,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55723.02796,,Rosenthal et al. (2021)
+2455723.87029,-0.31,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55723.87029,,Butler et al. (2017)
+2455723.87539,1.87,1.2348,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55723.87539,,Rosenthal et al. (2021)
+2455726.94425,1.45,1.39,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55726.94425,,Butler et al. (2017)
+2455726.94939,-2.94,1.2815,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55726.94939,,Rosenthal et al. (2021)
+2455733.83426,-3.25,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55733.83426,,Butler et al. (2017)
+2455733.83943,-1.95,1.1967,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55733.83943,,Rosenthal et al. (2021)
+2455734.88248,3.49,1.35,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55734.88248,,Butler et al. (2017)
+2455734.88765,-1.47,1.0079,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55734.88765,,Rosenthal et al. (2021)
+2455735.84993,4.13,1.27,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55735.84993,,Butler et al. (2017)
+2455735.8551,-2.01,1.1888,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55735.8551,,Rosenthal et al. (2021)
+2455749.97873,1.94,1.62,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55749.97873,,Butler et al. (2017)
+2455749.98372,2.14,1.3101,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55749.98372,,Rosenthal et al. (2021)
+2455751.77095,0.42,1.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55751.77095,,Butler et al. (2017)
+2455751.7759,1.14,1.1815,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55751.7759,,Rosenthal et al. (2021)
+2455752.7645,3.4,1.52,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55752.7645,,Butler et al. (2017)
+2455752.76942,3.53,1.2619,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55752.76942,,Rosenthal et al. (2021)
+2455753.74016019,-110256.5803153,1.23568821738041,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55753.74016019004,2011-07-10,
+2455754.66107858,-110253.39226865,1.02604771588255,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55754.66107858019,2011-07-11,
+2455759.77037,3.6,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55759.77037,,Butler et al. (2017)
+2455759.77507,1.92,1.1502,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55759.77507,,Rosenthal et al. (2021)
+2455760.76052,4.78,1.32,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55760.76052,,Butler et al. (2017)
+2455760.76518,3.57,1.0335,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55760.76518,,Rosenthal et al. (2021)
+2455761.79157,6.03,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55761.79157,,Butler et al. (2017)
+2455761.7962,5.44,1.0748,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55761.7962,,Rosenthal et al. (2021)
+2455762.83271,4.43,1.25,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55762.83271,,Butler et al. (2017)
+2455762.83729,3.28,1.1128,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55762.83729,,Rosenthal et al. (2021)
+2455763.77752,2.02,1.48,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55763.77752,,Butler et al. (2017)
+2455763.78206,2.1,1.2281,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55763.78206,,Rosenthal et al. (2021)
+2455768.75479,-0.38,1.22,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55768.75479,,Butler et al. (2017)
+2455768.75911,-0.47,1.0239,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55768.75911,,Rosenthal et al. (2021)
+2455769.54061937,-110253.472709038,0.93503652554828,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55769.54061937006,2011-07-26,
+2455769.76487,2.67,1.3,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55769.76487,,Butler et al. (2017)
+2455769.76914,1.48,1.1308,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55769.76914,,Rosenthal et al. (2021)
+2455770.7719,5.84,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55770.7719,,Butler et al. (2017)
+2455770.77612,1.95,1.1586,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55770.77612,,Rosenthal et al. (2021)
+2455776.51424959,-110254.066155315,1.2025055376202698,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55776.51424959023,2011-08-02,
+2455777.57857995,-110254.632311707,1.0153123139160198,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55777.57857995015,2011-08-03,
+2455778.6235222,-110251.815553491,2.01761455288078,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55778.62352220016,2011-08-04,
+2455779.68883458,-110254.928322728,1.06028813637384,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55779.68883458013,2011-08-05,
+2455781.75977,-0.21,1.32,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55781.75977,,Butler et al. (2017)
+2455781.76337,-1.56,1.1197,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55781.76337,,Rosenthal et al. (2021)
+2455782.64062264,-110251.928222978,1.73809605539028,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55782.64062264003,2011-08-08,
+2455787.8874,5.61,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55787.8874,,Butler et al. (2017)
+2455787.89059,0.17,1.2349,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55787.89059,,Rosenthal et al. (2021)
+2455788.91751,3.58,1.62,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55788.91751,,Butler et al. (2017)
+2455788.92064,-0.8,1.1868,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55788.92064,,Rosenthal et al. (2021)
+2455789.78086,0.16,1.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55789.78086,,Butler et al. (2017)
+2455789.78392,-2.92,1.1839,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55789.78392,,Rosenthal et al. (2021)
+2455790.84818,3.1,1.39,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55790.84818,,Butler et al. (2017)
+2455790.85117,1.01,1.1234,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55790.85117,,Rosenthal et al. (2021)
+2455791.90215,2.94,1.53,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55791.90215,,Butler et al. (2017)
+2455791.90507,1.21,1.153,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55791.90507,,Rosenthal et al. (2021)
+2455792.85422,4.38,1.33,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55792.85422,,Butler et al. (2017)
+2455792.85707,2.17,1.0439,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55792.85707,,Rosenthal et al. (2021)
+2455793.72985,1.82,1.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55793.72985,,Butler et al. (2017)
+2455793.73263,-2.23,1.109,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55793.73263,,Rosenthal et al. (2021)
+2455794.78554,3.28,1.55,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55794.78554,,Butler et al. (2017)
+2455794.78825,1.76,1.3062,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55794.78825,,Rosenthal et al. (2021)
+2455795.88831,5.77,1.32,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55795.88831,,Butler et al. (2017)
+2455795.89093,4.02,1.1472,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55795.89093,,Rosenthal et al. (2021)
+2455796.73302,1.21,1.4,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55796.73302,,Butler et al. (2017)
+2455796.73558,0.82,1.061,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55796.73558,,Rosenthal et al. (2021)
+2455797.74539,2.86,1.19,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55797.74539,,Butler et al. (2017)
+2455797.74787,1.75,1.0174,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55797.74787,,Rosenthal et al. (2021)
+2455798.84563,7.28,1.4,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55798.84563,,Butler et al. (2017)
+2455798.84802,4.02,0.9324,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55798.84802,,Rosenthal et al. (2021)
+2455802.52443457,-110254.868468321,1.06548517066278,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55802.52443457022,2011-08-28,
+2455803.55627977,-110253.387450567,1.3476748683545998,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55803.5562797701,2011-08-29,
+2455804.50695037,-110252.834430215,1.24998015524398,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55804.50695037004,2011-08-30,
+2455806.80618,-1.35,1.81,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55806.80618,,Butler et al. (2017)
+2455806.80794,-1.98,1.4581,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55806.80794,,Rosenthal et al. (2021)
+2455807.51187227,-110253.828695841,0.825768544038186,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55807.51187227015,2011-09-02,
+2455808.81412,0.2,1.8,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55808.81412,,Butler et al. (2017)
+2455808.81572,0.2,1.3004,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55808.81572,,Rosenthal et al. (2021)
+2455809.59520706,-110254.249090998,0.8188093057693321,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55809.59520706022,2011-09-04,
+2455809.8823,-0.35,1.45,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55809.8823,,Butler et al. (2017)
+2455809.88381,-0.43,1.2595,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55809.88381,,Rosenthal et al. (2021)
+2455810.54747024,-110251.092005417,0.793836366349164,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55810.54747023992,2011-09-05,
+2455810.88909,2.31,1.24,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55810.88909,,Butler et al. (2017)
+2455810.89051,1.39,0.8804,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55810.89051,,Rosenthal et al. (2021)
+2455811.83292,0.45,1.2,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55811.83292,,Butler et al. (2017)
+2455811.83426,1.7,0.938,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55811.83426,,Rosenthal et al. (2021)
+2455814.7225,-0.73,1.23,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55814.7225,,Butler et al. (2017)
+2455814.7236,0.77,1.0437,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55814.7236,,Rosenthal et al. (2021)
+2455824.75763,1.26,1.61,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55824.75763,,Butler et al. (2017)
+2455824.75786,-0.71,1.2314,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55824.75786,,Rosenthal et al. (2021)
+2455835.49960775,-110253.361568576,1.08060001626044,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55835.499607750215,2011-09-30,
+2455836.48211526,-110252.353982208,0.761177609096762,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55836.48211525986,2011-10-01,
+2455837.47953545,-110251.069401339,0.7694914147778089,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55837.47953545023,2011-10-02,
+2455839.48337342,-110254.991535198,0.849602641118002,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55839.48337341985,2011-10-04,
+2455839.74598,2.36,1.0636,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55839.74598,,Rosenthal et al. (2021)
+2455839.74705,-0.04,1.42,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55839.74705,,Butler et al. (2017)
+2455840.48536868,-110252.908998708,0.947978376668196,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55840.48536868021,2011-10-05,
+2455841.49502041,-110252.675457219,0.933642408550072,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55841.495020410046,2011-10-06,
+2455841.77102,1.0,1.1988,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55841.77102,,Rosenthal et al. (2021)
+2455841.77226,0.24,1.61,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55841.77226,,Butler et al. (2017)
+2455842.48552563,-110253.074842317,0.993270788130753,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55842.48552562995,2011-10-07,
+2455843.70562,0.45,1.0609,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55843.70562,,Rosenthal et al. (2021)
+2455843.70702,0.0,1.41,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55843.70702,,Butler et al. (2017)
+2455844.47896877,-110250.966420976,1.03630590322011,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55844.47896876978,2011-10-09,
+2455845.49501274,-110251.129752246,0.962731602228476,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55845.49501274014,2011-10-10,
+2455850.71104,-0.13,1.1405,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55850.71104,,Rosenthal et al. (2021)
+2455850.71302,1.18,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55850.71302,,Butler et al. (2017)
+2455851.70509,-0.23,1.0951,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55851.70509,,Rosenthal et al. (2021)
+2455851.70715,2.38,1.34,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55851.70715,,Butler et al. (2017)
+2455992.15553,-3.72,1.2835,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55992.15553,,Rosenthal et al. (2021)
+2455992.15676,0.75,1.48,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55992.15676,,Butler et al. (2017)
+2455992.88145561,-110254.668893382,1.19297300470047,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55992.88145561004,2012-03-05,
+2455994.88588207,-110256.467062505,1.3395876951465402,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55994.88588206982,2012-03-07,
+2455995.11304,-1.76,1.3122,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55995.11304,,Rosenthal et al. (2021)
+2455995.11402,-0.33,1.76,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,55995.11402,,Butler et al. (2017)
+2456000.09128,-2.36,1.2138,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56000.09128,,Rosenthal et al. (2021)
+2456000.09182,-2.48,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56000.09182,,Butler et al. (2017)
+2456019.00553,1.27,1.98,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56019.00553,,Butler et al. (2017)
+2456019.00664,-2.12,1.5822,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56019.00664,,Rosenthal et al. (2021)
+2456020.0085,4.44,1.58,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56020.0085,,Butler et al. (2017)
+2456020.00969,1.9,1.2557,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56020.00969,,Rosenthal et al. (2021)
+2456027.98881,0.45,1.1645,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56027.98881,,Rosenthal et al. (2021)
+2456064.78387396,-110254.060561057,0.9442231815287632,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56064.78387395991,2012-05-16,
+2456073.86262,5.68,1.57,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56073.86262,,Butler et al. (2017)
+2456073.86733,-0.34,1.401,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56073.86733,,Rosenthal et al. (2021)
+2456078.76187552,-110253.973988526,0.86337212483017,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56078.76187552,2012-05-30,
+2456079.69857314,-110251.467689642,0.977825931263436,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56079.69857313996,2012-05-31,
+2456080.76158843,-110250.50160038,0.7546964795033221,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56080.76158843003,2012-06-01,
+2456081.77008173,-110252.335745415,0.773942795693723,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56081.770081730094,2012-06-02,
+2456082.73252813,-110249.890111636,1.60236331076073,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56082.73252813006,2012-06-03,
+2456083.70384441,-110249.011520329,0.9851862334289292,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56083.7038444099,2012-06-04,
+2456085.75906427,-110251.534664638,0.955807405486212,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56085.75906427018,2012-06-06,
+2456087.76449886,-110250.559951064,0.8769679718391681,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56087.76449886011,2012-06-08,
+2456088.8060066,-110250.792903701,1.01638656035457,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56088.80600660015,2012-06-09,
+2456089.68326407,-110250.173539648,1.04539246805196,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56089.68326407019,2012-06-10,
+2456094.77828866,-110249.562933804,0.998895741235376,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56094.778288660105,2012-06-15,
+2456102.58759563,-110250.523451224,0.999475914129711,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56102.58759562997,2012-06-23,
+2456114.75697,-11.42,4.48,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.75697,,Butler et al. (2017)
+2456114.75767,-6.31,4.3,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.75767,,Butler et al. (2017)
+2456114.75838,-14.04,4.5,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.75838,,Butler et al. (2017)
+2456114.75911,-1.92,5.02,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.75911,,Butler et al. (2017)
+2456114.75983,-2.06,4.56,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.75983,,Butler et al. (2017)
+2456114.76053,-4.89,4.69,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76053,,Butler et al. (2017)
+2456114.76121,-3.95,4.93,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76121,,Butler et al. (2017)
+2456114.76192,-5.55,4.43,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76192,,Butler et al. (2017)
+2456114.76266,-3.61,4.75,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76266,,Butler et al. (2017)
+2456114.76358,3.93,5.16,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76358,,Butler et al. (2017)
+2456114.76431,-12.07,5.4,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76431,,Butler et al. (2017)
+2456114.76501,-2.57,4.96,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76501,,Butler et al. (2017)
+2456114.76572,3.32,4.59,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76572,,Butler et al. (2017)
+2456114.76641,-0.33,4.54,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76641,,Butler et al. (2017)
+2456114.76708,-7.04,4.29,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76708,,Butler et al. (2017)
+2456114.76785,-10.32,3.1,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76785,,Butler et al. (2017)
+2456114.7687,-2.06,3.72,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.7687,,Butler et al. (2017)
+2456114.76956,1.53,3.38,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56114.76956,,Butler et al. (2017)
+2456117.54925367,-110251.756918308,0.900508026764588,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56117.54925367003,2012-07-08,
+2456166.73653,3.93,1.93,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56166.73653,,Butler et al. (2017)
+2456166.73872,-0.71,1.2293,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56166.73872,,Rosenthal et al. (2021)
+2456195.73639,-0.6,1.0601,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56195.73639,,Rosenthal et al. (2021)
+2456195.73666,2.38,1.47,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56195.73666,,Butler et al. (2017)
+2456357.90410315,-110250.351480211,0.9873611138937192,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56357.904103150126,2013-03-05,
+2456360.89475184,-110251.600772205,1.09704375931565,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56360.894751839805,2013-03-08,
+2456361.89554405,-110251.02505421,1.26273714494953,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56361.8955440498,2013-03-09,
+2456363.90676254,-110251.030854288,1.06803414714434,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56363.90676253988,2013-03-11,
+2456364.89441473,-110253.607471594,0.867750350500932,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56364.894414729904,2013-03-12,
+2456367.90522549,-110252.967937199,0.885244299142909,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56367.90522549022,2013-03-15,
+2456368.89332772,-110253.38874066,0.929811003467799,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56368.89332772,2013-03-16,
+2456369.90960913,-110252.168422086,0.883526203835592,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56369.90960913012,2013-03-17,
+2456371.9141058,-110253.330163052,1.13492597327347,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56371.91410579998,2013-03-19,
+2456372.90502368,-110253.098100242,0.931876045157193,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56372.90502368007,2013-03-20,
+2456373.89861185,-110254.829099976,0.965609953613176,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56373.898611850105,2013-03-21,
+2456417.93142905,-110247.423054013,1.25486186826571,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56417.93142904993,2013-05-04,
+2456417.94316069,-110249.545556402,1.23785645878625,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56417.9431606899,2013-05-04,
+2456418.9078096,-110248.450052382,0.960254350281749,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56418.90780959977,2013-05-05,
+2456419.68274616,-110250.039132888,1.69867875247039,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.68274615984,2013-05-06,
+2456419.68884969,-110248.568216452,1.67034439475258,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.68884968991,2013-05-06,
+2456419.69489175,-110247.753414804,1.67502875739704,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.69489174988,2013-05-06,
+2456419.70128093,-110249.060607388,1.65122094141585,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.70128093008,2013-05-06,
+2456419.70727022,-110247.25632794,1.50936062948662,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.70727021992,2013-05-06,
+2456419.71353914,-110248.122497264,1.49594526630251,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.71353913983,2013-05-06,
+2456419.71964379,-110248.023029084,1.48842263692148,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.71964378981,2013-05-06,
+2456419.7258558,-110247.824418389,1.51288329771977,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.72585579986,2013-05-06,
+2456419.73195454,-110249.265915987,1.49453385459966,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.731954540126,2013-05-06,
+2456419.73817478,-110248.157109528,1.48063451620437,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.738174779806,2013-05-06,
+2456419.74478241,-110248.377410841,1.4271080221981198,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.7447824101,2013-05-06,
+2456419.75094172,-110248.845784246,1.42475358625653,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.75094171986,2013-05-06,
+2456419.75704118,-110246.27808902,1.43778886541116,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.75704118004,2013-05-06,
+2456419.76331069,-110246.909056197,1.43041642557695,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.763310689945,2013-05-06,
+2456419.76941573,-110247.120123574,1.4318760192659,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.76941573015,2013-05-06,
+2456419.77545705,-110246.339326213,1.4700993033952798,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.775457050186,2013-05-06,
+2456419.7817255,-110248.539953951,1.5673207610128,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.78172549978,2013-05-06,
+2456419.78783041,-110246.793589087,1.6113595555986,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.78783041006,2013-05-06,
+2456419.79399496,-110246.969892428,1.5867961147045202,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.79399495991,2013-05-06,
+2456419.80010076,-110247.82150115,1.66728502417178,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.80010076007,2013-05-06,
+2456419.80691052,-110248.760974313,1.72560098136844,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.806910519954,2013-05-06,
+2456419.81318604,-110246.769481928,1.54712853524812,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.81318604015,2013-05-06,
+2456419.81912924,-110249.079479585,1.67383678535227,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.81912923977,2013-05-06,
+2456419.82511273,-110248.616319448,1.7539120914535,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.8251127298,2013-05-06,
+2456419.83143941,-110247.211817882,1.8429512055692,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.83143940987,2013-05-06,
+2456419.83765994,-110245.123167001,1.77561992444798,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.83765994012,2013-05-06,
+2456419.84404437,-110248.369132766,1.6733051489194,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.84404437011,2013-05-06,
+2456419.85002994,-110247.435368782,1.5383832362658498,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.850029939786,2013-05-06,
+2456419.85619122,-110246.706087032,1.46390776958277,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.85619122023,2013-05-06,
+2456419.86234391,-110247.944801878,1.41931588807827,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.86234391015,2013-05-06,
+2456419.86943528,-110247.946682308,1.38146131371722,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.869435280096,2013-05-06,
+2456419.87559064,-110246.156714688,1.3970516836424098,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.87559064012,2013-05-06,
+2456419.88180099,-110246.37564229,1.3960489036682,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.881800990086,2013-05-06,
+2456419.88772715,-110248.822435495,1.39568704812058,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.88772715023,2013-05-06,
+2456419.89393634,-110246.595270899,1.48254245931551,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.89393634023,2013-05-06,
+2456419.90026266,-110250.129658766,1.52065397046481,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.90026265988,2013-05-06,
+2456419.90648342,-110246.275681174,1.60364775484867,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.90648342017,2013-05-06,
+2456419.91257895,-110249.067407852,1.5359729304801,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.91257895017,2013-05-06,
+2456419.91873605,-110243.915970042,1.46576794140078,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56419.91873604991,2013-05-06,
+2456420.69793227,-110250.122198735,1.40408228855227,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.69793226989,2013-05-07,
+2456420.70408344,-110249.161851676,1.39080128684573,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.70408343989,2013-05-07,
+2456420.71024633,-110250.039069174,1.33981696689038,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.71024633013,2013-05-07,
+2456420.71640173,-110250.312223544,1.29104195143102,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.7164017302,2013-05-07,
+2456420.72261452,-110249.183769775,1.24937776022634,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.72261452023,2013-05-07,
+2456420.7287195,-110249.084783982,1.23174672413071,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.72871949989,2013-05-07,
+2456420.73487753,-110249.063037551,1.20611195057885,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.73487753002,2013-05-07,
+2456420.74103256,-110249.572245874,1.23888445127389,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.74103255989,2013-05-07,
+2456420.74718786,-110249.622361121,1.22995233340218,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.74718785984,2013-05-07,
+2456420.75335063,-110250.146882769,1.16553316013032,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.75335062994,2013-05-07,
+2456420.76201543,-110250.100625119,1.1206282948263,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.76201542979,2013-05-07,
+2456420.7681157,-110251.841028146,1.05522288075942,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.76811570022,2013-05-07,
+2456420.77433076,-110250.453640998,1.05177173170211,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.77433075989,2013-05-07,
+2456420.78048165,-110251.987392771,1.03445501097621,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.78048165003,2013-05-07,
+2456420.78657749,-110248.765363688,0.998980467497743,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.78657749016,2013-05-07,
+2456420.79261876,-110251.300582724,1.04072768974433,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.79261875991,2013-05-07,
+2456420.79895482,-110249.969885592,1.04393678832588,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.7989548198,2013-05-07,
+2456420.80499282,-110250.093086093,1.01725151218083,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.804992820136,2013-05-07,
+2456420.81132859,-110250.278631832,1.03683259091039,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.81132858992,2013-05-07,
+2456420.81737079,-110250.860591882,0.990611262625558,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.81737079006,2013-05-07,
+2456420.82454851,-110250.856884498,1.02039065629081,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.8245485099,2013-05-07,
+2456420.83081546,-110249.031625939,0.99265313447457,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.83081546007,2013-05-07,
+2456420.83685634,-110248.144798163,0.984064889865152,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.83685634006,2013-05-07,
+2456420.84307305,-110248.839121,0.973023035573153,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.843073050026,2013-05-07,
+2456420.8492408,-110250.948563186,0.968800714170579,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.8492407999,2013-05-07,
+2456420.85539373,-110248.99284795,0.977606893259804,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.8553937301,2013-05-07,
+2456420.86155173,-110250.40677464,0.983560311412376,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.86155172996,2013-05-07,
+2456420.86770408,-110248.241947074,0.989641390344553,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.86770407995,2013-05-07,
+2456420.87391978,-110248.420054593,0.978890651708512,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.8739197799,2013-05-07,
+2456420.88002556,-110247.927757952,0.95499635234717,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.88002556004,2013-05-07,
+2456420.88625409,-110249.180686662,0.946651161505922,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.886254089884,2013-05-07,
+2456420.89246258,-110249.564484865,0.959500719190856,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.89246258,2013-05-07,
+2456420.89856808,-110248.729327568,0.973486308070275,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.89856807981,2013-05-07,
+2456420.90477808,-110249.638217859,0.967161141028922,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.90477808006,2013-05-07,
+2456420.91094116,-110249.542112642,0.934054708185598,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.91094115982,2013-05-07,
+2456420.91709794,-110249.040984068,0.9413632929354612,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56420.91709794011,2013-05-07,
+2456421.91304958,-110246.756981525,1.61706693415227,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.913049580064,2013-05-08,
+2456421.91949479,-110247.474201576,1.89516641267552,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.919494790025,2013-05-08,
+2456421.92641388,-110247.751355106,1.57903682582283,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.9264138802,2013-05-08,
+2456421.93300634,-110246.927433833,1.73362080083564,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.93300634017,2013-05-08,
+2456421.93922453,-110246.519538613,1.67781040793186,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.93922453001,2013-05-08,
+2456421.94491188,-110247.12310659,2.00463227195554,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56421.94491187995,2013-05-08,
+2456422.9283393,-110248.227906505,1.30348832732578,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56422.92833930021,2013-05-09,
+2456423.83606714,-110249.785769324,1.18419291717084,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56423.8360671401,2013-05-10,
+2456424.66145213,-110247.63862909,1.49867715756094,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56424.66145212995,2013-05-11,
+2456426.65666301,-110245.01643762,1.60177186620043,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.6566630099,2013-05-13,
+2456426.66425773,-110246.006556748,1.38715935399599,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.66425772989,2013-05-13,
+2456426.67165312,-110245.681125812,1.37246638735686,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.67165311985,2013-05-13,
+2456426.67876125,-110244.702429403,1.3903946973641,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.678761249874,2013-05-13,
+2456426.68642229,-110246.427920775,1.41947934149056,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.686422289815,2013-05-13,
+2456426.6938016,-110245.783355748,1.59213123237781,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.69380160002,2013-05-13,
+2456426.70083933,-110248.191771056,1.3202165197093498,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.70083932998,2013-05-13,
+2456426.70801536,-110246.426762843,1.23855810444537,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.70801535994,2013-05-13,
+2456426.71540176,-110244.106226993,2.76273654513111,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.71540175984,2013-05-13,
+2456426.72202629,-110246.582199824,3.20399518730409,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.72202628991,2013-05-13,
+2456426.72948018,-110247.610497381,5.09474366106202,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.72948017996,2013-05-13,
+2456426.78068962,-110248.02436856,1.04111467873455,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.78068961995,2013-05-13,
+2456426.78846572,-110244.934103258,1.29744027166945,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.788465720136,2013-05-13,
+2456426.79585753,-110249.375275568,1.1295622283011602,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.79585753009,2013-05-13,
+2456426.80317063,-110246.375510981,1.05194823986528,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.80317062978,2013-05-13,
+2456426.81035306,-110249.251287559,1.02867748242159,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.81035305979,2013-05-13,
+2456426.81766766,-110248.599958548,1.08410287588702,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.81766765984,2013-05-13,
+2456426.82505194,-110249.866843699,1.05293450017837,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.825051940046,2013-05-13,
+2456426.83236225,-110249.812097021,0.9834857355849208,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.83236224996,2013-05-13,
+2456426.83953889,-110246.96238094,0.953487625796753,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.83953888994,2013-05-13,
+2456426.8468543,-110250.35443301,0.925382269339236,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.84685429977,2013-05-13,
+2456426.85423834,-110249.033894856,0.9139184248027,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.854238340165,2013-05-13,
+2456426.86187104,-110249.005821616,0.967197679259108,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.86187103996,2013-05-13,
+2456426.86918724,-110248.926159461,1.0184696694074902,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.86918724002,2013-05-13,
+2456426.87657161,-110248.646843192,1.07458609676239,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.8765716101,2013-05-13,
+2456426.88388658,-110246.575136784,1.12794691896941,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.88388657989,2013-05-13,
+2456426.89120149,-110250.103096684,1.03360370511974,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.89120149007,2013-05-13,
+2456426.89837248,-110248.353976133,1.10868445588733,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.89837248018,2013-05-13,
+2456426.90576266,-110248.363719157,1.15883303093308,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.90576265985,2013-05-13,
+2456426.91307332,-110248.431289015,1.20592725153052,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.91307331994,2013-05-13,
+2456426.92038719,-110247.98612024,1.29321531193486,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.92038718984,2013-05-13,
+2456426.92777621,-110247.91485017,1.2484885111291,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.92777621001,2013-05-13,
+2456426.93560513,-110247.100395495,1.2339601154831898,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56426.93560513016,2013-05-13,
+2456427.9045845,-110247.254449159,2.32230361187398,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56427.90458450001,2013-05-14,
+2456427.91238612,-110248.468599234,2.3795172259046,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56427.91238611983,2013-05-14,
+2456427.91948938,-110250.405727617,3.6648880518585,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56427.91948937997,2013-05-14,
+2456428.89698227,-110248.283722973,1.47242986251802,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.89698226983,2013-05-15,
+2456428.90436965,-110247.710756291,1.39445446395223,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.90436964994,2013-05-15,
+2456428.91147705,-110247.17260987,1.4506471062635,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.91147704981,2013-05-15,
+2456428.91886102,-110249.689544179,1.46461447315119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.91886101989,2013-05-15,
+2456428.92668174,-110246.069323052,1.52634076976496,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.92668174021,2013-05-15,
+2456428.93420397,-110249.281430266,1.69927043648241,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56428.93420396978,2013-05-15,
+2456473.78591,0.42,1.63,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56473.78591,,Butler et al. (2017)
+2456473.79103,-4.45,1.3402,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56473.79103,,Rosenthal et al. (2021)
+2456504.74881,0.64,2.2757,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56504.74881,,Rosenthal et al. (2021)
+2456505.7637,0.13,1.9552,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56505.7637,,Rosenthal et al. (2021)
+2456506.72731,-1.09,1.993,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56506.72731,,Rosenthal et al. (2021)
+2456506.75994,0.06,1.15,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56506.75994,,Butler et al. (2017)
+2456506.76387,-0.74,1.0773,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56506.76387,,Rosenthal et al. (2021)
+2456515.71041,-4.52,1.6187,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56515.71041,,Rosenthal et al. (2021)
+2456516.73015,-4.24,1.6799,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56516.73015,,Rosenthal et al. (2021)
+2456517.70604,-4.23,1.7301,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56517.70604,,Rosenthal et al. (2021)
+2456518.71179,-4.66,2.0185,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56518.71179,,Rosenthal et al. (2021)
+2456525.69484,-4.03,1.8419,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56525.69484,,Rosenthal et al. (2021)
+2456526.70158,-2.73,1.76,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56526.70158,,Rosenthal et al. (2021)
+2456530.74892,-2.69,1.9036,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56530.74892,,Rosenthal et al. (2021)
+2456534.71618,-3.02,1.779,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56534.71618,,Rosenthal et al. (2021)
+2456535.69316,-1.24,1.7226,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56535.69316,,Rosenthal et al. (2021)
+2456539.66783,0.83,1.718,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56539.66783,,Rosenthal et al. (2021)
+2456540.68705,2.14,1.6518,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56540.68705,,Rosenthal et al. (2021)
+2456541.6698,-0.58,1.6314,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56541.6698,,Rosenthal et al. (2021)
+2456542.68283,2.77,1.6233,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56542.68283,,Rosenthal et al. (2021)
+2456548.69345,6.93,2.1922,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56548.69345,,Rosenthal et al. (2021)
+2456570.62176,0.68,2.3504,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56570.62176,,Rosenthal et al. (2021)
+2456573.66903,2.53,2.1234,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56573.66903,,Rosenthal et al. (2021)
+2456574.68214,-0.05,2.3002,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56574.68214,,Rosenthal et al. (2021)
+2456574.6975,-0.28,2.2558,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56574.6975,,Rosenthal et al. (2021)
+2456577.63602,5.79,1.5273,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56577.63602,,Rosenthal et al. (2021)
+2456581.62608,2.44,2.1924,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56581.62608,,Rosenthal et al. (2021)
+2456581.63523,2.36,1.9524,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56581.63523,,Rosenthal et al. (2021)
+2456581.64485,0.89,1.9921,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56581.64485,,Rosenthal et al. (2021)
+2456583.60701,-0.57,1.9165,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56583.60701,,Rosenthal et al. (2021)
+2456583.61566,2.01,2.1726,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56583.61566,,Rosenthal et al. (2021)
+2456583.62526,2.45,1.9389,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56583.62526,,Rosenthal et al. (2021)
+2456589.6095,-3.83,2.0245,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56589.6095,,Rosenthal et al. (2021)
+2456589.61888,-7.78,2.0101,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56589.61888,,Rosenthal et al. (2021)
+2456589.6288,-2.58,2.0201,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56589.6288,,Rosenthal et al. (2021)
+2456590.61382,-7.51,1.9526,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56590.61382,,Rosenthal et al. (2021)
+2456590.62329,-3.65,2.015,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56590.62329,,Rosenthal et al. (2021)
+2456590.63391,-3.42,2.0665,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56590.63391,,Rosenthal et al. (2021)
+2456591.59478,-6.89,2.0014,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56591.59478,,Rosenthal et al. (2021)
+2456591.60596,-9.02,1.9935,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56591.60596,,Rosenthal et al. (2021)
+2456591.61684,-3.97,2.0499,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56591.61684,,Rosenthal et al. (2021)
+2456709.11832,-2.4,1.1107,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56709.11832,,Rosenthal et al. (2021)
+2456709.12066,-3.28,1.51,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56709.12066,,Butler et al. (2017)
+2456735.99667,0.43,2.4998,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56735.99667,,Rosenthal et al. (2021)
+2456736.06554,8.24,2.6334,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56736.06554,,Rosenthal et al. (2021)
+2456740.94238,2.18,2.4358,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56740.94238,,Rosenthal et al. (2021)
+2456741.92833,-1.59,2.55,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56741.92833,,Rosenthal et al. (2021)
+2456742.06081,10.26,2.7552,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56742.06081,,Rosenthal et al. (2021)
+2456758.02429,-0.69,2.3837,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56758.02429,,Rosenthal et al. (2021)
+2456761.89493,-0.14,2.4843,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56761.89493,,Rosenthal et al. (2021)
+2456762.01393,-5.99,2.4452,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56762.01393,,Rosenthal et al. (2021)
+2456777.95538,5.0,2.2984,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56777.95538,,Rosenthal et al. (2021)
+2456784.98928,1.21,2.3487,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56784.98928,,Rosenthal et al. (2021)
+2456789.93928,-4.27,2.6232,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56789.93928,,Rosenthal et al. (2021)
+2456792.8919,-0.71,2.7087,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56792.8919,,Rosenthal et al. (2021)
+2456792.93982,2.72,2.4815,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56792.93982,,Rosenthal et al. (2021)
+2456793.98627,2.98,2.3685,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56793.98627,,Rosenthal et al. (2021)
+2456808.90509,-0.24,2.0942,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56808.90509,,Rosenthal et al. (2021)
+2456908.73079,54.77,1.49,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56908.73079,,Butler et al. (2017)
+2456908.73203,0.08,1.2118,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,56908.73203,,Rosenthal et al. (2021)
+2457934.65991754,-110246.298350419,1.22470447534658,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57934.65991753992,2017-06-29,
+2457935.68549592,-110247.976918926,1.53247254163242,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57935.68549592001,2017-06-30,
+2457936.65089803,-110245.472262751,1.18173362790016,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57936.65089803003,2017-07-01,
+2457937.67175785,-110245.540515814,1.11495236450787,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57937.671757849865,2017-07-02,
+2457942.59307633,-110245.413136153,0.867605925704796,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57942.593076330144,2017-07-07,
+2457943.57985469,-110245.271100704,0.864750333702096,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57943.57985469,2017-07-08,
+2457944.56358299,-110242.866573523,0.901517039470364,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57944.56358298985,2017-07-09,
+2457945.60984116,-110243.805405969,0.898485285672743,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57945.60984116001,2017-07-10,
+2457946.73805029,-110245.229730649,1.04503511789399,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57946.73805028992,2017-07-11,
+2457948.68420117,-110245.722106313,1.42706878755645,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57948.68420117023,2017-07-13,
+2457949.68804343,-110242.681460092,1.38648510550365,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57949.68804342998,2017-07-14,
+2457951.672229,-110244.453451577,1.89301761864004,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57951.6722289999,2017-07-16,
+2457952.66018268,-110242.653553069,1.3397740145396,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57952.66018268,2017-07-17,
+2457953.71196144,-110247.267994657,0.982037948856092,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57953.71196143981,2017-07-18,
+2457954.65864051,-110245.900921947,1.03511489643894,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57954.65864050994,2017-07-19,
+2457955.67087854,-110245.999192195,1.67161572505312,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57955.67087853979,2017-07-20,
+2457956.69758787,-110242.240548532,1.04262668673685,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57956.69758787006,2017-07-21,
+2457958.77370751,-110244.601306347,2.05290084956364,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57958.77370750997,2017-07-23,
+2457959.65591867,-110244.154765935,1.2007871833479702,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57959.65591866989,2017-07-24,
+2457960.67953797,-110246.139579661,1.11597853380207,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57960.67953797011,2017-07-25,
+2457961.66406182,-110243.613722575,1.18077534667478,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57961.664061820135,2017-07-26,
+2457962.6507208,-110245.434669691,2.16489459546599,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57962.65072079981,2017-07-27,
+2457964.66505388,-110243.498011586,1.52824011201544,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57964.66505387984,2017-07-29,
+2457965.65010831,-110244.575409235,1.19570280729003,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57965.65010830993,2017-07-30,
+2457966.63821191,-110245.649012382,1.1389917051717,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57966.63821191015,2017-07-31,
+2457967.56603117,-110242.436452834,1.57895364919916,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57967.56603117008,2017-08-01,
+2457968.49766562,-110241.788396158,1.4160088809481,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57968.49766561994,2017-08-02,
+2457969.63563763,-110242.44672317,1.44510950371334,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57969.63563762978,2017-08-03,
+2457970.49521132,-110243.866204373,0.9688282012523508,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57970.49521132,2017-08-04,
+2457971.48651347,-110244.830016532,1.02085297163249,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57971.48651346984,2017-08-05,
+2457972.48511573,-110243.98827991,1.04176461092532,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57972.48511573021,2017-08-06,
+2457973.4967593,-110244.059316866,1.5902923022183302,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57973.49675930012,2017-08-07,
+2457974.48179122,-110243.633396538,0.953856876288443,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57974.48179122014,2017-08-08,
+2457979.6336719,-110247.038048748,1.003941162918,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57979.63367189979,2017-08-13,
+2457980.63810897,-110244.875615076,1.08893054327964,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57980.63810897013,2017-08-14,
+2457981.62146412,-110243.952427938,0.880871779758211,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57981.621464120224,2017-08-15,
+2457984.52516114,-110246.630952822,1.15756133248898,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57984.52516114013,2017-08-18,
+2457985.523457,-110243.444364709,0.990641794906251,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57985.52345700003,2017-08-19,
+2457986.5344257,-110244.378889474,0.967833635231355,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57986.53442570008,2017-08-20,
+2457987.54367547,-110242.081273658,1.04309766087742,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57987.543675470166,2017-08-21,
+2457990.50891102,-110244.345708076,1.01412722522311,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57990.50891102012,2017-08-24,
+2457991.52549734,-110248.253043906,1.29709947001265,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57991.52549734013,2017-08-25,
+2457992.52384461,-110245.879325536,0.781312382461278,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57992.52384460997,2017-08-26,
+2457993.50784813,-110245.251135362,0.92053905550025,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57993.50784813007,2017-08-27,
+2457994.49301399,-110245.21313772,0.936295831691228,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57994.49301399011,2017-08-28,
+2457995.49868139,-110243.771087999,0.975282575221756,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57995.49868139019,2017-08-29,
+2457996.50002785,-110247.072172824,1.18819297693542,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57996.500027849805,2017-08-30,
+2457997.5169585,-110248.558412987,4.6234859453239,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57997.51695849979,2017-08-31,
+2457998.53069084,-110244.504448163,1.05203250793862,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57998.53069083998,2017-09-01,
+2457999.49341262,-110242.353732897,2.30811859981028,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,57999.49341261992,2017-09-02,
+2458000.53060225,-110243.520733555,1.27607995614264,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58000.53060224978,2017-09-03,
+2458001.53618595,-110246.352939934,1.03498468532174,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58001.53618595004,2017-09-04,
+2458002.52551582,-110245.690008233,1.03486114210112,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58002.5255158199,2017-09-05,
+2458008.61229127,-110241.076864986,1.8636425777785,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58008.612291269936,2017-09-11,
+2458010.53525212,-110243.780310365,1.4341362916946498,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58010.53525211988,2017-09-13,
+2458011.58718163,-110240.471491378,1.74804988568299,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58011.58718163008,2017-09-14,
+2458012.5922788,-110242.029036753,1.39457105950448,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58012.59227879997,2017-09-15,
+2458013.55755398,-110242.006545112,1.1699547931129,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58013.557553980034,2017-09-16,
+2458017.48614945,-110242.560822988,1.20196595439907,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58017.48614944983,2017-09-20,
+2458018.52956658,-110241.929183268,1.04380854620016,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58018.52956657997,2017-09-21,
+2458019.49651296,-110239.484365908,0.826969462324543,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58019.49651296018,2017-09-22,
+2458020.50058282,-110242.191988065,0.928554831691925,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58020.500582819805,2017-09-23,
+2458021.47939051,-110241.218493479,1.07886761551686,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58021.47939050989,2017-09-24,
+2458022.47997301,-110240.30919768,1.02737690292382,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58022.47997300979,2017-09-25,
+2458023.48224526,-110241.889678864,1.15892245594626,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58023.48224525992,2017-09-26,
+2458025.49030945,-110243.375077527,1.29244273234198,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58025.49030944984,2017-09-28,
+2458026.49616026,-110240.034723409,1.131953346018,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58026.496160259936,2017-09-29,
+2458027.49610545,-110241.998513227,2.99148231968505,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58027.496105450206,2017-09-30,
+2458254.9288119,-110245.039007013,1.51072691087788,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58254.92881189985,2018-05-15,
+2458254.93712095,-110244.148889667,1.47202400271794,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58254.93712094985,2018-05-15,
+2458255.92275609,-110245.511016059,1.5594816465857702,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58255.92275608983,2018-05-16,
+2458255.93030617,-110244.59395824,1.54327591052163,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58255.930306170136,2018-05-16,
+2458256.91374685,-110243.8160394,1.39884361063691,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58256.9137468501,2018-05-17,
+2458256.9215738,-110244.901523198,1.4684642663535,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58256.92157380004,2018-05-17,
+2458396.70143,0.47,1.0992,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58396.70143,,Rosenthal et al. (2021)
+2458606.79917879,-110278.137038094,0.139615935542618,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58606.79917878984,2019-05-02,
+2458608.82125291,-110277.657672203,0.138543250041709,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58608.82125290996,2019-05-04,
+2458609.74944852,-110278.724721627,0.135954581028267,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58609.74944852013,2019-05-05,
+2458624.73795156,-110277.069872041,0.2270726654967459,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58624.737951559946,2019-05-20,
+2458625.78592625,-110277.137527995,0.115784880458206,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58625.78592624981,2019-05-21,
+2458638.66749744,-110279.566991837,0.17592887954644,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58638.667497439776,2019-06-03,
+2458639.71587389,-110278.930394292,0.211666888020143,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58639.71587389009,2019-06-04,
+2458642.75640574,-110279.240797966,0.138378115859982,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58642.756405740045,2019-06-07,
+2458643.81992638,-110239.066527873,1.01444542527415,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58643.81992638018,2019-06-08,
+2458645.64805298,-110278.988216931,0.351931451888816,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58645.64805298019,2019-06-10,
+2458657.78452585,-110238.046962338,1.16529996568888,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58657.78452584986,2019-06-22,
+2458661.71474288,-110235.047742936,1.31797216753408,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58661.71474287985,2019-06-26,
+2458667.59969768,-110272.482889517,0.317710560642339,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58667.59969768021,2019-07-02,
+2458670.69814598,-110232.158591188,1.02146509106899,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58670.698145980015,2019-07-05,
+2458673.70807428,-110228.69044399,1.4472827479694,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58673.70807428006,2019-07-08,
+2458674.73873911,-110234.287843749,0.898426873286054,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58674.738739110064,2019-07-09,
+2458675.71192842,-110235.027706828,0.867924173235251,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58675.71192841977,2019-07-10,
+2458677.64167381,-110236.144327941,0.8321096795714901,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58677.64167380985,2019-07-12,
+2458681.66738574,-110235.167713064,1.12673224601144,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58681.667385740206,2019-07-16,
+2458682.64389537,-110234.331315468,1.11253942418541,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58682.643895369954,2019-07-17,
+2458684.6106039,-110272.534670804,0.146588890518777,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58684.61060390016,2019-07-19,
+2458689.6473993,-110238.015008674,0.907872015351044,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58689.64739929978,2019-07-24,
+2458690.66648522,-110237.204249788,1.12109017884752,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58690.666485220194,2019-07-25,
+2458695.55987754,-110275.142234716,0.2061685296359059,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58695.55987753999,2019-07-30,
+2458695.61134517,-110236.822140056,1.1262776645923298,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58695.61134517007,2019-07-30,
+2458696.70652311,-110275.415424005,0.330006896806129,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58696.70652311016,2019-07-31,
+2458700.52830295,-110274.549874306,0.137812249668229,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58700.52830294985,2019-08-04,
+2458701.6272923,-110238.506291918,0.867782331496928,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58701.62729230011,2019-08-05,
+2458702.61401825,-110237.597672019,0.8372222999148901,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58702.61401824979,2019-08-06,
+2458703.59258105,-110237.880210761,1.07276935126406,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58703.592581050005,2019-08-07,
+2458704.54115984,-110238.91889098,1.23848449875372,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58704.54115983984,2019-08-08,
+2458708.63149093,-110236.188346731,1.0261822953096,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58708.63149092998,2019-08-12,
+2458716.5382456,-110274.848191527,0.118634297023932,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58716.53824560018,2019-08-20,
+2458717.55486934,-110234.695872672,1.21675720574499,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58717.5548693398,2019-08-21,
+2458718.5501874,-110275.057321179,0.139953241731182,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58718.55018740008,2019-08-22,
+2458720.52737899,-110274.551104369,0.139711616963893,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58720.52737898985,2019-08-24,
+2458726.52158249,-110273.491631779,0.1533362291218729,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58726.52158248983,2019-08-30,
+2458727.6030382,-110235.511020097,1.08988998148577,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58727.60303820018,2019-08-31,
+2458730.56331914,-110237.36452888,1.0794773125182,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58730.563319140114,2019-09-03,
+2458731.50300523,-110272.161328348,0.126252522081293,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58731.50300522987,2019-09-04,
+2458737.47207094,-110272.007623385,0.156121169407959,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58737.47207093984,2019-09-10,
+2458741.51770184,-110270.893446056,0.169924712251957,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58741.51770184003,2019-09-14,
+2458752.5061833,-110272.074800772,0.242735409770052,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58752.50618330017,2019-09-25,
+2458753.50305646,-110270.812163083,0.119242039684595,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58753.50305646006,2019-09-26,
+2458762.4896601,-110233.294553408,1.02566908260631,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58762.48966010008,2019-10-05,
+2458763.48995432,-110235.124080219,0.748920282881473,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58763.48995431978,2019-10-06,
+2458764.49363323,-110271.900366665,0.159291334215456,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58764.49363323022,2019-10-07,
+2458765.516974,-110273.835963709,0.465751692698408,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58765.5169739998,2019-10-08,
+2458765.52652051,-110275.026904082,0.5464070497757251,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58765.52652051021,2019-10-08,
+2458773.50500689,-110272.059296903,0.185323387954604,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58773.50500688981,2019-10-16,
+2458787.48730962,-110271.349009427,0.260466139272377,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58787.48730961978,2019-10-30,
+2458896.89289477,-110270.852132761,0.187983964528298,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58896.89289477002,2020-02-16,
+2458899.88496739,-110271.31946549,0.178703598955296,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58899.88496738998,2020-02-19,
+2458908.86694065,-110269.330221593,0.13539608915904,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58908.86694065016,2020-02-28,
+2458912.85891097,-110270.476342885,0.139608768848486,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58912.85891096992,2020-03-03,
+2458927.85510258,-110267.313597034,0.126961938047895,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,58927.85510258004,2020-03-18,
+2459268.87727556,-110263.97177722,0.1596515729825,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59268.87727556005,2021-02-22,
+2459299.82006468,-110263.43977478,0.151717378226781,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59299.820064680185,2021-03-25,
+2459308.77387502,-110264.124972039,0.2642372544942379,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59308.77387501998,2021-04-03,
+2459308.78752699,-110264.559906025,0.345764839648174,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59308.78752698982,2021-04-03,
+2459310.82459627,-110266.931125837,0.195305623889357,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59310.82459626999,2021-04-05,
+2459313.85995668,-110265.221750107,0.125518098967416,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59313.859956679866,2021-04-08,
+2459316.81768085,-110266.520789209,0.166554448115669,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59316.81768085016,2021-04-11,
+2459319.89026675,-110267.531522033,0.173717199721628,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59319.89026675001,2021-04-14,
+2459322.80000836,-110266.921445395,0.266646026138893,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59322.80000835983,2021-04-17,
+2459323.80377238,-110266.137492273,0.241406250924224,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59323.80377238011,2021-04-18,
+2459334.79621446,-110262.902830728,0.172400972737873,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59334.79621445993,2021-04-29,
+2459335.70562703,-110264.196359656,0.183779076625649,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59335.70562703023,2021-04-30,
+2459342.68284715,-110262.285135604,0.201603745952696,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59342.682847150136,2021-05-07,
+2459346.68807761,-110261.551586798,0.18297525118989,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59346.68807760999,2021-05-11,
+2459348.85140118,-110263.187280713,0.116840047552411,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59348.85140118003,2021-05-13,
+2459349.71767718,-110262.591899928,0.166646041158737,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59349.71767718019,2021-05-14,
+2459372.64698695,-110261.781270764,0.154546839186248,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59372.64698695019,2021-06-06,
+2459376.65113412,-110262.913810513,0.263675946664797,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59376.65113411984,2021-06-10,
+2459383.6379277,-110261.244316376,0.208617149824679,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59383.63792769984,2021-06-17,
+2459392.55567727,-110261.829271218,0.20860497147711,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59392.55567727005,2021-06-26,
+2459395.79008572,-110261.440615887,0.165420036873337,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59395.7900857199,2021-06-29,
+2459398.7147214,-110261.978771782,0.1423017029528029,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59398.71472139983,2021-07-02,
+2459401.54053726,-110261.881370286,0.160862375564542,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59401.54053726001,2021-07-05,
+2459405.74623876,-110262.002532788,0.166358514684119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59405.74623876018,2021-07-09,
+2459406.52466924,-110262.090956583,0.1430392762994629,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59406.52466924023,2021-07-10,
+2459410.49867645,-110263.45426145,0.177579305738116,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59410.49867644999,2021-07-14,
+2459413.51119837,-110262.702920264,0.173119448176543,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59413.511198369786,2021-07-17,
+2459416.63959309,-110262.738578539,0.119209767348557,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59416.63959308993,2021-07-20,
+2459424.53628361,-110264.645155227,0.368632167696501,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59424.53628360992,2021-07-28,
+2459427.53691069,-110264.817550919,0.4213477272993199,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59427.5369106899,2021-07-31,
+2459428.53630315,-110262.045601148,0.244994416200042,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59428.53630315,2021-08-01,
+2459431.55230993,-110262.401019322,0.2019965821758839,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59431.55230992986,2021-08-04,
+2459434.60211171,-110262.048726902,0.228939189719263,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59434.60211170977,2021-08-07,
+2459436.55197475,-110262.533221991,0.142998523430858,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59436.55197475013,2021-08-09,
+2459437.50985053,-110261.815107277,0.141507026082987,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59437.509850529954,2021-08-10,
+2459440.4937714,-110261.961896385,0.156096303599767,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59440.49377139984,2021-08-13,
+2459477.51148797,-110262.415797415,0.138561869381719,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59477.51148797013,2021-09-19,
+2459491.48527718,-110259.353347723,0.160100275935354,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59491.485277180094,2021-10-03,
+2459497.50786348,-110262.082237507,0.299900888692045,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59497.50786348013,2021-10-09,
+2459498.53264461,-110259.603658207,0.221352166622623,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59498.53264460992,2021-10-10,
+2459511.49947449,-110260.795951917,0.4932292387492309,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59511.49947449006,2021-10-23,
+2459650.88519098,-110261.484446275,0.193234327850584,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59650.88519098004,2022-03-11,
+2459662.86420955,-110258.90793102,0.164349141007828,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59662.86420954997,2022-03-23,
+2459676.8317478,-110256.755607884,0.1904657397028329,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59676.83174780011,2022-04-06,
+2459681.77159803,-110257.631490112,0.257347298060509,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59681.77159802988,2022-04-11,
+2459684.80822146,-110258.595830413,0.273786010823462,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59684.808221459854,2022-04-14,
+2459692.89722292,-110259.143121648,0.158942562323888,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59692.897222919855,2022-04-22,
+2459696.90127218,-110259.85815418,0.196574521272183,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59696.901272180025,2022-04-26,
+2459699.87653809,-110257.622230553,0.314440309952041,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59699.87653808994,2022-04-29,
+2459699.88550672,-110259.594260587,0.132977351027981,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59699.88550671982,2022-04-29,
+2459717.83297927,-110218.969306053,1.25539320195216,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59717.83297926979,2022-05-17,
+2459717.84246586,-110219.756520532,1.28111238860727,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59717.84246585984,2022-05-17,
+2459717.84818564,-110220.491347727,1.42586043865031,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59717.84818563983,2022-05-17,
+2459727.65500553,-110257.441609789,0.159778325031782,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59727.65500552999,2022-05-27,
+2459730.64529595,-110255.915552419,0.163553618715066,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59730.64529595012,2022-05-30,
+2459738.73030719,-110219.696649782,1.31933727774013,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59738.73030719021,2022-06-07,
+2459738.73933098,-110217.920616234,1.71482165784898,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59738.73933098,2022-06-07,
+2459738.83910812,-110216.984906905,1.58488649511408,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59738.83910812018,2022-06-07,
+2459738.84643215,-110221.470497239,1.97466290772172,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59738.84643214988,2022-06-07,
+2459739.72391324,-110257.553213145,0.189717726199532,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.72391323978,2022-06-08,
+2459739.78147061,-110218.027585553,1.81283287360896,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.78147060983,2022-06-08,
+2459739.78529738,-110216.962581656,1.85176670189173,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.78529737983,2022-06-08,
+2459739.78912844,-110223.141614832,1.86072239367872,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.78912843997,2022-06-08,
+2459739.79574089,-110219.404721831,1.60812158147085,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.79574088985,2022-06-08,
+2459739.80307398,-110218.667337206,1.91845706169455,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.80307397992,2022-06-08,
+2459739.80690677,-110218.411254092,1.92407855179414,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59739.80690676998,2022-06-08,
+2459740.6797944,-110218.105950583,1.86657000144729,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.6797944,2022-06-09,
+2459740.68369246,-110225.121443456,1.78993838505057,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.68369245995,2022-06-09,
+2459740.68748833,-110222.806107625,1.80854345128672,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.68748833006,2022-06-09,
+2459740.69131938,-110217.92325261,1.77131950715162,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.69131937996,2022-06-09,
+2459740.69518632,-110218.757144671,1.77689480263597,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.69518632023,2022-06-09,
+2459740.69898183,-110219.841867246,1.76810939084313,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.69898182992,2022-06-09,
+2459740.70281301,-110221.122790501,1.79939108709992,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.7028130102,2022-06-09,
+2459740.70664382,-110220.201647953,1.8012073580425,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.70664381981,2022-06-09,
+2459740.71047534,-110219.685743236,1.83618940347516,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.71047534002,2022-06-09,
+2459740.71430604,-110218.025047514,1.82973493525474,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.7143060402,2022-06-09,
+2459740.72334649,-110219.544542687,1.73371402884003,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.72334648995,2022-06-09,
+2459740.72983838,-110219.790764179,1.69181304709559,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.729838380124,2022-06-09,
+2459740.73367417,-110221.357225502,1.66252989340095,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.733674169984,2022-06-09,
+2459740.73746645,-110219.957501245,1.68172096163362,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.73746644985,2022-06-09,
+2459740.74133304,-110222.156807763,1.67904160093087,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.74133303994,2022-06-09,
+2459740.74519765,-110221.557403727,1.68647065795981,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.745197650045,2022-06-09,
+2459740.7490066,-110219.648974937,1.69049328994291,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.74900660012,2022-06-09,
+2459740.7528366,-110219.910234296,1.65908382992026,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.752836599946,2022-06-09,
+2459740.75666789,-110220.681155524,1.62104607098464,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.75666789012,2022-06-09,
+2459740.7604641,-110220.177402376,1.70379267107551,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.76046410017,2022-06-09,
+2459740.7642999,-110221.448652202,1.64310006691262,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59740.764299899805,2022-06-09,
+2459741.69003432,-110216.617886954,2.1092432512822,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.69003432011,2022-06-10,
+2459741.69390449,-110217.150575072,2.12662707400879,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.69390449021,2022-06-10,
+2459741.69766598,-110219.819380102,2.13239586086893,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.697665980086,2022-06-10,
+2459741.70658476,-110216.50357625,2.10293034260601,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.70658475999,2022-06-10,
+2459741.71038628,-110220.235301142,2.13295625749353,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.71038627997,2022-06-10,
+2459741.71421734,-110218.572499022,2.15627723399172,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59741.71421734011,2022-06-10,
+2459742.66947892,-110257.655121478,0.144912362470502,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59742.66947891982,2022-06-11,
+2459743.62857831,-110257.60208293,0.159679130313859,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.6285783099,2022-06-12,
+2459743.74200025,-110218.244192828,1.9162720643729896,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.74200025015,2022-06-12,
+2459743.74582978,-110218.861715057,1.8483456480346696,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.74582978012,2022-06-12,
+2459743.74969588,-110217.121444546,1.73156811253182,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.74969587987,2022-06-12,
+2459743.75500885,-110218.303998922,1.7480245397377,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.75500884978,2022-06-12,
+2459743.75876962,-110219.207598184,1.77466137838061,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.75876962021,2022-06-12,
+2459743.7625664,-110218.280106637,1.75055981145142,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59743.76256640023,2022-06-12,
+2459747.65874352,-110216.796542384,4.1847372089678405,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.6587435198,2022-06-16,
+2459747.66261677,-110217.487482599,3.95665052133314,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.66261676978,2022-06-16,
+2459747.66642002,-110215.588886962,3.73028547063977,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.66642002016,2022-06-16,
+2459747.67256655,-110210.021499161,5.98854122686919,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.67256654985,2022-06-16,
+2459747.67632963,-110216.79365268,8.29957170565858,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.67632962996,2022-06-16,
+2459747.68029966,-110233.644135156,14.9661125986756,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.68029966019,2022-06-16,
+2459747.68630845,-110242.044022519,24.1056321165236,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.68630845007,2022-06-16,
+2459747.69020707,-110162.553478634,31.890432136596,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.690207070205,2022-06-16,
+2459747.69455902,-110208.041767857,5.64057903911227,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.69455901999,2022-06-16,
+2459747.70089494,-110217.46790302,3.13546385933691,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.70089494018,2022-06-16,
+2459747.70469136,-110215.390231787,3.1146894338524898,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.70469135977,2022-06-16,
+2459747.70848255,-110216.50879567,3.3845168664313103,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.70848254999,2022-06-16,
+2459747.71631068,-110213.088205451,3.14749945952329,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.71631067991,2022-06-16,
+2459747.72014931,-110220.11421395,2.94312389622061,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.72014930984,2022-06-16,
+2459747.72078863,-110257.83738893,0.230507407591772,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.72078863019,2022-06-16,
+2459747.72402084,-110215.740012138,2.9617892015526297,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.72402084013,2022-06-16,
+2459747.73086093,-110219.171752566,2.98326843598955,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.730860929936,2022-06-16,
+2459747.73472122,-110214.67066237,2.95895074011962,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.7347212201,2022-06-16,
+2459747.74467238,-110220.603687332,2.73437595287009,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.74467237992,2022-06-16,
+2459747.74847134,-110217.436432732,2.8254961993779,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.748471340165,2022-06-16,
+2459747.75233707,-110213.906412815,3.27997145264017,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59747.75233707018,2022-06-16,
+2459748.72705003,-110219.63762576,2.02079450011338,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.72705003014,2022-06-17,
+2459748.730641,-110220.43930171,2.1297157788574297,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.73064099997,2022-06-17,
+2459748.73478694,-110224.523904196,3.70065455293372,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.73478693981,2022-06-17,
+2459748.74075027,-110223.073227765,2.1473589434248503,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.74075026997,2022-06-17,
+2459748.74471576,-110221.82585664,3.79048069685077,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.74471576,2022-06-17,
+2459748.7485808,-110210.974730677,5.363188466826171,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.748580799904,2022-06-17,
+2459748.7554769,-110217.366129182,2.93597923619051,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.75547689991,2022-06-17,
+2459748.7592057,-110220.239931352,3.18036204216445,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.7592056999,2022-06-17,
+2459748.76292113,-110258.836052028,0.2175103360347119,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.76292112982,2022-06-17,
+2459748.76300212,-110217.287879022,2.35148308323849,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.76300211996,2022-06-17,
+2459748.76883776,-110224.081472085,2.66155468260799,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.7688377602,2022-06-17,
+2459748.77277062,-110216.795160571,3.2369570876526,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.77277061995,2022-06-17,
+2459748.77681111,-110220.340523958,4.84960834657219,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59748.776811109856,2022-06-17,
+2459759.69297761,-110257.136613161,0.1537395691890229,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59759.69297761005,2022-06-28,
+2459760.53190615,-110257.57878111,0.164585319846706,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59760.531906149816,2022-06-29,
+2459761.6104175,-110258.34915539,0.1429201831186979,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59761.61041750014,2022-06-30,
+2459764.56614316,-110258.749497372,0.144459308158586,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59764.56614316022,2022-07-03,
+2459765.52978902,-110257.893196991,0.210551632634956,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59765.52978901984,2022-07-04,
+2459768.71001064,-110260.308543545,0.199137708829601,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59768.71001063986,2022-07-07,
+2459773.78152445,-110262.446808337,0.295282625011773,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59773.78152445005,2022-07-12,
+2459787.62865817,-110262.964432758,0.223971606362986,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59787.62865816988,2022-07-26,
+2459788.59633961,-110261.512774522,0.131597204634675,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59788.59633960994,2022-07-27,
+2459788.65012085,-110261.639864538,0.130629380388439,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59788.65012085019,2022-07-27,
+2459791.54355796,-110261.462587138,0.150806450772579,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59791.54355796008,2022-07-30,
+2459795.71302195,-110261.983137528,0.24459076541376,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59795.713021949865,2022-08-03,
+2459797.50371689,-110261.342093082,0.141944935900631,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59797.50371688977,2022-08-05,
+2459798.54421912,-110260.484974302,0.137005791183386,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59798.54421911994,2022-08-06,
+2459799.52458836,-110261.599475143,0.123860389726698,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59799.52458835999,2022-08-07,
+2459801.53752954,-110260.277872949,0.174936275370475,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59801.53752953978,2022-08-09,
+2459802.5845046,-110261.356877154,0.165075913838188,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59802.58450460015,2022-08-10,
+2459804.50089478,-110259.121063874,0.151599112836861,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59804.500894779805,2022-08-12,
+2459805.46675007,-110258.728082383,0.1388218605453539,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59805.46675006999,2022-08-13,
+2459806.67459358,-110259.423284153,0.1873283227584299,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59806.67459357996,2022-08-14,
+2459807.63463692,-110258.668399101,0.276085739978146,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59807.634636919945,2022-08-15,
+2459813.56818294,-110256.297678394,0.117703347369936,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59813.56818294013,2022-08-21,
+2459815.66004694,-110256.699694681,0.152105591737309,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59815.66004694021,2022-08-23,
+2459818.4826736,-110256.925457109,0.131269090217928,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59818.48267359985,2022-08-26,
+2459819.51793287,-110255.06985146,0.131651037227549,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59819.51793286996,2022-08-27,
+2459822.51424843,-110256.073107656,0.114303554679322,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59822.5142484298,2022-08-30,
+2459825.49930538,-110255.318864974,0.137207792344698,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59825.49930538004,2022-09-02,
+2459829.50257755,-110256.637492332,0.1405065345739,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59829.50257754978,2022-09-06,
+2459833.49659542,-110256.932749924,0.228736236294423,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59833.49659541994,2022-09-10,
+2459839.60160472,-110259.0449987,0.28984541622143,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59839.60160472011,2022-09-16,
+2459841.47517323,-110258.297168948,0.151789273324108,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59841.47517322982,2022-09-18,
+2459842.53775402,-110258.227364211,0.170490535940701,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59842.53775402019,2022-09-19,
+2459854.50969482,-110258.894436158,0.165312317369974,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59854.50969481981,2022-10-01,
+2459856.51663035,-110260.316273702,0.138195788424921,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59856.51663035015,2022-10-03,
+2459857.53852463,-110259.186676516,0.138862157790935,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59857.538524630014,2022-10-04,
+2459859.51565155,-110259.194702705,0.181842529122178,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59859.515651550144,2022-10-06,
+2459866.48948842,-110259.894802381,0.245143370655002,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59866.48948842008,2022-10-13,
+2459867.56166189,-110261.857474638,0.600176058544007,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59867.56166188978,2022-10-14,
+2459868.50814115,-110260.258592877,0.145571126791252,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,59868.50814115023,2022-10-15,
+2460026.87710834,-110256.746476828,0.145462936137298,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60026.87710834015,2023-03-22,
+2460031.85117452,-110255.387282425,0.137301526391834,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60031.85117451986,2023-03-27,
+2460032.80362616,-110256.228258506,0.180999539262253,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60032.80362616014,2023-03-28,
+2460033.90465601,-110256.988709049,0.1827566484359019,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60033.90465601021,2023-03-29,
+2460035.87555086,-110257.057510906,0.266059311814958,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60035.87555086007,2023-03-31,
+2460042.78909773,-110257.244363921,0.177139366993534,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60042.78909773007,2023-04-07,
+2460044.75599164,-110256.737442412,0.156192927740056,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60044.75599164004,2023-04-09,
+2460046.74962725,-110255.746028931,0.1588318482925519,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60046.74962724978,2023-04-11,
+2460048.76181791,-110256.332096516,0.163443912679835,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60048.76181790978,2023-04-13,
+2460050.75480237,-110255.984219093,0.12630522477873,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60050.75480236998,2023-04-15,
+2460052.77523355,-110256.406689849,0.165351817829626,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60052.77523355,2023-04-17,
+2460054.73297454,-110257.653136034,0.191494353967502,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60054.73297453998,2023-04-19,
+2460061.72046906,-110258.586995436,0.175803978166803,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60061.72046905989,2023-04-26,
+2460063.74777137,-110258.232950776,0.148590022262272,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60063.74777137023,2023-04-28,
+2460065.83342348,-110258.333566018,0.154392270711153,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60065.833423479926,2023-04-30,
+2460076.69103311,-110258.733858615,0.161859431478924,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60076.69103311002,2023-05-11,
+2460078.74882128,-110259.000803351,0.151495324489244,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60078.748821279965,2023-05-13,
+2460079.8366324,-110259.83528029,0.158207648126386,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60079.83663239982,2023-05-14,
+2460081.65955348,-110257.001344765,0.22902956385467,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60081.65955347987,2023-05-16,
+2460090.79764864,-110257.330355818,0.219578304359484,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60090.79764863989,2023-05-25,
+2460120.63510851,-110254.209046321,0.156480953500654,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60120.63510851003,2023-06-24,
+2460122.61592345,-110253.290236461,0.197468734104302,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60122.61592344986,2023-06-26,
+2460124.65394867,-110255.037678557,0.142656655090568,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60124.65394866979,2023-06-28,
+2460128.76540202,-110253.767674429,0.145203583134215,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60128.76540201996,2023-07-02,
+2460133.53247904,-110255.390275007,0.272694067142759,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60133.53247903986,2023-07-07,
+2460134.52929418,-110255.325404169,0.127518741370697,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60134.52929418022,2023-07-08,
+2460135.52421401,-110255.395783469,0.250656433538383,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60135.52421401022,2023-07-09,
+2460137.70934675,-110256.046719933,0.230872995751582,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60137.70934674982,2023-07-11,
+2460139.51281601,-110257.338682568,0.130079835041093,DACE,Barnard's star,DACE_PUBLIC,,,DACE_public_get_timeseries,60139.51281601004,2023-07-13,
