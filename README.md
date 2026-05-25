@@ -14,7 +14,7 @@ https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
 
 This release upgrades the project from a purely static catalogue-first prototype into a **frontend + optional Python backend** architecture.
 
-The GitHub Pages frontend still runs fully as a static website, but it now has a proper API-base configuration field. When a FastAPI backend is running, the website can fetch live target metadata from a server-side archive proxy instead of calling astronomy services directly from the browser.
+The GitHub Pages frontend still runs fully as a static website. Target search works there from a bundled, auditable NASA TAP-derived snapshot, and the interface also has an API-base configuration field. When a FastAPI backend is running, the website can fetch live target metadata from a server-side archive proxy instead of calling astronomy services directly from the browser.
 
 This avoids browser CORS failures while keeping the web interface fast and deployable.
 
@@ -27,6 +27,7 @@ This avoids browser CORS failures while keeping the web interface fast and deplo
 - Persistent day/night theme toggle.
 - Live backend API configuration field.
 - Python FastAPI archive proxy in `backend/`.
+- Static 2,000-row NASA TAP-derived target snapshot for GitHub Pages.
 - NASA Exoplanet Archive TAP query proxy.
 - Live target fetch endpoint: `/api/target?name=...`.
 - Real RV data upload only.
@@ -54,10 +55,14 @@ The frontend is static and can be hosted on GitHub Pages.
 index.html
 styles.css
 app.js
+data/catalog-metadata.json
+data/rv-planets.json
 sample_data/rv_template.csv
 ```
 
 No frontend build step is required.
+
+The bundled target catalog in `data/rv-planets.json` was retrieved from the NASA Exoplanet Archive TAP service on 2026-05-24. It selects default planetary-system records with `rv_flag = 1`, reported periods and positive measured RV semi-amplitudes; exact query provenance is recorded in `data/catalog-metadata.json`.
 
 ---
 
@@ -134,7 +139,7 @@ BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM,SINDEX,HALPHA
 
 ## Why a backend is needed
 
-Many astronomical services are designed for TAP clients, PyVO, astroquery, TOPCAT or server-side requests. A browser-only GitHub Pages site can be blocked by CORS or remote service policy. The FastAPI backend solves this by making archive requests server-side and returning clean JSON to the frontend.
+Many astronomical services are designed for TAP clients, PyVO, astroquery, TOPCAT or server-side requests. A browser-only GitHub Pages site can be blocked by CORS or remote service policy. The bundled snapshot makes static target search reliable; the FastAPI backend provides current live archive results by making requests server-side and returning clean JSON to the frontend.
 
 ---
 

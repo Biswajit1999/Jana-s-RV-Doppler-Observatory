@@ -1,0 +1,12 @@
+{
+  "source": "NASA Exoplanet Archive",
+  "service": "Table Access Protocol (TAP)",
+  "endpoint": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync",
+  "table": "ps",
+  "retrieved_utc_date": "2026-05-24",
+  "query": "SELECT TOP 2000 pl_name,hostname,pl_orbper,pl_rvamp,pl_orbeccen,pl_bmassj,sy_dist,sy_vmag,rastr,decstr,disc_year,disc_facility,st_mass,st_teff,st_rad,discoverymethod,rv_flag,st_nrvc,rowupdate FROM ps WHERE default_flag = 1 AND rv_flag = 1 AND pl_orbper IS NOT NULL AND pl_rvamp IS NOT NULL AND pl_rvamp > 0 ORDER BY pl_rvamp DESC",
+  "qualifying_rows_at_retrieval": 2219,
+  "included_rows": 2000,
+  "selection_basis": "Default confirmed planetary-system rows with detected radial velocity variation and a reported RV semi-amplitude, ordered by semi-amplitude descending.",
+  "analysis_note": "Catalog fields are archival parameters. Simulated time-series and modeled diagnostics in the dashboard are labeled as such unless the user imports observed RV measurements."
+}
