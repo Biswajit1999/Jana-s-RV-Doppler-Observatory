@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-basic-2.35.0.min.js"></script>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ui_overhaul.css" />
 </head>
 <body>
   <canvas id="starfield" aria-hidden="true"></canvas>
@@ -30,7 +31,7 @@
         <p class="label">Backend state</p>
         <h3 id="systemMode">Static frontend ready</h3>
         <div class="status-line"><span class="status-dot" id="apiDot"></span><span id="apiStatus">API not configured</span></div>
-        <div class="status-line"><span class="status-dot cyan"></span><span>Real RV upload only</span></div>
+        <div class="status-line"><span class="status-dot cyan"></span><span>Direct data loader</span></div>
         <div class="status-line"><span class="status-dot amber"></span><span>Python proxy supported</span></div>
       </div>
       <div class="sidebar-footer"><p>Biswajit Jana</p><p>RV · Doppler · Archive Science</p></div>
@@ -47,7 +48,7 @@
 
       <section class="tab-panel active" id="dashboard">
         <div class="hero-console">
-          <section class="panel hero-panel"><div class="panel-head"><h3>Mission control</h3><span id="targetLock" class="ok">REFERENCE</span></div><div class="hero-grid"><canvas id="skyCanvas" width="540" height="330"></canvas><div class="mission-copy"><p class="eyebrow">Full-stack architecture ready</p><h2>One target. Archive context. Real RV analysis.</h2><p>Search the bundled NASA TAP-derived snapshot directly on GitHub Pages, or use the Python backend proxy for live NASA/SIMBAD/Gaia metadata. RV plots activate only after real data upload.</p><div class="button-row flush"><button data-jump="target">Load target context</button><button data-jump="rvdata">Upload RV file</button></div></div></div></section>
+          <section class="panel hero-panel"><div class="panel-head"><h3>Mission control</h3><span id="targetLock" class="ok">REFERENCE</span></div><div class="hero-grid"><canvas id="skyCanvas" width="540" height="330"></canvas><div class="mission-copy"><p class="eyebrow">Full-stack architecture ready</p><h2>One target. Archive context. Real RV analysis.</h2><p>Search target context, discover RV source routes, import machine-readable tables through Python, normalise columns and plot directly in the same observatory console.</p><div class="button-row flush"><button data-jump="target">Load target context</button><button data-jump="rvdata">Find RV data</button></div></div></div></section>
           <section class="panel stats-panel"><div class="panel-head"><h3>Data integrity</h3><span id="qualityFlag" class="warn">EMPTY</span></div><div class="quality-dial"><div><strong id="qualityScore">0%</strong><span>dataset readiness</span></div></div><div class="mini-bars"><div><span>Columns</span><b id="barColumns" style="width:0%"></b></div><div><span>Baseline</span><b id="barBaseline" style="width:0%"></b></div><div><span>Activity</span><b id="barActivity" class="amber-bar" style="width:0%"></b></div></div></section>
         </div>
         <div class="dashboard-grid compact-top">
@@ -60,7 +61,7 @@
 
       <section class="tab-panel" id="target">
         <div class="two-column-grid">
-          <section class="panel"><div class="panel-head"><h3>Snapshot + Python target resolver</h3><span id="identityFlag" class="warn">SNAPSHOT READY</span></div><div class="search-row"><input id="targetSearch" placeholder="Try: 51 Pegasi b, HD 189733 b, Proxima Cen b"><button id="fetchLiveTarget">Fetch live</button><button id="loadLocalTarget">Search snapshot</button></div><div class="api-config"><label>API base URL <input id="apiBase" placeholder="https://your-backend.example.com or http://127.0.0.1:8010"></label><button id="checkApi">Check API</button></div><p class="panel-note">Snapshot search uses a bundled 2,000-row NASA TAP-derived catalog retrieved on 2026-05-24 and works on GitHub Pages. Fetch live calls the optional FastAPI backend for current metadata.</p><div class="quick-targets" id="quickTargets"></div></section>
+          <section class="panel"><div class="panel-head"><h3>Snapshot + Python target resolver</h3><span id="identityFlag" class="warn">SNAPSHOT READY</span></div><div class="search-row"><input id="targetSearch" placeholder="Try: 51 Pegasi b, HD 189733 b, Proxima Cen b"><button id="fetchLiveTarget">Fetch live</button><button id="loadLocalTarget">Search snapshot</button></div><div class="api-config"><label>API base URL <input id="apiBase" placeholder="https://your-backend.example.com or http://127.0.0.1:8010"></label><button id="checkApi">Check API</button></div><p class="panel-note">Snapshot search uses the bundled starter reference list and works on GitHub Pages. Fetch live calls the optional FastAPI backend for current NASA Archive metadata.</p><div class="quick-targets" id="quickTargets"></div></section>
           <section class="panel"><div class="panel-head"><h3>Target identity block</h3><span id="targetSource">Reference</span></div><div class="identity-grid"><div><span>Planet</span><strong id="idPlanet">51 Pegasi b</strong></div><div><span>Host</span><strong id="idHost">51 Peg</strong></div><div><span>Discovery</span><strong id="idMethod">Radial Velocity</strong></div><div><span>Year</span><strong id="idYear">1995</strong></div><div><span>RA</span><strong id="idRA">22:57:27.98</strong></div><div><span>Dec</span><strong id="idDec">+20:46:07.8</strong></div><div><span>V mag</span><strong id="idVmag">5.49</strong></div><div><span>Distance</span><strong id="idDistance">15.6 pc</strong></div><div><span>Spectral type</span><strong id="idSpT">G2IV</strong></div><div><span>Context source</span><strong id="idSource">Reference cache</strong></div></div></section>
         </div>
         <section class="panel mt-panel"><div class="panel-head"><h3>Featured target searches</h3><span class="ok">SNAPSHOT AVAILABLE</span></div><div class="table-wrap"><table id="catalogueTable"></table></div></section>
@@ -80,10 +81,11 @@
       <section class="tab-panel" id="activity"><div class="dashboard-grid activity-grid"><section class="panel wide"><div class="panel-head"><h3>RV versus activity indicator</h3><span id="activityStatus" class="warn">BIS/FWHM IF AVAILABLE</span></div><div id="activityPlot" class="plot-main"></div></section><section class="panel"><div class="panel-head"><h3>Activity triage</h3><span class="warn">HEURISTIC</span></div><div class="jitter-box"><strong id="jitterScore">—</strong><span id="jitterText">Upload BIS or FWHM columns to evaluate correlation.</span></div></section><section class="panel"><div class="panel-head"><h3>Available channels</h3><span class="ok">CHECKED</span></div><div class="channel-list" id="channelList"></div></section></div></section>
       <section class="tab-panel" id="archive"><div class="section-intro"><h3>Archive hub for the selected target</h3><p>Target-aware links plus backend-ready live metadata integration.</p></div><div class="archive-grid" id="archiveGrid"></div></section>
       <section class="tab-panel" id="report"><section class="panel"><div class="panel-head"><h3>Session report</h3><span class="ok">AUTO SUMMARY</span></div><pre id="reportText" class="report-box"></pre><div class="button-row"><button id="refreshReportBtn">Refresh report</button><button id="copyReportBtn">Copy report</button><button id="downloadReportMD">Download Markdown</button></div></section></section>
-      <section class="tab-panel" id="roadmap"><div class="section-intro"><h3>Build plan: static frontend + Python archive proxy</h3><p>v3 adds the frontend hooks, day/night theme, starfield UI, and FastAPI backend files needed for live NASA/SIMBAD/Gaia fetching.</p></div><div class="roadmap-toolbar"><button data-filter="all" class="filter-btn active">All</button><button data-filter="data" class="filter-btn">Data</button><button data-filter="analysis" class="filter-btn">Analysis</button><button data-filter="ui" class="filter-btn">UI</button><button data-filter="infra" class="filter-btn">Infra</button></div><div class="roadmap-grid" id="roadmapGrid"></div></section>
+      <section class="tab-panel" id="roadmap"><div class="section-intro"><h3>Build plan: static frontend + Python archive proxy</h3><p>Frontend: GitHub Pages. Data loading: Python backend. Science: RV upload/import, GLS scan, Keplerian first-pass fit and activity diagnostics.</p></div><div class="roadmap-toolbar"><button data-filter="all" class="filter-btn active">All</button><button data-filter="data" class="filter-btn">Data</button><button data-filter="analysis" class="filter-btn">Analysis</button><button data-filter="ui" class="filter-btn">UI</button><button data-filter="infra" class="filter-btn">Infra</button></div><div class="roadmap-grid" id="roadmapGrid"></div></section>
     </main>
   </div>
-  <script src="app.js?v=20260525-snapshot-v3"></script>
-  <script src="app_rv_sources.js"></script>
+  <script src="app.js?v=20260525-direct-loader-v4"></script>
+  <script src="app_rv_sources.js?v=20260525-direct-loader-v4"></script>
+  <script src="app_visual_upgrade.js?v=20260525-direct-loader-v4"></script>
 </body>
 </html>
