@@ -21,7 +21,7 @@ function injectRVSourceHunter(){
       <p id="rvHunterMessage" class="rv-hunter-message">Fetch a target first, then search for real RV sources.</p>
       <div class="table-wrap"><table id="rvSourcesTable"><tr><td>No source search run yet.</td></tr></table></div>
       <div class="manual-import">
-        <label>Import machine-readable RV URL <input id="manualRvUrl" placeholder="https://...csv / .txt / .dat"></label>
+        <label>Import machine-readable RV URL <input id="manualRvUrl" placeholder="https://...csv / .txt / .dat / .xml / .vot"></label>
         <button id="importManualRvBtn">Import URL</button>
       </div>
     </div>`;
@@ -55,7 +55,8 @@ async function searchRVSources(){
   const target=(state && state.target && (state.target.planet || state.target.host)) || '51 Peg b';
   rvHunterProgress(20, `Searching archive source routes for ${target}...`, 'SEARCHING', 'warn');
   try{
-    const r=await fetch(`${base}/api/rv-sources?name=${encodeURIComponent(target)}`);
+    const offline = localStorage.getItem('jana_offline_mode') === '1';
+    const r=await fetch(`${base}/api/rv-sources?name=${encodeURIComponent(target)}${offline?'&offline=true':''}`);
     if(!r.ok) throw new Error(`Backend returned HTTP ${r.status}`);
     rvHunterProgress(65, 'Parsing source candidates...', 'PARSING', 'warn');
     const data=await r.json();
@@ -73,7 +74,8 @@ function renderRVSources(sources){
   if(!sources.length){table.innerHTML='<tr><td>No source candidates found.</td></tr>';return;}
   table.innerHTML=`<thead><tr><th>Source</th><th>Kind</th><th>Title</th><th>Status</th><th>Action</th></tr></thead><tbody>${sources.map((s,i)=>{
     const statusClass=s.importable?'source-status-ok':(s.status||'').includes('could not')?'source-status-bad':'source-status-warn';
-    const action=s.importable?`<button onclick="importRvUrl('${String(s.url).replace(/'/g,'%27')}')">Import</button>`:`<button onclick="window.open('${String(s.url).replace(/'/g,'%27')}','_blank')">Open</button>`;
+    const safeUrl = String(s.url).replace(/'/g,'%27');
+    const action=s.importable?`<button onclick="importRvUrl('${safeUrl}')">Import</button>`:`<button onclick="window.open('${safeUrl}','_blank')">Open</button>`;
     return `<tr><td>${esc(s.source)}</td><td>${esc(s.kind)}</td><td>${esc(s.title)}</td><td class="${statusClass}">${esc(s.status)}</td><td>${action}</td></tr>`;
   }).join('')}</tbody>`;
 }
@@ -81,7 +83,7 @@ function renderRVSources(sources){
 async function importRvUrl(url){
   const base=currentApiBase();
   if(!base) return alert('Set API Base URL first.');
-  if(!url || !String(url).startsWith('https://')) return alert('Paste a valid https:// machine-readable RV table URL.');
+  if(!url || !/^https?:\/\//.test(String(url))) return alert('Paste a valid http(s) machine-readable RV table URL.');
   rvHunterProgress(20, 'Downloading remote RV table through Python backend...', 'IMPORTING', 'warn');
   try{
     const r=await fetch(`${base}/api/import-rv-url?url=${encodeURIComponent(url)}&instrument=REMOTE`);
@@ -91,7 +93,7 @@ async function importRvUrl(url){
     const rows=parseRV(data.csv);
     setData(rows, `Remote RV import: ${url}`);
     rvHunterProgress(100, `Imported ${data.n_rows} RV rows and plotted them. Next: open Analysis and run period scan.`, 'IMPORTED', 'ok');
-    switchTab('overview');
+    switchTab('dashboard');
   }catch(e){
     rvHunterProgress(100, e.message, 'FAILED', 'bad');
     alert(`RV import failed: ${e.message}`);
