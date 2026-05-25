@@ -1,6 +1,6 @@
 # Jana's RV Doppler Observatory
 
-A real-data-first radial-velocity exoplanet console for target context, archive queries, RV upload analysis, activity diagnostics and reproducible session reports.
+A catalogue-first, real-data radial-velocity exoplanet console for target context, RV upload analysis, period scans, Keplerian first-pass fitting, activity diagnostics, archive routing and reproducible session reports.
 
 Live site:
 
@@ -8,24 +8,41 @@ Live site:
 https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
 ```
 
-## Version 2.1 update
+---
 
-This build fixes the static-site API issue visible on GitHub Pages. Direct browser requests to archive services can fail because of CORS or network policy. The console now handles that cleanly: no blocking popup, no broken blank state, and a target context fallback is shown while preserving the live TAP URL for verification.
+## v2.2 direction
 
-The workflow remains real-data-first: RV plots and fits appear only after an uploaded RV file is loaded.
+This version is designed specifically for stable GitHub Pages deployment.
 
-## Main modules
+The previous direct browser call to NASA TAP was removed as the primary workflow because static browser deployments can be blocked by CORS or network policy. This build uses a stable bundled reference catalogue for target context and opens public archives through target-aware links.
 
-- **Overview** — target context, sky crosshair, RV panels and data-readiness status.
-- **Target/API** — NASA Exoplanet Archive TAP query builder, ADQL editor, TAP URL generation and result table.
-- **RV Data** — local CSV/TXT/DAT ingestion with validation and preview.
-- **Analysis** — period scan, phase fold, Keplerian first-pass fit, residuals and window function.
-- **Activity** — RV correlation against BIS, FWHM, S-index or H-alpha if provided.
-- **Archive Hub** — target-aware links to NASA Exoplanet Archive, TAP, SIMBAD, MAST, Gaia and VizieR.
-- **Report** — exportable Markdown-style session report.
-- **Build Plan** — 80 staged upgrades toward a production research platform.
+RV plots and fitting still require real uploaded RV data.
 
-## CSV format
+---
+
+## Key features
+
+- Stable catalogue-first target resolver.
+- No browser fetch error popups.
+- Target-aware links to NASA Exoplanet Archive, SIMBAD, MAST, Gaia, VizieR, DACE and Open Exoplanet Catalogue.
+- Real RV data upload only.
+- CSV/TXT/DAT parser.
+- RV validation summary.
+- Data preview table.
+- RV time-series plot.
+- Period scan.
+- Phase-folded RV plot.
+- First-pass Keplerian grid fit.
+- O−C residual plot.
+- Sampling window-function plot.
+- BIS/FWHM/S-index/H-alpha activity checks.
+- Markdown report export.
+- JSON session export.
+- Roadmap cards for backend and production science upgrades.
+
+---
+
+## RV file format
 
 Required columns:
 
@@ -34,14 +51,14 @@ BJD or Time
 RV
 ```
 
-Recommended columns:
+Recommended:
 
 ```text
 RV_ERR
 INSTRUMENT
 ```
 
-Optional activity columns:
+Optional:
 
 ```text
 BIS
@@ -54,20 +71,49 @@ Example:
 
 ```text
 BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM,SINDEX,HALPHA
-2450000.123,0.0,1.0,HARPS,,,,
+2450000.123,0.0,1.0,HARPS,,,, 
 ```
 
-## Production backend path
+---
 
-GitHub Pages is static, so direct browser API calls may not always be reliable. The next robust version should use a small backend proxy for archive services and a Python science backend for validated analysis. This package includes backend starter files under `backend/`.
+## Repository structure
 
-Recommended stack:
+```text
+Jana-s-RV-Doppler-Observatory/
+├── index.html
+├── styles.css
+├── app.js
+├── README.md
+├── UPGRADE_ROADMAP.md
+└── sample_data/
+    └── rv_template.csv
+```
 
-- static frontend on GitHub Pages / Cloudflare Pages / Netlify,
-- serverless or FastAPI proxy for NASA/SIMBAD/MAST/Gaia calls,
-- Python science backend for Astropy/RadVel/MCMC tools,
-- cache layer for repeated target metadata,
-- CI tests for parser, ADQL builder and plotting workflows.
+---
+
+## Deployment
+
+Use GitHub Pages:
+
+```text
+Settings → Pages → Deploy from branch → main → /root
+```
+
+---
+
+## Production roadmap
+
+The next major step is a backend proxy and science service:
+
+- serverless archive proxy for NASA/SIMBAD/Gaia/MAST,
+- Python FastAPI backend,
+- PyVO / Astroquery integration,
+- Astropy-validated Lomb-Scargle,
+- RadVel or equivalent fitting,
+- optional MCMC/GP modelling,
+- database/cache for metadata and sessions.
+
+---
 
 ## Author
 

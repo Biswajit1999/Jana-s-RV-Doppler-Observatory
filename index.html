@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Jana's RV Doppler Observatory | Real-Data RV Console</title>
-  <meta name="description" content="A real-data-first radial-velocity exoplanet console for NASA Archive TAP queries, RV upload analysis, activity diagnostics, archive routing and reproducible session reports.">
+  <title>Jana's RV Doppler Observatory | Catalogue-First RV Console</title>
+  <meta name="description" content="A catalogue-first radial-velocity exoplanet console for target context, real RV upload analysis, activity diagnostics, archive routing and reproducible session reports.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-basic-2.35.0.min.js"></script>
@@ -24,7 +24,7 @@
 
       <nav class="side-nav" aria-label="Main modules">
         <button class="nav-item active" data-tab="dashboard"><span>▦</span> Overview</button>
-        <button class="nav-item" data-tab="target"><span>◎</span> Target/API</button>
+        <button class="nav-item" data-tab="target"><span>◎</span> Catalogue</button>
         <button class="nav-item" data-tab="rvdata"><span>⇪</span> RV Data</button>
         <button class="nav-item" data-tab="analysis"><span>∿</span> Analysis</button>
         <button class="nav-item" data-tab="activity"><span>☍</span> Activity</button>
@@ -35,10 +35,10 @@
 
       <div class="sidebar-card">
         <p class="label">Session state</p>
-        <h3 id="systemMode">Real-data mode</h3>
-        <div class="status-line"><span class="status-dot green"></span><span id="sourceStatus">Ready</span></div>
-        <div class="status-line"><span class="status-dot cyan"></span><span>NASA TAP adapter</span></div>
-        <div class="status-line"><span class="status-dot amber"></span><span>Backend-ready design</span></div>
+        <h3 id="systemMode">Catalogue mode</h3>
+        <div class="status-line"><span class="status-dot green"></span><span id="sourceStatus">Stable static resolver</span></div>
+        <div class="status-line"><span class="status-dot cyan"></span><span>Real RV upload only</span></div>
+        <div class="status-line"><span class="status-dot amber"></span><span>No browser TAP errors</span></div>
       </div>
 
       <div class="sidebar-footer">
@@ -51,16 +51,16 @@
       <header class="top-strip">
         <div>
           <p class="micro-label">Selected target</p>
-          <h2 id="targetName">51 Peg b</h2>
+          <h2 id="targetName">51 Pegasi b</h2>
         </div>
 
         <div class="target-metrics">
           <div><span>Host</span><strong id="hostName">51 Peg</strong></div>
-          <div><span>RA</span><strong id="targetRA">—</strong></div>
-          <div><span>Dec</span><strong id="targetDec">—</strong></div>
-          <div><span>SpT</span><strong id="targetSpT">—</strong></div>
-          <div><span>Dist</span><strong id="targetDist">—</strong></div>
-          <div><span>K</span><strong id="targetK">—</strong></div>
+          <div><span>RA</span><strong id="targetRA">22:57:27.98</strong></div>
+          <div><span>Dec</span><strong id="targetDec">+20:46:07.8</strong></div>
+          <div><span>SpT</span><strong id="targetSpT">G2IV</strong></div>
+          <div><span>Dist</span><strong id="targetDist">15.6 pc</strong></div>
+          <div><span>K</span><strong id="targetK">55.9 m/s</strong></div>
         </div>
 
         <div class="clock-box">
@@ -72,13 +72,13 @@
       <section class="tab-panel active" id="dashboard">
         <div class="dashboard-grid">
           <section class="panel target-card">
-            <div class="panel-head"><h3>Target acquisition</h3><span id="targetLock" class="warn">WAITING</span></div>
+            <div class="panel-head"><h3>Target acquisition</h3><span id="targetLock" class="ok">REFERENCE</span></div>
             <div class="target-view-wrap"><canvas id="skyCanvas" width="540" height="330"></canvas></div>
             <div class="telemetry-table">
-              <div><span>Planet</span><strong id="dashPlanet">—</strong></div>
-              <div><span>Period</span><strong id="dashPeriod">—</strong></div>
-              <div><span>Mass</span><strong id="dashMass">—</strong></div>
-              <div><span>Eccentricity</span><strong id="dashEcc">—</strong></div>
+              <div><span>Planet</span><strong id="dashPlanet">51 Pegasi b</strong></div>
+              <div><span>Period</span><strong id="dashPeriod">4.2308 d</strong></div>
+              <div><span>Mass</span><strong id="dashMass">0.46 MJ</strong></div>
+              <div><span>Eccentricity</span><strong id="dashEcc">0.013</strong></div>
             </div>
           </section>
 
@@ -93,7 +93,7 @@
           </section>
 
           <section class="panel">
-            <div class="panel-head"><h3>Phase fold</h3><span id="phaseFlag" class="warn">NO PERIOD</span></div>
+            <div class="panel-head"><h3>Phase fold</h3><span id="phaseFlag" class="warn">NO RV DATA</span></div>
             <div id="phasePlot" class="plot-small"></div>
           </section>
 
@@ -122,57 +122,43 @@
       <section class="tab-panel" id="target">
         <div class="two-column-grid">
           <section class="panel">
-            <div class="panel-head"><h3>Target resolver</h3><span class="ok">NASA TAP</span></div>
+            <div class="panel-head"><h3>Catalogue resolver</h3><span class="ok">NO FETCH ERRORS</span></div>
             <div class="search-row">
-              <input id="targetSearch" type="text" placeholder="Example: 51 Pegasi b, HD 189733 b, Proxima Cen b">
-              <button id="fetchNASAButton">Fetch</button>
+              <input id="targetSearch" type="text" placeholder="Try: 51 Peg, HD 189733, Proxima Cen, Barnard, Tau Ceti">
+              <button id="loadTargetButton">Load</button>
             </div>
             <p class="panel-note">
-              Searches NASA Exoplanet Archive through TAP/ADQL where browser access is available. Static GitHub Pages can be blocked by CORS, so this console now falls back to a built-in reference target context and keeps the live TAP URL available for verification.
+              This version uses a bundled reference target cache for a stable GitHub Pages experience. Live archive services are opened through target-aware links instead of fragile browser fetch calls.
             </p>
-            <div class="quick-targets">
-              <button data-example="51 Pegasi b">51 Pegasi b</button>
-              <button data-example="HD 189733 b">HD 189733 b</button>
-              <button data-example="Proxima Cen b">Proxima Cen b</button>
-              <button data-example="Barnard b">Barnard b</button>
-            </div>
+            <div class="quick-targets" id="quickTargets"></div>
             <div class="button-row">
-              <button id="openNASAQuery">Open TAP URL</button>
-              <button id="copyADQL">Copy ADQL</button>
+              <button id="openNASAOverview">Open NASA Archive</button>
+              <button id="openSIMBAD">Open SIMBAD</button>
+              <button id="copyTargetJSON">Copy target JSON</button>
             </div>
           </section>
 
           <section class="panel">
-            <div class="panel-head"><h3>Target identity block</h3><span id="identityFlag" class="warn">NO TARGET</span></div>
+            <div class="panel-head"><h3>Target identity block</h3><span id="identityFlag" class="ok">REFERENCE CACHE</span></div>
             <div class="identity-grid">
-              <div><span>Planet</span><strong id="idPlanet">—</strong></div>
-              <div><span>Host</span><strong id="idHost">—</strong></div>
-              <div><span>Discovery</span><strong id="idMethod">—</strong></div>
-              <div><span>Year</span><strong id="idYear">—</strong></div>
-              <div><span>RA</span><strong id="idRA">—</strong></div>
-              <div><span>Dec</span><strong id="idDec">—</strong></div>
-              <div><span>V mag</span><strong id="idVmag">—</strong></div>
-              <div><span>Distance</span><strong id="idDistance">—</strong></div>
-              <div><span>Spectral type</span><strong id="idSpT">—</strong></div>
-              <div><span>Source</span><strong id="idSource">—</strong></div>
+              <div><span>Planet</span><strong id="idPlanet">51 Pegasi b</strong></div>
+              <div><span>Host</span><strong id="idHost">51 Peg</strong></div>
+              <div><span>Discovery</span><strong id="idMethod">Radial Velocity</strong></div>
+              <div><span>Year</span><strong id="idYear">1995</strong></div>
+              <div><span>RA</span><strong id="idRA">22:57:27.98</strong></div>
+              <div><span>Dec</span><strong id="idDec">+20:46:07.8</strong></div>
+              <div><span>V mag</span><strong id="idVmag">5.49</strong></div>
+              <div><span>Distance</span><strong id="idDistance">15.6 pc</strong></div>
+              <div><span>Spectral type</span><strong id="idSpT">G2IV</strong></div>
+              <div><span>Context source</span><strong id="idSource">Reference cache</strong></div>
             </div>
           </section>
         </div>
 
         <section class="panel mt-panel">
-          <div class="panel-head"><h3>NASA TAP results</h3><span id="tapStatus" class="warn">IDLE</span></div>
+          <div class="panel-head"><h3>Reference target catalogue</h3><span id="catalogueStatus" class="ok">AVAILABLE</span></div>
           <div class="table-wrap">
-            <table id="tapTable"></table>
-          </div>
-        </section>
-
-        <section class="panel mt-panel">
-          <div class="panel-head"><h3>ADQL console</h3><span class="ok">ADVANCED</span></div>
-          <textarea id="adqlBox" spellcheck="false"></textarea>
-          <div class="button-row">
-            <button id="runADQLButton">Run ADQL</button>
-            <button id="resetADQLButton">Reset target query</button>
-            <button id="downloadTapCSV">Download result CSV</button>
+            <table id="catalogueTable"></table>
           </div>
         </section>
       </section>
@@ -214,10 +200,10 @@
           <section class="panel">
             <div class="panel-head"><h3>Fit controls</h3><span class="ok">MANUAL</span></div>
             <div class="control-grid">
-              <label>Period P (d)<input id="periodInput" type="number" step="0.000001" placeholder="e.g. 4.2308"></label>
-              <label>K guess<input id="kInput" type="number" step="0.1" placeholder="m/s"></label>
-              <label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0"></label>
-              <label>ω deg<input id="omegaInput" type="number" step="1" value="0"></label>
+              <label>Period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label>
+              <label>K guess<input id="kInput" type="number" step="0.1" value="55.9"></label>
+              <label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0.013"></label>
+              <label>ω deg<input id="omegaInput" type="number" step="1" value="78"></label>
             </div>
             <div class="button-row">
               <button id="runPeriodogramBtn">Run period scan</button>
@@ -273,7 +259,7 @@
       <section class="tab-panel" id="archive">
         <div class="section-intro">
           <h3>Archive hub for the selected target</h3>
-          <p>Target-aware routing to public astronomical services. API-backed fetching is implemented for NASA TAP; other sources are prepared as reliable links or backend-ready adapters.</p>
+          <p>Target-aware links to public astronomical services. This avoids fragile browser-side TAP fetches while keeping the workflow connected to original archive resources.</p>
         </div>
         <div class="archive-grid" id="archiveGrid"></div>
       </section>
@@ -292,16 +278,16 @@
 
       <section class="tab-panel" id="roadmap">
         <div class="section-intro">
-          <h3>Build plan from static console to production platform</h3>
-          <p>The current release implements the real-data-first static layer: TAP query, RV upload, validation, analysis, activity checks, exports and target-aware archive routing. The cards below describe the backend and science upgrades needed to become a full production research service.</p>
+          <h3>Build plan from stable static console to production platform</h3>
+          <p>The current release uses a stable catalogue-first resolver, real RV uploads and target-aware archive routing. The cards below describe the realistic backend, API and science upgrades needed for a full research platform.</p>
         </div>
         <div class="roadmap-toolbar">
           <button data-filter="all" class="filter-btn active">All</button>
           <button data-filter="data" class="filter-btn">Data</button>
-          <button data-filter="analysis">Analysis</button>
-          <button data-filter="ui">UI</button>
-          <button data-filter="infra">Infra</button>
-          <button data-filter="science">Science</button>
+          <button data-filter="analysis" class="filter-btn">Analysis</button>
+          <button data-filter="ui" class="filter-btn">UI</button>
+          <button data-filter="infra" class="filter-btn">Infra</button>
+          <button data-filter="science" class="filter-btn">Science</button>
         </div>
         <div class="roadmap-grid" id="roadmapGrid"></div>
       </section>
