@@ -2,324 +2,469 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RV Exoplanet Observatory | EPRV Research Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Odyssey EPRV Observatory | Command Console</title>
 
-  <meta name="description" content="Professional Extreme Precision Radial Velocity dashboard for exoplanet research, archive-aware workflows, GLS periodograms, Keplerian fitting, and stellar activity diagnostics.">
+  <meta name="description" content="A mission-control style Extreme Precision Radial Velocity observatory console for target identity, RV analysis, activity diagnostics, archive fusion and stellar-jitter modelling roadmap.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-basic-2.35.0.min.js"></script>
-
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="page-shell">
+  <div class="app-shell">
 
-    <nav class="top-nav">
-      <a class="brand" href="#">
-        <span class="brand-mark"></span>
-        <span>
-          <strong>RV Exoplanet Observatory</strong>
-          <small>EPRV research dashboard v1.0</small>
-        </span>
-      </a>
-
-      <div class="nav-actions">
-        <a href="#equations" class="nav-link-btn">Equations</a>
-        <a href="#archives" class="nav-link-btn">Archives</a>
-        <a href="#workspace" class="nav-link-btn primary">Workspace</a>
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="orbital-mark">
+          <span></span>
+        </div>
+        <div>
+          <h1>ODYSSEY</h1>
+          <p>EPRV Observatory</p>
+        </div>
       </div>
-    </nav>
 
-    <header class="hero-section">
-      <div class="hero-grid">
-        <section class="glass-card hero-card">
-          <div class="pill-row">
-            <span class="pill cyan">Extreme Precision RV</span>
-            <span class="pill amber">10 cm/s Frontier</span>
-            <span class="pill">GLS · Keplerian · Activity</span>
+      <nav class="side-nav">
+        <button class="nav-item active" data-tab="dashboard">
+          <span>▦</span> Dashboard
+        </button>
+        <button class="nav-item" data-tab="target">
+          <span>◎</span> Target Console
+        </button>
+        <button class="nav-item" data-tab="rvlab">
+          <span>∿</span> RV Laboratory
+        </button>
+        <button class="nav-item" data-tab="activity">
+          <span>☍</span> Activity Diagnostics
+        </button>
+        <button class="nav-item" data-tab="archive">
+          <span>⌁</span> Archive Fusion
+        </button>
+        <button class="nav-item" data-tab="sjde">
+          <span>✦</span> SJDE Lab
+        </button>
+        <button class="nav-item" data-tab="report">
+          <span>▣</span> Report
+        </button>
+      </nav>
+
+      <div class="sidebar-card">
+        <p class="label">System mode</p>
+        <h3 id="systemMode">Synthetic Demo</h3>
+        <div class="status-line">
+          <span class="status-dot green"></span>
+          <span>Interface online</span>
+        </div>
+        <div class="status-line">
+          <span class="status-dot amber"></span>
+          <span>Archive APIs planned</span>
+        </div>
+        <div class="status-line">
+          <span class="status-dot cyan"></span>
+          <span>CSV upload ready</span>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>Built by Biswajit Jana</p>
+        <p>RV · EPRV · Instrumentation</p>
+      </div>
+    </aside>
+
+    <main class="main-console">
+
+      <header class="top-strip">
+        <div>
+          <p class="micro-label">Selected Target</p>
+          <h2 id="targetName">51 Pegasi b</h2>
+        </div>
+
+        <div class="target-metrics">
+          <div>
+            <span>Host</span>
+            <strong id="hostName">51 Peg</strong>
+          </div>
+          <div>
+            <span>RA</span>
+            <strong id="targetRA">22:57:27.98</strong>
+          </div>
+          <div>
+            <span>Dec</span>
+            <strong id="targetDec">+20:46:07.8</strong>
+          </div>
+          <div>
+            <span>SpT</span>
+            <strong id="targetSpT">G2IV</strong>
+          </div>
+          <div>
+            <span>Dist</span>
+            <strong id="targetDist">15.6 pc</strong>
+          </div>
+          <div>
+            <span>K</span>
+            <strong id="targetK">55.9 m/s</strong>
+          </div>
+        </div>
+
+        <div class="clock-box">
+          <span>UTC</span>
+          <strong id="utcClock">--:--:--</strong>
+        </div>
+      </header>
+
+      <section class="tab-panel active" id="dashboard">
+        <div class="dashboard-grid">
+
+          <section class="panel target-card">
+            <div class="panel-head">
+              <h3>Target acquisition</h3>
+              <span class="ok">LOCKED</span>
+            </div>
+
+            <div class="target-view-wrap">
+              <canvas id="skyCanvas" width="420" height="280"></canvas>
+            </div>
+
+            <div class="telemetry-table">
+              <div><span>Planet</span><strong id="dashPlanet">51 Pegasi b</strong></div>
+              <div><span>Period</span><strong id="dashPeriod">4.2308 d</strong></div>
+              <div><span>m sin i</span><strong id="dashMass">0.46 MJ</strong></div>
+              <div><span>Eccentricity</span><strong id="dashEcc">0.013</strong></div>
+            </div>
+          </section>
+
+          <section class="panel wide">
+            <div class="panel-head">
+              <h3>Radial velocity curve</h3>
+              <span id="fitStatus" class="ok">DEMO MODEL</span>
+            </div>
+            <div id="rvPlot" class="plot-main"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>GLS periodogram</h3>
+              <span class="ok">SCAN READY</span>
+            </div>
+            <div id="periodogramPlot" class="plot-small"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Phase-folded orbit</h3>
+              <span class="ok">P LOCK</span>
+            </div>
+            <div id="phasePlot" class="plot-small"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>O−C residuals</h3>
+              <span class="warn">FIT REQUIRED</span>
+            </div>
+            <div id="residualPlot" class="plot-small"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Data quality</h3>
+              <span class="ok">NOMINAL</span>
+            </div>
+
+            <div class="quality-dial">
+              <div>
+                <strong id="qualityScore">92.4%</strong>
+                <span>analysis confidence</span>
+              </div>
+            </div>
+
+            <div class="mini-bars">
+              <div>
+                <span>Sampling</span>
+                <b style="width:86%"></b>
+              </div>
+              <div>
+                <span>RV precision</span>
+                <b style="width:78%"></b>
+              </div>
+              <div>
+                <span>Activity risk</span>
+                <b class="amber-bar" style="width:32%"></b>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <section class="tab-panel" id="target">
+        <div class="two-column-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Target search</h3>
+              <span class="warn">offline demo</span>
+            </div>
+
+            <div class="search-row">
+              <input id="targetSearch" type="text" placeholder="Try: 51 Peg, HD 189733, Proxima Cen">
+              <button id="targetSearchBtn">Load</button>
+            </div>
+
+            <p class="panel-note">
+              This version uses a local demonstration target registry. Future releases can connect this panel
+              to SIMBAD/Sesame, NASA Exoplanet Archive TAP, Gaia and MAST.
+            </p>
+
+            <div class="target-list" id="targetList"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>SIMBAD-style identity block</h3>
+              <span class="ok">metadata</span>
+            </div>
+
+            <div class="identity-grid">
+              <div><span>Main ID</span><strong id="idMain">51 Peg</strong></div>
+              <div><span>Object type</span><strong id="idType">Star + planet</strong></div>
+              <div><span>RA</span><strong id="idRA">22:57:27.98</strong></div>
+              <div><span>Dec</span><strong id="idDec">+20:46:07.8</strong></div>
+              <div><span>V mag</span><strong id="idVmag">5.49</strong></div>
+              <div><span>Distance</span><strong id="idDistance">15.6 pc</strong></div>
+              <div><span>Parallax</span><strong id="idParallax">64.1 mas</strong></div>
+              <div><span>Spectral type</span><strong id="idSpT">G2IV</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel mt-panel">
+          <div class="panel-head">
+            <h3>Known planet parameters</h3>
+            <span class="ok">catalogue-style</span>
           </div>
 
-          <h1>RV Exoplanet Observatory</h1>
+          <div class="planet-table" id="planetTable"></div>
+        </section>
+      </section>
 
-          <p class="hero-text">
-            A professional browser-based research dashboard for radial-velocity exoplanet science.
-            Upload real RV data, run a period search, phase-fold the signal, fit a first-pass
-            Keplerian model, and inspect stellar-activity indicators such as BIS and FWHM.
-          </p>
+      <section class="tab-panel" id="rvlab">
+        <div class="two-column-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>RV data ingestion</h3>
+              <span class="ok">CSV ready</span>
+            </div>
 
-          <div class="hero-actions">
-            <button class="btn-main" id="heroUploadBtn">Upload RV CSV</button>
-            <button class="btn-secondary-custom" id="heroDemoBtn">Load Synthetic Demo</button>
-            <a href="#roadmap" class="btn-ghost">SJDE Roadmap</a>
+            <label class="drop-zone" id="dropZone">
+              <input id="fileInput" type="file" accept=".csv,.txt,.dat">
+              <div>
+                <strong>Drop or click to upload RV data</strong>
+                <p>Required: BJD/Time and RV. Recommended: RV_ERR, INSTRUMENT. Optional: BIS, FWHM.</p>
+              </div>
+            </label>
+
+            <div class="button-row">
+              <button id="demoBtn">Reload synthetic demo</button>
+              <button id="runPeriodogramBtn">Run GLS</button>
+              <button id="fitBtn">Fit Keplerian</button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Fit controls</h3>
+              <span class="ok">manual</span>
+            </div>
+
+            <div class="control-grid">
+              <label>Period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label>
+              <label>K guess<input id="kInput" type="number" step="0.1" value="55.9"></label>
+              <label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0.013"></label>
+              <label>ω deg<input id="omegaInput" type="number" step="1" value="78"></label>
+            </div>
+
+            <div class="fit-summary" id="fitSummary">
+              <div><span>Rows</span><strong>--</strong></div>
+              <div><span>Best period</span><strong>--</strong></div>
+              <div><span>RMS residual</span><strong>--</strong></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel mt-panel">
+          <div class="panel-head">
+            <h3>RV laboratory plots</h3>
+            <span id="rvSourceLabel" class="warn">synthetic demo</span>
+          </div>
+
+          <div class="lab-plot-grid">
+            <div id="labRVPlot" class="plot-medium"></div>
+            <div id="labGLSPlot" class="plot-medium"></div>
+            <div id="labPhasePlot" class="plot-medium"></div>
+            <div id="labResidualPlot" class="plot-medium"></div>
           </div>
         </section>
+      </section>
 
-        <aside class="glass-card side-card">
-          <h2>Scientific honesty</h2>
-          <p class="warning-box">
-            Archive catalogue values are real. Generated RV curves are synthetic unless actual
-            BJD/RV/RV_ERR time-series data are uploaded.
-          </p>
-
-          <div class="mini-stat">
-            <span>CSV format</span>
-            <strong>BJD · RV · RV_ERR</strong>
-          </div>
-          <div class="mini-stat">
-            <span>Multi-instrument</span>
-            <strong>γ offsets</strong>
-          </div>
-          <div class="mini-stat">
-            <span>Diagnostics</span>
-            <strong>GLS · O−C · BIS</strong>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <section class="content-section" id="equations">
-      <div class="section-heading">
-        <h2>Core EPRV physics</h2>
-        <p>The mathematical layer behind radial-velocity exoplanet detection.</p>
-      </div>
-
-      <div class="info-grid three">
-        <article class="info-card">
-          <h3>Doppler shift</h3>
-          <p>Small wavelength shifts reveal the line-of-sight reflex motion of the host star.</p>
-          <div class="equation">Δλ / λ = vᵣ / c</div>
-        </article>
-
-        <article class="info-card">
-          <h3>RV semi-amplitude</h3>
-          <p>The observable amplitude depends on planet mass, stellar mass, inclination, period, and eccentricity.</p>
-          <div class="equation">K = (2πG/P)¹ᐟ³ · (mₚ sin i)/(mₛ + mₚ)²ᐟ³ · 1/√(1 − e²)</div>
-        </article>
-
-        <article class="info-card">
-          <h3>Mass function</h3>
-          <p>RV usually gives a minimum mass because inclination is unknown.</p>
-          <div class="equation">f(m) = P K³(1 − e²)³ᐟ² / 2πG</div>
-        </article>
-
-        <article class="info-card">
-          <h3>Kepler’s third law</h3>
-          <p>Links orbital period and total system mass to the orbital semi-major axis.</p>
-          <div class="equation">P² = 4π²a³ / G(mₛ + mₚ)</div>
-        </article>
-
-        <article class="info-card">
-          <h3>Keplerian RV model</h3>
-          <p>Used for first-pass model curves and observed-minus-computed residuals.</p>
-          <div class="equation">RV(t) = K[cos(ω + ν(t)) + e cosω] + γ</div>
-        </article>
-
-        <article class="info-card">
-          <h3>Earth-twin scale</h3>
-          <p>An Earth analogue around a Sun-like star produces a signal of only about 9–10 cm/s.</p>
-          <div class="equation">K⊕ ≈ 0.09 m/s</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section" id="archives">
-      <div class="section-heading">
-        <h2>Global data ecosystem</h2>
-        <p>Key astronomical archives and services for a future full EPRV platform.</p>
-      </div>
-
-      <div class="info-grid four">
-        <article class="info-card link-card">
-          <h3>NASA Exoplanet Archive</h3>
-          <p>Confirmed planets, system parameters, TAP access, RV resources and contributed time-series.</p>
-          <a href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank">Open archive →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>DACE</h3>
-          <p>RV survey tools, Keplerian visualisation, target pages, spectroscopy products and periodograms.</p>
-          <a href="https://dace.unige.ch/exoplanets/" target="_blank">Open DACE →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>SIMBAD</h3>
-          <p>Object identifiers, coordinates, proper motions, parallax, spectral type and bibliography.</p>
-          <a href="https://simbad.u-strasbg.fr/simbad/" target="_blank">Open SIMBAD →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>MAST</h3>
-          <p>Kepler, K2, TESS and space-based photometric time-series for activity and transit context.</p>
-          <a href="https://mast.stsci.edu/" target="_blank">Open MAST →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>ESA Gaia Archive</h3>
-          <p>Astrometry, parallax, proper motion and acceleration context for exoplanet systems.</p>
-          <a href="https://gea.esac.esa.int/archive/" target="_blank">Open Gaia →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>VizieR / CDS</h3>
-          <p>Published catalogue tables and supporting stellar/planetary system measurements.</p>
-          <a href="https://vizier.cds.unistra.fr/" target="_blank">Open VizieR →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>ExoFOP</h3>
-          <p>Follow-up observing support, TESS Objects of Interest and community vetting resources.</p>
-          <a href="https://exofop.ipac.caltech.edu/" target="_blank">Open ExoFOP →</a>
-        </article>
-
-        <article class="info-card link-card">
-          <h3>RadVel / Astropy</h3>
-          <p>Professional Python modelling references for benchmarking this browser prototype.</p>
-          <a href="https://radvel.readthedocs.io/" target="_blank">Open RadVel →</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section" id="roadmap">
-      <div class="section-heading">
-        <h2>Future roadmap: Stellar-Jitter Deconvolution Engine</h2>
-        <p>Clearly marked as a future research concept, not an implemented claim.</p>
-      </div>
-
-      <div class="info-grid three">
-        <article class="info-card">
-          <h3>1. Timestamp fusion</h3>
-          <p>Cross-match RV time-series, spectra, CCF indicators, photometry and astrometry around each target.</p>
-        </article>
-
-        <article class="info-card">
-          <h3>2. Line-by-line RV</h3>
-          <p>Analyse spectral lines independently because different lines respond differently to spots and convection.</p>
-        </article>
-
-        <article class="info-card">
-          <h3>3. Clean wobble estimate</h3>
-          <p>Use activity-sensitive channels to estimate stellar jitter before comparing residuals with planet models.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="content-section" id="workspace">
-      <div class="section-heading">
-        <h2>RV analysis workspace</h2>
-        <p>Upload real RV data or load a clearly labelled synthetic demo.</p>
-      </div>
-
-      <div id="startPanel" class="workspace-start">
-        <div class="glass-card upload-card">
-          <label class="drop-zone" id="dropZone">
-            <input id="fileInput" type="file" accept=".csv,.txt,.dat">
-            <div>
-              <div class="upload-icon">⇪</div>
-              <h3>Drop or click to upload RV data</h3>
-              <p>
-                Required: <code>BJD</code> or <code>Time</code>, and <code>RV</code>.
-                Recommended: <code>RV_ERR</code>, <code>INSTRUMENT</code>.
-                Optional: <code>BIS</code>, <code>FWHM</code>.
-              </p>
+      <section class="tab-panel" id="activity">
+        <div class="dashboard-grid activity-grid">
+          <section class="panel wide">
+            <div class="panel-head">
+              <h3>RV versus activity indicator</h3>
+              <span id="activityStatus" class="warn">BIS/FWHM if available</span>
             </div>
-          </label>
+            <div id="activityPlot" class="plot-main"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Jitter score</h3>
+              <span class="warn">heuristic</span>
+            </div>
+
+            <div class="jitter-box">
+              <strong id="jitterScore">LOW</strong>
+              <span id="jitterText">Synthetic demo has weak RV–BIS correlation.</span>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>Activity channels</h3>
+              <span class="ok">planned</span>
+            </div>
+
+            <div class="channel-list">
+              <div><span>BIS</span><b class="green-dot"></b></div>
+              <div><span>FWHM</span><b class="green-dot"></b></div>
+              <div><span>S-index</span><b class="amber-dot"></b></div>
+              <div><span>Hα</span><b class="amber-dot"></b></div>
+              <div><span>Photometric rotation</span><b class="amber-dot"></b></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="archive">
+        <div class="section-intro">
+          <h3>One-place archive fusion layer</h3>
+          <p>
+            This panel is the future bridge between the target console and external astronomical services.
+            Current version opens the correct research portals; later versions can add API/TAP fetching.
+          </p>
         </div>
 
-        <div class="info-grid three compact">
-          <article class="info-card">
-            <h3>Real upload first</h3>
-            <p>The dashboard stays hidden until data exists, so there are no empty chart boxes.</p>
-          </article>
+        <div class="archive-grid">
+          <a class="archive-card" href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank">
+            <span>NASA/IPAC</span>
+            <strong>Exoplanet Archive</strong>
+            <p>Confirmed planets, RV resources, TAP tables and periodogram tools.</p>
+          </a>
 
-          <article class="info-card">
-            <h3>Period search</h3>
-            <p>Use GLS-style power scanning to identify candidate orbital periods.</p>
-          </article>
+          <a class="archive-card" href="https://dace.unige.ch/exoplanets/" target="_blank">
+            <span>DACE</span>
+            <strong>Data & Analysis Center</strong>
+            <p>RV survey products, target pages, Keplerian tools and spectroscopy context.</p>
+          </a>
 
-          <article class="info-card">
-            <h3>Activity diagnostics</h3>
-            <p>Check RV correlations with BIS or FWHM where those columns are available.</p>
-          </article>
+          <a class="archive-card" href="https://simbad.cds.unistra.fr/simbad/" target="_blank">
+            <span>CDS</span>
+            <strong>SIMBAD</strong>
+            <p>Object identity, coordinates, magnitudes, parallax and bibliography.</p>
+          </a>
+
+          <a class="archive-card" href="https://mast.stsci.edu/" target="_blank">
+            <span>STScI</span>
+            <strong>MAST</strong>
+            <p>Kepler, K2 and TESS photometric time-series for activity context.</p>
+          </a>
+
+          <a class="archive-card" href="https://gea.esac.esa.int/archive/" target="_blank">
+            <span>ESA</span>
+            <strong>Gaia Archive</strong>
+            <p>Astrometry, parallax, proper motion and long-baseline stellar context.</p>
+          </a>
+
+          <a class="archive-card" href="https://vizier.cds.unistra.fr/" target="_blank">
+            <span>CDS</span>
+            <strong>VizieR</strong>
+            <p>Published catalogue tables and literature data products.</p>
+          </a>
         </div>
-      </div>
+      </section>
 
-      <div id="dashboard" class="dashboard">
-        <div class="glass-card control-panel">
-          <div>
-            <h3>Analysis dashboard</h3>
-            <p id="metaText">Waiting for data.</p>
-            <p id="sourceText" class="source-text">Source: none</p>
-          </div>
-
-          <div class="controls">
-            <label>
-              Period P (d)
-              <input id="periodInput" type="number" step="0.000001" value="4.2308">
-            </label>
-
-            <label>
-              K guess
-              <input id="kInput" type="number" step="0.1" value="55">
-            </label>
-
-            <label>
-              e
-              <input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0">
-            </label>
-
-            <button class="btn-main" id="runPeriodogramBtn">Run GLS</button>
-            <button class="btn-main" id="fitBtn">Fit</button>
-            <button class="btn-ghost" id="resetBtn">New data</button>
-          </div>
-        </div>
-
-        <div id="kpiGrid" class="kpi-grid"></div>
-
-        <div class="plot-grid">
-          <div class="plot-card wide">
-            <div id="rvPlot" class="plot wide"></div>
-          </div>
-
-          <div class="plot-card">
-            <div id="periodogramPlot" class="plot"></div>
-          </div>
-
-          <div class="plot-card">
-            <div id="phasePlot" class="plot"></div>
-          </div>
-
-          <div class="plot-card">
-            <div id="residualPlot" class="plot"></div>
-          </div>
-
-          <div class="plot-card">
-            <div id="activityPlot" class="plot"></div>
-          </div>
+      <section class="tab-panel" id="sjde">
+        <div class="section-intro">
+          <h3>Stellar-Jitter Deconvolution Engine</h3>
+          <p>
+            This is the long-term differentiator: a line-by-line, multi-modal stellar activity model
+            for separating planetary Doppler signals from photospheric noise. This is a roadmap panel,
+            not a false claim that the engine already reaches 10 cm/s.
+          </p>
         </div>
 
-        <div class="glass-card summary-panel">
-          <div>
-            <h3>Fit summary</h3>
-            <table id="summaryTable"></table>
-          </div>
+        <div class="sjde-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>1. Multi-modal timestamp fusion</h3>
+              <span class="warn">planned</span>
+            </div>
+            <p class="panel-note">
+              Align RV observations, CCF diagnostics, photometry and astrometric context on a common target timeline.
+            </p>
+          </section>
 
-          <div>
-            <h3>Status log</h3>
-            <p id="statusText">Load a file or demo dataset to begin.</p>
-          </div>
+          <section class="panel">
+            <div class="panel-head">
+              <h3>2. Line-by-line response map</h3>
+              <span class="warn">planned</span>
+            </div>
+            <p class="panel-note">
+              Treat different spectral lines as independent probes of photospheric depth and magnetic activity.
+            </p>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h3>3. Clean wobble estimator</h3>
+              <span class="warn">planned</span>
+            </div>
+            <p class="panel-note">
+              Estimate the activity component before testing whether residual RV power is planet-like.
+            </p>
+          </section>
         </div>
-      </div>
-    </section>
 
-    <footer class="footer">
-      Built as a transparent static research prototype. For publication-quality orbital posteriors, compare with RadVel, juliet, exoplanet or equivalent MCMC/GP frameworks.
-    </footer>
+        <section class="panel mt-panel">
+          <div class="panel-head">
+            <h3>Conceptual spectral-line matrix</h3>
+            <span class="ok">visual prototype</span>
+          </div>
+          <div id="sjdeMatrix" class="matrix-grid"></div>
+        </section>
+      </section>
 
+      <section class="tab-panel" id="report">
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Target report</h3>
+            <span class="ok">auto summary</span>
+          </div>
+
+          <pre id="reportText" class="report-box"></pre>
+
+          <div class="button-row">
+            <button id="refreshReportBtn">Refresh report</button>
+            <button id="copyReportBtn">Copy report</button>
+          </div>
+        </section>
+      </section>
+
+    </main>
   </div>
 
   <script src="app.js"></script>
