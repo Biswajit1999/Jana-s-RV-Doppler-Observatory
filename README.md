@@ -30,7 +30,7 @@ This avoids browser CORS failures while keeping the web interface fast and deplo
 - Static 2,000-row NASA TAP-derived target snapshot for GitHub Pages.
 - NASA Exoplanet Archive TAP query proxy.
 - Live target fetch endpoint: `/api/target?name=...`.
-- Real RV data upload only.
+- Real RV data ingestion through uploads, backend imports and the bundled local library.
 - CSV/TXT/DAT parser for RV time series.
 - RV validation summary.
 - Data preview table.
@@ -55,14 +55,20 @@ The frontend is static and can be hosted on GitHub Pages.
 index.html
 styles.css
 app.js
+app_local_rv_library.js
 data/catalog-metadata.json
 data/rv-planets.json
 sample_data/rv_template.csv
+sample_data/rv_library/manifest.json
+sample_data/rv_library/jana_rv_web_target_index.json
+sample_data/rv_library/data/*.csv
 ```
 
 No frontend build step is required.
 
 The bundled target catalog in `data/rv-planets.json` was retrieved from the NASA Exoplanet Archive TAP service on 2026-05-24. It selects default planetary-system records with `rv_flag = 1`, reported periods and positive measured RV semi-amplitudes; exact query provenance is recorded in `data/catalog-metadata.json`.
+
+The Local RV Library tab serves a website-ready bundle of 250 targets from NASA_RADIAL and DACE_PUBLIC sources. Its source and bundle metadata are recorded in `sample_data/rv_library/manifest.json`.
 
 ---
 
