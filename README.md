@@ -2,35 +2,30 @@
 
 A real-data-first radial-velocity exoplanet console for target context, archive queries, RV upload analysis, activity diagnostics and reproducible session reports.
 
-Live site after GitHub Pages deployment:
+Live site:
 
 ```text
 https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
 ```
 
-## What changed in v2
+## Version 2.1 update
 
-This version removes generated/synthetic RV curves from the workflow. The platform now starts in real-data mode:
+This build fixes the static-site API issue visible on GitHub Pages. Direct browser requests to archive services can fail because of CORS or network policy. The console now handles that cleanly: no blocking popup, no broken blank state, and a target context fallback is shown while preserving the live TAP URL for verification.
 
-- target metadata is fetched from NASA Exoplanet Archive TAP where browser access is available,
-- RV curves appear only after the user uploads an RV file,
-- the archive hub generates target-aware links,
-- reports record the target, data source, period scan and fit summary,
-- the build plan tab shows the route from static site to production backend.
+The workflow remains real-data-first: RV plots and fits appear only after an uploaded RV file is loaded.
 
-## Current capabilities
+## Main modules
 
-### NASA Exoplanet Archive TAP query
+- **Overview** — target context, sky crosshair, RV panels and data-readiness status.
+- **Target/API** — NASA Exoplanet Archive TAP query builder, ADQL editor, TAP URL generation and result table.
+- **RV Data** — local CSV/TXT/DAT ingestion with validation and preview.
+- **Analysis** — period scan, phase fold, Keplerian first-pass fit, residuals and window function.
+- **Activity** — RV correlation against BIS, FWHM, S-index or H-alpha if provided.
+- **Archive Hub** — target-aware links to NASA Exoplanet Archive, TAP, SIMBAD, MAST, Gaia and VizieR.
+- **Report** — exportable Markdown-style session report.
+- **Build Plan** — 80 staged upgrades toward a production research platform.
 
-The Target/API tab builds and runs ADQL queries against the NASA Exoplanet Archive TAP service. It retrieves target/system fields such as planet name, host name, discovery method, RA/Dec, distance, spectral type, V magnitude, orbital period, RV semi-amplitude, eccentricity, mass and semi-major axis where available.
-
-### Advanced ADQL console
-
-The user can edit and run a custom ADQL query directly inside the page. Results appear in a table and can be downloaded as CSV.
-
-### Real RV upload
-
-The RV Data tab accepts CSV/TXT/DAT files.
+## CSV format
 
 Required columns:
 
@@ -55,64 +50,24 @@ SINDEX
 HALPHA
 ```
 
-### Dataset validation
-
-The app validates the uploaded file and reports row count, time baseline, instruments, uncertainty availability and activity-column availability.
-
-### RV analysis
-
-The Analysis tab includes RV time-series plotting, instrument-coloured traces, uncertainty bars, period scan, phase fold, first-pass Keplerian grid fit, residual plot and sampling window function.
-
-### Activity diagnostics
-
-The Activity tab checks RV correlation with available activity indicators: BIS, FWHM, S-index and H-alpha.
-
-### Archive hub
-
-The Archive Hub creates target-aware links for NASA Exoplanet Archive, NASA TAP query, SIMBAD, MAST, Gaia Archive and VizieR.
-
-### Report export
-
-The Report tab generates a Markdown-style session report and allows copying or downloading.
-
-## Repository structure
+Example:
 
 ```text
-Jana-s-RV-Doppler-Observatory/
-├── index.html
-├── styles.css
-├── app.js
-├── README.md
-└── UPGRADE_ROADMAP.md
+BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM,SINDEX,HALPHA
+2450000.123,0.0,1.0,HARPS,,,,
 ```
 
-No build step is required for the current static version.
+## Production backend path
 
-## Running locally
+GitHub Pages is static, so direct browser API calls may not always be reliable. The next robust version should use a small backend proxy for archive services and a Python science backend for validated analysis. This package includes backend starter files under `backend/`.
 
-```bash
-git clone https://github.com/Biswajit1999/Jana-s-RV-Doppler-Observatory.git
-cd Jana-s-RV-Doppler-Observatory
-python -m http.server 8000
-```
+Recommended stack:
 
-Then open:
-
-```text
-http://localhost:8000
-```
-
-## Important production note
-
-Some public archive endpoints may block direct browser requests through CORS or may need controlled access to avoid rate-limit issues. The current site is designed to work as a static front end, but the production version should add a small backend proxy layer for stable API calls, caching and long-running analysis.
-
-Recommended production stack:
-
-- static frontend on GitHub Pages / Netlify / Cloudflare Pages,
-- serverless API proxy for NASA/SIMBAD/MAST/Gaia requests,
-- Python science backend for Astropy/RadVel/MCMC/GP tools,
-- PostgreSQL or object storage for cached metadata and uploaded datasets,
-- GitHub Actions for CI/CD.
+- static frontend on GitHub Pages / Cloudflare Pages / Netlify,
+- serverless or FastAPI proxy for NASA/SIMBAD/MAST/Gaia calls,
+- Python science backend for Astropy/RadVel/MCMC tools,
+- cache layer for repeated target metadata,
+- CI tests for parser, ADQL builder and plotting workflows.
 
 ## Author
 
