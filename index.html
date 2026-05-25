@@ -3,470 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Odyssey EPRV Observatory | Command Console</title>
-
-  <meta name="description" content="A mission-control style Extreme Precision Radial Velocity observatory console for target identity, RV analysis, activity diagnostics, archive fusion and stellar-jitter modelling roadmap.">
-
+  <title>Jana Doppler Observatory | Radial-Velocity Exoplanet Console</title>
+  <meta name="description" content="A browser-based radial-velocity exoplanet console for target context, RV analysis, archive navigation, activity checks and report generation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-
   <script src="https://cdn.plot.ly/plotly-basic-2.35.0.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <div class="app-shell">
-
     <aside class="sidebar">
-      <div class="brand-block">
-        <div class="orbital-mark">
-          <span></span>
-        </div>
-        <div>
-          <h1>ODYSSEY</h1>
-          <p>EPRV Observatory</p>
-        </div>
-      </div>
-
+      <div class="brand-block"><div class="orbital-mark"><span></span></div><div><h1>JANA</h1><p>Doppler Observatory</p></div></div>
       <nav class="side-nav">
-        <button class="nav-item active" data-tab="dashboard">
-          <span>▦</span> Dashboard
-        </button>
-        <button class="nav-item" data-tab="target">
-          <span>◎</span> Target Console
-        </button>
-        <button class="nav-item" data-tab="rvlab">
-          <span>∿</span> RV Laboratory
-        </button>
-        <button class="nav-item" data-tab="activity">
-          <span>☍</span> Activity Diagnostics
-        </button>
-        <button class="nav-item" data-tab="archive">
-          <span>⌁</span> Archive Fusion
-        </button>
-        <button class="nav-item" data-tab="sjde">
-          <span>✦</span> SJDE Lab
-        </button>
-        <button class="nav-item" data-tab="report">
-          <span>▣</span> Report
-        </button>
+        <button class="nav-item active" data-tab="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-item" data-tab="target"><span>◎</span> Target Console</button>
+        <button class="nav-item" data-tab="rvlab"><span>∿</span> RV Laboratory</button>
+        <button class="nav-item" data-tab="activity"><span>☍</span> Activity</button>
+        <button class="nav-item" data-tab="archive"><span>⌁</span> Archive Hub</button>
+        <button class="nav-item" data-tab="jitter"><span>✦</span> Jitter Lab</button>
+        <button class="nav-item" data-tab="report"><span>▣</span> Report</button>
       </nav>
-
       <div class="sidebar-card">
-        <p class="label">System mode</p>
-        <h3 id="systemMode">Synthetic Demo</h3>
-        <div class="status-line">
-          <span class="status-dot green"></span>
-          <span>Interface online</span>
-        </div>
-        <div class="status-line">
-          <span class="status-dot amber"></span>
-          <span>Archive APIs planned</span>
-        </div>
-        <div class="status-line">
-          <span class="status-dot cyan"></span>
-          <span>CSV upload ready</span>
-        </div>
+        <p class="label">Session mode</p><h3 id="systemMode">Demo Target</h3>
+        <div class="status-line"><span class="status-dot green"></span><span>Console online</span></div>
+        <div class="status-line"><span class="status-dot cyan"></span><span>CSV analysis ready</span></div>
+        <div class="status-line"><span class="status-dot amber"></span><span>Archive routing active</span></div>
       </div>
-
-      <div class="sidebar-footer">
-        <p>Built by Biswajit Jana</p>
-        <p>RV · EPRV · Instrumentation</p>
-      </div>
+      <div class="sidebar-footer"><p>Biswajit Jana</p><p>RV · Spectrographs · Scientific Computing</p></div>
     </aside>
-
     <main class="main-console">
-
       <header class="top-strip">
-        <div>
-          <p class="micro-label">Selected Target</p>
-          <h2 id="targetName">51 Pegasi b</h2>
-        </div>
-
+        <div><p class="micro-label">Selected target</p><h2 id="targetName">51 Pegasi b</h2></div>
         <div class="target-metrics">
-          <div>
-            <span>Host</span>
-            <strong id="hostName">51 Peg</strong>
-          </div>
-          <div>
-            <span>RA</span>
-            <strong id="targetRA">22:57:27.98</strong>
-          </div>
-          <div>
-            <span>Dec</span>
-            <strong id="targetDec">+20:46:07.8</strong>
-          </div>
-          <div>
-            <span>SpT</span>
-            <strong id="targetSpT">G2IV</strong>
-          </div>
-          <div>
-            <span>Dist</span>
-            <strong id="targetDist">15.6 pc</strong>
-          </div>
-          <div>
-            <span>K</span>
-            <strong id="targetK">55.9 m/s</strong>
-          </div>
+          <div><span>Host</span><strong id="hostName">51 Peg</strong></div><div><span>RA</span><strong id="targetRA">22:57:27.98</strong></div><div><span>Dec</span><strong id="targetDec">+20:46:07.8</strong></div><div><span>SpT</span><strong id="targetSpT">G2IV</strong></div><div><span>Dist</span><strong id="targetDist">15.6 pc</strong></div><div><span>K</span><strong id="targetK">55.9 m/s</strong></div>
         </div>
-
-        <div class="clock-box">
-          <span>UTC</span>
-          <strong id="utcClock">--:--:--</strong>
-        </div>
+        <div class="clock-box"><span>UTC</span><strong id="utcClock">--:--:--</strong></div>
       </header>
-
       <section class="tab-panel active" id="dashboard">
         <div class="dashboard-grid">
-
-          <section class="panel target-card">
-            <div class="panel-head">
-              <h3>Target acquisition</h3>
-              <span class="ok">LOCKED</span>
-            </div>
-
-            <div class="target-view-wrap">
-              <canvas id="skyCanvas" width="420" height="280"></canvas>
-            </div>
-
-            <div class="telemetry-table">
-              <div><span>Planet</span><strong id="dashPlanet">51 Pegasi b</strong></div>
-              <div><span>Period</span><strong id="dashPeriod">4.2308 d</strong></div>
-              <div><span>m sin i</span><strong id="dashMass">0.46 MJ</strong></div>
-              <div><span>Eccentricity</span><strong id="dashEcc">0.013</strong></div>
-            </div>
-          </section>
-
-          <section class="panel wide">
-            <div class="panel-head">
-              <h3>Radial velocity curve</h3>
-              <span id="fitStatus" class="ok">DEMO MODEL</span>
-            </div>
-            <div id="rvPlot" class="plot-main"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>GLS periodogram</h3>
-              <span class="ok">SCAN READY</span>
-            </div>
-            <div id="periodogramPlot" class="plot-small"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Phase-folded orbit</h3>
-              <span class="ok">P LOCK</span>
-            </div>
-            <div id="phasePlot" class="plot-small"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>O−C residuals</h3>
-              <span class="warn">FIT REQUIRED</span>
-            </div>
-            <div id="residualPlot" class="plot-small"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Data quality</h3>
-              <span class="ok">NOMINAL</span>
-            </div>
-
-            <div class="quality-dial">
-              <div>
-                <strong id="qualityScore">92.4%</strong>
-                <span>analysis confidence</span>
-              </div>
-            </div>
-
-            <div class="mini-bars">
-              <div>
-                <span>Sampling</span>
-                <b style="width:86%"></b>
-              </div>
-              <div>
-                <span>RV precision</span>
-                <b style="width:78%"></b>
-              </div>
-              <div>
-                <span>Activity risk</span>
-                <b class="amber-bar" style="width:32%"></b>
-              </div>
-            </div>
-          </section>
-
+          <section class="panel target-card"><div class="panel-head"><h3>Target acquisition</h3><span class="ok">LOCKED</span></div><div class="target-view-wrap"><canvas id="skyCanvas" width="520" height="330"></canvas></div><div class="telemetry-table"><div><span>Planet</span><strong id="dashPlanet">51 Pegasi b</strong></div><div><span>Period</span><strong id="dashPeriod">4.2308 d</strong></div><div><span>m sin i</span><strong id="dashMass">0.46 MJ</strong></div><div><span>Eccentricity</span><strong id="dashEcc">0.013</strong></div></div></section>
+          <section class="panel wide"><div class="panel-head"><h3>Radial-velocity curve</h3><span id="fitStatus" class="ok">MODEL READY</span></div><div id="rvPlot" class="plot-main"></div></section>
+          <section class="panel"><div class="panel-head"><h3>Periodogram</h3><span class="ok">SCAN</span></div><div id="periodogramPlot" class="plot-small"></div></section>
+          <section class="panel"><div class="panel-head"><h3>Phase-folded orbit</h3><span class="ok">P LOCK</span></div><div id="phasePlot" class="plot-small"></div></section>
+          <section class="panel"><div class="panel-head"><h3>O−C residuals</h3><span class="ok">FIT</span></div><div id="residualPlot" class="plot-small"></div></section>
+          <section class="panel"><div class="panel-head"><h3>Signal triage</h3><span id="triageFlag" class="ok">NOMINAL</span></div><div class="quality-dial"><div><strong id="qualityScore">92%</strong><span>workflow confidence</span></div></div><div class="mini-bars"><div><span>Sampling</span><b id="barSampling" style="width:86%"></b></div><div><span>Precision</span><b id="barPrecision" style="width:78%"></b></div><div><span>Activity risk</span><b id="barActivity" class="amber-bar" style="width:32%"></b></div></div></section>
         </div>
       </section>
-
       <section class="tab-panel" id="target">
         <div class="two-column-grid">
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Target search</h3>
-              <span class="warn">offline demo</span>
-            </div>
-
-            <div class="search-row">
-              <input id="targetSearch" type="text" placeholder="Try: 51 Peg, HD 189733, Proxima Cen">
-              <button id="targetSearchBtn">Load</button>
-            </div>
-
-            <p class="panel-note">
-              This version uses a local demonstration target registry. Future releases can connect this panel
-              to SIMBAD/Sesame, NASA Exoplanet Archive TAP, Gaia and MAST.
-            </p>
-
-            <div class="target-list" id="targetList"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>SIMBAD-style identity block</h3>
-              <span class="ok">metadata</span>
-            </div>
-
-            <div class="identity-grid">
-              <div><span>Main ID</span><strong id="idMain">51 Peg</strong></div>
-              <div><span>Object type</span><strong id="idType">Star + planet</strong></div>
-              <div><span>RA</span><strong id="idRA">22:57:27.98</strong></div>
-              <div><span>Dec</span><strong id="idDec">+20:46:07.8</strong></div>
-              <div><span>V mag</span><strong id="idVmag">5.49</strong></div>
-              <div><span>Distance</span><strong id="idDistance">15.6 pc</strong></div>
-              <div><span>Parallax</span><strong id="idParallax">64.1 mas</strong></div>
-              <div><span>Spectral type</span><strong id="idSpT">G2IV</strong></div>
-            </div>
-          </section>
+          <section class="panel"><div class="panel-head"><h3>Target selector</h3><span class="ok">LOCAL REGISTRY</span></div><div class="search-row"><input id="targetSearch" type="text" placeholder="Try: 51 Peg, HD 189733, Proxima Cen, Barnard"><button id="targetSearchBtn">Load</button></div><p class="panel-note">A curated local target registry drives the current interface. Archive buttons route to public services for the selected object.</p><div class="target-list" id="targetList"></div></section>
+          <section class="panel"><div class="panel-head"><h3>Target identity block</h3><span class="ok">METADATA</span></div><div class="identity-grid"><div><span>Main ID</span><strong id="idMain">51 Peg</strong></div><div><span>Object type</span><strong id="idType">Star + planet</strong></div><div><span>RA</span><strong id="idRA">22:57:27.98</strong></div><div><span>Dec</span><strong id="idDec">+20:46:07.8</strong></div><div><span>V mag</span><strong id="idVmag">5.49</strong></div><div><span>Distance</span><strong id="idDistance">15.6 pc</strong></div><div><span>Parallax</span><strong id="idParallax">64.1 mas</strong></div><div><span>Spectral type</span><strong id="idSpT">G2IV</strong></div></div></section>
         </div>
-
-        <section class="panel mt-panel">
-          <div class="panel-head">
-            <h3>Known planet parameters</h3>
-            <span class="ok">catalogue-style</span>
-          </div>
-
-          <div class="planet-table" id="planetTable"></div>
-        </section>
+        <section class="panel mt-panel"><div class="panel-head"><h3>Planet parameters</h3><span class="ok">TARGET CONTEXT</span></div><div class="planet-table" id="planetTable"></div></section>
       </section>
-
       <section class="tab-panel" id="rvlab">
         <div class="two-column-grid">
-          <section class="panel">
-            <div class="panel-head">
-              <h3>RV data ingestion</h3>
-              <span class="ok">CSV ready</span>
-            </div>
-
-            <label class="drop-zone" id="dropZone">
-              <input id="fileInput" type="file" accept=".csv,.txt,.dat">
-              <div>
-                <strong>Drop or click to upload RV data</strong>
-                <p>Required: BJD/Time and RV. Recommended: RV_ERR, INSTRUMENT. Optional: BIS, FWHM.</p>
-              </div>
-            </label>
-
-            <div class="button-row">
-              <button id="demoBtn">Reload synthetic demo</button>
-              <button id="runPeriodogramBtn">Run GLS</button>
-              <button id="fitBtn">Fit Keplerian</button>
-            </div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Fit controls</h3>
-              <span class="ok">manual</span>
-            </div>
-
-            <div class="control-grid">
-              <label>Period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label>
-              <label>K guess<input id="kInput" type="number" step="0.1" value="55.9"></label>
-              <label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0.013"></label>
-              <label>ω deg<input id="omegaInput" type="number" step="1" value="78"></label>
-            </div>
-
-            <div class="fit-summary" id="fitSummary">
-              <div><span>Rows</span><strong>--</strong></div>
-              <div><span>Best period</span><strong>--</strong></div>
-              <div><span>RMS residual</span><strong>--</strong></div>
-            </div>
-          </section>
+          <section class="panel"><div class="panel-head"><h3>RV data ingestion</h3><span class="ok">CSV READY</span></div><label class="drop-zone" id="dropZone"><input id="fileInput" type="file" accept=".csv,.txt,.dat"><div><strong>Drop or click to upload RV data</strong><p>Required: BJD/Time and RV. Recommended: RV_ERR, INSTRUMENT. Optional: BIS, FWHM.</p></div></label><div class="button-row"><button id="demoBtn">Reload demo</button><button id="runPeriodogramBtn">Run period scan</button><button id="fitBtn">Fit Keplerian</button></div></section>
+          <section class="panel"><div class="panel-head"><h3>Fit controls</h3><span class="ok">MANUAL</span></div><div class="control-grid"><label>Period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label><label>K guess<input id="kInput" type="number" step="0.1" value="55.9"></label><label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0.013"></label><label>ω deg<input id="omegaInput" type="number" step="1" value="78"></label></div><div class="fit-summary" id="fitSummary"></div></section>
         </div>
-
-        <section class="panel mt-panel">
-          <div class="panel-head">
-            <h3>RV laboratory plots</h3>
-            <span id="rvSourceLabel" class="warn">synthetic demo</span>
-          </div>
-
-          <div class="lab-plot-grid">
-            <div id="labRVPlot" class="plot-medium"></div>
-            <div id="labGLSPlot" class="plot-medium"></div>
-            <div id="labPhasePlot" class="plot-medium"></div>
-            <div id="labResidualPlot" class="plot-medium"></div>
-          </div>
-        </section>
+        <section class="panel mt-panel"><div class="panel-head"><h3>RV laboratory plots</h3><span id="rvSourceLabel" class="warn">DEMO</span></div><div class="lab-plot-grid"><div id="labRVPlot" class="plot-medium"></div><div id="labGLSPlot" class="plot-medium"></div><div id="labPhasePlot" class="plot-medium"></div><div id="labResidualPlot" class="plot-medium"></div></div></section>
       </section>
-
-      <section class="tab-panel" id="activity">
-        <div class="dashboard-grid activity-grid">
-          <section class="panel wide">
-            <div class="panel-head">
-              <h3>RV versus activity indicator</h3>
-              <span id="activityStatus" class="warn">BIS/FWHM if available</span>
-            </div>
-            <div id="activityPlot" class="plot-main"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Jitter score</h3>
-              <span class="warn">heuristic</span>
-            </div>
-
-            <div class="jitter-box">
-              <strong id="jitterScore">LOW</strong>
-              <span id="jitterText">Synthetic demo has weak RV–BIS correlation.</span>
-            </div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>Activity channels</h3>
-              <span class="ok">planned</span>
-            </div>
-
-            <div class="channel-list">
-              <div><span>BIS</span><b class="green-dot"></b></div>
-              <div><span>FWHM</span><b class="green-dot"></b></div>
-              <div><span>S-index</span><b class="amber-dot"></b></div>
-              <div><span>Hα</span><b class="amber-dot"></b></div>
-              <div><span>Photometric rotation</span><b class="amber-dot"></b></div>
-            </div>
-          </section>
-        </div>
-      </section>
-
-      <section class="tab-panel" id="archive">
-        <div class="section-intro">
-          <h3>One-place archive fusion layer</h3>
-          <p>
-            This panel is the future bridge between the target console and external astronomical services.
-            Current version opens the correct research portals; later versions can add API/TAP fetching.
-          </p>
-        </div>
-
-        <div class="archive-grid">
-          <a class="archive-card" href="https://exoplanetarchive.ipac.caltech.edu/" target="_blank">
-            <span>NASA/IPAC</span>
-            <strong>Exoplanet Archive</strong>
-            <p>Confirmed planets, RV resources, TAP tables and periodogram tools.</p>
-          </a>
-
-          <a class="archive-card" href="https://dace.unige.ch/exoplanets/" target="_blank">
-            <span>DACE</span>
-            <strong>Data & Analysis Center</strong>
-            <p>RV survey products, target pages, Keplerian tools and spectroscopy context.</p>
-          </a>
-
-          <a class="archive-card" href="https://simbad.cds.unistra.fr/simbad/" target="_blank">
-            <span>CDS</span>
-            <strong>SIMBAD</strong>
-            <p>Object identity, coordinates, magnitudes, parallax and bibliography.</p>
-          </a>
-
-          <a class="archive-card" href="https://mast.stsci.edu/" target="_blank">
-            <span>STScI</span>
-            <strong>MAST</strong>
-            <p>Kepler, K2 and TESS photometric time-series for activity context.</p>
-          </a>
-
-          <a class="archive-card" href="https://gea.esac.esa.int/archive/" target="_blank">
-            <span>ESA</span>
-            <strong>Gaia Archive</strong>
-            <p>Astrometry, parallax, proper motion and long-baseline stellar context.</p>
-          </a>
-
-          <a class="archive-card" href="https://vizier.cds.unistra.fr/" target="_blank">
-            <span>CDS</span>
-            <strong>VizieR</strong>
-            <p>Published catalogue tables and literature data products.</p>
-          </a>
-        </div>
-      </section>
-
-      <section class="tab-panel" id="sjde">
-        <div class="section-intro">
-          <h3>Stellar-Jitter Deconvolution Engine</h3>
-          <p>
-            This is the long-term differentiator: a line-by-line, multi-modal stellar activity model
-            for separating planetary Doppler signals from photospheric noise. This is a roadmap panel,
-            not a false claim that the engine already reaches 10 cm/s.
-          </p>
-        </div>
-
-        <div class="sjde-grid">
-          <section class="panel">
-            <div class="panel-head">
-              <h3>1. Multi-modal timestamp fusion</h3>
-              <span class="warn">planned</span>
-            </div>
-            <p class="panel-note">
-              Align RV observations, CCF diagnostics, photometry and astrometric context on a common target timeline.
-            </p>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>2. Line-by-line response map</h3>
-              <span class="warn">planned</span>
-            </div>
-            <p class="panel-note">
-              Treat different spectral lines as independent probes of photospheric depth and magnetic activity.
-            </p>
-          </section>
-
-          <section class="panel">
-            <div class="panel-head">
-              <h3>3. Clean wobble estimator</h3>
-              <span class="warn">planned</span>
-            </div>
-            <p class="panel-note">
-              Estimate the activity component before testing whether residual RV power is planet-like.
-            </p>
-          </section>
-        </div>
-
-        <section class="panel mt-panel">
-          <div class="panel-head">
-            <h3>Conceptual spectral-line matrix</h3>
-            <span class="ok">visual prototype</span>
-          </div>
-          <div id="sjdeMatrix" class="matrix-grid"></div>
-        </section>
-      </section>
-
-      <section class="tab-panel" id="report">
-        <section class="panel">
-          <div class="panel-head">
-            <h3>Target report</h3>
-            <span class="ok">auto summary</span>
-          </div>
-
-          <pre id="reportText" class="report-box"></pre>
-
-          <div class="button-row">
-            <button id="refreshReportBtn">Refresh report</button>
-            <button id="copyReportBtn">Copy report</button>
-          </div>
-        </section>
-      </section>
-
+      <section class="tab-panel" id="activity"><div class="dashboard-grid activity-grid"><section class="panel wide"><div class="panel-head"><h3>RV versus line-shape indicator</h3><span id="activityStatus" class="warn">BIS/FWHM</span></div><div id="activityPlot" class="plot-main"></div></section><section class="panel"><div class="panel-head"><h3>Jitter triage</h3><span class="warn">HEURISTIC</span></div><div class="jitter-box"><strong id="jitterScore">LOW</strong><span id="jitterText">Weak RV–BIS correlation in the demonstration dataset.</span></div></section><section class="panel"><div class="panel-head"><h3>Diagnostic channels</h3><span class="ok">TRACKED</span></div><div class="channel-list"><div><span>BIS</span><b class="green-dot"></b></div><div><span>FWHM</span><b class="green-dot"></b></div><div><span>S-index</span><b class="amber-dot"></b></div><div><span>Hα</span><b class="amber-dot"></b></div><div><span>Photometric rotation</span><b class="amber-dot"></b></div></div></section></div></section>
+      <section class="tab-panel" id="archive"><div class="section-intro"><h3>Archive hub for the selected target</h3><p>This panel centralises the main services normally used separately during RV exoplanet work. Links update with the selected target where possible.</p></div><div class="archive-grid" id="archiveGrid"></div></section>
+      <section class="tab-panel" id="jitter"><div class="section-intro"><h3>Jitter Lab</h3><p>A prototype workspace for future activity-aware RV interpretation: timestamp fusion, line-by-line response mapping and clean residual estimation.</p></div><div class="sjde-grid"><section class="panel"><div class="panel-head"><h3>1. Time-domain fusion</h3><span class="warn">ROADMAP</span></div><p class="panel-note">Align RV observations, CCF diagnostics, photometry and astrometric context around the same target timeline.</p></section><section class="panel"><div class="panel-head"><h3>2. Line-response map</h3><span class="warn">ROADMAP</span></div><p class="panel-note">Treat spectral lines as separate probes of photospheric depth, magnetic activity and telluric sensitivity.</p></section><section class="panel"><div class="panel-head"><h3>3. Clean wobble estimate</h3><span class="warn">ROADMAP</span></div><p class="panel-note">Use activity-sensitive channels to estimate the stellar component before evaluating planet-like residual power.</p></section></div><section class="panel mt-panel"><div class="panel-head"><h3>Conceptual spectral-line matrix</h3><span class="ok">VISUAL MODEL</span></div><div id="sjdeMatrix" class="matrix-grid"></div></section></section>
+      <section class="tab-panel" id="report"><section class="panel"><div class="panel-head"><h3>Session report</h3><span class="ok">AUTO SUMMARY</span></div><pre id="reportText" class="report-box"></pre><div class="button-row"><button id="refreshReportBtn">Refresh report</button><button id="copyReportBtn">Copy report</button></div></section></section>
     </main>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>
