@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 NASA_TAP_SYNC = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
 NASA_RADIAL_WGET = "https://exoplanetarchive.ipac.caltech.edu/bulk_data_download/wget_RADIAL.bat"
 
-app = FastAPI(title="Jana RV Doppler Observatory API", version="0.4.0")
+app = FastAPI(title="Jana RV Doppler Observatory API", version="0.4.1")
 
 origins = os.getenv(
     "ALLOWED_ORIGINS",
@@ -81,18 +81,14 @@ def candidate_names(name: str) -> list[str]:
     cleaned = clean_name(name)
     key = normalise_key(cleaned)
     candidates: list[str] = [cleaned]
-
     if key in ALIASES:
         candidates.extend(ALIASES[key])
-
     bits = cleaned.split()
     if len(bits) > 2 and len(bits[-1]) == 1 and bits[-1].isalpha():
         candidates.append(" ".join(bits[:-1]))
-
     if "pegasi" in key:
         candidates.append(re.sub("pegasi", "Peg", cleaned, flags=re.IGNORECASE))
         candidates.append(re.sub("pegasi b", "Peg b", cleaned, flags=re.IGNORECASE))
-
     seen: set[str] = set()
     unique: list[str] = []
     for item in candidates:
@@ -110,7 +106,6 @@ def target_adql(name: str) -> str:
         q = adql_escape(cand.lower())
         clauses.append(f"lower(pl_name) like '%{q}%'")
         clauses.append(f"lower(hostname) like '%{q}%'")
-
     where = " or\n              ".join(clauses)
     return f"""
         select top 10
@@ -132,10 +127,14 @@ async def fetch_json(url: str, params: dict[str, Any], timeout: float = 25.0) ->
     return response.json()
 
 
-async def fetch_text(url: str, timeout: float = 35.0, max_bytes: int = 3_000_000) -> str:
+def is_allowed_remote(url: str) -> bool:
     parsed = urlparse(url)
     host = parsed.netloc.lower()
-    if parsed.scheme != "https" or not any(host == h or host.endswith("." + h) for h in ALLOWED_REMOTE_HOSTS):
+    return parsed.scheme in {"http", "https"} and any(host == h or host.endswith("." + h) for h in ALLOWED_REMOTE_HOSTS)
+
+
+async def fetch_text(url: str, timeout: float = 35.0, max_bytes: int = 6_000_000) -> str:
+    if not is_allowed_remote(url):
         raise HTTPException(status_code=400, detail="URL host is not in the allowed astronomy source list")
     async with httpx.AsyncClient(timeout=timeout, follow_redirects=True) as client:
         response = await client.get(url)
@@ -147,7 +146,7 @@ async def fetch_text(url: str, timeout: float = 35.0, max_bytes: int = 3_000_000
 
 @app.get("/api/health")
 async def health() -> dict[str, str]:
-    return {"status": "ok", "service": "jana-rv-api", "version": "0.4.0"}
+    return {"status": "ok", "service": "jana-rv-api", "version": "0.4.1"}
 
 
 @app.get("/api/nasa-tap")
@@ -190,6 +189,18 @@ def source_record(source: str, kind: str, title: str, url: str, status: str, imp
     return {"source": source, "kind": kind, "title": title, "url": url, "status": status, "importable": importable, "notes": notes}
 
 
+def extract_urls_from_wget_script(script: str) -> list[str]:
+    urls = re.findall(r"https?://[^\s'\"<>]+", script)
+    cleaned: list[str] = []
+    for url in urls:
+        url = url.rstrip(";,)\r\n")
+        if url.startswith("http://exoplanetarchive.ipac.caltech.edu"):
+            url = url.replace("http://", "https://", 1)
+        if is_allowed_remote(url):
+            cleaned.append(url)
+    return sorted(set(cleaned))
+
+
 @app.get("/api/rv-sources")
 async def rv_sources(name: str = Query(..., min_length=1, max_length=120)) -> dict[str, Any]:
     names = candidate_names(name)
@@ -210,10 +221,9 @@ async def rv_sources(name: str = Query(..., min_length=1, max_length=120)) -> di
     compact_candidates = {compact_key(n) for n in names if n}
     sources: list[dict[str, Any]] = []
 
-    # NASA RADIAL bulk script discovery. It contains a list of downloadable time-series files.
     try:
-        script = await fetch_text(NASA_RADIAL_WGET, max_bytes=6_000_000)
-        urls = sorted(set(re.findall(r"https://[^\s'\"]+", script)))
+        script = await fetch_text(NASA_RADIAL_WGET, max_bytes=12_000_000)
+        urls = extract_urls_from_wget_script(script)
         matches = []
         for url in urls:
             ck = compact_key(url)
@@ -245,7 +255,6 @@ def parse_remote_rv_table(text: str, instrument: str) -> dict[str, Any]:
     raw_lines = [ln.strip() for ln in text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")]
     if not raw_lines:
         raise HTTPException(status_code=422, detail="Remote file has no parseable data rows")
-
     header_tokens: list[str] | None = None
     data_start = 0
     for idx, line in enumerate(raw_lines[:30]):
@@ -253,11 +262,9 @@ def parse_remote_rv_table(text: str, instrument: str) -> dict[str, Any]:
             header_tokens = re.split(r"[,;\t\s]+", line.strip())
             data_start = idx + 1
             break
-
     data_lines = raw_lines[data_start:]
     if not data_lines:
         raise HTTPException(status_code=422, detail="Remote file contains a header but no data rows")
-
     delimiter = None
     sample = "\n".join(data_lines[:10])
     if "," in sample:
@@ -266,14 +273,12 @@ def parse_remote_rv_table(text: str, instrument: str) -> dict[str, Any]:
         delimiter = ";"
     elif "\t" in sample:
         delimiter = "\t"
-
     rows_raw: list[list[str]] = []
     if delimiter:
         reader = csv.reader(io.StringIO("\n".join(data_lines)), delimiter=delimiter)
         rows_raw = [[c.strip() for c in row] for row in reader if row]
     else:
         rows_raw = [re.split(r"\s+", ln.strip()) for ln in data_lines]
-
     headers = [h.lower().strip() for h in (header_tokens or [])]
 
     def find_index(options: list[str], default: int | None = None) -> int | None:
@@ -289,10 +294,8 @@ def parse_remote_rv_table(text: str, instrument: str) -> dict[str, Any]:
     rv_i = find_index(["rv", "vrad", "radvel", "velocity", "mnvel"], 1)
     err_i = find_index(["rv_err", "rverr", "e_rv", "err", "error", "sigma"], 2 if rows_raw and len(rows_raw[0]) > 2 else None)
     inst_i = find_index(["instrument", "inst", "telescope", "facility"], None)
-
     if time_i is None or rv_i is None:
         raise HTTPException(status_code=422, detail="Could not identify time and RV columns")
-
     rows: list[dict[str, Any]] = []
     for row in rows_raw:
         try:
@@ -303,10 +306,8 @@ def parse_remote_rv_table(text: str, instrument: str) -> dict[str, Any]:
             rows.append({"t": t, "rv": rv, "err": max(err, 0.0001), "inst": inst})
         except Exception:
             continue
-
     if len(rows) < 3:
         raise HTTPException(status_code=422, detail="Fewer than 3 usable RV rows after parsing")
-
     csv_lines = ["BJD,RV,RV_ERR,INSTRUMENT"]
     csv_lines.extend(f"{r['t']},{r['rv']},{r['err']},{r['inst']}" for r in rows)
     return {"rows": rows, "csv": "\n".join(csv_lines), "columns": ["BJD", "RV", "RV_ERR", "INSTRUMENT"], "n_rows": len(rows)}
