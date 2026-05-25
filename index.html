@@ -68,7 +68,7 @@
       </section>
 
       <section class="tab-panel" id="rvdata">
-        <div class="two-column-grid"><section class="panel"><div class="panel-head"><h3>RV data ingestion</h3><span class="ok">REAL FILES ONLY</span></div><label class="drop-zone" id="dropZone"><input id="fileInput" type="file" accept=".csv,.txt,.dat"><div><strong>Drop or click to upload RV data</strong><p>Required: BJD/Time and RV. Recommended: RV_ERR, INSTRUMENT. Optional: BIS, FWHM, S-index, Hα.</p></div></label><div class="button-row"><button id="downloadTemplate">Download CSV template</button><button id="clearData">Clear data</button></div></section><section class="panel"><div class="panel-head"><h3>Validation summary</h3><span id="validationFlag" class="warn">EMPTY</span></div><div class="fit-summary" id="dataSummary"></div><p class="panel-note" id="validationNotes">Upload a radial-velocity file to begin.</p></section></div>
+        <div class="two-column-grid"><section class="panel"><div class="panel-head"><h3>RV data ingestion</h3><span class="ok">REAL FILES ONLY</span></div><label class="drop-zone" id="dropZone"><input id="fileInput" type="file" accept=".csv,.txt,.dat,.tsv,.vot,.xml,.votable"><div><strong>Drop or click to upload RV data</strong><p>Required: BJD/Time and RV. Recommended: RV_ERR, INSTRUMENT. Optional: BIS, FWHM, S-index, Hα. Backend parser supports CSV/TXT/DAT/TSV/XML/VOTable-style files.</p></div></label><div class="button-row"><button id="downloadTemplate">Download CSV template</button><button id="clearData">Clear data</button></div></section><section class="panel"><div class="panel-head"><h3>Validation summary</h3><span id="validationFlag" class="warn">EMPTY</span></div><div class="fit-summary" id="dataSummary"></div><p class="panel-note" id="validationNotes">Upload a radial-velocity file to begin.</p></section></div>
         <section class="panel mt-panel"><div class="panel-head"><h3>Data preview</h3><span id="previewFlag" class="warn">NO FILE</span></div><div class="table-wrap"><table id="dataPreviewTable"></table></div></section>
       </section>
 
@@ -84,9 +84,10 @@
       <section class="tab-panel" id="roadmap"><div class="section-intro"><h3>Build plan: static frontend + Python archive proxy</h3><p>Frontend: GitHub Pages. Data loading: Python backend. Science: RV upload/import, GLS scan, Keplerian first-pass fit and activity diagnostics.</p></div><div class="roadmap-toolbar"><button data-filter="all" class="filter-btn active">All</button><button data-filter="data" class="filter-btn">Data</button><button data-filter="analysis" class="filter-btn">Analysis</button><button data-filter="ui" class="filter-btn">UI</button><button data-filter="infra" class="filter-btn">Infra</button></div><div class="roadmap-grid" id="roadmapGrid"></div></section>
     </main>
   </div>
-  <script src="app.js?v=20260525-adapter-v5"></script>
-  <script src="app_rv_sources.js?v=20260525-adapter-v5"></script>
-  <script src="app_visual_upgrade.js?v=20260525-adapter-v5"></script>
-  <script src="app_column_mapper.js?v=20260525-adapter-v5"></script>
+  <script src="app.js?v=20260525-backend-console-v6"></script>
+  <script src="app_rv_sources.js?v=20260525-backend-console-v6"></script>
+  <script src="app_visual_upgrade.js?v=20260525-backend-console-v6"></script>
+  <script src="app_column_mapper.js?v=20260525-backend-console-v6"></script>
+  <script src="app_backend_console.js?v=20260525-backend-console-v6"></script>
 </body>
 </html>
