@@ -1,12 +1,17 @@
-from fastapi import HTTPException
+import importlib.util
+from pathlib import Path
 
-from backend.main import (
-    candidate_names,
-    extract_urls_from_wget_script,
-    is_allowed_remote,
-    normalise_table,
-    parse_votable_table,
-)
+BACKEND_MAIN = Path(__file__).resolve().parents[1] / "main.py"
+SPEC = importlib.util.spec_from_file_location("jana_rv_backend", BACKEND_MAIN)
+assert SPEC is not None and SPEC.loader is not None
+BACKEND = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(BACKEND)
+
+candidate_names = BACKEND.candidate_names
+extract_urls_from_wget_script = BACKEND.extract_urls_from_wget_script
+is_allowed_remote = BACKEND.is_allowed_remote
+normalise_table = BACKEND.normalise_table
+parse_votable_table = BACKEND.parse_votable_table
 
 
 def test_alias_candidates_include_short_51_peg_form():
