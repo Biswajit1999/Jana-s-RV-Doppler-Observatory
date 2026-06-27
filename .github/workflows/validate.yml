@@ -25,4 +25,4 @@ jobs:
       - name: Install backend and test dependencies
         run: python -m pip install --upgrade pip -r backend/requirements.txt pytest
       - name: Validate backend RV parser and source boundary
-        run: python -m pytest -q backend/tests
+        run: PYTHONPATH=. python -m pytest -q backend/tests
