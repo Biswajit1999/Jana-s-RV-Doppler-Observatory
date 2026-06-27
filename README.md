@@ -1,12 +1,26 @@
 # Jana's RV Doppler Observatory
 
-A full-stack-ready radial-velocity exoplanet observatory console for target context, live archive metadata, real RV upload analysis, period scans, Keplerian first-pass fitting, activity diagnostics, archive routing and reproducible session reports.
+A full-stack-ready radial-velocity exoplanet observatory console for target context, live archive metadata, real RV upload analysis, weighted period scans, Keplerian first-pass fitting, activity diagnostics, archive routing, and reproducible session reports.
 
 Live site:
 
 ```text
 https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/
 ```
+
+---
+
+## v3.1 scientific guard
+
+The observatory remains an interactive research-visualisation and first-pass screening tool. It now makes the analysis boundary explicit in the interface, reports, documentation, and CI:
+
+- multiple-instrument period scans centre each instrument by its weighted mean before the scan;
+- the periodogram alert lines are labelled as analytic screening levels, not calibrated false-alarm probabilities;
+- coarse Keplerian grid results are labelled as initial models, not posterior orbital solutions;
+- RV/activity correlation is marked as heuristic rather than causal attribution;
+- upload, parser, VOTable, source-host, and browser-script checks are covered in GitHub Actions.
+
+Read [`docs/analysis-boundaries.md`](docs/analysis-boundaries.md) before treating a candidate period as astrophysical evidence.
 
 ---
 
@@ -22,28 +36,22 @@ This avoids browser CORS failures while keeping the web interface fast and deplo
 
 ## Main features
 
-- Jaw-dropping mission-control UI refresh.
-- Animated canvas starfield background.
-- Persistent day/night theme toggle.
+- Mission-control UI with day/night theme and restrained animated canvas context.
 - Live backend API configuration field.
 - Python FastAPI archive proxy in `backend/`.
 - Static 2,000-row NASA TAP-derived target snapshot for GitHub Pages.
 - NASA Exoplanet Archive TAP query proxy.
 - Live target fetch endpoint: `/api/target?name=...`.
-- Real RV data ingestion through uploads, backend imports and the bundled local library.
-- CSV/TXT/DAT parser for RV time series.
-- RV validation summary.
-- Data preview table.
-- RV time-series plotting.
-- Period scan.
-- Phase-folded RV plot.
-- First-pass Keplerian grid fit.
+- Real RV data ingestion through uploads, backend imports, and the bundled local library.
+- CSV/TXT/DAT/VOTable-style normalization through the backend.
+- RV validation summary and data preview table.
+- Instrument-separated RV time series and sampling window plot.
+- Weighted first-pass period scan with transparent alert-line caveats.
+- Phase-folded RV plot and coarse Keplerian initial fit.
 - O−C residual plot.
-- Sampling window-function plot.
-- BIS/FWHM/S-index/H-alpha activity checks.
-- Markdown report export.
-- JSON session export.
-- Target-aware links to NASA Archive, SIMBAD, Gaia, MAST, VizieR, DACE and Open Exoplanet Catalogue.
+- BIS/FWHM/S-index/H-alpha activity triage.
+- Markdown report and JSON session export.
+- Target-aware links to NASA Archive, SIMBAD, Gaia, MAST, VizieR, DACE, and Open Exoplanet Catalogue.
 
 ---
 
@@ -55,6 +63,7 @@ The frontend is static and can be hosted on GitHub Pages.
 index.html
 styles.css
 app.js
+app_science_guard.js
 app_local_rv_library.js
 data/catalog-metadata.json
 data/rv-planets.json
@@ -74,12 +83,15 @@ The Local RV Library tab serves a website-ready bundle of 250 targets from NASA_
 
 ## Backend
 
-The backend is optional but recommended for live archive metadata.
+The backend is optional but recommended for live archive metadata and machine-readable RV imports.
 
 ```text
 backend/main.py
 backend/requirements.txt
+backend/tests/test_rv_pipeline.py
 ```
+
+`python-multipart` is declared because the FastAPI upload routes require multipart form support.
 
 Run locally:
 
@@ -105,6 +117,13 @@ Target fetch example:
 
 ```text
 http://127.0.0.1:8000/api/target?name=51%20Pegasi%20b
+```
+
+Run the repository checks from the project root:
+
+```bash
+for file in app.js app_*.js; do node --check "$file"; done
+PYTHONPATH=. python -m pytest -q backend/tests
 ```
 
 ---
@@ -141,6 +160,8 @@ BJD,RV,RV_ERR,INSTRUMENT,BIS,FWHM,SINDEX,HALPHA
 2450000.123,0.0,1.0,HARPS,,,,
 ```
 
+The console does not convert time scales, verify velocity reference frames, apply barycentric corrections, or infer calibration provenance. Record those details with each uploaded data set.
+
 ---
 
 ## Why a backend is needed
@@ -156,7 +177,7 @@ Recommended deployment path:
 - GitHub Pages for the static frontend.
 - Cloud Run / Render / Railway / Fly.io for the FastAPI backend.
 - Optional cache/database layer for repeated archive calls.
-- Future Python science endpoints for Astropy, RadVel, MCMC and Gaussian-process modelling.
+- A versioned Python science workflow for full likelihood-based fitting, offsets/jitter, false-alarm methodology, posterior sampling, and correlated-noise models.
 
 ---
 
