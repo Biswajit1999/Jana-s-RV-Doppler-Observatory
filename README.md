@@ -20,6 +20,20 @@ This avoids browser CORS failures while keeping the web interface fast and deplo
 
 ---
 
+## v4 research-grade upgrade
+
+The analysis path now uses a dedicated browser worker, `rvWorker.js`, for the weighted generalized Lomb-Scargle period search and Keplerian grid fit. The main thread remains responsive while the worker searches period, amplitude, eccentricity, phase and per-instrument velocity offsets.
+
+The repository also ships an observational integrity ledger:
+
+```bash
+npm run audit:observations
+```
+
+The audit validates the NASA Exoplanet Archive snapshot, every bundled RV CSV, manifest row conservation, finite BJD/RV/RV_ERR measurements, archive labels and per-file checksums. It writes `OBSERVATIONAL_INTEGRITY.md` and `data/observational-integrity.json`.
+
+---
+
 ## Main features
 
 - Jaw-dropping mission-control UI refresh.
@@ -41,6 +55,8 @@ This avoids browser CORS failures while keeping the web interface fast and deplo
 - O−C residual plot.
 - Sampling window-function plot.
 - BIS/FWHM/S-index/H-alpha activity checks.
+- Worker-based analysis engine for period scans and Keplerian fits.
+- Machine-generated observational integrity report for the target snapshot and local RV library.
 - Markdown report export.
 - JSON session export.
 - Target-aware links to NASA Archive, SIMBAD, Gaia, MAST, VizieR, DACE and Open Exoplanet Catalogue.
@@ -65,6 +81,12 @@ sample_data/rv_library/data/*.csv
 ```
 
 No frontend build step is required.
+
+Validation is also zero-build:
+
+```bash
+npm run check
+```
 
 The bundled target catalog in `data/rv-planets.json` was retrieved from the NASA Exoplanet Archive TAP service on 2026-05-24. It selects default planetary-system records with `rv_flag = 1`, reported periods and positive measured RV semi-amplitudes; exact query provenance is recorded in `data/catalog-metadata.json`.
 
