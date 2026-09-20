@@ -6,11 +6,11 @@ function injectOpsRibbon(){
   ribbon.className='ops-ribbon';
   ribbon.id='opsRibbon';
   ribbon.innerHTML=`
-    <div class="ops-title-card"><span>Jana direct-data architecture</span><strong>Archive-to-plot workflow</strong><p>Target metadata, RV source discovery, column normalisation and visual analysis are handled in one observatory console.</p></div>
-    <div class="ops-step-card" data-jump="target"><span>01</span><b>API</b><strong>Fetch target</strong><p>Resolve target context through local snapshot or Python backend.</p></div>
-    <div class="ops-step-card" data-jump="rvdata"><span>02</span><b>RV</b><strong>Find RV files</strong><p>Search NASA RADIAL routes or import a machine-readable URL.</p></div>
-    <div class="ops-step-card" data-jump="analysis"><span>03</span><b>GLS</b><strong>Scan periods</strong><p>Run period search and inspect the observing window.</p></div>
-    <div class="ops-step-card" data-jump="activity"><span>04</span><b>ACT</b><strong>Diagnose activity</strong><p>Compare RV against BIS/FWHM/S-index/Hα columns if available.</p></div>`;
+    <div class="ops-title-card"><span>Reproducible workflow</span><strong>Evidence before orbit fitting</strong><p>Each stage exposes its source, assumptions and gate state before the next scientific action is enabled.</p></div>
+    <button type="button" class="ops-step-card" data-jump="target"><span>01 · Context</span><b>API</b><strong>Resolve target</strong><p>Review identity and archive provenance from the snapshot or Python resolver.</p></button>
+    <button type="button" class="ops-step-card" data-jump="rvdata"><span>02 · Evidence</span><b>RV</b><strong>Inspect measurements</strong><p>Load a bundled, remote or local table and verify its observational contract.</p></button>
+    <button type="button" class="ops-step-card" data-jump="analysis"><span>03 · Inference</span><b>GLS</b><strong>Scan periods</strong><p>Proceed only after the quality gate; inspect the observing window alongside power.</p></button>
+    <button type="button" class="ops-step-card" data-jump="activity"><span>04 · Diagnostics</span><b>ACT</b><strong>Test activity</strong><p>Compare RV with BIS, FWHM, S-index or Hα when those channels exist.</p></button>`;
   dash.insertBefore(ribbon,dash.firstChild);
   ribbon.querySelectorAll('[data-jump]').forEach(el=>el.addEventListener('click',()=>switchTab(el.dataset.jump)));
 }
@@ -25,7 +25,7 @@ function injectDirectLoaderPanel(){
   panel.innerHTML=`
     <div class="panel-head"><h3>Direct archive-to-plot loader</h3><span id="directLoaderBadge" class="warn">READY</span></div>
     <div class="direct-loader-grid">
-      <div class="direct-loader-copy"><strong>No manual download required where a machine-readable RV source exists.</strong><p>Click the automatic loader after fetching a target. The backend searches known RV source routes, attempts to import the first machine-readable file, converts columns into BJD, RV, RV_ERR and INSTRUMENT, then sends the table straight to the plotting engine. If only manual archive links are available, paste a direct table URL into the RV Source Hunter below.</p></div>
+      <div class="direct-loader-copy"><strong>Direct import keeps source discovery and column mapping visible.</strong><p>After resolving a target, the backend searches known RV routes, imports the first compatible table, maps it into BJD, RV, RV_ERR and INSTRUMENT, and forwards it to the plotting engine. When no machine-readable route is available, use the source table and review the file manually.</p></div>
       <div class="direct-loader-actions"><button id="autoDirectLoadBtn">Search + auto-load RV</button><button id="scrollSourceHunterBtn">Open source hunter</button></div>
     </div>
     <div class="direct-loader-pipeline" id="directLoaderPipeline">
