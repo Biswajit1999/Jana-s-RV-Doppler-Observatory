@@ -123,7 +123,7 @@ def audit_file(path: Path) -> dict[str, object]:
 
 def build_audit() -> dict[str, object]:
     index = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
-    files = sorted(DATA_DIR.glob("*.csv"))
+    files = sorted(DATA_DIR.glob("*.csv"), key=lambda path: path.name.casefold())
     records = [audit_file(path) for path in files]
     bundle_hash = hashlib.sha256("".join(f"{record['target_file']}:{record['sha256']}\n" for record in records).encode()).hexdigest()
     total_rows = sum(int(record["rows"]) for record in records)

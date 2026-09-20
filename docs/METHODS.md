@@ -6,7 +6,7 @@ The study population is every `*.csv` file committed under `sample_data/rv_libra
 
 ## 2. Primitive row contracts
 
-Python’s standard CSV parser reads every file. A valid numerical row has finite `BJD`, `RV`, and `RV_ERR`, with `RV_ERR > 0`. Each row is considered traceable when at least one of `REFERENCE`, `SOURCE_FILE`, `SOURCE`, or `SOURCE_NAME` is non-empty. Every source file receives a SHA-256 digest after CRLF-to-LF normalisation, so the receipt identifies CSV content rather than a platform-specific checkout representation; the bundle digest hashes the ordered `filename:digest` ledger.
+Python’s standard CSV parser reads every file. A valid numerical row has finite `BJD`, `RV`, and `RV_ERR`, with `RV_ERR > 0`. Each row is considered traceable when at least one of `REFERENCE`, `SOURCE_FILE`, `SOURCE`, or `SOURCE_NAME` is non-empty. Every source file receives a SHA-256 digest after CRLF-to-LF normalisation, so the receipt identifies CSV content rather than a platform-specific checkout representation; the bundle digest hashes a case-folded filename-ordered `filename:digest` ledger.
 
 ## 3. Duplication and identity metrics
 
