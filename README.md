@@ -31,6 +31,8 @@ The negative result is operationally useful: parsing validity is excellent, but 
 
 **Hypothesis:** Most files will pass numerical parsing, but merged provenance and repeated epochs will prevent automatic orbit-inference readiness without target-specific curation.
 
+The tested numerical core also runs in a dedicated browser worker, keeping the interface responsive without changing the estimator. A complementary structural ledger (`OBSERVATIONAL_INTEGRITY.md` and `data/observational-integrity.json`) checks snapshot metadata, manifest row conservation, archive labels, physical ranges, and file hashes; regenerate it with `npm run audit:observations`.
+
 The committed result supports that hypothesis for this bundle. It is a data-contract study, not a planet census or signal-detection result.
 
 ## What changed scientifically

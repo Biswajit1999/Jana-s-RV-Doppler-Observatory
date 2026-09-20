@@ -2,12 +2,14 @@
   "name": "jana-rv-doppler-observatory",
   "version": "4.0.0",
   "private": true,
+  "description": "Provenance-first radial-velocity workbench with worker-based analysis and auditable observational bundles.",
   "type": "commonjs",
   "scripts": {
     "test:science": "node --test tests/rv_science.test.cjs tests/ui_contracts.test.cjs",
     "test:python": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "audit:observations": "node scripts/audit_rv_library.mjs",
     "evidence:check": "python scripts/audit_rv_library.py --check",
-    "check:js": "node --check rv_science.js && node --check app.js && node --check app_research_evidence.js && node --check app_local_rv_library.js",
-    "check": "npm run evidence:check && npm run check:js && npm run test:science"
+    "check:js": "node --check rv_science.js && node --check rvWorker.js && node --check app.js && node --check app_research_evidence.js && node --check app_local_rv_library.js && node --check app_backend_console.js && node --check app_column_mapper.js && node --check app_rv_sources.js && node --check app_visual_upgrade.js",
+    "check": "npm run evidence:check && npm run check:js && npm run test:science && npm run audit:observations"
   }
 }

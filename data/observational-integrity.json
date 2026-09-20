@@ -1,0 +1,413 @@
+{
+  "format": "jana-rv-observational-integrity/v1",
+  "status": "passed",
+  "integrity_fingerprint": "ca99b1fd6361104da120c19a314c306c311154741125845e7d264a5fadf0b57a",
+  "products": {
+    "catalog_snapshot": {
+      "path": "data/rv-planets.json",
+      "rows": 2000,
+      "source": "NASA Exoplanet Archive",
+      "service": "Table Access Protocol (TAP)",
+      "retrieved_utc_date": "2026-05-24",
+      "sha256": "9ad4937867c4c629531f85c312d38fdeeb6136b54dbc52ed181ba9b1c2b75900",
+      "period_days_range": [
+        0.23818244,
+        77114.07158
+      ],
+      "semi_amplitude_m_s_range": [
+        0.25,
+        6114
+      ]
+    },
+    "rv_bundle": {
+      "path": "sample_data/rv_library",
+      "targets": 250,
+      "csv_files": 250,
+      "rows": 154150,
+      "source_archive_rows": 232376,
+      "invalid_rows": 0,
+      "bjd_range": [
+        7578.73,
+        2462295.022
+      ],
+      "rv_range_m_s": [
+        -100305750.453737,
+        100012723.369393
+      ],
+      "archives": [
+        "DACE_PUBLIC",
+        "NASA_RADIAL"
+      ],
+      "instruments": [
+        "DACE",
+        "UID_0007513_RVC_003",
+        "UID_0007513_RVC_004",
+        "UID_0007513_RVC_007",
+        "UID_0007513_RVC_009",
+        "UID_0008102_RVC_003",
+        "UID_0009884_RVC_001",
+        "UID_0024813_RVC_003",
+        "UID_0043587_RVC_002",
+        "UID_0043587_RVC_006",
+        "UID_0043587_RVC_008",
+        "UID_0047202_RVC_005",
+        "UID_0050583_RVC_001",
+        "UID_0053721_RVC_003",
+        "UID_0053721_RVC_008",
+        "UID_0096100_RVC_001",
+        "UID_0096441_RVC_003",
+        "UID_0096901_RVC_004",
+        "UID_0113357_RVC_001",
+        "UID_0113357_RVC_005"
+      ],
+      "time_convention_flags": [
+        "UID_0043587_RVC_002.tbl (UID_0043587_RVC_002.tbl_RV.csv) starts at 7578.73"
+      ],
+      "velocity_scale_flags": [
+        "GJ 9827 (GJ_9827_RV.csv) spans -99993072.0 to 31951.1 m/s",
+        "HD 60532 (HD_60532_RV.csv) spans -100000638.7 to 61042.7 m/s",
+        "HD 177565 (HD_177565_RV.csv) spans 56418.4 to 100012723.4 m/s",
+        "HD 137496 (HD_137496_RV.csv) spans -100305750.5 to -2820.4 m/s"
+      ],
+      "sample_targets": [
+        {
+          "target": "HD 20794",
+          "rows": 9021,
+          "bjd_range": [
+            2444629.518,
+            2460029.49038716
+          ],
+          "rv_range_m_s": [
+            -119551.677021213,
+            99552.527061808
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_20794_RV.csv",
+          "sha256": "429c32b90e930abb112f1a859338eebdb74d1e40ca953e81cb37272a6fb01dc1"
+        },
+        {
+          "target": "HD 219134",
+          "rows": 3992,
+          "bjd_range": [
+            2448906.7182,
+            2458879.70327
+          ],
+          "rv_range_m_s": [
+            -18442.6119392684,
+            323.120005989484
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_219134_RV.csv",
+          "sha256": "84753ebc995db2fcc0c2d93c27f2bc8e8e64ceb71d3f590d5f54de720aac7ca0"
+        },
+        {
+          "target": "55 Cnc",
+          "rows": 3918,
+          "bjd_range": [
+            2447578.73,
+            2459239.81402877
+          ],
+          "rv_range_m_s": [
+            -159.35,
+            28931.4028017868
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/55_Cnc_RV.csv",
+          "sha256": "08c1ed3a984f58cf7b3f543858449121230abe261114366477a764b7aed4d644"
+        },
+        {
+          "target": "HD 160691",
+          "rows": 3322,
+          "bjd_range": [
+            2447672.946,
+            2457257.67794192
+          ],
+          "rv_range_m_s": [
+            -56900,
+            51500
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_160691_RV.csv",
+          "sha256": "2be118ae7ba836e5074431a0e3495bc07de5628d44feb1e7d6ac16b91d9f0a57"
+        },
+        {
+          "target": "61 Vir",
+          "rows": 3216,
+          "bjd_range": [
+            2444655.009,
+            2459433.45206215
+          ],
+          "rv_range_m_s": [
+            -8460,
+            125.6
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/61_Vir_RV.csv",
+          "sha256": "ec7040fd4a3d3a0a27e246dd636312147b6a4eb551f850198ff000ee157390e6"
+        },
+        {
+          "target": "HD 192310",
+          "rows": 2843,
+          "bjd_range": [
+            2447376.81,
+            2460134.58815534
+          ],
+          "rv_range_m_s": [
+            -55060,
+            10.6
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_192310_RV.csv",
+          "sha256": "7fba904a15e9bdf427ce079939fe5301f4461d6f424e981bc60a8bb73aeeb096"
+        },
+        {
+          "target": "HD 1461",
+          "rows": 2453,
+          "bjd_range": [
+            2444465.606,
+            2459444.74279542
+          ],
+          "rv_range_m_s": [
+            -10380,
+            21.32
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_1461_RV.csv",
+          "sha256": "086bd0d78ca093b44059c4ee01b6603c735b109456edce7db34902dcbd072e19"
+        },
+        {
+          "target": "HR 810",
+          "rows": 2348,
+          "bjd_range": [
+            2446290.942,
+            2459807.91439542
+          ],
+          "rv_range_m_s": [
+            -82.4,
+            17380
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HR_810_RV.csv",
+          "sha256": "259ad9343bc5d68fb7052ae7c85f4bb431c26814c5bb6fedcbc4405027cd216b"
+        },
+        {
+          "target": "HD 69830",
+          "rows": 2287,
+          "bjd_range": [
+            2445711.54,
+            2460033.48394905
+          ],
+          "rv_range_m_s": [
+            -14.96,
+            46351.464995121394
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_69830_RV.csv",
+          "sha256": "4f74d1bb40a42c17fb15beab898a3f65c1400431a51712548d87b5ebfd4a595c"
+        },
+        {
+          "target": "51 Peg",
+          "rows": 2205,
+          "bjd_range": [
+            2449610.5268,
+            2458852.68557
+          ],
+          "rv_range_m_s": [
+            -33376.5,
+            132.82
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/51_Peg_RV.csv",
+          "sha256": "968aa519ff37d13d74ea80c4ea39774b525eb737687bf5236cd0f0a3baaf087d"
+        },
+        {
+          "target": "HD 7924",
+          "rows": 2197,
+          "bjd_range": [
+            2452187.97,
+            2458795.0161
+          ],
+          "rv_range_m_s": [
+            -22689.1,
+            16.14
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_7924_RV.csv",
+          "sha256": "111321757fa20c7325c474558e5b7bab8474ba0c01f8da795b1500bbe1b20cf1"
+        },
+        {
+          "target": "HD 19994",
+          "rows": 2103,
+          "bjd_range": [
+            2445610.593,
+            2459944.58947202
+          ],
+          "rv_range_m_s": [
+            -107.23,
+            20240
+          ],
+          "archives": [
+            "DACE_PUBLIC"
+          ],
+          "instruments": [
+            "DACE"
+          ],
+          "file": "sample_data/rv_library/data/HD_19994_RV.csv",
+          "sha256": "3d67cde2c64c047217f9ddfce510cefe25195b2212a4d96ecddf114ac0c60b11"
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "NASA snapshot source",
+      "passed": true,
+      "detail": "NASA Exoplanet Archive"
+    },
+    {
+      "name": "NASA snapshot service",
+      "passed": true,
+      "detail": "Table Access Protocol (TAP)"
+    },
+    {
+      "name": "NASA snapshot row count",
+      "passed": true,
+      "detail": "2,000 vs 2,000"
+    },
+    {
+      "name": "NASA snapshot retrieval date",
+      "passed": true,
+      "detail": "2026-05-24"
+    },
+    {
+      "name": "NASA snapshot row ceiling documented",
+      "passed": true,
+      "detail": "2219 qualifying vs 2000 included"
+    },
+    {
+      "name": "NASA snapshot RV target flag",
+      "passed": true,
+      "detail": "2,000 of 2,000"
+    },
+    {
+      "name": "NASA snapshot finite period and K",
+      "passed": true,
+      "detail": "0 problematic rows"
+    },
+    {
+      "name": "RV bundle source list",
+      "passed": true,
+      "detail": "[\"NASA_RADIAL\",\"DACE_PUBLIC\"]"
+    },
+    {
+      "name": "RV bundle target count",
+      "passed": true,
+      "detail": "250 vs 250"
+    },
+    {
+      "name": "RV bundle merged target claim",
+      "passed": true,
+      "detail": "1,922 vs 250"
+    },
+    {
+      "name": "RV bundle source archive row ceiling",
+      "passed": true,
+      "detail": "232,376 archive rows vs 154,150 indexed web rows"
+    },
+    {
+      "name": "RV data directory file count",
+      "passed": true,
+      "detail": "250 vs 250"
+    },
+    {
+      "name": "RV bundle has no generated/demo source labels",
+      "passed": true,
+      "detail": "clean"
+    },
+    {
+      "name": "RV bundle row conservation",
+      "passed": true,
+      "detail": "154,150 vs 154,150"
+    },
+    {
+      "name": "RV bundle CSV rows match index",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "RV bundle finite measurements",
+      "passed": true,
+      "detail": "0 invalid rows"
+    },
+    {
+      "name": "RV archive source present: NASA_RADIAL",
+      "passed": true,
+      "detail": "DACE_PUBLIC, NASA_RADIAL"
+    },
+    {
+      "name": "RV archive source present: DACE_PUBLIC",
+      "passed": true,
+      "detail": "DACE_PUBLIC, NASA_RADIAL"
+    }
+  ],
+  "warnings": [
+    "Some bundled RV targets have no activity indicators; this is expected for public archive extracts and is labelled in the UI.",
+    "1 RV files contain archive-native time values below JD 2,400,000; inspect time columns before combining them with BJD_TDB data. Examples: UID_0043587_RVC_002.tbl (UID_0043587_RVC_002.tbl_RV.csv) starts at 7578.73.",
+    "4 RV files contain very large archive-native velocity zero-points or scale conventions; subtract per-instrument offsets and verify units before precision interpretation. Examples: GJ 9827 (GJ_9827_RV.csv) spans -99993072.0 to 31951.1 m/s; HD 60532 (HD_60532_RV.csv) spans -100000638.7 to 61042.7 m/s; HD 177565 (HD_177565_RV.csv) spans 56418.4 to 100012723.4 m/s."
+  ]
+}
