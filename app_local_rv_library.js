@@ -150,8 +150,18 @@ async function loadLocalRVTarget(index){
     const csv = await response.text();
     const rows = parseRV(csv);
     setData(rows, `Local NASA+DACE RV library: ${row.target}`);
+    const audit = window.JanaRVAuditByFile?.get(row.file_name) || null;
+    state.auditRecord = audit || {inference_ready:false,gates:{audit_record_available:false}};
     setTargetFromLibraryRow(row, rows);
-    safeSetLocal('localRVMessage', `Loaded ${rows.length.toLocaleString()} RV rows for ${row.target}. Dashboard plots are live; run the period scan next.`);
+    if(audit?.inference_ready){
+      safeSetLocal('localRVMessage', `Loaded ${rows.length.toLocaleString()} RV rows for ${row.target}. All six library audit gates pass; the descriptive period scan is enabled.`);
+      setFlagSafe('validationFlag','AUDIT GATES PASS','ok');
+    }else{
+      const failed = audit ? Object.entries(audit.gates).filter(([,passed])=>!passed).map(([name])=>name.replaceAll('_',' ')).join(', ') : 'audit record unavailable';
+      safeSetLocal('localRVMessage', `Loaded ${rows.length.toLocaleString()} RV rows for ${row.target}, but automated fitting is blocked pending curation: ${failed}.`);
+      setFlagSafe('validationFlag','CURATION REQUIRED','bad');
+    }
+    if(typeof updateInferenceControls === 'function') updateInferenceControls();
     document.getElementById('localrv')?.classList.add('local-rv-loaded-flash');
     setTimeout(()=>document.getElementById('localrv')?.classList.remove('local-rv-loaded-flash'),1300);
     if(typeof switchTab === 'function') switchTab('dashboard');

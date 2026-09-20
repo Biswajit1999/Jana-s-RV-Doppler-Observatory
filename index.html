@@ -49,7 +49,7 @@
       <section class="tab-panel active" id="dashboard">
         <div class="hero-console">
           <section class="panel hero-panel"><div class="panel-head"><h3>Mission control</h3><span id="targetLock" class="ok">REFERENCE</span></div><div class="hero-grid"><canvas id="skyCanvas" width="540" height="330"></canvas><div class="mission-copy"><p class="eyebrow">Full-stack architecture ready</p><h2>One target. Archive context. Real RV analysis.</h2><p>Search target context, discover RV source routes, import machine-readable tables through Python, normalise columns and plot directly in the same observatory console.</p><div class="button-row flush"><button data-jump="target">Load target context</button><button data-jump="rvdata">Find RV data</button></div></div></div></section>
-          <section class="panel stats-panel"><div class="panel-head"><h3>Data integrity</h3><span id="qualityFlag" class="warn">EMPTY</span></div><div class="quality-dial"><div><strong id="qualityScore">0%</strong><span>dataset readiness</span></div></div><div class="mini-bars"><div><span>Columns</span><b id="barColumns" style="width:0%"></b></div><div><span>Baseline</span><b id="barBaseline" style="width:0%"></b></div><div><span>Activity</span><b id="barActivity" class="amber-bar" style="width:0%"></b></div></div></section>
+          <section class="panel stats-panel"><div class="panel-head"><h3>Format completeness</h3><span id="qualityFlag" class="warn">EMPTY</span></div><div class="quality-dial"><div><strong id="qualityScore">0%</strong><span>declared fields</span></div></div><div class="mini-bars"><div><span>Columns</span><b id="barColumns" style="width:0%"></b></div><div><span>Baseline</span><b id="barBaseline" style="width:0%"></b></div><div><span>Activity</span><b id="barActivity" class="amber-bar" style="width:0%"></b></div></div></section>
         </div>
         <div class="dashboard-grid compact-top">
           <section class="panel wide"><div class="panel-head"><h3>Real RV time series</h3><span id="rvLoadedFlag" class="warn">UPLOAD REQUIRED</span></div><div id="rvPlot" class="plot-main"></div></section>
@@ -73,7 +73,7 @@
       </section>
 
       <section class="tab-panel" id="analysis">
-        <div class="two-column-grid"><section class="panel"><div class="panel-head"><h3>Fit controls</h3><span class="ok">MANUAL</span></div><div class="control-grid"><label>Period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label><label>K guess<input id="kInput" type="number" step="0.1" value="55.9"></label><label>e<input id="eccInput" type="number" min="0" max="0.9" step="0.01" value="0.013"></label><label>ω deg<input id="omegaInput" type="number" step="1" value="0"></label></div><div class="button-row"><button id="runPeriodogramBtn">Run period scan</button><button id="fitBtn">Fit Keplerian</button><button id="exportSessionJSON">Export session JSON</button></div></section><section class="panel"><div class="panel-head"><h3>Fit summary</h3><span id="fitFlag" class="warn">NO FIT</span></div><div class="fit-summary" id="fitSummary"></div></section></div>
+        <div class="two-column-grid"><section class="panel"><div class="panel-head"><h3>Bounded diagnostic controls</h3><span class="warn">NO DETECTION CLAIM</span></div><div id="inferenceGatePanel" class="analysis-gate warn" role="status" aria-live="polite"><strong id="inferenceGateFlag">NO DATA</strong><span id="inferenceGateMessage">Load a reviewed bundled target or an explicitly curated external table.</span></div><div class="control-grid"><label>Fixed period P (d)<input id="periodInput" type="number" step="0.000001" value="4.2308"></label><label>Additional e grid point<input id="eccInput" type="number" min="0" max="0.89" step="0.01" value="0.013"></label></div><p class="panel-note">K and each declared instrument offset are solved analytically at every eccentricity, argument and phase grid point. The scan peak has no FAP claim.</p><div class="button-row"><button id="runPeriodogramBtn">Run descriptive scan</button><button id="fitBtn">Fit bounded grid</button><button id="exportSessionJSON">Export session JSON</button></div></section><section class="panel"><div class="panel-head"><h3>Fit summary</h3><span id="fitFlag" class="warn">NO FIT</span></div><div class="fit-summary" id="fitSummary"></div></section></div>
         <section class="panel mt-panel"><div class="panel-head"><h3>Analysis plots</h3><span id="analysisSourceLabel" class="warn">NO RV DATA</span></div><div class="lab-plot-grid"><div id="labRVPlot" class="plot-medium"></div><div id="labGLSPlot" class="plot-medium"></div><div id="labPhasePlot" class="plot-medium"></div><div id="labResidualPlot" class="plot-medium"></div></div></section>
         <section class="panel mt-panel"><div class="panel-head"><h3>Window function</h3><span id="windowFlag" class="warn">NO RV DATA</span></div><div id="windowPlot" class="plot-medium"></div></section>
       </section>
@@ -84,11 +84,13 @@
       <section class="tab-panel" id="roadmap"><div class="section-intro"><h3>Build plan: static frontend + Python archive proxy</h3><p>Frontend: GitHub Pages. Data loading: Python backend. Science: RV upload/import, GLS scan, Keplerian first-pass fit and activity diagnostics.</p></div><div class="roadmap-toolbar"><button data-filter="all" class="filter-btn active">All</button><button data-filter="data" class="filter-btn">Data</button><button data-filter="analysis" class="filter-btn">Analysis</button><button data-filter="ui" class="filter-btn">UI</button><button data-filter="infra" class="filter-btn">Infra</button></div><div class="roadmap-grid" id="roadmapGrid"></div></section>
     </main>
   </div>
-  <script src="app.js?v=20260525-local-rv-library-v1"></script>
+  <script src="rv_science.js?v=400"></script>
+  <script src="app.js?v=400"></script>
   <script src="app_rv_sources.js?v=20260525-local-rv-library-v1"></script>
   <script src="app_visual_upgrade.js?v=20260525-local-rv-library-v1"></script>
   <script src="app_column_mapper.js?v=20260525-local-rv-library-v1"></script>
   <script src="app_backend_console.js?v=20260525-local-rv-library-v1"></script>
-  <script src="app_local_rv_library.js?v=20260525-local-rv-library-v1"></script>
+  <script src="app_local_rv_library.js?v=400"></script>
+  <script src="app_research_evidence.js?v=400"></script>
 </body>
 </html>
