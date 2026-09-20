@@ -1,5 +1,25 @@
 # Changelog
 
+## [4.1.0] - 2026-09-20
+
+### Added
+
+- a precision-instrument design system with dark and light semantic tokens;
+- semantic SVG navigation, visible keyboard focus, a skip link, and an accessible mobile menu;
+- reduced-motion-aware view transitions and a deterministic interface contract audit;
+- machine-readable interface audit CSV/JSON, reproducibility notes, and a before/after graph.
+
+### Changed
+
+- replaced the animated neon mission-control skin with a restrained, high-contrast scientific workspace;
+- clarified the dashboard sequence as context → evidence → inference → diagnostics;
+- restyled Plotly traces, grids, controls, status badges, evidence cards, and responsive layouts;
+- removed the continuously animated starfield runtime while preserving the target coordinate field.
+
+### Scientific boundary
+
+- this release changes presentation and interaction only; the v4.0 numerical methods, observational audit, inference gates, and scientific claims are unchanged.
+
 ## [4.0.0] - 2026-09-20
 
 ### Added
@@ -24,4 +44,3 @@
 - forced-zero reference-instrument offset;
 - five-point semi-amplitude multiplier search;
 - naive independent-frequency FAP display.
-

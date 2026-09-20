@@ -9,6 +9,14 @@ A provenance-first radial-velocity workbench with a 250-target archive-quality a
 
 ![Research maturity before and after v4.0.0](assets/research-maturity-before-after.svg)
 
+## Interface upgrade in v4.1.0
+
+The observatory now uses a restrained precision-instrument visual system instead of the earlier neon mission-control skin. The redesign introduces semantic dark/light tokens, consistent SVG navigation, visible keyboard focus, a responsive mobile menu, WCAG-AA token contrast, and short reduced-motion-aware transitions. Scientific methods and v4.0 inference gates are unchanged.
+
+![Interface quality rubric before and after v4.1.0](assets/interface-quality-before-after.svg)
+
+The graph is a declared expert heuristic rubric—not a user study. Reproduce its static contract checks and source data with `npm run audit:interface`; see [`docs/INTERFACE_METHODS.md`](docs/INTERFACE_METHODS.md).
+
 ## Result first
 
 Version 4.0.0 asks whether all 250 committed target files are ready for automatic orbital inference under six explicit contracts. The audit covers 154,150 rows and binds every file to a SHA-256 receipt.
@@ -88,7 +96,11 @@ No remote data refresh occurs during test, build, or deployment.
 | `research/rv-library-quality-audit.json` | research question, gates, aggregate findings, 250 per-file records, SHA-256 receipts |
 | `research/rv-library-quality-audit.csv` | analysis-ready per-target metrics |
 | `assets/research-maturity-before-after.svg` | documented before/after repository audit |
+| `research/interface-quality-audit.json` | theme contrast, accessibility and implementation contract evidence |
+| `research/interface-quality-audit.csv` | declared before/after interface rubric |
+| `assets/interface-quality-before-after.svg` | interface redesign comparison graph |
 | `docs/METHODS.md` | equations, gate definitions, falsifiers, and limitations |
+| `docs/INTERFACE_METHODS.md` | design rationale, contrast method, rubric boundary and reproduction |
 | `docs/CLAIMS.md` | supported, bounded, and rejected claims |
 | `docs/BASELINE_AUDIT.md` | scored maturity comparison and defects corrected |
 
@@ -127,4 +139,4 @@ The static site works on GitHub Pages. The optional FastAPI backend supports tar
 
 ## Citation and license
 
-Use [CITATION.cff](CITATION.cff) or cite the archived v4.0.0 release. Original code and documentation are MIT licensed.
+Use [CITATION.cff](CITATION.cff) or cite the archived v4.1.0 release. Original code and documentation are MIT licensed.
