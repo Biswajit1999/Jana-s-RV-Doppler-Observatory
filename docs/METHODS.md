@@ -6,7 +6,7 @@ The study population is every `*.csv` file committed under `sample_data/rv_libra
 
 ## 2. Primitive row contracts
 
-Python’s standard CSV parser reads every file. A valid numerical row has finite `BJD`, `RV`, and `RV_ERR`, with `RV_ERR > 0`. Each row is considered traceable when at least one of `REFERENCE`, `SOURCE_FILE`, `SOURCE`, or `SOURCE_NAME` is non-empty. Every source file receives a SHA-256 digest; the bundle digest hashes the ordered `filename:digest` ledger.
+Python’s standard CSV parser reads every file. A valid numerical row has finite `BJD`, `RV`, and `RV_ERR`, with `RV_ERR > 0`. Each row is considered traceable when at least one of `REFERENCE`, `SOURCE_FILE`, `SOURCE`, or `SOURCE_NAME` is non-empty. Every source file receives a SHA-256 digest after CRLF-to-LF normalisation, so the receipt identifies CSV content rather than a platform-specific checkout representation; the bundle digest hashes the ordered `filename:digest` ledger.
 
 ## 3. Duplication and identity metrics
 
@@ -78,4 +78,3 @@ Remote tables are restricted to a named astronomy-host allowlist. Every redirect
 This release requires revision if independent CSV parsing changes the aggregate counts, a file digest differs from the release ledger, synthetic recovery fails under supported runtimes, or source-publication review demonstrates that a flagged condition is fully encoded elsewhere in the committed table.
 
 The next scientific step is target-specific curation: recover original instrument/reduction identifiers, reconcile units and time standards, identify non-independent publication duplicates, and benchmark the curated series against Astropy or RadVel with a declared null and noise model.
-

@@ -41,9 +41,13 @@ function addWarning(detail) {
   warnings.push(detail);
 }
 
+function canonicalFileBytes(filePath) {
+  return Buffer.from(fs.readFileSync(filePath, 'utf8').replaceAll('\r\n', '\n'), 'utf8');
+}
+
 function sha256File(filePath) {
   const hash = crypto.createHash('sha256');
-  hash.update(fs.readFileSync(filePath));
+  hash.update(canonicalFileBytes(filePath));
   return hash.digest('hex');
 }
 
@@ -144,10 +148,9 @@ function parseCsvFile(relativePath) {
     targets.add(target);
   }
 
-  const stats = fs.statSync(absolute);
   return {
     path: relativePath,
-    bytes: stats.size,
+    bytes: canonicalFileBytes(absolute).byteLength,
     sha256: sha256File(absolute),
     row_count: validRows,
     invalid_rows: invalidRows,

@@ -44,7 +44,8 @@ def number(value: object) -> float:
 
 def audit_file(path: Path) -> dict[str, object]:
     raw = path.read_bytes()
-    rows = list(csv.DictReader(raw.decode("utf-8-sig").splitlines()))
+    canonical = raw.replace(b"\r\n", b"\n")
+    rows = list(csv.DictReader(canonical.decode("utf-8-sig").splitlines()))
     epochs: dict[float, list[float]] = defaultdict(list)
     exact = Counter()
     references = Counter()
@@ -97,7 +98,7 @@ def audit_file(path: Path) -> dict[str, object]:
     }
     return {
         "target_file": path.name,
-        "sha256": hashlib.sha256(raw).hexdigest(),
+        "sha256": hashlib.sha256(canonical).hexdigest(),
         "rows": len(rows),
         "valid_rows": valid_count,
         "invalid_rows": invalid_rows,

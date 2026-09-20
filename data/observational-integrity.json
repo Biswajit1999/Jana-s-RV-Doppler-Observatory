@@ -1,7 +1,7 @@
 {
   "format": "jana-rv-observational-integrity/v1",
   "status": "passed",
-  "integrity_fingerprint": "ca99b1fd6361104da120c19a314c306c311154741125845e7d264a5fadf0b57a",
+  "integrity_fingerprint": "8be43cf3fb6d9089d6bb43b6b9d784e4cd09e2137b8eb1173e6b8883b6dde732",
   "products": {
     "catalog_snapshot": {
       "path": "data/rv-planets.json",
@@ -88,7 +88,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_20794_RV.csv",
-          "sha256": "429c32b90e930abb112f1a859338eebdb74d1e40ca953e81cb37272a6fb01dc1"
+          "sha256": "d00e2e8b0f1bba58df8d6242b520e207fae1427710d0694dd23989a1cf664546"
         },
         {
           "target": "HD 219134",
@@ -108,7 +108,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_219134_RV.csv",
-          "sha256": "84753ebc995db2fcc0c2d93c27f2bc8e8e64ceb71d3f590d5f54de720aac7ca0"
+          "sha256": "371c2e9a4788332e87093fa9fa5f4c5b7a632f3bc261be965c6d4a52eb8fd796"
         },
         {
           "target": "55 Cnc",
@@ -128,7 +128,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/55_Cnc_RV.csv",
-          "sha256": "08c1ed3a984f58cf7b3f543858449121230abe261114366477a764b7aed4d644"
+          "sha256": "656e1c47be80c4965e0c3ff96f963934cc986b999ef57ed5484c7c87b1e81a2a"
         },
         {
           "target": "HD 160691",
@@ -148,7 +148,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_160691_RV.csv",
-          "sha256": "2be118ae7ba836e5074431a0e3495bc07de5628d44feb1e7d6ac16b91d9f0a57"
+          "sha256": "ff568136bc0b6913c9c2b938c6d900b3964034df4be345cccbe28b40412b4919"
         },
         {
           "target": "61 Vir",
@@ -168,7 +168,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/61_Vir_RV.csv",
-          "sha256": "ec7040fd4a3d3a0a27e246dd636312147b6a4eb551f850198ff000ee157390e6"
+          "sha256": "0341f0edfd5ca20d5fed599cf431fb0f4c3fb0c32ffc9948c62e7317962be37f"
         },
         {
           "target": "HD 192310",
@@ -188,7 +188,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_192310_RV.csv",
-          "sha256": "7fba904a15e9bdf427ce079939fe5301f4461d6f424e981bc60a8bb73aeeb096"
+          "sha256": "cc7a27c21b941e68041b3aef0afe5253c192244dcab9ce2d1edb680291ff84f0"
         },
         {
           "target": "HD 1461",
@@ -208,7 +208,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_1461_RV.csv",
-          "sha256": "086bd0d78ca093b44059c4ee01b6603c735b109456edce7db34902dcbd072e19"
+          "sha256": "bbb5d6317ff949666552d48650de4e180b396c3b019cbdb440c42a254e4b93e6"
         },
         {
           "target": "HR 810",
@@ -228,7 +228,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HR_810_RV.csv",
-          "sha256": "259ad9343bc5d68fb7052ae7c85f4bb431c26814c5bb6fedcbc4405027cd216b"
+          "sha256": "18769f940b0b56da36af3781b60d95de67a24b2f0aadcde9a8e504351eae95c5"
         },
         {
           "target": "HD 69830",
@@ -248,7 +248,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_69830_RV.csv",
-          "sha256": "4f74d1bb40a42c17fb15beab898a3f65c1400431a51712548d87b5ebfd4a595c"
+          "sha256": "20eabf0ac3eaa94c970d3c7e302ba18a98200e2dba51a09555b5565e56615232"
         },
         {
           "target": "51 Peg",
@@ -268,7 +268,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/51_Peg_RV.csv",
-          "sha256": "968aa519ff37d13d74ea80c4ea39774b525eb737687bf5236cd0f0a3baaf087d"
+          "sha256": "74869e3cac4bcd600deff232eb78cbfd5f00cdc2a96b9f3b8cfc5ec45d462e86"
         },
         {
           "target": "HD 7924",
@@ -288,7 +288,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_7924_RV.csv",
-          "sha256": "111321757fa20c7325c474558e5b7bab8474ba0c01f8da795b1500bbe1b20cf1"
+          "sha256": "eace46bf6cae0ddab4610662de68485c5042f553b4bad4a3506bac270ce3f2b3"
         },
         {
           "target": "HD 19994",
@@ -308,7 +308,7 @@
             "DACE"
           ],
           "file": "sample_data/rv_library/data/HD_19994_RV.csv",
-          "sha256": "3d67cde2c64c047217f9ddfce510cefe25195b2212a4d96ecddf114ac0c60b11"
+          "sha256": "2b3d60396c3ab5dde4f795f8f5e34c26d748fa1e3b4738ce70ecd8910273cc7d"
         }
       ]
     }
