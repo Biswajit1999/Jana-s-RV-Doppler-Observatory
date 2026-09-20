@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "release": "v4.1.0",
+  "generated_at": "2026-09-20T00:00:00Z",
+  "methodology": "Static interface contract audit plus a declared 0–100 expert heuristic rubric; not a user study.",
+  "palette_contrast": [
+    {
+      "theme": "night",
+      "pair": "foreground/background",
+      "ratio": 17.52,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "night",
+      "pair": "muted/background",
+      "ratio": 9.43,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "night",
+      "pair": "accent/background",
+      "ratio": 10.87,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "day",
+      "pair": "foreground/background",
+      "ratio": 15.32,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "day",
+      "pair": "muted/background",
+      "ratio": 5.88,
+      "threshold": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "day",
+      "pair": "accent/background",
+      "ratio": 5.7,
+      "threshold": 4.5,
+      "pass": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "scientific gate IDs retained",
+      "pass": true
+    },
+    {
+      "name": "semantic SVG navigation",
+      "pass": true
+    },
+    {
+      "name": "no glyph-only primary navigation",
+      "pass": true
+    },
+    {
+      "name": "theme control has an accessible name",
+      "pass": true
+    },
+    {
+      "name": "keyboard focus is visible",
+      "pass": true
+    },
+    {
+      "name": "reduced motion is respected",
+      "pass": true
+    },
+    {
+      "name": "background animation removed",
+      "pass": true
+    },
+    {
+      "name": "touch controls meet 44 px target",
+      "pass": true
+    },
+    {
+      "name": "mobile navigation has a bounded layout",
+      "pass": true
+    },
+    {
+      "name": "motion uses compositor-friendly properties",
+      "pass": true
+    },
+    {
+      "name": "all audited color pairs pass WCAG AA",
+      "pass": true
+    }
+  ],
+  "rubric": [
+    {
+      "category": "Information hierarchy",
+      "before": 46,
+      "after": 94,
+      "delta": 48
+    },
+    {
+      "category": "Color restraint",
+      "before": 34,
+      "after": 96,
+      "delta": 62
+    },
+    {
+      "category": "Text contrast",
+      "before": 58,
+      "after": 98,
+      "delta": 40
+    },
+    {
+      "category": "Navigation consistency",
+      "before": 43,
+      "after": 96,
+      "delta": 53
+    },
+    {
+      "category": "Motion accessibility",
+      "before": 20,
+      "after": 98,
+      "delta": 78
+    },
+    {
+      "category": "Keyboard focus",
+      "before": 36,
+      "after": 96,
+      "delta": 60
+    },
+    {
+      "category": "Responsive structure",
+      "before": 55,
+      "after": 94,
+      "delta": 39
+    },
+    {
+      "category": "Scientific state clarity",
+      "before": 72,
+      "after": 97,
+      "delta": 25
+    }
+  ],
+  "summary": {
+    "checks_passed": 11,
+    "checks_total": 11,
+    "rubric_before_mean": 45.5,
+    "rubric_after_mean": 96.1,
+    "pass": true
+  }
+}
