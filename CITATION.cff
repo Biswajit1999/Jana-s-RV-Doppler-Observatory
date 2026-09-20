@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software or its RV-library quality audit, cite this release."
+title: "Jana's RV Doppler Observatory: inference-readiness audit and bounded RV workbench"
+type: software
+authors:
+  - family-names: Jana
+    given-names: Biswajit
+version: 4.0.0
+date-released: 2026-09-20
+repository-code: "https://github.com/Biswajit1999/Jana-s-RV-Doppler-Observatory"
+url: "https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/"
+license: MIT
+keywords:
+  - radial velocity
+  - exoplanets
+  - data quality
+  - generalized Lomb-Scargle
+  - reproducibility
+

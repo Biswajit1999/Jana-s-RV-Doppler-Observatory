@@ -1,67 +1,38 @@
-# Upgrade Roadmap — Jana's RV Doppler Observatory
+# Upgrade roadmap
 
-## Implemented in v3
+## Implemented in v4.0.0
 
-1. Full-stack-ready architecture.
-2. Python FastAPI backend proxy in `backend/`.
-3. `/api/health` endpoint.
-4. `/api/target?name=...` endpoint.
-5. `/api/nasa-tap?query=...` endpoint.
-6. NASA Exoplanet Archive TAP proxy route.
-7. Frontend API Base URL configuration.
-8. Backend status checker.
-9. Live target fetch button.
-10. Fallback local target cache.
-11. Day/night theme toggle.
-12. Persistent theme preference through localStorage.
-13. Animated canvas starfield background.
-14. Mission-control style hero console.
-15. Real RV upload workflow retained.
-16. Period scan retained.
-17. Phase fold retained.
-18. First-pass Keplerian fit retained.
-19. O−C residuals retained.
-20. Window function retained.
-21. Activity diagnostics retained.
-22. Markdown report export retained.
-23. JSON session export retained.
-24. Target-aware archive links retained.
+- full 250-file inference-readiness audit with per-file and bundle hashes;
+- fail-closed gates for bundled targets requiring curation;
+- tested weighted, instrument-centered candidate-period scan;
+- analytic amplitude and instrument-offset solution inside the bounded Kepler grid;
+- removal of unsupported FAP claims;
+- deterministic JSON/CSV/SVG evidence and freshness checks;
+- Python and JavaScript regression tests plus immutable CI;
+- redirect-aware remote allowlist, streamed response limit, upload cap, and SELECT-only TAP proxy;
+- result-first live evidence panel, methods, claims, limitations, citation, and release metadata.
 
-## Next backend upgrades
+## Next data-curation work
 
-1. Add SIMBAD/Sesame resolver endpoint.
-2. Add Gaia TAP cone-search endpoint.
-3. Add MAST target search endpoint.
-4. Add VizieR cone-search endpoint.
-5. Add DACE-compatible routing adapter where stable endpoints exist.
-6. Add cache headers and in-memory caching.
-7. Add SQLite/PostgreSQL metadata cache.
-8. Add request logging and structured error JSON.
-9. Add rate limiting.
-10. Add OpenAPI examples for each endpoint.
+1. Recover source instrument and reduction-pipeline identifiers per row.
+2. Reconcile RV and uncertainty units against each source publication.
+3. Declare time scale and frame (for example BJD_TDB) per source.
+4. Identify non-independent re-publications and choose one canonical representation.
+5. Preserve source row identifiers and raw-file hashes in the normalized table.
+6. Publish a curated subset as a separate evidence release rather than silently replacing v4.0.0.
 
-## Next science upgrades
+## Next science validation
 
-1. Replace browser GLS with Astropy-validated backend GLS.
-2. Add bootstrap false-alarm probabilities.
-3. Add non-linear least-squares Keplerian fitting.
-4. Add per-instrument jitter terms.
-5. Add multi-planet model support.
-6. Add MCMC posterior sampling with emcee/RadVel-style workflows.
-7. Add activity-aware Gaussian-process modelling.
-8. Add RV-photometry period comparison.
-9. Add Gaia astrometry context panel.
-10. Add line-by-line RV diagnostic roadmap.
+1. Cross-check the browser scan against Astropy LombScargle at fixed benchmark grids.
+2. Add cadence-preserving bootstrap or Baluev FAP behind an explicit null model.
+3. Fit instrument jitter and long-term trends.
+4. Add posterior sampling and model comparison in the Python backend.
+5. Add multi-signal and correlated stellar-activity models.
+6. Validate selected curated targets against published orbital solutions.
 
-## Next UI upgrades
+## Next operations work
 
-1. Add plot export buttons for every chart.
-2. Add query history panel.
-3. Add multi-target workspaces.
-4. Add session timeline.
-5. Add target comparison mode.
-6. Add ADQL advanced editor.
-7. Add loading skeletons and toast notifications.
-8. Add keyboard shortcuts.
-9. Add mobile-optimised compact mode.
-10. Add PDF report export.
+1. Require authentication for mutation/cache-building endpoints.
+2. Add rate limits, structured logging, monitoring, and infrastructure egress controls.
+3. Pin a deployment image and publish an SBOM.
+4. Add integration tests with mocked redirects and oversized streams/uploads.
