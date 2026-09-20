@@ -1,17 +1,32 @@
-# Optional backend proxy
+# Optional FastAPI backend deployment
 
-The browser may block direct archive requests from GitHub Pages. Use this optional FastAPI proxy when deploying to Render, Railway, Fly.io, or a small VPS.
+The GitHub Pages application is static. Run the optional backend when live NASA metadata or bounded remote-table imports are required.
+
+## Local run
 
 ```bash
-cd backend
-pip install -r requirements.txt
-uvicorn fastapi_proxy:app --reload --port 8000
+python -m pip install -r backend/requirements.txt
+uvicorn backend.main:app --host 127.0.0.1 --port 8010
 ```
 
-Then change the frontend TAP endpoint in `app.js` from the NASA URL to your backend URL, for example:
+Set the interface’s API Base URL to `http://127.0.0.1:8010`, then verify:
 
-```js
-const NASA_TAP = "https://your-backend.example.com/api/nasa-tap";
+```text
+GET /api/health
+GET /api/target?name=51%20Peg%20b
 ```
 
-For production, restrict CORS to your GitHub Pages domain and add rate limiting/cache control.
+## Implemented request controls
+
+- CORS defaults to localhost plus `https://biswajit1999.github.io` and can be replaced with `ALLOWED_ORIGINS`;
+- remote imports accept only named astronomy hosts;
+- every redirect target is revalidated and redirect depth is capped;
+- remote tables and uploads are capped at 12 MB;
+- response bytes are counted while streaming rather than after full download;
+- the public TAP route permits one `SELECT` ADQL query only.
+
+## Production requirements
+
+Before exposing the backend publicly, add authentication for cache-building endpoints, rate limiting, structured request/error logs, health monitoring, infrastructure-level outbound-network policy, TLS termination, and a persistent cache outside the repository checkout.
+
+The allowlist and byte caps reduce risk but are not a complete production security boundary. Do not run the development `--reload` mode on a public host.

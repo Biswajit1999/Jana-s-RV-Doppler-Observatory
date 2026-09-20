@@ -8,7 +8,7 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any, Optional
-from urllib.parse import quote_plus, urlparse
+from urllib.parse import quote_plus, urljoin, urlparse
 
 import httpx
 from fastapi import FastAPI, File, Form, HTTPException, Query, UploadFile
@@ -63,6 +63,9 @@ ALLOWED_REMOTE_HOSTS = {
     "archive.stsci.edu",
     "mast.stsci.edu",
 }
+MAX_REMOTE_BYTES = 12_000_000
+MAX_UPLOAD_BYTES = 12_000_000
+MAX_REDIRECTS = 5
 
 
 def clean_name(name: str) -> str:
@@ -152,15 +155,36 @@ def is_allowed_remote(url: str) -> bool:
     return parsed.scheme in {"http", "https"} and any(host == h or host.endswith("." + h) for h in ALLOWED_REMOTE_HOSTS)
 
 
-async def fetch_text(url: str, timeout: float = 45.0, max_bytes: int = 12_000_000) -> str:
-    if not is_allowed_remote(url):
-        raise HTTPException(status_code=400, detail="URL host is not in the allowed astronomy source list")
-    async with httpx.AsyncClient(timeout=timeout, follow_redirects=True) as client:
-        response = await client.get(url)
-    if response.status_code >= 400:
-        raise HTTPException(status_code=response.status_code, detail=response.text[:500])
-    content = response.content[:max_bytes]
-    return content.decode(response.encoding or "utf-8", errors="replace")
+async def fetch_text(url: str, timeout: float = 45.0, max_bytes: int = MAX_REMOTE_BYTES) -> str:
+    current_url = url
+    async with httpx.AsyncClient(timeout=timeout, follow_redirects=False) as client:
+        for _ in range(MAX_REDIRECTS + 1):
+            if not is_allowed_remote(current_url):
+                raise HTTPException(status_code=400, detail="URL host is not in the allowed astronomy source list")
+            async with client.stream("GET", current_url) as response:
+                if response.is_redirect:
+                    location = response.headers.get("location")
+                    if not location:
+                        raise HTTPException(status_code=502, detail="Remote redirect omitted Location")
+                    current_url = urljoin(current_url, location)
+                    continue
+                if response.status_code >= 400:
+                    body = (await response.aread())[:500]
+                    raise HTTPException(status_code=response.status_code, detail=body.decode(errors="replace"))
+                declared = response.headers.get("content-length")
+                if declared and int(declared) > max_bytes:
+                    raise HTTPException(status_code=413, detail="Remote table exceeds byte limit")
+                chunks: list[bytes] = []
+                size = 0
+                async for chunk in response.aiter_bytes():
+                    size += len(chunk)
+                    if size > max_bytes:
+                        raise HTTPException(status_code=413, detail="Remote table exceeds byte limit")
+                    chunks.append(chunk)
+                content = b"".join(chunks)
+                encoding = response.encoding or "utf-8"
+                return content.decode(encoding, errors="replace")
+    raise HTTPException(status_code=400, detail="Remote table exceeded redirect limit")
 
 
 def load_json_file(path: Path, default: Any) -> Any:
@@ -198,6 +222,9 @@ async def adapters() -> dict[str, Any]:
 
 @app.get("/api/nasa-tap")
 async def nasa_tap(query: str = Query(..., min_length=8, max_length=8000)) -> Any:
+    normalised = query.strip().lower()
+    if not normalised.startswith("select") or ";" in query:
+        raise HTTPException(status_code=400, detail="Only one SELECT ADQL query is allowed")
     return await fetch_json(NASA_TAP_SYNC, {"query": query, "format": "json"})
 
 
@@ -574,7 +601,9 @@ async def import_rv_url(
 
 @app.post("/api/preview-rv-upload")
 async def preview_rv_upload(file: UploadFile = File(...)) -> dict[str, Any]:
-    content = await file.read()
+    content = await file.read(MAX_UPLOAD_BYTES + 1)
+    if len(content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="Uploaded table exceeds byte limit")
     text = content.decode("utf-8", errors="replace")
     table = detect_table(text)
     return {
@@ -596,7 +625,9 @@ async def import_rv_upload(
     err_col: Optional[str] = Form(None),
     inst_col: Optional[str] = Form(None),
 ) -> dict[str, Any]:
-    content = await file.read()
+    content = await file.read(MAX_UPLOAD_BYTES + 1)
+    if len(content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="Uploaded table exceeds byte limit")
     text = content.decode("utf-8", errors="replace")
     parsed = normalise_table(text, instrument=instrument, time_col=time_col, rv_col=rv_col, err_col=err_col, inst_col=inst_col)
     parsed["filename"] = file.filename
