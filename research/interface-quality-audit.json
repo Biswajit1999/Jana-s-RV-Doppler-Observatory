@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "release": "v4.1.0",
   "generated_at": "2026-09-20T00:00:00Z",
-  "methodology": "Static interface contract audit plus a declared 0–100 expert heuristic rubric; not a user study.",
+  "methodology": "Static interface contract audit and token-level WCAG contrast checks.",
   "palette_contrast": [
     {
       "theme": "night",
@@ -93,61 +93,9 @@
       "pass": true
     }
   ],
-  "rubric": [
-    {
-      "category": "Information hierarchy",
-      "before": 46,
-      "after": 94,
-      "delta": 48
-    },
-    {
-      "category": "Color restraint",
-      "before": 34,
-      "after": 96,
-      "delta": 62
-    },
-    {
-      "category": "Text contrast",
-      "before": 58,
-      "after": 98,
-      "delta": 40
-    },
-    {
-      "category": "Navigation consistency",
-      "before": 43,
-      "after": 96,
-      "delta": 53
-    },
-    {
-      "category": "Motion accessibility",
-      "before": 20,
-      "after": 98,
-      "delta": 78
-    },
-    {
-      "category": "Keyboard focus",
-      "before": 36,
-      "after": 96,
-      "delta": 60
-    },
-    {
-      "category": "Responsive structure",
-      "before": 55,
-      "after": 94,
-      "delta": 39
-    },
-    {
-      "category": "Scientific state clarity",
-      "before": 72,
-      "after": 97,
-      "delta": 25
-    }
-  ],
   "summary": {
     "checks_passed": 11,
     "checks_total": 11,
-    "rubric_before_mean": 45.5,
-    "rubric_after_mean": 96.1,
     "pass": true
   }
 }

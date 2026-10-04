@@ -7,15 +7,12 @@ A provenance-first radial-velocity workbench with a 250-target archive-quality a
 
 **[Open the live observatory →](https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/)**
 
-![Research maturity before and after v4.0.0](assets/research-maturity-before-after.svg)
 
 ## Interface upgrade in v4.1.0
 
 The observatory now uses a restrained precision-instrument visual system instead of the earlier neon mission-control skin. The redesign introduces semantic dark/light tokens, consistent SVG navigation, visible keyboard focus, a responsive mobile menu, WCAG-AA token contrast, and short reduced-motion-aware transitions. Scientific methods and v4.0 inference gates are unchanged.
 
-![Interface quality rubric before and after v4.1.0](assets/interface-quality-before-after.svg)
-
-The graph is a declared expert heuristic rubric—not a user study. Reproduce its static contract checks and source data with `npm run audit:interface`; see [`docs/INTERFACE_METHODS.md`](docs/INTERFACE_METHODS.md).
+Reproduce the static accessibility and contrast checks with `npm run audit:interface`; see [`docs/INTERFACE_METHODS.md`](docs/INTERFACE_METHODS.md).
 
 ## Result first
 
@@ -95,14 +92,11 @@ No remote data refresh occurs during test, build, or deployment.
 |---|---|
 | `research/rv-library-quality-audit.json` | research question, gates, aggregate findings, 250 per-file records, SHA-256 receipts |
 | `research/rv-library-quality-audit.csv` | analysis-ready per-target metrics |
-| `assets/research-maturity-before-after.svg` | documented before/after repository audit |
 | `research/interface-quality-audit.json` | theme contrast, accessibility and implementation contract evidence |
-| `research/interface-quality-audit.csv` | declared before/after interface rubric |
-| `assets/interface-quality-before-after.svg` | interface redesign comparison graph |
 | `docs/METHODS.md` | equations, gate definitions, falsifiers, and limitations |
-| `docs/INTERFACE_METHODS.md` | design rationale, contrast method, rubric boundary and reproduction |
+| `docs/INTERFACE_METHODS.md` | design rationale, contrast method, and reproduction |
 | `docs/CLAIMS.md` | supported, bounded, and rejected claims |
-| `docs/BASELINE_AUDIT.md` | scored maturity comparison and defects corrected |
+| `docs/BASELINE_AUDIT.md` | baseline defects corrected and remaining limitations |
 
 ## Analysis boundary
 

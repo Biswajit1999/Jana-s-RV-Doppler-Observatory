@@ -7,7 +7,7 @@
 - a precision-instrument design system with dark and light semantic tokens;
 - semantic SVG navigation, visible keyboard focus, a skip link, and an accessible mobile menu;
 - reduced-motion-aware view transitions and a deterministic interface contract audit;
-- machine-readable interface audit CSV/JSON, reproducibility notes, and a before/after graph.
+- machine-readable interface audit JSON and reproducibility notes.
 
 ### Changed
 
@@ -25,11 +25,11 @@
 ### Added
 
 - deterministic 250-file, 154,150-row RV library quality audit;
-- per-file and bundle SHA-256 evidence, JSON/CSV products, and comparison graph;
+- per-file and bundle SHA-256 evidence and JSON/CSV products;
 - fail-closed library analysis gates and reviewer-facing live evidence panel;
 - tested multi-instrument numerical core and analytic amplitude/offset Kepler grid;
 - science, evidence, backend, and generated-product tests;
-- methods, claims, maturity audit, citation, and code license.
+- methods, claims, baseline audit, citation, and code license.
 
 ### Changed
 

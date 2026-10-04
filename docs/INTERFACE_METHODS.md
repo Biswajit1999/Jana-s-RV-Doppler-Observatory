@@ -17,10 +17,6 @@ Version 4.1 replaces the earlier neon mission-control skin with a restrained pre
 
 The deterministic interface audit computes WCAG relative luminance and contrast ratios for foreground, muted text and accent text against the primary background in both themes. Every audited pair must meet 4.5:1. This is a token-level gate; individual chart traces also retain labels and line-style context rather than relying on hue alone.
 
-## Before/after rubric
-
-The comparison graph scores eight declared implementation categories on a 0–100 expert heuristic rubric: information hierarchy, color restraint, text contrast, navigation consistency, motion accessibility, keyboard focus, responsive structure and scientific state clarity. “Before” records the v4.0 implementation; “after” records v4.1. This rubric documents engineering/design conformance and is **not** a participant study, usability experiment, or measure of scientific validity.
-
 ## Reproduce
 
 ```bash
@@ -31,7 +27,5 @@ node scripts/audit_interface.mjs --check
 Generated evidence:
 
 - `research/interface-quality-audit.json`
-- `research/interface-quality-audit.csv`
-- `assets/interface-quality-before-after.svg`
 
 The repository-wide `npm run check` command runs the evidence freshness gate alongside the numerical and observational checks.

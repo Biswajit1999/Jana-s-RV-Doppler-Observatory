@@ -4,7 +4,7 @@ import json
 import unittest
 from pathlib import Path
 
-from scripts.audit_rv_library import CSV_PATH, INDEX_PATH, JSON_PATH, SVG_PATH, build_audit, csv_text, maturity_svg
+from scripts.audit_rv_library import CSV_PATH, INDEX_PATH, JSON_PATH, build_audit, csv_text
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -41,7 +41,6 @@ class RVLibraryAuditTests(unittest.TestCase):
         expected_json = json.dumps(self.audit, indent=2, ensure_ascii=False) + "\n"
         self.assertEqual(JSON_PATH.read_text(encoding="utf-8"), expected_json)
         self.assertEqual(CSV_PATH.read_text(encoding="utf-8"), csv_text(self.audit))
-        self.assertEqual(SVG_PATH.read_text(encoding="utf-8"), maturity_svg())
 
 
 if __name__ == "__main__":

@@ -9,5 +9,3 @@
 | The browser scan identifies a statistically significant planet | rejected | no validated maximum-peak null distribution is computed | peak is a descriptive candidate only |
 | The first-pass grid is a publication-grade Keplerian orbit | rejected | finite fixed-period grid without posterior/noise model | diagnostic initialization only |
 | A failed file contains invalid source observations | not claimed | audit evaluates merge readiness | source publications and archive records require separate review |
-| Repository maturity increased from 32 to 93 | rubric result | `docs/BASELINE_AUDIT.md` | not peer review, citation impact, or scientific truth |
-

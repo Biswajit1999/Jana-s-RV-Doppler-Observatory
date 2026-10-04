@@ -1,18 +1,4 @@
-# Research-maturity audit: v3 baseline → v4.0.0
-
-Scores use a 0–100 repository-evidence rubric. They measure inspectability and safeguards, not astrophysical importance.
-
-| Dimension | Before | After | Evidence for change |
-|---|---:|---:|---|
-| Data identity | 30 | 92 | full-file hashes, bundle digest, row identity/duplication metrics, fail-closed gates |
-| Numerical method | 38 | 93 | tested core, per-instrument centering, analytic amplitude/offset solve, explicit grid bounds |
-| Provenance | 45 | 95 | per-file audit records, source/reference completeness, manifest boundary |
-| Claim discipline | 24 | 96 | removed unsupported FAP lines; scan and grid labelled descriptive/diagnostic |
-| Automated testing | 0 | 92 | synthetic science tests plus full-bundle, generated-product, and backend contract tests |
-| Reproducibility | 22 | 94 | deterministic JSON/CSV/SVG generation and freshness checks |
-| Operational safety | 45 | 90 | redirect revalidation, host allowlist, streamed byte caps, upload cap, SELECT-only TAP proxy |
-| Communication | 50 | 95 | result-first live panel, methods, claims, limits, release assets, citation metadata |
-| **Mean** | **32** | **93** | rounded arithmetic mean |
+# Baseline audit: v3 to v4.0.0
 
 ## Baseline defects corrected
 
@@ -28,4 +14,3 @@ Scores use a 0–100 repository-evidence rubric. They measure inspectability and
 ## Remaining limitations
 
 The v4 core still lacks correlated-noise models, activity regressors, multi-planet model selection, posterior sampling, instrument jitter, unit auto-detection, and source-publication reconciliation. Operational safety is intentionally below 100 because a public production backend also needs authentication, rate limiting, monitoring, and infrastructure egress policy.
-

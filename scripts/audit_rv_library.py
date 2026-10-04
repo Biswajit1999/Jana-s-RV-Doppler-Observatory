@@ -15,7 +15,6 @@ DATA_DIR = ROOT / "sample_data" / "rv_library" / "data"
 INDEX_PATH = ROOT / "sample_data" / "rv_library" / "jana_rv_web_target_index.json"
 JSON_PATH = ROOT / "research" / "rv-library-quality-audit.json"
 CSV_PATH = ROOT / "research" / "rv-library-quality-audit.csv"
-SVG_PATH = ROOT / "assets" / "research-maturity-before-after.svg"
 
 
 def quantile(values: list[float], probability: float) -> float:
@@ -172,40 +171,6 @@ def csv_text(audit: dict[str, object]) -> str:
     return "".join(output)
 
 
-def maturity_svg() -> str:
-    dimensions = [
-        ("Data identity", 30, 92),
-        ("Numerical method", 38, 93),
-        ("Provenance", 45, 95),
-        ("Claim discipline", 24, 96),
-        ("Automated testing", 0, 92),
-        ("Reproducibility", 22, 94),
-        ("Operational safety", 45, 90),
-        ("Communication", 50, 95),
-    ]
-    rows = []
-    for index, (label, before, after) in enumerate(dimensions):
-        y = 108 + index * 54
-        rows.append(
-            f'<text x="32" y="{y + 5}" class="label">{label}</text>'
-            f'<rect x="236" y="{y - 11}" width="{before * 4.3}" height="14" rx="7" class="before"/>'
-            f'<rect x="236" y="{y + 10}" width="{after * 4.3}" height="14" rx="7" class="after"/>'
-            f'<text x="{246 + before * 4.3}" y="{y + 1}" class="score">{before}</text>'
-            f'<text x="{246 + after * 4.3}" y="{y + 22}" class="score">{after}</text>'
-        )
-    return (
-        '<svg xmlns="http://www.w3.org/2000/svg" width="760" height="600" viewBox="0 0 760 600" role="img" aria-labelledby="title description">'
-        '<title id="title">Research maturity before and after v4.0.0</title><desc id="description">Eight maturity dimensions improve from an average of 32 to 93 out of 100.</desc>'
-        '<style>.bg{fill:#061018}.title{fill:#f4f8fb;font:700 25px system-ui}.sub,.label,.score,.note{font-family:system-ui}.sub,.note{fill:#9eb2c2}.label{fill:#e7f0f5;font-size:13px}.score{fill:#f4f8fb;font-size:11px}.before{fill:#64748b}.after{fill:#26f0ff}</style>'
-        '<rect class="bg" width="760" height="600" rx="22"/><text x="32" y="40" class="title">Jana RV Doppler Observatory · v4.0.0</text>'
-        '<text x="32" y="66" class="sub">Research maturity audit · before 32 / after 93</text>'
-        + "".join(rows)
-        + '<rect x="32" y="544" width="14" height="14" rx="7" class="before"/><text x="54" y="556" class="note">before</text>'
-        '<rect x="116" y="544" width="14" height="14" rx="7" class="after"/><text x="138" y="556" class="note">after</text>'
-        '<text x="32" y="582" class="note">Repository-evidence rubric; not a measure of scientific truth or instrument performance.</text></svg>\n'
-    )
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if committed products are stale")
@@ -214,7 +179,6 @@ def main() -> None:
     outputs = {
         JSON_PATH: json.dumps(audit, indent=2, ensure_ascii=False) + "\n",
         CSV_PATH: csv_text(audit),
-        SVG_PATH: maturity_svg(),
     }
     if args.check:
         stale = [str(path.relative_to(ROOT)) for path, content in outputs.items() if not path.exists() or path.read_text(encoding="utf-8") != content]
