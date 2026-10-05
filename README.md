@@ -1,5 +1,7 @@
 # Jana’s RV Doppler Observatory
 
+![Jana’s RV Doppler Observatory scientific interface](assets/social-preview.svg)
+
 A provenance-first radial-velocity workbench with a 250-target archive-quality audit, fail-closed analysis gates, a tested multi-instrument period scan, and a bounded first-pass Keplerian grid.
 
 [![Research verification](https://github.com/Biswajit1999/Jana-s-RV-Doppler-Observatory/actions/workflows/verify.yml/badge.svg)](https://github.com/Biswajit1999/Jana-s-RV-Doppler-Observatory/actions/workflows/verify.yml)
