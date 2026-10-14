@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://biswajit1999.github.io/Jana-s-RV-Doppler-Observatory/sitemap.xml
